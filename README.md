@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -227,6 +228,51 @@
             text-decoration: underline;
         }
 
+        /* New Common Words Table Styles */
+        .common-words-table-container {
+            overflow-x: auto; /* Enable horizontal scrolling if table is too wide */
+        }
+
+        .common-words-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .common-words-table th,
+        .common-words-table td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: center;
+            font-size: 0.95em;
+        }
+
+        .common-words-table thead th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+        }
+
+        .common-words-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .common-words-table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .common-words-table .english-word {
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--primary-color);
+            transition: color 0.2s ease-in-out;
+        }
+
+        .common-words-table .english-word:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+        
         footer {
             text-align: center;
             padding: 20px;
@@ -261,6 +307,11 @@
                 margin: 10px auto;
                 padding: 15px;
             }
+            .common-words-table th,
+            .common-words-table td {
+                padding: 8px;
+                font-size: 0.85em;
+            }
         }
 
         @media (max-width: 480px) {
@@ -276,6 +327,11 @@
             .alphabet-table th, .alphabet-table td {
                 padding: 8px;
                 font-size: 0.9em;
+            }
+            .common-words-table th,
+            .common-words-table td {
+                padding: 6px;
+                font-size: 0.8em;
             }
         }
     </style>
@@ -500,6 +556,7 @@
                         </ul>
                     </li>
                     <li>**الكلمات الدالة:** <span class="speakable-word">tomorrow</span>, <span class="speakable-word">next week</span>/<span class="speakable-word">month</span>/<span class="speakable-word">year</span>, <span class="speakable-word">in the future</span>, <span class="speakable-word">soon</span>, <span class="speakable-word">probably</span>, <span class="speakable-word">I think</span>, <span class="speakable-word">I believe</span>.</li>
+                    </ul>
                     <li>**أمثلة:** They <span class="speakable-word">will travel</span> to Spain next year. (سيسافرون إلى إسبانيا العام القادم.) She <span class="speakable-word">won't forget</span> you. (هي لن تنساك.) <span class="speakable-word">Will</span> you <span class="speakable-word">come</span> to the party? (هل ستأتي إلى الحفلة؟)</li>
                 </ul>
             </div>
@@ -519,6 +576,34 @@
                 </ul>
             </div>
         </section>
+
+        ---
+
+        <section id="common-words-section">
+            <h2>كلمات إنجليزية شائعة ومعانيها</h2>
+            <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
+            <div class="common-words-table-container">
+                <table class="common-words-table">
+                    <thead>
+                        <tr>
+                            <th>الإنجليزية</th>
+                            <th>العربية</th>
+                            <th>الإنجليزية</th>
+                            <th>العربية</th>
+                            <th>الإنجليزية</th>
+                            <th>العربية</th>
+                            <th>الإنجليزية</th>
+                            <th>العربية</th>
+                            <th>الإنجليزية</th>
+                            <th>العربية</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </section>
+
     </main>
 
     <footer>
@@ -808,7 +893,32 @@
                 ]
             };
 
+            const commonWordsData = [
+                { en: 'the', ar: 'الـ' }, { en: 'be', ar: 'يكون' }, { en: 'to', ar: 'إلى' }, { en: 'of', ar: 'من' }, { en: 'and', ar: 'و' },
+                { en: 'a', ar: 'أ' }, { en: 'in', ar: 'في' }, { en: 'that', ar: 'ذلك' }, { en: 'have', ar: 'يملك' }, { en: 'I', ar: 'أنا' },
+                { en: 'it', ar: 'هو/هي (لغير العاقل)' }, { en: 'for', ar: 'لأجل' }, { en: 'not', ar: 'لا' }, { en: 'on', ar: 'على' }, { en: 'with', ar: 'مع' },
+                { en: 'he', ar: 'هو' }, { en: 'as', ar: 'كـ' }, { en: 'you', ar: 'أنت/أنتم' }, { en: 'do', ar: 'يفعل' }, { en: 'at', ar: 'في' },
+                { en: 'this', ar: 'هذا' }, { en: 'but', ar: 'لكن' }, { en: 'his', ar: 'ملكه' }, { en: 'by', ar: 'بواسطة' }, { en: 'from', ar: 'من' },
+                { en: 'they', ar: 'هم/هن' }, { en: 'we', ar: 'نحن' }, { en: 'say', ar: 'يقول' }, { en: 'her', ar: 'لها' }, { en: 'she', ar: 'هي' },
+                { en: 'or', ar: 'أو' }, { en: 'an', ar: 'أ (للمفرد)' }, { en: 'will', ar: 'سوف' }, { en: 'my', ar: 'ملكي' }, { en: 'one', ar: 'واحد' },
+                { en: 'all', ar: 'كل' }, { en: 'would', ar: 'كان سـ' }, { en: 'there', ar: 'هناك' }, { en: 'their', ar: 'ملكهم/ملكهن' }, { en: 'what', ar: 'ماذا' },
+                { en: 'so', ar: 'لذا' }, { en: 'up', ar: 'فوق' }, { en: 'out', ar: 'خارج' }, { en: 'if', ar: 'إذا' }, { en: 'get', ar: 'يحصل على' },
+                { en: 'which', ar: 'أي' }, { en: 'go', ar: 'يذهب' }, { en: 'me', ar: 'لي/إياي' }, { en: 'when', ar: 'متى' }, { en: 'make', ar: 'يصنع' },
+                { en: 'can', ar: 'يستطيع' }, { en: 'like', ar: 'يحب/مثل' }, { en: 'time', ar: 'وقت' }, { en: 'no', ar: 'لا' }, { en: 'just', ar: 'فقط' },
+                { en: 'him', ar: 'له/إياه' }, { en: 'know', ar: 'يعرف' }, { en: 'take', ar: 'يأخذ' }, { en: 'person', ar: 'شخص' }, { en: 'into', ar: 'إلى' },
+                { en: 'year', ar: 'سنة' }, { en: 'your', ar: 'لك/لكم' }, { en: 'good', ar: 'جيد' }, { en: 'some', ar: 'بعض' }, { en: 'could', ar: 'كان يستطيع' },
+                { en: 'them', ar: 'لهم/إياهم' }, { en: 'see', ar: 'يرى' }, { en: 'other', ar: 'آخر' }, { en: 'than', ar: 'من' }, { en: 'then', ar: 'ثم' },
+                { en: 'now', ar: 'الآن' }, { en: 'look', ar: 'ينظر' }, { en: 'only', ar: 'فقط' }, { en: 'come', ar: 'يأتي' }, { en: 'its', ar: 'ملكها/ملكه (لغير العاقل)' },
+                { en: 'over', ar: 'فوق/انتهى' }, { en: 'think', ar: 'يعتقد' }, { en: 'also', ar: 'أيضاً' }, { en: 'back', ar: 'خلف' }, { en: 'after', ar: 'بعد' },
+                { en: 'use', ar: 'يستخدم' }, { en: 'two', ar: 'اثنين' }, { en: 'how', ar: 'كيف' }, { en: 'our', ar: 'ملكنا' }, { en: 'work', ar: 'يعمل/عمل' },
+                { en: 'first', ar: 'أول' }, { en: 'well', ar: 'جيداً' }, { en: 'way', ar: 'طريق' }, { en: 'even', ar: 'حتى' }, { en: 'new', ar: 'جديد' },
+                { en: 'want', ar: 'يريد' }, { en: 'because', ar: 'لأن' }, { en: 'any', ar: 'أي' }, { en: 'these', ar: 'هؤلاء' }, { en: 'give', ar: 'يعطي' },
+                { en: 'day', ar: 'يوم' }, { en: 'most', ar: 'معظم' }, { en: 'us', ar: 'نحن (مفعول به)' }, { en: 'man', ar: 'رجل' }, { en: 'find', ar: 'يجد' }
+            ];
+
+
             const alphabetContainer = document.querySelector('.alphabet-container');
+            const commonWordsTbody = document.querySelector('.common-words-table tbody');
 
             // Function to speak text
             function speakText(text, lang = 'en-US') {
@@ -817,7 +927,7 @@
                     synth.cancel(); // Stop current speech if any
                 }
                 const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = lang; // Set language for English pronunciation
+                utterance.lang = lang; // Set language for pronunciation
                 synth.speak(utterance);
             }
 
@@ -867,6 +977,40 @@
                 cardDiv.appendChild(table);
                 alphabetContainer.appendChild(cardDiv);
             }
+
+            // Generate common words table dynamically
+            const wordsPerColumn = 10; // 50 rows / 5 columns = 10 words per column
+            const totalRows = 50;
+            const numColumns = 5;
+
+            for (let i = 0; i < totalRows; i++) {
+                const row = document.createElement('tr');
+                for (let j = 0; j < numColumns; j++) {
+                    const wordIndex = (j * wordsPerColumn) + i; // Calculate index for word in commonWordsData
+
+                    const enCell = document.createElement('td');
+                    const arCell = document.createElement('td');
+
+                    if (wordIndex < commonWordsData.length) {
+                        const word = commonWordsData[wordIndex];
+                        const enSpan = document.createElement('span');
+                        enSpan.classList.add('english-word');
+                        enSpan.textContent = word.en;
+                        enSpan.addEventListener('click', () => speakText(word.en, 'en-US'));
+
+                        enCell.appendChild(enSpan);
+                        arCell.textContent = word.ar;
+                    } else {
+                        // Fill empty cells if not enough words
+                        enCell.textContent = '';
+                        arCell.textContent = '';
+                    }
+                    row.appendChild(enCell);
+                    row.appendChild(arCell);
+                }
+                commonWordsTbody.appendChild(row);
+            }
+
 
             // Add click event listeners for grammar headings and speakable words
             document.querySelectorAll('.speakable-heading, .speakable-word').forEach(element => {
