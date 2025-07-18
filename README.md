@@ -2,70 +2,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>يوم جمعة سعيد - صفحة A4</title>
+    <title>يوم جمعة سعيد - سكرول تلقائي</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* تعريف أحجام A4 بالبكسل (تقريبية لـ 96DPI) */
-        /* A4 Portrait: 210mm x 297mm @ 96 DPI -> 794px x 1123px */
-        /* A4 Landscape: 297mm x 210mm @ 96 DPI -> 1123px x 794px */
-        :root {
-            --a4-width: 794px;  /* عرض صفحة A4 */
-            --a4-height: 1123px; /* ارتفاع صفحة A4 */
-            --page-padding: 40px; /* بادينج داخلي للصفحة */
-        }
-
-        /* CSS الأساسي للصفحة ككل - لن يكون هناك سكرول لـ body */
+        /* CSS الألوان والتأثيرات */
         body {
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Cairo', sans-serif; /* استخدام خط عربي مميز وواضح */
             display: flex;
+            flex-direction: column; /* لتنظيم العناصر رأسياً */
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* تأكد أن الـ body يشغل كامل ارتفاع الشاشة */
+            min-height: 100vh; /* يضمن أن الـ body يشغل كامل الارتفاع حتى لو المحتوى قليل */
             margin: 0;
-            background: linear-gradient(135deg, #FFD700, #FF6347); /* تدرج لوني دافئ للخلفية خارج صفحة A4 */
-            overflow: hidden; /* لمنع ظهور سكرولبار للـ body */
+            background: linear-gradient(135deg, #FFD700, #FF6347); /* تدرج لوني دافئ للخلفية */
+            color: #FFFFFF;
+            overflow-x: hidden; /* لمنع ظهور سكرولبار أفقي غير مرغوب فيه */
             position: relative; /* لتحديد موقع الفقاعات */
+            padding-bottom: 50px; /* مسافة أسفل الصفحة لتجنب تداخل زر الموسيقى */
         }
 
-        /* الـ "صفحة" A4 الثابتة */
-        .a4-page {
-            width: var(--a4-width);
-            height: var(--a4-height);
-            background-color: rgba(0, 0, 0, 0.6); /* خلفية شبه شفافة للصفحة */
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); /* ظل أكبر وأوضح */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: var(--page-padding);
-            box-sizing: border-box; /* لضم البادينج ضمن العرض والارتفاع */
+        .container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.6); /* خلفية شبه شفافة أغمق قليلاً */
+            padding: 30px 40px; /* زيادة البادينج الأفقي */
+            border-radius: 20px; /* حواف أكثر استدارة */
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4); /* ظل أوضح */
             transform: scale(0.95); /* تصغير بسيط لتبدو كصفحة عائمة */
             animation: appearScale 1.5s ease-out forwards;
-            position: relative; /* لضم السكرول داخله */
-            overflow: hidden; /* لمنع المحتوى من الخروج عن حدود الصفحة */
-            backdrop-filter: blur(5px); /* تأثير ضبابي على خلفية الصفحة */
+            margin-top: 50px; /* مسافة من أعلى الشاشة */
+            margin-bottom: 25px; /* مسافة بين الصندوق ومفتاح الصوت */
+            max-width: 800px; /* تحديد أقصى عرض للحاوية لتبدو منظمة */
+            width: 90%; /* تجعلها متجاوبة مع أحجام الشاشات المختلفة */
+            box-sizing: border-box; /* لضم البادينج ضمن العرض الكلي */
+            backdrop-filter: blur(5px); /* تأثير ضبابي على الخلفية */
         }
-
-        /* السكرولبار داخل المحتوى الداخلي */
-        .content-scrollable {
-            flex-grow: 1; /* لتشغل المساحة المتبقية */
-            width: 100%; /* لتشغل كامل عرض الأب */
-            overflow-y: auto; /* هذا هو المكان الذي سيظهر فيه السكرول */
-            padding-right: 15px; /* مسافة للابتعاد عن السكرولبار */
-            box-sizing: border-box;
-            text-align: center; /* لسنترة المحتوى */
-            scrollbar-width: thin;
-            scrollbar-color: #FFFF00 rgba(255, 255, 255, 0.15);
-        }
-
-        /* تخصيص السكرولبار للمتصفحات الأخرى */
-        .content-scrollable::-webkit-scrollbar { width: 8px; }
-        .content-scrollable::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.15); border-radius: 10px; }
-        .content-scrollable::-webkit-scrollbar-thumb { background: #FFFF00; border-radius: 10px; }
 
         @keyframes appearScale {
             from { transform: scale(0); opacity: 0; }
-            to { transform: scale(0.95); opacity: 1; }
+            to { transform: scale(1); opacity: 1; }
         }
 
         h1 {
@@ -75,7 +49,6 @@
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
             animation: bounceIn 1s ease-out;
             letter-spacing: 2px;
-            flex-shrink: 0; /* لمنع العنوان من الانكماش */
         }
 
         @keyframes bounceIn {
@@ -93,7 +66,7 @@
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInSlideUp 0.8s forwards;
-            break-inside: avoid-column;
+            break-inside: avoid-column; /* لمنع الكلمات من الانقسام بين الأعمدة */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -161,7 +134,6 @@
             animation: fadeIn 1s forwards;
             animation-delay: var(--note-delay);
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            flex-shrink: 0; /* لمنع الملاحظة من الانكماش */
         }
 
         @keyframes fadeIn {
@@ -171,7 +143,7 @@
 
         /* تأثير فقاعات خفيفة في الخلفية */
         .bubble {
-            position: absolute;
+            position: fixed; /* لتثبيت الفقاعات في الخلفية حتى مع السكرول */
             bottom: -100px;
             width: 40px;
             height: 40px;
@@ -210,7 +182,7 @@
             animation: fadeIn 1s forwards;
             animation-delay: var(--button-delay);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-            flex-shrink: 0; /* لمنع الزر من الانكماش */
+            margin-bottom: 50px; /* مسافة من أسفل لتعطي مساحة للسكرول */
         }
 
         #audioControl:hover {
@@ -226,7 +198,7 @@
         .word-list-container {
             columns: 2;
             column-gap: 40px;
-            width: 100%; /* يجب أن يشغل العرض الكامل داخل الـ scrollable */
+            width: 100%;
         }
 
         /* تنسيق للاسكرولبار على المتصفحات التي تدعمها */
@@ -246,15 +218,14 @@
     </style>
 </head>
 <body>
-    <div class="a4-page">
+    <div class="container">
         <h1>يوم جمعة سعيد!</h1>
-        <div class="content-scrollable">
-            <div class="word-list-container" id="wordListContainer">
-                </div>
-        </div>
+        <div class="word-list-container" id="wordListContainer">
+            </div>
         <p class="note" id="noteElement">نتمنى لكم عطلة نهاية أسبوع هادئة ومبهجة ومليئة بهذه اللحظات الرائعة!</p>
-        <button id="audioControl">تشغيل/إيقاف الموسيقى</button>
     </div>
+
+    <button id="audioControl">تشغيل/إيقاف الموسيقى</button>
 
     <div class="bubble"></div>
     <div class="bubble"></div>
@@ -272,8 +243,6 @@
 
     <script>
         // قائمة الكلمات الإنجليزية ومعانيها العربية (أكثر من 500 كلمة)
-        // لتوليد أكثر من 500 كلمة بسهولة: قمت بتكرار القائمة الأصلية عدة مرات.
-        // في التطبيق الحقيقي، ستكون هذه الكلمات فريدة.
         const baseWords = [
             { en: "Relax", ar: "استرخاء" }, { en: "Recharge", ar: "إعادة شحن الطاقة" },
             { en: "Unwind", ar: "استرخِ/تخلّص من التوتر" }, { en: "Breathe", ar: "تنفس" },
@@ -307,28 +276,25 @@
             { en: "Happiness is here", ar: "السعادة هنا" }
         ];
 
-        // تكرار الكلمات للحصول على أكثر من 500 كلمة
         let fridayWords = [];
         const desiredWordCount = 500;
         while (fridayWords.length < desiredWordCount) {
             fridayWords = fridayWords.concat(baseWords.map((word, i) => ({
-                en: word.en + (fridayWords.length + i < desiredWordCount ? '' : ''), // نضيف رقم فقط للتأكد من انهم أكثر من 500
-                ar: word.ar + (fridayWords.length + i < desiredWordCount ? '' : '')
+                en: word.en + (fridayWords.length + i), // نضيف رقم لتمييز الكلمات المكررة
+                ar: word.ar + (fridayWords.length + i)
             })));
         }
-        fridayWords = fridayWords.slice(0, desiredWordCount); // التأكد من العدد بالضبط
+        fridayWords = fridayWords.slice(0, desiredWordCount);
 
         const wordListContainer = document.getElementById('wordListContainer');
         const noteElement = document.getElementById('noteElement');
         const audio = document.getElementById('backgroundAudio');
         const audioControl = document.getElementById('audioControl');
         let isPlaying = false;
-        let startDelay = 1.6; // التأخير الأولي قبل بدء ظهور الكلمات
+        let startDelay = 1.6;
 
-        // SpeechSynthesis API
         const synth = window.speechSynthesis;
 
-        // دالة لقراءة النص (إنجليزية فقط)
         function speakText(text) {
             if (synth.speaking) {
                 synth.cancel();
@@ -344,15 +310,13 @@
             synth.speak(utterance);
         }
 
-        // إضافة الكلمات ومعانيها ديناميكياً وزر القراءة الإنجليزية فقط
         fridayWords.forEach((item, index) => {
             const wordItemDiv = document.createElement('div');
             wordItemDiv.className = 'word-item';
-            // تأخير الأنيميشن فقط لأول 50 كلمة لتجنب بطء كبير عند تحميل الصفحة
-            if (index < 50) { 
+            // تطبيق الأنيميشن فقط لأول 50 كلمة للحفاظ على الأداء
+            if (index < 50) {
                 wordItemDiv.style.animationDelay = `${startDelay + (index * 0.1)}s`;
             } else {
-                // للكلمات بعد الخمسين، اجعلها تظهر فوراً بعد اللود
                 wordItemDiv.style.opacity = '1';
                 wordItemDiv.style.transform = 'translateY(0)';
             }
@@ -384,14 +348,12 @@
             wordListContainer.appendChild(wordItemDiv);
         });
 
-        // تحديد تأخير ظهور الملاحظة وزر التحكم
-        // يتم حسابه بناءً على التأخير الفعلي لآخر كلمة ظاهرة بالأنيميشن
+        // تحديد تأخير ظهور الملاحظة وزر التحكم بناءً على التأخير الفعلي لآخر كلمة ظاهرة بالأنيميشن
         const calculatedNoteDelay = startDelay + (Math.min(fridayWords.length, 50) * 0.1) + 0.5;
         noteElement.style.setProperty('--note-delay', `${calculatedNoteDelay}s`);
         audioControl.style.setProperty('--button-delay', `${calculatedNoteDelay + 0.4}s`);
 
 
-        // تشغيل/إيقاف الصوت الخلفي
         audioControl.addEventListener('click', () => {
             if (isPlaying) {
                 audio.pause();
@@ -406,7 +368,6 @@
             isPlaying = !isPlaying;
         });
 
-        // محاولة تشغيل الصوت تلقائياً عند تحميل الصفحة
         window.addEventListener('load', () => {
              audio.play().then(() => {
                 isPlaying = true;
@@ -417,7 +378,7 @@
             });
 
             if (synth.onvoiceschanged !== undefined) {
-                synth.onvoiceschanged = () => {}; // لا نحتاج لعمل شيء هنا
+                synth.onvoiceschanged = () => {};
             }
         });
     </script>
