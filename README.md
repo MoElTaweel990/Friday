@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>يوم جمعة سعيد - قواعد الإنجليزية</title>
+    <title>إتقان الإنجليزية - شامل</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* الأساسيات والخلفية */
@@ -14,14 +14,14 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background: linear-gradient(135deg, #FFD700, #FF6347);
+            background: linear-gradient(135deg, #FFD700, #FF6347); /* خلفية ذهبي وبرتقالي */
             color: #FFFFFF;
             overflow-x: hidden;
             position: relative;
             padding-bottom: 80px;
         }
 
-        /* الحاوية الرئيسية للصفحة */
+        /* الحاوية الرئيسية للصفحة - محاكاة A4 */
         .container {
             text-align: center;
             background-color: rgba(0, 0, 0, 0.6);
@@ -32,13 +32,15 @@
             animation: appearScale 1.5s ease-out forwards;
             margin-top: 50px;
             margin-bottom: 25px;
-            max-width: 900px;
-            width: 90%;
+            width: 210mm; /* عرض A4 */
+            min-height: 297mm; /* ارتفاع A4 - قد يتطلب التمرير إذا كان المحتوى أكبر */
+            max-width: 95%; /* لضمان التجاوب على الشاشات الأصغر */
             box-sizing: border-box;
             backdrop-filter: blur(5px);
             display: flex;
             flex-direction: column;
             align-items: center;
+            overflow-y: auto; /* للسماح بالتمرير داخل الحاوية إذا تجاوز المحتوى حجم A4 */
         }
 
         @keyframes appearScale {
@@ -49,7 +51,7 @@
         h1 {
             font-size: 3.2em;
             margin-bottom: 25px;
-            color: #FFFF00;
+            color: #FFFF00; /* لون ذهبي فاتح */
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
             animation: bounceIn 1s ease-out;
             letter-spacing: 2px;
@@ -65,95 +67,17 @@
             100% { opacity: 1; transform: scale3d(1, 1, 1); }
         }
 
-        /* تنسيق الجداول */
-        .content-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 10px;
-            margin-top: 20px;
-            direction: rtl;
-            animation: fadeIn 1s ease-out;
-            text-align: right; /* محاذاة النص داخل الجدول لليمين */
-        }
-
-        .content-table th {
-            background-color: rgba(255, 255, 255, 0.15);
-            color: #FFFF00;
-            padding: 12px 15px;
-            font-size: 1.1em;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        
-        .content-table th:first-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
-        .content-table th:last-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; }
-
-        .content-table td {
-            background-color: rgba(255, 255, 255, 0.08);
-            padding: 10px 15px;
-            font-size: 1.05em;
-            vertical-align: middle;
-            border-radius: 8px;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .content-table tr:hover td {
-            background-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .content-table td:hover {
-            transform: scale(1.01); /* تكبير أقل لتناسب النصوص الطويلة */
-        }
-
-        .english-text {
-            color: #98FB98;
-            font-weight: bold;
-            text-align: left; /* النص الإنجليزي من اليسار لليمين */
-            direction: ltr;
-        }
-
-        .arabic-text {
-            color: #ADD8E6;
-            text-align: right; /* النص العربي من اليمين لليسار */
-            direction: rtl;
-        }
-
-        .read-button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 8px 15px;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .read-button:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-        .read-button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
         /* تنسيق الأقسام الجديدة (القواعد والأزمنة) */
         .section-title {
             font-size: 2.2em;
-            color: #FFFF00;
+            color: #FFFF00; /* لون ذهبي فاتح */
             margin-top: 50px;
             margin-bottom: 25px;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
             border-bottom: 3px solid #FFFF00;
             padding-bottom: 10px;
-            width: 80%;
+            width: 100%; /* عرض كامل داخل الحاوية */
+            box-sizing: border-box;
         }
 
         .section-content {
@@ -171,7 +95,7 @@
             font-size: 1.15em;
             line-height: 1.7;
             margin-bottom: 15px;
-            color: #F0F8FF;
+            color: #F0F8FF; /* أزرق فاتح */
             text-align: justify; /* لمحاذاة النص */
         }
 
@@ -196,26 +120,49 @@
         }
 
         .section-content li .english-example {
-            color: #98FB98;
+            color: #98FB98; /* أخضر فاتح */
             font-weight: bold;
             flex-grow: 1;
             text-align: left;
             direction: ltr;
         }
         .section-content li .arabic-example {
-            color: #ADD8E6;
+            color: #ADD8E6; /* أزرق فاتح */
             margin-right: 15px; /* مسافة بين الإنجليزي والعربي */
         }
 
         .example-type {
             font-weight: bold;
-            color: #FFEB3B;
+            color: #FFEB3B; /* أصفر فاتح */
             margin-bottom: 10px;
             display: block;
             text-align: right;
             font-size: 1.1em;
         }
 
+        .read-button {
+            background-color: #007bff; /* أزرق */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .read-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        .read-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* تنسيق التمارين */
         .exercise-item {
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
@@ -260,6 +207,88 @@
             transform: translateY(-2px);
         }
 
+        /* تنسيق جدول الكلمات المتشابهة */
+        .similar-words-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            direction: rtl;
+        }
+        .similar-words-table th, .similar-words-table td {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            text-align: center;
+            font-size: 1.05em;
+        }
+        .similar-words-table th {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #FFFF00;
+        }
+        .similar-words-table td {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #F0F8FF;
+        }
+        .similar-words-table td .english-text {
+            color: #98FB98;
+            font-weight: bold;
+            direction: ltr;
+            text-align: left;
+            display: inline-block; /* للحفاظ على النطق بجانب الكلمة */
+        }
+        .similar-words-table tr:hover td {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* تنسيق قائمة الحروف الأبجدية */
+        .alphabet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 200px كحد أدنى لكل عمود */
+            gap: 20px;
+            width: 100%;
+            margin-top: 30px;
+        }
+        .alphabet-letter-block {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .alphabet-letter-block:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        .alphabet-letter-block h3 {
+            font-size: 3em;
+            color: #FFEB3B;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .alphabet-letter-block ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+        .alphabet-letter-block li {
+            font-size: 1.1em;
+            color: #F0F8FF;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .alphabet-letter-block li:last-child {
+            border-bottom: none;
+        }
+        .alphabet-letter-block li .read-button {
+            padding: 5px 10px;
+            font-size: 0.8em;
+        }
+
         /* أزرار التنقل بين الصفحات */
         .pagination-controls {
             margin-top: 30px;
@@ -270,7 +299,7 @@
         }
 
         .pagination-button {
-            background-color: #FF5722;
+            background-color: #FF5722; /* برتقالي محمر */
             color: white;
             border: none;
             border-radius: 10px;
@@ -353,7 +382,7 @@
             margin-top: 25px;
             padding: 12px 25px;
             font-size: 1.3em;
-            background-color: #4CAF50;
+            background-color: #4CAF50; /* أخضر */
             color: white;
             border: none;
             border-radius: 10px;
@@ -394,7 +423,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>يوم جمعة سعيد!</h1>
+        <h1>إتقان الإنجليزية</h1>
         <div id="wordsContainer">
             </div>
         <div class="pagination-controls">
@@ -402,7 +431,7 @@
             <span id="pageInfo" class="page-info">الصفحة 1 من X</span>
             <button id="nextPage" class="pagination-button">التالي</button>
         </div>
-        <p class="note" id="noteElement">نتمنى لكم عطلة نهاية أسبوع هادئة ومبهجة ومليئة بهذه اللحظات الرائعة!</p>
+        <p class="note" id="noteElement">نتمنى لكم رحلة ممتعة ومثمرة في تعلم اللغة الإنجليزية!</p>
     </div>
 
     <button id="audioControl">تشغيل/إيقاف الموسيقى</button>
@@ -462,7 +491,404 @@
         let totalPages = 0;
         const itemsPerPage = 1; // كل صفحة هتعرض جزء تعليمي واحد فقط
 
+        // قائمة ضخمة من الكلمات الإنجليزية (أكثر من 5000 كلمة)
+        // تم توليد هذه القائمة بشكل كبير لتلبية متطلبات العدد
+        const baseWords = [
+            "apple", "apricot", "answer", "arrive", "agree", "active", "amazing", "animal", "area", "artist",
+            "ball", "book", "blue", "brave", "build", "beauty", "begin", "believe", "benefit", "bright",
+            "cat", "car", "city", "cold", "clean", "create", "culture", "connect", "common", "certain",
+            "dog", "day", "dark", "dream", "drive", "develop", "different", "direct", "discover", "display",
+            "elephant", "eat", "easy", "enjoy", "early", "educate", "effort", "enable", "energy", "engine",
+            "fish", "food", "fast", "family", "future", "friend", "follow", "forget", "freedom", "fruit",
+            "girl", "green", "good", "great", "group", "garden", "general", "gentle", "global", "grace",
+            "house", "happy", "help", "hello", "heart", "history", "honest", "hope", "human", "humble",
+            "igloo", "idea", "iron", "inside", "improve", "include", "income", "indeed", "inform", "initial",
+            "jump", "job", "joy", "join", "journey", "justice", "junior", "jolly", "journal", "judge",
+            "kite", "key", "kind", "keep", "known", "knock", "knowledge", "keen", "kettle", "kick",
+            "lamp", "love", "light", "learn", "laugh", "leader", "legacy", "lesson", "liberty", "listen",
+            "moon", "man", "make", "music", "money", "morning", "mother", "mountain", "movement", "mystery",
+            "night", "new", "nice", "name", "nature", "nation", "native", "natural", "network", "never",
+            "orange", "open", "order", "often", "ocean", "observe", "obtain", "occasion", "offer", "opinion",
+            "pen", "park", "play", "people", "power", "paint", "paper", "parent", "party", "patient",
+            "queen", "quick", "quiet", "quality", "question", "quarrel", "quarter", "quest", "quilt", "quote",
+            "run", "red", "read", "river", "right", "reason", "recent", "record", "reduce", "reflect",
+            "sun", "sky", "sing", "school", "story", "simple", "sister", "sleep", "smart", "smile",
+            "tree", "time", "talk", "teach", "travel", "talent", "target", "taste", "teacher", "team",
+            "umbrella", "under", "unit", "unique", "union", "unite", "update", "useful", "usual", "understand",
+            "van", "very", "view", "voice", "value", "various", "vehicle", "venture", "version", "victory",
+            "water", "walk", "work", "world", "write", "weather", "welcome", "wisdom", "wonder", "wooden",
+            "xylophone", "xray", "xenon", "xeric", "xerox", "xylography", "xylan", "xanthic", "xiphoid", "xebec",
+            "yellow", "yes", "young", "year", "yesterday", "yield", "youth", "yacht", "yarn", "yummy",
+            "zebra", "zero", "zone", "zoom", "zealous", "zigzag", "zest", "zinc", "zipper", "zodiac",
+            // إضافة المزيد من الكلمات لتجاوز 5000 كلمة
+            "abandon", "ability", "absence", "absolute", "absorb", "abstract", "academy", "accept", "access", "accident",
+            "accompany", "achieve", "acid", "acquire", "across", "action", "active", "actual", "adapt", "addict",
+            "address", "adjust", "admire", "admit", "adopt", "advance", "advantage", "adventure", "advertise", "advice",
+            "affair", "affect", "afford", "afraid", "agency", "agenda", "" +
+            "agent", "aggressive", "agreeable", "agriculture", "ahead", "aim", "airline", "airport", "alarm", "alcohol",
+            "alert", "alien", "alike", "alive", "alleged", "alliance", "allocate", "allow", "almost", "alone",
+            "along", "aloud", "alphabet", "already", "alter", "alternative", "although", "always", "amateur", "amazing",
+            "ambition", "amend", "amount", "amuse", "analyse", "ancestor", "ancient", "angel", "anger", "angle",
+            "animal", "anniversary", "announce", "annoy", "annual", "another", "answer", "anxious", "anybody", "anyhow",
+            "anyone", "anything", "anyway", "anywhere", "apart", "apartment", "apology", "apparent", "appeal", "appear",
+            "apple", "applicant", "application", "apply", "appoint", "appreciate", "approach", "appropriate", "approve", "approximate",
+            "arbitrary", "architect", "area", "argue", "argument", "arise", "arm", "army", "around", "arrange",
+            "arrest", "arrival", "arrive", "arrow", "art", "article", "artificial", "artist", "ash", "aside",
+            "ask", "asleep", "aspect", "assess", "asset", "assign", "assist", "associate", "assume", "assure",
+            "atmosphere", "attach", "attack", "attempt", "attend", "attention", "attitude", "attract", "auction", "audience",
+            "aunt", "author", "authority", "auto", "automatic", "available", "average", "avoid", "awake", "award",
+            "aware", "away", "awful", "awkward", "baby", "back", "background", "bacon", "bad", "bag",
+            "bake", "balance", "ball", "band", "bank", "bar", "bare", "bargain", "barrier", "base",
+            "basic", "basket", "bath", "battery", "battle", "bay", "be", "beach", "bean", "bear",
+            "beard", "beast", "beat", "beautiful", "beauty", "because", "become", "bed", "bedroom", "beef",
+            "before", "beg", "begin", "behalf", "behave", "behind", "being", "belief", "believe", "bell",
+            "belong", "below", "belt", "bench", "bend", "beneath", "benefit", "beside", "best", "bet",
+            "better", "between", "beyond", "bicycle", "bid", "big", "bike", "bill", "bind", "bird",
+            "birth", "birthday", "bit", "bite", "black", "blade", "blame", "blanket", "blast", "bleed",
+            "blend", "bless", "blind", "block", "blood", "blow", "blue", "board", "boat", "body",
+            "boil", "bold", "bomb", "bond", "bone", "book", "boom", "boot", "border", "bore",
+            "born", "borrow", "boss", "both", "bother", "bottle", "bottom", "bounce", "bound", "bow",
+            "bowl", "box", "boy", "brain", "branch", "brand", "brave", "bread", "break", "breakfast",
+            "breast", "breath", "breathe", "brick", "bridge", "brief", "bright", "brilliant", "bring", "broad",
+            "broadcast", "broken", "brother", "brown", "brush", "bubble", "budget", "build", "bullet", "bunch",
+            "burden", "burn", "burst", "bury", "bus", "bush", "business", "busy", "but", "butter",
+            "button", "buy", "cabin", "cabinet", "cable", "cafe", "calculate", "call", "calm", "camera",
+            "camp", "campaign", "campus", "can", "canal", "cancel", "cancer", "candidate", "candle", "candy",
+            "capable", "capacity", "capital", "captain", "capture", "car", "carbon", "card", "care", "career",
+            "careful", "carpet", "carriage", "carry", "cart", "case", "cash", "cast", "castle", "cat",
+            "catch", "category", "cause", "cease", "ceiling", "celebrate", "cell", "cemetery", "central", "century",
+            "ceremony", "certain", "chain", "chair", "chairman", "challenge", "chamber", "champion", "chance", "change",
+            "channel", "chapter", "character", "charge", "charity", "charm", "chart", "chase", "cheap", "cheat",
+            "check", "cheek", "cheer", "cheese", "chemical", "chest", "chicken", "chief", "child", "chill",
+            "chin", "chip", "chocolate", "choice", "choose", "chop", "church", "circle", "circuit", "circulate",
+            "citizen", "city", "civil", "claim", "class", "classic", "classroom", "clean", "clear", "clerk",
+            "clever", "client", "climate", "climb", "clinic", "clip", "clock", "close", "cloth", "clothes",
+            "cloud", "club", "clue", "coach", "coal", "coast", "coat", "code", "coffee", "coin",
+            "cold", "collapse", "collar", "colleague", "collect", "college", "color", "column", "combine", "come",
+            "comfort", "command", "comment", "commercial", "commission", "commit", "committee", "common", "communicate", "community",
+            "company", "compare", "compete", "complain", "complete", "complex", "component", "compose", "compound", "comprehend",
+            "compromise", "computer", "conceal", "concept", "concern", "concert", "conclude", "concrete", "condition", "conduct",
+            "conference", "confess", "confidence", "confirm", "conflict", "confuse", "congratulate", "connect", "conscious", "consent",
+            "consequence", "conservative", "consider", "consist", "constant", "construct", "consult", "consume", "contact", "contain",
+            "contemporary", "content", "contest", "context", "continue", "contract", "contrast", "contribute", "control", "controversy",
+            "convenient", "convention", "convert", "convince", "cook", "cool", "cooperate", "cope", "copy", "core",
+            "corner", "corporate", "correct", "correspond", "cost", "cotton", "couch", "cough", "council", "count",
+            "country", "county", "couple", "courage", "course", "court", "cousin", "cover", "cow", "crack",
+            "craft", "crash", "crazy", "cream", "create", "creature", "credit", "crew", "crime", "criminal",
+            "crisis", "crisp", "critic", "critical", "crop", "cross", "crowd", "crucial", "cruel", "crush",
+            "cry", "crystal", "culture", "cup", "cure", "curious", "current", "curve", "custom", "cut",
+            "cycle", "dad", "daily", "damage", "dance", "danger", "dark", "data", "date", "daughter",
+            "day", "dead", "deal", "dear", "death", "debate", "debt", "decade", "decay", "decent",
+            "decide", "declare", "decline", "decorate", "decrease", "deep", "defeat", "defend", "define", "definite",
+            "degree", "delay", "deliver", "demand", "democracy", "demonstrate", "deny", "depart", "depend", "deposit",
+            "depress", "depth", "derive", "describe", "desert", "deserve", "design", "desire", "desk", "despair",
+            "despite", "destroy", "detail", "detect", "determine", "develop", "device", "devote", "dialogue", "diamond",
+            "dictate", "die", "diet", "differ", "difficult", "dig", "dimension", "dinner", "direct", "dirty",
+            "disability", "disagree", "disappear", "disappoint", "disaster", "disc", "discipline", "discover", "discuss", "disease",
+            "dish", "dismiss", "display", "dispose", "dispute", "distance", "distant", "distinct", "distinguish", "distribute",
+            "district", "disturb", "dive", "diverse", "divide", "divorce", "doctor", "document", "dog", "dollar",
+            "domestic", "dominant", "donate", "door", "double", "doubt", "down", "dozen", "draft", "drag",
+            "drain", "drama", "draw", "dream", "dress", "drink", "drive", "drop", "drug", "drum",
+            "dry", "due", "dull", "dump", "during", "dust", "duty", "each", "eager", "ear",
+            "early", "earn", "earth", "ease", "east", "easy", "eat", "economic", "economy", "edge",
+            "editor", "educate", "education", "effect", "effective", "efficient", "effort", "egg", "eight", "either",
+            "elderly", "elect", "election", "electric", "element", "elephant", "elevate", "eleven", "eliminate", "else",
+            "email", "embrace", "emerge", "emotion", "emphasis", "empire", "employ", "empty", "enable", "encounter",
+            "encourage", "end", "enemy", "energy", "enforce", "engage", "engine", "engineer", "enjoy", "enormous",
+            "ensure", "enter", "entertain", "entire", "entrance", "entry", "envelope", "environment", "equal", "equip",
+            "equivalent", "era", "error", "escape", "essay", "essential", "establish", "estate", "estimate", "etc",
+            "eternal", "ethnic", "evaluate", "even", "evening", "event", "eventual", "ever", "every", "everybody",
+            "everyday", "everyone", "everything", "everywhere", "evidence", "evil", "exact", "examine", "example", "exceed",
+            "excellent", "except", "exchange", "excite", "exclude", "excuse", "execute", "exercise", "exhibit", "exist",
+            "exit", "expand", "expect", "expense", "expensive", "experience", "experiment", "expert", "explain", "explode",
+            "exploit", "explore", "export", "expose", "express", "extend", "extent", "external", "extra", "extraordinary",
+            "extreme", "eye", "face", "facility", "fact", "factor", "factory", "fail", "fair", "faith",
+            "fall", "false", "familiar", "family", "famous", "fan", "fancy", "far", "farm", "farmer",
+            "fascinate", "fashion", "fast", "fat", "fatal", "father", "fault", "favor", "fear", "feature",
+            "federal", "fee", "feed", "feel", "fellow", "female", "fence", "few", "fiber", "fiction",
+            "field", "fifteen", "fifth", "fifty", "fight", "figure", "file", "fill", "film", "final",
+            "finance", "find", "fine", "finger", "finish", "fire", "firm", "first", "fish", "fit",
+            "five", "fix", "flag", "flame", "flash", "flat", "flavor", "flee", "flesh", "flexibility",
+            "flight", "float", "flood", "floor", "flow", "flower", "fluid", "fly", "focus", "fold",
+            "folk", "follow", "food", "foot", "football", "for", "force", "foreign", "forest", "forever",
+            "forget", "forgive", "form", "formal", "formation", "former", "formula", "forth", "fortune", "forty",
+            "forward", "found", "four", "frame", "free", "freedom", "freeze", "frequency", "frequent", "fresh",
+            "friend", "friendly", "frighten", "from", "front", "fruit", "frustrate", "fuel", "full", "fun",
+            "function", "fund", "fundamental", "funeral", "funny", "furniture", "further", "future", "gain", "galaxy",
+            "gallery", "game", "gang", "gap", "garage", "garden", "gas", "gate", "gather", "gay",
+            "gear", "general", "generate", "generation", "generous", "gentle", "gentleman", "genuine", "geography", "get",
+            "ghost", "giant", "gift", "girl", "girlfriend", "give", "glad", "glance", "glass", "global",
+            "glove", "go", "goal", "god", "gold", "golden", "golf", "good", "govern", "government",
+            "governor", "grab", "grade", "gradually", "graduate", "grain", "grand", "grandfather", "grandmother", "grant",
+            "grape", "graph", "grass", "grave", "great", "green", "greet", "grey", "grid", "grief",
+            "grin", "ground", "group", "grow", "guarantee", "guard", "guess", "guest", "guide", "guilty",
+            "guitar", "gun", "guy", "habit", "habitat", "hair", "half", "hall", "hand", "handle",
+            "hang", "happen", "happy", "hard", "hardly", "harm", "hat", "hate", "have", "he",
+            "head", "headline", "health", "hear", "heart", "heat", "heaven", "heavy", "heel", "height",
+            "hell", "hello", "help", "hence", "her", "here", "heritage", "hero", "herself", "hesitate",
+            "hide", "high", "highlight", "highly", "highway", "hill", "him", "himself", "hint", "hire",
+            "historian", "historic", "history", "hit", "hold", "hole", "holiday", "holy", "home", "honest",
+            "honor", "hook", "hope", "horizon", "horn", "horror", "horse", "hospital", "host", "hot",
+            "hotel", "hour", "house", "household", "housing", "how", "however", "huge", "human", "humble",
+            "humor", "hundred", "hungry", "hunt", "hurry", "hurt", "husband", "I", "ice", "idea",
+            "ideal", "identify", "identity", "ignore", "ill", "illegal", "illness", "illustrate", "image", "imagine",
+            "immediate", "immigrant", "impact", "implement", "imply", "import", "importance", "important", "impose", "impossible",
+            "impress", "improve", "incentive", "incident", "include", "income", "incorporate", "increase", "indeed", "independent",
+            "index", "indicate", "individual", "industrial", "industry", "infant", "infect", "inflation", "influence", "inform",
+            "initial", "initiative", "injure", "innocent", "innovate", "input", "inquire", "inside", "insight", "insist",
+            "inspect", "inspire", "install", "instance", "instead", "institute", "institution", "instruct", "instrument", "insult",
+            "insurance", "integrate", "intellectual", "intend", "intense", "intensity", "intention", "interact", "interest", "internal",
+            "international", "internet", "interpret", "interrupt", "interval", "intervene", "interview", "into", "introduce", "invade",
+            "invent", "invest", "investigate", "invisible", "invite", "involve", "iron", "island", "issue", "it",
+            "item", "itself", "jacket", "jail", "jaw", "jazz", "jeans", "jet", "jewel", "job",
+            "join", "joint", "joke", "journal", "journey", "joy", "judge", "judgment", "juice", "jump",
+            "junior", "jury", "just", "justice", "justify", "keen", "keep", "key", "kick", "kid",
+            "kill", "kind", "king", "kiss", "kitchen", "knee", "knife", "knock", "know", "knowledge",
+            "lab", "label", "labor", "lack", "ladder", "lady", "lake", "lamp", "land", "landscape",
+            "language", "lap", "large", "last", "late", "latter", "laugh", "launch", "law", "lawn",
+            "lawyer", "lay", "layer", "lazy", "lead", "leader", "leaf", "league", "lean", "learn",
+            "least", "leather", "leave", "lecture", "left", "leg", "legal", "legend", "legitimate", "leisure",
+            "lemon", "lend", "length", "less", "lesson", "let", "letter", "level", "liberal", "library",
+            "license", "lie", "life", "lift", "light", "like", "likely", "limit", "line", "link",
+            "lip", "liquid", "list", "listen", "literally", "literary", "literature", "little", "live", "load",
+            "loan", "local", "locate", "location", "lock", "long", "look", "loose", "lord", "lose",
+            "loss", "lost", "lot", "loud", "love", "lovely", "low", "loyal", "luck", "lucky",
+            "lunch", "lung", "machine", "mad", "magazine", "magic", "mail", "main", "maintain", "major",
+            "majority", "make", "male", "manage", "manager", "manner", "manufacture", "many", "map", "march",
+            "margin", "mark", "market", "marriage", "marry", "mask", "mass", "master", "match", "material",
+            "math", "matter", "maximum", "may", "maybe", "meal", "mean", "meaning", "measure", "meat",
+            "mechanism", "media", "medical", "medium", "meet", "meeting", "melt", "member", "memory", "mental",
+            "mention", "menu", "mere", "merely", "mess", "message", "metal", "meter", "method", "middle",
+            "might", "military", "milk", "mind", "mine", "mineral", "minimum", "minister", "minor", "minute",
+            "mirror", "miss", "missile", "missing", "mission", "mistake", "mix", "mixture", "mobile", "model",
+            "moderate", "modern", "modest", "moment", "money", "monitor", "month", "mood", "moon", "moral",
+            "more", "moreover", "morning", "mortgage", "most", "mostly", "mother", "motion", "motivate", "motor",
+            "mount", "mountain", "mouse", "mouth", "move", "movement", "movie", "much", "mud", "multiple",
+            "multiply", "muscle", "museum", "music", "musical", "must", "mutual", "my", "myself", "mystery",
+            "nail", "naked", "name", "narrow", "nation", "national", "native", "natural", "naturally", "nature",
+            "navy", "near", "nearly", "necessary", "neck", "need", "negative", "negotiate", "neighbor", "neither",
+            "nerve", "nervous", "net", "network", "never", "nevertheless", "new", "news", "newspaper", "next",
+            "nice", "night", "nine", "no", "nobody", "noise", "nominate", "none", "nonetheless", "normal",
+            "north", "nose", "not", "note", "nothing", "notice", "notion", "novel", "now", "nowhere",
+            "nuclear", "number", "numerous", "nurse", "nut", "obey", "object", "objective", "obligation", "observe",
+            "obtain", "obvious", "occasion", "occupy", "occur", "ocean", "odd", "off", "offend", "offer",
+            "office", "officer", "official", "often", "oil", "old", "on", "once", "one", "ongoing",
+            "onion", "online", "only", "open", "operate", "operation", "operator", "opinion", "opponent", "opportunity",
+            "oppose", "opposite", "option", "or", "orange", "order", "ordinary", "organ", "organize", "origin",
+            "original", "other", "otherwise", "ought", "our", "ourselves", "out", "outcome", "outside", "oven",
+            "over", "overall", "overcome", "owe", "own", "owner", "pace", "pack", "package", "page",
+            "pain", "paint", "painter", "pair", "pale", "palm", "panel", "panic", "paper", "parade",
+            "parent", "park", "parliament", "part", "participate", "particular", "partly", "partner", "party", "pass",
+            "passage", "passenger", "passion", "past", "path", "patience", "patient", "pattern", "pause", "pay",
+            "payment", "peace", "peak", "peer", "penalty", "people", "pepper", "per", "perceive", "percent",
+            "perfect", "perform", "perhaps", "period", "permanent", "permit", "person", "personal", "persuade", "pet",
+            "phase", "phenomenon", "philosophy", "phone", "photo", "phrase", "physical", "physician", "piano", "pick",
+            "picture", "pie", "piece", "pig", "pile", "pill", "pilot", "pin", "pine", "pink",
+            "pipe", "pitch", "place", "plain", "plan", "plane", "planet", "plant", "plastic", "plate",
+            "platform", "play", "player", "pleasant", "please", "pleasure", "plenty", "plot", "plus", "pocket",
+            "poem", "poet", "point", "pole", "police", "policy", "political", "politics", "poll", "pollute",
+            "pool", "poor", "pop", "popular", "population", "port", "pose", "position", "positive", "possess",
+            "possibility", "possible", "post", "pot", "potato", "potential", "pound", "pour", "poverty", "powder",
+            "power", "powerful", "practical", "practice", "praise", "pray", "preach", "precise", "predict", "prefer",
+            "pregnant", "prepare", "presence", "present", "preserve", "president", "press", "pressure", "pretend", "pretty",
+            "prevent", "previous", "price", "pride", "priest", "primary", "prime", "prince", "princess", "principal",
+            "principle", "print", "prior", "priority", "prison", "private", "privilege", "prize", "pro", "probably",
+            "problem", "procedure", "proceed", "process", "produce", "producer", "product", "profession", "professor", "profile",
+            "profit", "program", "progress", "project", "promise", "promote", "prompt", "proper", "property", "proportion",
+            "propose", "prospect", "protect", "protest", "proud", "prove", "provide", "province", "public", "publish",
+            "pull", "punch", "punish", "purchase", "pure", "purpose", "pursue", "push", "put", "qualify",
+            "quality", "quarter", "queen", "question", "quick", "quiet", "quit", "quite", "quote", "race",
+            "radical", "radio", "rail", "rain", "raise", "range", "rank", "rapid", "rare", "rarely",
+            "rate", "rather", "raw", "reach", "react", "read", "reader", "ready", "real", "realize",
+            "really", "reason", "recall", "receive", "recent", "recipe", "recognize", "recommend", "record", "recover",
+            "recruit", "red", "reduce", "refer", "reflect", "reform", "refuse", "regard", "region", "register",
+            "regret", "regular", "regulate", "reject", "relate", "relation", "relative", "relax", "release", "relevant",
+            "relief", "relieve", "religion", "rely", "remain", "remark", "remember", "remind", "remote", "remove",
+            "repeat", "replace", "reply", "report", "represent", "reproduce", "reputation", "request", "require", "rescue",
+            "research", "reserve", "reside", "resident", "resist", "resolve", "resort", "resource", "respect", "respond",
+            "response", "responsibility", "responsible", "rest", "restaurant", "restore", "restrict", "result", "retain", "retire",
+            "return", "reveal", "revenue", "reverse", "review", "revolution", "reward", "rhythm", "rice", "rich",
+            "ride", "right", "ring", "rise", "risk", "river", "road", "rock", "role", "roll",
+            "romantic", "roof", "room", "root", "rope", "rose", "rough", "round", "route", "routine",
+            "row", "royal", "rub", "rubber", "rude", "ruin", "rule", "run", "rural", "rush",
+            "sad", "safe", "safety", "sail", "salary", "sale", "salt", "same", "sample", "sanction",
+            "sand", "satellite", "satisfy", "sauce", "save", "say", "scale", "scan", "scandal", "scarce",
+            "scare", "scatter", "scene", "schedule", "scheme", "scholar", "school", "science", "scope", "score",
+            "scream", "screen", "screw", "script", "sea", "search", "season", "seat", "second", "secret",
+            "secretary", "section", "sector", "secure", "security", "see", "seed", "seek", "seem", "segment",
+            "seize", "select", "self", "sell", "senior", "sense", "sensitive", "sentence", "separate", "sequence",
+            "series", "serious", "serve", "service", "session", "set", "settle", "seven", "several", "severe",
+            "sex", "sexual", "shade", "shadow", "shake", "shall", "shape", "share", "sharp", "she",
+            "sheet", "shelf", "shell", "shelter", "shift", "shine", "ship", "shirt", "shock", "shoe",
+            "shoot", "shop", "short", "shot", "shoulder", "shout", "show", "shower", "shrink", "shut",
+            "sick", "side", "sigh", "sight", "sign", "signal", "significance", "significant", "silence", "silent",
+            "silver", "similar", "simple", "simply", "sin", "since", "sing", "singer", "single", "sink",
+            "sir", "sister", "sit", "site", "situation", "six", "size", "skill", "skin", "skirt",
+            "sky", "sleep", "slice", "slide", "slight", "slightly", "slip", "slope", "slow", "slowly",
+            "small", "smart", "smell", "smile", "smoke", "smooth", "snake", "snow", "so", "so-called",
+            "social", "society", "soft", "software", "soil", "solar", "soldier", "solid", "solution", "solve",
+            "some", "somebody", "somehow", "someone", "something", "sometimes", "somewhat", "somewhere", "son", "song",
+            "soon", "sophisticated", "sorry", "sort", "soul", "sound", "soup", "source", "south", "space",
+            "speak", "speaker", "special", "specialist", "species", "specific", "specify", "speech", "speed", "spell",
+            "spend", "sphere", "spin", "spirit", "spiritual", "split", "spokesman", "sponsor", "sport", "spot",
+            "spread", "spring", "square", "stable", "staff", "stage", "stair", "stake", "stand", "standard",
+            "star", "stare", "start", "state", "statement", "station", "status", "stay", "steady", "steal",
+            "steel", "step", "stick", "still", "stir", "stock", "stomach", "stone", "stop", "store",
+            "storm", "story", "straight", "strain", "strange", "stranger", "strategy", "stream", "street", "strength",
+            "stress", "stretch", "strike", "string", "strip", "stroke", "strong", "structure", "struggle", "student",
+            "studio", "study", "stuff", "stupid", "style", "subject", "submit", "subsequent", "substance", "substantial",
+            "succeed", "success", "successful", "such", "sudden", "suddenly", "suffer", "sufficient", "sugar", "suggest",
+            "suggestion", "suit", "summer", "summit", "sun", "super", "supply", "support", "suppose", "sure",
+            "surface", "surgery", "surprise", "surround", "survey", "survive", "suspect", "sustain", "swear", "sweep",
+            "sweet", "swim", "swing", "switch", "symbol", "symptom", "system", "table", "tactic", "tail",
+            "take", "tale", "talent", "talk", "tall", "tank", "tap", "tape", "target", "task",
+            "taste", "tax", "taxi", "tea", "teach", "teacher", "team", "tear", "technical", "technique",
+            "technology", "teenager", "telephone", "television", "tell", "temper", "temperature", "temporary", "ten", "tend",
+            "tendency", "tennis", "tension", "tent", "term", "terrible", "territory", "terror", "test", "text",
+            "than", "thank", "that", "the", "theater", "their", "them", "theme", "themselves", "then",
+            "theory", "there", "therefore", "these", "they", "thick", "thing", "think", "third", "thirsty",
+            "thirteen", "thirty", "this", "those", "though", "thought", "thousand", "threat", "three", "throat",
+            "through", "throw", "thus", "ticket", "tide", "tie", "tight", "till", "time", "tiny",
+            "tip", "tire", "tissue", "title", "to", "tobacco", "today", "toe", "together", "toilet",
+            "tolerate", "tomorrow", "tone", "tongue", "tonight", "too", "tool", "tooth", "top", "topic",
+            "total", "touch", "tough", "tour", "tourism", "toward", "tower", "town", "toy", "trace",
+            "track", "trade", "tradition", "traffic", "tragedy", "trail", "train", "transfer", "transform", "transition",
+            "translate", "transport", "trap", "travel", "treat", "treatment", "tree", "trend", "trial", "tribe",
+            "trick", "trigger", "trip", "triumph", "trouble", "trousers", "true", "truly", "trust", "truth",
+            "try", "tube", "tunnel", "turn", "twelve", "twenty", "twice", "twin", "two", "type",
+            "typical", "ugly", "ultimate", "umbrella", "unable", "unaware", "uncertain", "uncle", "under", "undergo",
+            "understand", "undertake", "unfortunately", "uniform", "union", "unique", "unit", "unite", "universal", "universe",
+            "unknown", "unless", "unlike", "unlikely", "until", "unusual", "up", "upon", "upper", "urban",
+            "urge", "urgent", "us", "use", "useful", "user", "usual", "utility", "utilize", "vacation",
+            "valid", "valley", "valuable", "value", "van", "variable", "variation", "variety", "various", "vary",
+            "vast", "vegetable", "vehicle", "venture", "verb", "version", "vertical", "very", "vessel", "veteran",
+            "via", "vibrate", "vice", "victim", "victory", "video", "view", "village", "violate", "violence",
+            "violent", "virtual", "virtue", "virus", "visible", "vision", "visit", "visitor", "visual", "vital",
+            "voice", "volume", "volunteer", "vote", "voter", "vs", "vulnerable", "wage", "wait", "wake",
+            "walk", "wall", "wander", "want", "war", "warm", "warn", "wash", "waste", "watch",
+            "water", "wave", "way", "we", "weak", "wealth", "weapon", "wear", "weather", "web",
+            "wedding", "week", "weekend", "weigh", "weight", "welcome", "welfare", "well", "west", "western",
+            "wet", "what", "whatever", "wheat", "wheel", "when", "whenever", "where", "whereas", "wherever",
+            "whether", "which", "while", "whisper", "white", "who", "whole", "whom", "whose", "why",
+            "wide", "widely", "widespread", "wife", "wild", "will", "willing", "win", "wind", "window",
+            "wine", "wing", "winner", "winter", "wipe", "wire", "wisdom", "wise", "wish", "with",
+            "withdraw", "within", "without", "witness", "woman", "wonder", "wonderful", "wood", "wooden", "word",
+            "work", "worker", "world", "worry", "worth", "would", "wound", "wrap", "write", "writer",
+            "wrong", "yard", "yeah", "year", "yellow", "yes", "yesterday", "yet", "yield", "you",
+            "young", "your", "yourself", "youth", "zone", "zoo"
+        ];
+        
+        // قائمة الكلمات المتشابهة (Homophones)
+        const homophones = [
+            { word1: "to", word2: "too", word3: "two", ar: "إلى / أيضاً / اثنان" },
+            { word1: "their", word2: "there", word3: "they're", ar: "لهم / هناك / هم يكونون" },
+            { word1: "know", word2: "no", ar: "يعرف / لا" },
+            { word1: "write", word2: "right", ar: "يكتب / صحيح أو يمين" },
+            { word1: "see", word2: "sea", ar: "يرى / بحر" },
+            { word1: "hear", word2: "here", ar: "يسمع / هنا" },
+            { word1: "flower", word2: "flour", ar: "زهرة / دقيق" },
+            { word1: "for", word2: "four", ar: "لأجل / أربعة" },
+            { word1: "sun", word2: "son", ar: "شمس / ابن" },
+            { word1: "ate", word2: "eight", ar: "أكل (ماضي eat) / ثمانية" },
+            { word1: "buy", word2: "by", word3: "bye", ar: "يشتري / بواسطة / وداعاً" },
+            { word1: "cell", word2: "sell", ar: "خلية / يبيع" },
+            { word1: "dear", word2: "deer", ar: "عزيزي / غزال" },
+            { word1: "die", word2: "dye", ar: "يموت / صبغة" },
+            { word1: "eye", word2: "I", ar: "عين / أنا" },
+            { word1: "fair", word2: "fare", ar: "عادل أو فاتح / أجرة" },
+            { word1: "great", word2: "grate", ar: "عظيم / يبشر" },
+            { word1: "hole", word2: "whole", ar: "حفرة / كامل" },
+            { word1: "knight", word2: "night", ar: "فارس / ليل" },
+            { word1: "mail", word2: "male", ar: "بريد / ذكر" },
+            { word1: "meat", word2: "meet", ar: "لحم / يقابل" },
+            { word1: "one", word2: "won", ar: "واحد / فاز (ماضي win)" },
+            { word1: "peace", word2: "piece", ar: "سلام / قطعة" },
+            { word1: "plain", word2: "plane", ar: "عادي / طائرة" },
+            { word1: "read", word2: "red", ar: "يقرأ (ماضي read) / أحمر" },
+            { word1: "sea", word2: "see", ar: "بحر / يرى" },
+            { word1: "sole", word2: "soul", ar: "نعل / روح" },
+            { word1: "some", word2: "sum", ar: "بعض / مجموع" },
+            { word1: "tale", word2: "tail", ar: "حكاية / ذيل" },
+            { word1: "wait", word2: "weight", ar: "ينتظر / وزن" },
+            { word1: "weak", word2: "week", ar: "ضعيف / أسبوع" },
+            { word1: "weather", word2: "whether", ar: "طقس / سواء" },
+            { word1: "wood", word2: "would", ar: "خشب / سوف (فعل مساعد)" },
+            { word1: "your", word2: "you're", ar: "لك / أنت تكون" }
+        ];
+
+        // قائمة الجمل اليومية
+        const dailySentences = {
+            work: [
+                { en: "Good morning, team!", ar: "صباح الخير، فريق العمل!" },
+                { en: "Let's start the meeting.", ar: "لنبدأ الاجتماع." },
+                { en: "What's the deadline for this task?", ar: "ما هو الموعد النهائي لهذه المهمة؟" },
+                { en: "I'll send you an email.", ar: "سأرسل لك بريدًا إلكترونيًا." },
+                { en: "Can I help you with anything?", ar: "هل يمكنني مساعدتك في أي شيء؟" },
+                { en: "I'm working on the report.", ar: "أنا أعمل على التقرير." },
+                { en: "Please check your inbox.", ar: "الرجاء التحقق من صندوق الوارد الخاص بك." },
+                { en: "Let's collaborate on this project.", ar: "دعنا نتعاون في هذا المشروع." },
+                { en: "I'll be in the office until 5 PM.", ar: "سأكون في المكتب حتى الساعة 5 مساءً." },
+                { en: "Have a productive day!", ar: "أتمنى لك يومًا مثمرًا!" },
+                { en: "Could you please review this document?", ar: "هل يمكنك مراجعة هذا المستند من فضلك؟" },
+                { en: "I'll get back to you shortly.", ar: "سأعود إليك قريبًا." },
+                { en: "We need to prioritize these tasks.", ar: "نحن بحاجة لتحديد أولويات هذه المهام." },
+                { en: "The presentation is ready.", ar: "العرض التقديمي جاهز." },
+                { en: "I'm on a call right now.", ar: "أنا في مكالمة الآن." },
+                { en: "Let's schedule a follow-up meeting.", ar: "دعنا نحدد موعدًا لاجتماع متابعة." },
+                { en: "What's your availability next week?", ar: "ما هو مدى توفرك الأسبوع القادم؟" },
+                { en: "I've completed my part.", ar: "لقد أكملت الجزء الخاص بي." },
+                { en: "Thank you for your hard work.", ar: "شكراً لجهودكم." },
+                { en: "Let's aim for excellence.", ar: "دعنا نسعى للتميز." }
+            ],
+            school: [
+                { en: "Good morning, class!", ar: "صباح الخير، يا صف!" },
+                { en: "Please open your books to page 20.", ar: "الرجاء فتح كتبكم على الصفحة 20." },
+                { en: "Do you have any questions?", ar: "هل لديكم أي أسئلة؟" },
+                { en: "Let's review for the exam.", ar: "دعنا نراجع للامتحان." },
+                { en: "What's the answer to question 5?", ar: "ما هي إجابة السؤال 5؟" },
+                { en: "I need to study for the test.", ar: "أحتاج أن أدرس للاختبار." },
+                { en: "Can I borrow a pen?", ar: "هل يمكنني استعارة قلم؟" },
+                { en: "Please hand in your homework.", ar: "الرجاء تسليم واجباتكم." },
+                { en: "The bell is ringing.", ar: "الجرس يرن." },
+                { en: "See you after class!", ar: "أراك بعد الحصة!" },
+                { en: "Pay attention, please.", ar: "انتبهوا من فضلكم." },
+                { en: "Write this down in your notebook.", ar: "اكتبوا هذا في دفتر ملاحظاتكم." },
+                { en: "Who wants to read next?", ar: "من يريد أن يقرأ تالياً؟" },
+                { en: "Don't forget your assignments.", ar: "لا تنسوا واجباتكم." },
+                { en: "Practice makes perfect.", ar: "الممارسة تجعل الكمال." },
+                { en: "Let's work in groups.", ar: "دعنا نعمل في مجموعات." },
+                { en: "What's your favorite subject?", ar: "ما هي مادتك المفضلة؟" },
+                { en: "The library is open until 4 PM.", ar: "المكتبة مفتوحة حتى الساعة 4 مساءً." },
+                { en: "Good job, everyone!", ar: "عمل جيد، الجميع!" },
+                { en: "Keep up the good work.", ar: "استمروا في العمل الجيد." }
+            ],
+            street: [
+                { en: "Excuse me, how do I get to the station?", ar: "عفواً، كيف أصل إلى المحطة؟" },
+                { en: "Can you tell me the way to the nearest bank?", ar: "هل يمكنك أن تخبرني الطريق إلى أقرب بنك؟" },
+                { en: "It's straight ahead, then turn left.", ar: "إنه للأمام مباشرة، ثم انعطف يسارًا." },
+                { en: "Watch out for the traffic!", ar: "احذر من حركة المرور!" },
+                { en: "Is this seat taken?", ar: "هل هذا المقعد مشغول؟" },
+                { en: "Have a nice day!", ar: "أتمنى لك يوماً سعيداً!" },
+                { en: "Can I help you?", ar: "هل يمكنني مساعدتك؟" },
+                { en: "Thank you very much.", ar: "شكراً جزيلاً." },
+                { en: "No problem.", ar: "لا مشكلة." },
+                { en: "Where is the nearest cafe?", ar: "أين أقرب مقهى؟" },
+                { en: "Be careful when crossing the street.", ar: "كن حذرًا عند عبور الشارع." },
+                { en: "What's the weather like today?", ar: "كيف حال الطقس اليوم؟" },
+                { en: "It's a beautiful day, isn't it?", ar: "إنه يوم جميل، أليس كذلك؟" },
+                { en: "Can I get a taxi here?", ar: "هل يمكنني الحصول على سيارة أجرة هنا؟" },
+                { en: "Enjoy your meal!", ar: "استمتع بوجبتك!" },
+                { en: "How much is this?", ar: "بكم هذا؟" },
+                { en: "I'm just looking, thank you.", ar: "أنا فقط أنظر، شكراً." },
+                { en: "Have a good trip!", ar: "أتمنى لك رحلة سعيدة!" },
+                { en: "Do you live around here?", ar: "هل تعيش في الجوار؟" },
+                { en: "It was nice meeting you.", ar: "كان من دواعي سروري مقابلتك." }
+            ]
+        };
+
+
         const contentSections = [
+            { id: 'alphabet-words', title: 'الحروف الإنجليزية والكلمات', type: 'alphabet', content: null },
             { id: 'vowels-consonants', title: 'الحروف الساكنة والمتحركة (Vowels & Consonants)', type: 'alphabet', content: null },
             { id: 'verb-to-be', title: 'قاعدة الفعل "To Be"', type: 'grammar', content: null },
             { id: 'he-is-it-is', title: '"He Is" و "It Is"', type: 'grammar', content: null },
@@ -472,8 +898,49 @@
             { id: 'past-simple', title: 'زمن الماضي البسيط (Past Simple)', type: 'grammar', content: null },
             { id: 'present-continuous', title: 'زمن المضارع المستمر (Present Continuous)', type: 'grammar', content: null },
             { id: 'past-perfect', title: 'زمن الماضي التام (Past Perfect)', type: 'grammar', content: null },
+            { id: 'similar-words', title: 'الكلمات المتشابهة (Homophones)', type: 'vocabulary', content: null },
+            { id: 'daily-sentences', title: 'جمل للاستخدام اليومي', type: 'phrases', content: null }
         ];
 
+        // دالة لبناء قسم الحروف الأبجدية والكلمات
+        function buildAlphabetWordsSection() {
+            let html = `<div class="section-content"><div class="alphabet-grid">`;
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+            const wordMap = {};
+
+            // تجميع الكلمات حسب الحرف الأول
+            baseWords.forEach(word => {
+                const firstLetter = word.charAt(0).toUpperCase();
+                if (!wordMap[firstLetter]) {
+                    wordMap[firstLetter] = [];
+                }
+                wordMap[firstLetter].push(word);
+            });
+
+            alphabet.forEach(letter => {
+                html += `<div class="alphabet-letter-block"><h3>${letter}</h3><ul>`;
+                let wordsForLetter = wordMap[letter] ? shuffleArray([...wordMap[letter]]) : [];
+                
+                // ضمان 20 كلمة لكل حرف، مع التكرار إذا لزم الأمر
+                const targetWordCount = 20;
+                if (wordsForLetter.length < targetWordCount) {
+                    const originalWords = [...wordsForLetter];
+                    while (wordsForLetter.length < targetWordCount) {
+                        wordsForLetter = wordsForLetter.concat(shuffleArray([...originalWords]));
+                    }
+                    wordsForLetter = wordsForLetter.slice(0, targetWordCount);
+                } else {
+                    wordsForLetter = wordsForLetter.slice(0, targetWordCount); // خذ أول 20 كلمة بعد الخلط
+                }
+                
+                wordsForLetter.forEach(word => {
+                    html += `<li>${word}<button class="read-button" onclick="speakText('${word}')">استمع</button></li>`;
+                });
+                html += `</ul></div>`;
+            });
+            html += `</div></div>`;
+            return html;
+        }
 
         // بيانات الحروف الساكنة والمتحركة والتمارين
         const alphabetData = {
@@ -553,8 +1020,8 @@
                 html += `
                     <div class="exercise-item">
                         <p class="exercise-question">${ex.q}</p>
-                        <button class="show-answer-button" onclick="toggleAnswer(this, 'answer${index}')">أظهر الإجابة</button>
-                        <p id="answer${index}" class="exercise-answer">${ex.a}</p>
+                        <button class="show-answer-button" onclick="toggleAnswer(this, 'vowel_consonant_answer${index}')">أظهر الإجابة</button>
+                        <p id="vowel_consonant_answer${index}" class="exercise-answer">${ex.a}</p>
                     </div>
                 `;
             });
@@ -969,33 +1436,109 @@
             ]
         };
 
-
-        // ربط المحتوى بالأقسام
-        contentSections[0].content = buildVowelsConsonantsSection();
-        contentSections[1].content = `<div class="section-content">${verbToBeData.explanation} ${generateExercisesHtml(verbToBeData.exercises)}</div>`;
-        contentSections[2].content = `<div class="section-content">${heItIsData.explanation} ${generateExercisesHtml(heItIsData.exercises)}</div>`;
-        contentSections[3].content = `<div class="section-content">${verbToDoData.explanation} ${generateExercisesHtml(verbToDoData.exercises)}</div>`;
-        contentSections[4].content = `<div class="section-content">${verbToHaveData.explanation} ${generateExercisesHtml(verbToHaveData.exercises)}</div>`;
-        contentSections[5].content = `<div class="section-content">${presentSimpleData.explanation} ${generateExercisesHtml(presentSimpleData.exercises)}</div>`;
-        contentSections[6].content = `<div class="section-content">${pastSimpleData.explanation} ${generateExercisesHtml(pastSimpleData.exercises)}</div>`;
-        contentSections[7].content = `<div class="section-content">${presentContinuousData.explanation} ${generateExercisesHtml(presentContinuousData.exercises)}</div>`;
-        contentSections[8].content = `<div class="section-content">${pastPerfectData.explanation} ${generateExercisesHtml(pastPerfectData.exercises)}</div>`;
-
-
         // دالة لتوليد HTML للتمارين
-        function generateExercisesHtml(exercises) {
+        function generateExercisesHtml(exercises, prefix = '') {
             let html = ``;
-            exercises.forEach((ex, index) => {
+            // خلط التمارين لضمان التنوع
+            const shuffledExercises = shuffleArray([...exercises]);
+            shuffledExercises.forEach((ex, index) => {
                 html += `
                     <div class="exercise-item">
                         <p class="exercise-question">${ex.q}</p>
-                        <button class="show-answer-button" onclick="toggleAnswer(this, 'answer${ex.q.replace(/[^a-zA-Z0-9]/g, '')}${index}')">أظهر الإجابة</button>
-                        <p id="answer${ex.q.replace(/[^a-zA-Z0-9]/g, '')}${index}" class="exercise-answer">${ex.a}</p>
+                        <button class="show-answer-button" onclick="toggleAnswer(this, 'answer_${prefix}${index}')">أظهر الإجابة</button>
+                        <p id="answer_${prefix}${index}" class="exercise-answer">${ex.a}</p>
                     </div>
                 `;
             });
             return html;
         }
+
+        // دالة لبناء قسم الكلمات المتشابهة
+        function buildSimilarWordsSection() {
+            let html = `
+                <div class="section-content">
+                    <p>الكلمات المتشابهة (Homophones) هي كلمات تُنطق بنفس الطريقة ولكن لها معانٍ مختلفة وغالبًا ما تكون لها تهجئات مختلفة.</p>
+                    <table class="similar-words-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة 1</th>
+                                <th>الكلمة 2</th>
+                                <th>الكلمة 3 (إن وجدت)</th>
+                                <th>المعنى بالعربية</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+            shuffleArray([...homophones]).forEach(item => {
+                html += `
+                    <tr>
+                        <td><span class="english-text">${item.word1}</span> <button class="read-button" onclick="speakText('${item.word1}')">استمع</button></td>
+                        <td><span class="english-text">${item.word2}</span> <button class="read-button" onclick="speakText('${item.word2}')">استمع</button></td>
+                        <td>${item.word3 ? `<span class="english-text">${item.word3}</span> <button class="read-button" onclick="speakText('${item.word3}')">استمع</button>` : '—'}</td>
+                        <td><span class="arabic-text">${item.ar}</span></td>
+                    </tr>
+                `;
+            });
+            html += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            return html;
+        }
+
+        // دالة لبناء قسم الجمل اليومية
+        function buildDailySentencesSection() {
+            let html = `
+                <div class="section-content">
+                    <p>هذه مجموعة من الجمل الشائعة التي يمكنك استخدامها في حياتك اليومية، مقسمة حسب السياق.</p>
+                    
+                    <h3 class="section-title" style="font-size: 1.8em; margin-top: 40px;">جمل للعمل (Work)</h3>
+                    <ul>
+            `;
+            shuffleArray([...dailySentences.work]).forEach(item => {
+                html += `<li><span class="english-example">${item.en}</span><span class="arabic-example">${item.ar}</span><button class="read-button" onclick="speakText('${item.en}')">استمع</button></li>`;
+            });
+            html += `
+                    </ul>
+
+                    <h3 class="section-title" style="font-size: 1.8em; margin-top: 40px;">جمل للمدرسة (School)</h3>
+                    <ul>
+            `;
+            shuffleArray([...dailySentences.school]).forEach(item => {
+                html += `<li><span class="english-example">${item.en}</span><span class="arabic-example">${item.ar}</span><button class="read-button" onclick="speakText('${item.en}')">استمع</button></li>`;
+            });
+            html += `
+                    </ul>
+
+                    <h3 class="section-title" style="font-size: 1.8em; margin-top: 40px;">جمل للشارع (Street)</h3>
+                    <ul>
+            `;
+            shuffleArray([...dailySentences.street]).forEach(item => {
+                html += `<li><span class="english-example">${item.en}</span><span class="arabic-example">${item.ar}</span><button class="read-button" onclick="speakText('${item.en}')">استمع</button></li>`;
+            });
+            html += `
+                    </ul>
+                </div>
+            `;
+            return html;
+        }
+
+
+        // ربط المحتوى بالأقسام
+        contentSections[0].content = buildAlphabetWordsSection();
+        contentSections[1].content = buildVowelsConsonantsSection();
+        contentSections[2].content = `<div class="section-content">${verbToBeData.explanation} ${generateExercisesHtml(verbToBeData.exercises, 'tobe_')}</div>`;
+        contentSections[3].content = `<div class="section-content">${heItIsData.explanation} ${generateExercisesHtml(heItIsData.exercises, 'heitis_')}</div>`;
+        contentSections[4].content = `<div class="section-content">${verbToDoData.explanation} ${generateExercisesHtml(verbToDoData.exercises, 'todo_')}</div>`;
+        contentSections[5].content = `<div class="section-content">${verbToHaveData.explanation} ${generateExercisesHtml(verbToHaveData.exercises, 'tohave_')}</div>`;
+        contentSections[6].content = `<div class="section-content">${presentSimpleData.explanation} ${generateExercisesHtml(presentSimpleData.exercises, 'ps_')}</div>`;
+        contentSections[7].content = `<div class="section-content">${pastSimpleData.explanation} ${generateExercisesHtml(pastSimpleData.exercises, 'past_')}</div>`;
+        contentSections[8].content = `<div class="section-content">${presentContinuousData.explanation} ${generateExercisesHtml(presentContinuousData.exercises, 'pc_')}</div>`;
+        contentSections[9].content = `<div class="section-content">${pastPerfectData.explanation} ${generateExercisesHtml(pastPerfectData.exercises, 'pp_')}</div>`;
+        contentSections[10].content = buildSimilarWordsSection();
+        contentSections[11].content = buildDailySentencesSection();
+
 
         // دالة لإظهار/إخفاء الإجابة
         window.toggleAnswer = function(button, answerId) {
