@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -228,46 +229,46 @@
         }
 
         /* New Common Words Table Styles */
-        .common-words-table-container {
+        .info-table-container { /* Renamed for general use */
             overflow-x: auto; /* Enable horizontal scrolling if table is too wide */
         }
 
-        .common-words-table {
+        .info-table { /* Renamed for general use */
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
 
-        .common-words-table th,
-        .common-words-table td {
+        .info-table th,
+        .info-table td {
             border: 1px solid var(--border-color);
             padding: 12px;
             text-align: center;
             font-size: 0.95em;
         }
 
-        .common-words-table thead th {
+        .info-table thead th {
             background-color: var(--primary-color);
             color: white;
             font-weight: bold;
         }
 
-        .common-words-table tbody tr:nth-child(even) {
+        .info-table tbody tr:nth-child(even) {
             background-color: #f9f9f9;
         }
 
-        .common-words-table tbody tr:hover {
+        .info-table tbody tr:hover {
             background-color: #f1f1f1;
         }
 
-        .common-words-table .english-word {
+        .info-table .english-word {
             cursor: pointer;
             font-weight: bold;
             color: var(--primary-color);
             transition: color 0.2s ease-in-out;
         }
 
-        .common-words-table .english-word:hover {
+        .info-table .english-word:hover {
             color: var(--secondary-color);
             text-decoration: underline;
         }
@@ -306,8 +307,8 @@
                 margin: 10px auto;
                 padding: 15px;
             }
-            .common-words-table th,
-            .common-words-table td {
+            .info-table th,
+            .info-table td {
                 padding: 8px;
                 font-size: 0.85em;
             }
@@ -327,8 +328,8 @@
                 padding: 8px;
                 font-size: 0.9em;
             }
-            .common-words-table th,
-            .common-words-table td {
+            .info-table th,
+            .info-table td {
                 padding: 6px;
                 font-size: 0.8em;
             }
@@ -347,6 +348,89 @@
             <div class="alphabet-container">
                 </div>
         </section>
+
+        ---
+
+        <section id="colors-section">
+            <h2>الألوان في اللغة الإنجليزية</h2>
+            <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
+            <div class="info-table-container">
+                <table class="info-table">
+                    <thead>
+                        <tr>
+                            <th>الإنجليزية</th>
+                            <th>العربية</th>
+                            <th>الإنجليزية</th>
+                            <th>العربية</th>
+                            <th>الإنجليزية</th>
+                            <th>العربية</th>
+                            <th>الإنجليزية</th>
+                            <th>العربية</th>
+                            <th>الإنجليزية</th>
+                            <th>العربية</th>
+                        </tr>
+                    </thead>
+                    <tbody id="colors-tbody">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+
+        ---
+
+        <section id="cardinal-numbers-section">
+            <h2>الأعداد الأساسية (Cardinal Numbers)</h2>
+            <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
+            <div class="info-table-container">
+                <table class="info-table">
+                    <thead>
+                        <tr>
+                            <th>العدد</th>
+                            <th>الإنجليزية</th>
+                            <th>العدد</th>
+                            <th>الإنجليزية</th>
+                            <th>العدد</th>
+                            <th>الإنجليزية</th>
+                            <th>العدد</th>
+                            <th>الإنجليزية</th>
+                            <th>العدد</th>
+                            <th>الإنجليزية</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cardinal-numbers-tbody">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+
+        ---
+
+        <section id="ordinal-numbers-section">
+            <h2>الأعداد الترتيبية (Ordinal Numbers)</h2>
+            <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
+            <div class="info-table-container">
+                <table class="info-table">
+                    <thead>
+                        <tr>
+                            <th>الترتيب</th>
+                            <th>الإنجليزية</th>
+                            <th>الترتيب</th>
+                            <th>الإنجليزية</th>
+                            <th>الترتيب</th>
+                            <th>الإنجليزية</th>
+                            <th>الترتيب</th>
+                            <th>الإنجليزية</th>
+                            <th>الترتيب</th>
+                            <th>الإنجليزية</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordinal-numbers-tbody">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+
+        ---
 
         <section id="grammar-section">
             <h2>شرح القواعد الأساسية في اللغة الإنجليزية</h2>
@@ -581,8 +665,8 @@
         <section id="common-words-section">
             <h2>كلمات إنجليزية شائعة ومعانيها</h2>
             <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
-            <div class="common-words-table-container">
-                <table class="common-words-table">
+            <div class="info-table-container">
+                <table class="info-table">
                     <thead>
                         <tr>
                             <th>الإنجليزية</th>
@@ -915,9 +999,100 @@
                 { en: 'day', ar: 'يوم' }, { en: 'most', ar: 'معظم' }, { en: 'us', ar: 'نحن (مفعول به)' }, { en: 'man', ar: 'رجل' }, { en: 'find', ar: 'يجد' }
             ];
 
+            const colorsData = [
+                { en: 'Red', ar: 'أحمر' },
+                { en: 'Blue', ar: 'أزرق' },
+                { en: 'Green', ar: 'أخضر' },
+                { en: 'Yellow', ar: 'أصفر' },
+                { en: 'Orange', ar: 'برتقالي' },
+                { en: 'Purple', ar: 'أرجواني' },
+                { en: 'Pink', ar: 'وردي' },
+                { en: 'Black', ar: 'أسود' },
+                { en: 'White', ar: 'أبيض' },
+                { en: 'Brown', ar: 'بني' },
+                { en: 'Gray', ar: 'رمادي' },
+                { en: 'Silver', ar: 'فضي' },
+                { en: 'Gold', ar: 'ذهبي' },
+                { en: 'Cyan', ar: 'سماوي' },
+                { en: 'Magenta', ar: 'أرجواني فاتح' },
+                { en: 'Teal', ar: 'أزرق مخضر' },
+                { en: 'Olive', ar: 'زيتوني' },
+                { en: 'Maroon', ar: 'كستنائي' },
+                { en: 'Navy', ar: 'كحلي' },
+                { en: 'Lime', ar: 'ليموني' }
+            ];
+
+            const cardinalNumbersData = [
+                { num: 1, en: 'One', ar: 'واحد' },
+                { num: 2, en: 'Two', ar: 'اثنان' },
+                { num: 3, en: 'Three', ar: 'ثلاثة' },
+                { num: 4, en: 'Four', ar: 'أربعة' },
+                { num: 5, en: 'Five', ar: 'خمسة' },
+                { num: 6, en: 'Six', ar: 'ستة' },
+                { num: 7, en: 'Seven', ar: 'سبعة' },
+                { num: 8, en: 'Eight', ar: 'ثمانية' },
+                { num: 9, en: 'Nine', ar: 'تسعة' },
+                { num: 10, en: 'Ten', ar: 'عشرة' },
+                { num: 11, en: 'Eleven', ar: 'أحد عشر' },
+                { num: 12, en: 'Twelve', ar: 'اثنا عشر' },
+                { num: 13, en: 'Thirteen', ar: 'ثلاثة عشر' },
+                { num: 14, en: 'Fourteen', ar: 'أربعة عشر' },
+                { num: 15, en: 'Fifteen', ar: 'خمسة عشر' },
+                { num: 16, en: 'Sixteen', ar: 'ستة عشر' },
+                { num: 17, en: 'Seventeen', ar: 'سبعة عشر' },
+                { num: 18, en: 'Eighteen', ar: 'ثمانية عشر' },
+                { num: 19, en: 'Nineteen', ar: 'تسعة عشر' },
+                { num: 20, en: 'Twenty', ar: 'عشرون' },
+                { num: 21, en: 'Twenty-one', ar: 'واحد وعشرون' },
+                { num: 30, en: 'Thirty', ar: 'ثلاثون' },
+                { num: 40, en: 'Forty', ar: 'أربعون' },
+                { num: 50, en: 'Fifty', ar: 'خمسون' },
+                { num: 60, en: 'Sixty', ar: 'ستون' },
+                { num: 70, en: 'Seventy', ar: 'سبعون' },
+                { num: 80, en: 'Eighty', ar: 'ثمانون' },
+                { num: 90, en: 'Ninety', ar: 'تسعون' },
+                { num: 100, en: 'One hundred', ar: 'مائة' },
+                { num: 1000, en: 'One thousand', ar: 'ألف' },
+                { num: 1000000, en: 'One million', ar: 'مليون' }
+            ];
+
+            const ordinalNumbersData = [
+                { num: 1, en: 'First', ar: 'الأول' },
+                { num: 2, en: 'Second', ar: 'الثاني' },
+                { num: 3, en: 'Third', ar: 'الثالث' },
+                { num: 4, en: 'Fourth', ar: 'الرابع' },
+                { num: 5, en: 'Fifth', ar: 'الخامس' },
+                { num: 6, en: 'Sixth', ar: 'السادس' },
+                { num: 7, en: 'Seventh', ar: 'السابع' },
+                { num: 8, en: 'Eighth', ar: 'الثامن' },
+                { num: 9, en: 'Ninth', ar: 'التاسع' },
+                { num: 10, en: 'Tenth', ar: 'العاشر' },
+                { num: 11, en: 'Eleventh', ar: 'الحادي عشر' },
+                { num: 12, en: 'Twelfth', ar: 'الثاني عشر' },
+                { num: 13, en: 'Thirteenth', ar: 'الثالث عشر' },
+                { num: 14, en: 'Fourteenth', ar: 'الرابع عشر' },
+                { num: 15, en: 'Fifteenth', ar: 'الخامس عشر' },
+                { num: 16, en: 'Sixteenth', ar: 'السادس عشر' },
+                { num: 17, en: 'Seventeenth', ar: 'السابع عشر' },
+                { num: 18, en: 'Eighteenth', ar: 'الثامن عشر' },
+                { num: 19, en: 'Nineteenth', ar: 'التاسع عشر' },
+                { num: 20, en: 'Twentieth', ar: 'العشرون' },
+                { num: 21, en: 'Twenty-first', ar: 'الحادي والعشرون' },
+                { num: 22, en: 'Twenty-second', ar: 'الثاني والعشرون' },
+                { num: 30, en: 'Thirtieth', ar: 'الثلاثون' },
+                { num: 40, en: 'Fortieth', ar: 'الأربعون' },
+                { num: 50, en: 'Fiftieth', ar: 'الخمسون' },
+                { num: 100, en: 'Hundredth', ar: 'المائة' },
+                { num: 1000, en: 'Thousandth', ar: 'الألف' }
+            ];
+
 
             const alphabetContainer = document.querySelector('.alphabet-container');
-            const commonWordsTbody = document.querySelector('.common-words-table tbody');
+            const commonWordsTbody = document.querySelector('#common-words-section .info-table tbody'); // Specific selector
+            const colorsTbody = document.getElementById('colors-tbody');
+            const cardinalNumbersTbody = document.getElementById('cardinal-numbers-tbody');
+            const ordinalNumbersTbody = document.getElementById('ordinal-numbers-tbody');
+
 
             // Function to speak text
             function speakText(text, lang = 'en-US') {
@@ -929,6 +1104,49 @@
                 utterance.lang = lang; // Set language for pronunciation
                 synth.speak(utterance);
             }
+
+            // Generic function to populate tables
+            function populateTable(tbodyElement, data, colsPerRow, type = 'word') {
+                tbodyElement.innerHTML = ''; // Clear existing content
+                const rows = Math.ceil(data.length / colsPerRow);
+
+                for (let i = 0; i < rows; i++) {
+                    const row = document.createElement('tr');
+                    for (let j = 0; j < colsPerRow; j++) {
+                        const dataIndex = (j * rows) + i; // Calculate index for vertical population
+
+                        const cell1 = document.createElement('td');
+                        const cell2 = document.createElement('td');
+
+                        if (dataIndex < data.length) {
+                            const item = data[dataIndex];
+                            if (type === 'number') {
+                                cell1.textContent = item.num; // Display number
+                                const enSpan = document.createElement('span');
+                                enSpan.classList.add('english-word');
+                                enSpan.textContent = item.en;
+                                enSpan.addEventListener('click', () => speakText(item.en, 'en-US'));
+                                cell2.appendChild(enSpan);
+                            } else { // type === 'word'
+                                const enSpan = document.createElement('span');
+                                enSpan.classList.add('english-word');
+                                enSpan.textContent = item.en;
+                                enSpan.addEventListener('click', () => speakText(item.en, 'en-US'));
+                                cell1.appendChild(enSpan);
+                                cell2.textContent = item.ar;
+                            }
+                        } else {
+                            // Fill empty cells
+                            cell1.textContent = '';
+                            cell2.textContent = '';
+                        }
+                        row.appendChild(cell1);
+                        row.appendChild(cell2);
+                    }
+                    tbodyElement.appendChild(row);
+                }
+            }
+
 
             // Generate alphabet cards dynamically
             for (const letter in alphabetData) {
@@ -977,38 +1195,51 @@
                 alphabetContainer.appendChild(cardDiv);
             }
 
-            // Generate common words table dynamically
-            const wordsPerColumn = 10; // 50 rows / 5 columns = 10 words per column
-            const totalRows = 50;
-            const numColumns = 5;
+            // Populate common words table (5 columns, 10 words per column for 50 words)
+            populateTable(commonWordsTbody, commonWordsData, 5, 'word');
 
-            for (let i = 0; i < totalRows; i++) {
-                const row = document.createElement('tr');
-                for (let j = 0; j < numColumns; j++) {
-                    const wordIndex = (j * wordsPerColumn) + i; // Calculate index for word in commonWordsData
+            // Populate colors table (5 columns, 4 words per column for 20 words)
+            populateTable(colorsTbody, colorsData, 5, 'word');
 
-                    const enCell = document.createElement('td');
-                    const arCell = document.createElement('td');
+            // Populate cardinal numbers table (5 columns)
+            // Need to adjust logic for numbers to display "number" and "English word"
+            // Let's create a specific populate function for number tables for clarity
+            function populateNumberTable(tbodyElement, data, colsPerRow) {
+                tbodyElement.innerHTML = '';
+                const rows = Math.ceil(data.length / colsPerRow);
 
-                    if (wordIndex < commonWordsData.length) {
-                        const word = commonWordsData[wordIndex];
-                        const enSpan = document.createElement('span');
-                        enSpan.classList.add('english-word');
-                        enSpan.textContent = word.en;
-                        enSpan.addEventListener('click', () => speakText(word.en, 'en-US'));
+                for (let i = 0; i < rows; i++) {
+                    const row = document.createElement('tr');
+                    for (let j = 0; j < colsPerRow; j++) {
+                        const dataIndex = (j * rows) + i;
 
-                        enCell.appendChild(enSpan);
-                        arCell.textContent = word.ar;
-                    } else {
-                        // Fill empty cells if not enough words
-                        enCell.textContent = '';
-                        arCell.textContent = '';
+                        const numCell = document.createElement('td');
+                        const enCell = document.createElement('td');
+
+                        if (dataIndex < data.length) {
+                            const item = data[dataIndex];
+                            numCell.textContent = item.num;
+                            const enSpan = document.createElement('span');
+                            enSpan.classList.add('english-word');
+                            enSpan.textContent = item.en;
+                            enSpan.addEventListener('click', () => speakText(item.en, 'en-US'));
+                            enCell.appendChild(enSpan);
+                        } else {
+                            numCell.textContent = '';
+                            enCell.textContent = '';
+                        }
+                        row.appendChild(numCell);
+                        row.appendChild(enCell);
                     }
-                    row.appendChild(enCell);
-                    row.appendChild(arCell);
+                    tbodyElement.appendChild(row);
                 }
-                commonWordsTbody.appendChild(row);
             }
+            
+            // Populate cardinal numbers table
+            populateNumberTable(cardinalNumbersTbody, cardinalNumbersData, 5);
+
+            // Populate ordinal numbers table
+            populateNumberTable(ordinalNumbersTbody, ordinalNumbersData, 5);
 
 
             // Add click event listeners for grammar headings and speakable words
