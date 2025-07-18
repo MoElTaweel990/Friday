@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -9,13 +10,17 @@
     <style>
         /* CSS Code */
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #2ecc71;
+            --primary-color: #6a0572; /* Deep Purple */
+            --secondary-color: #ff6f61; /* Coral */
             --text-color: #333;
-            --bg-color: #f4f7f6;
+            --bg-color: #fce4ec; /* Light Pink Background */
             --card-bg: #ffffff;
-            --border-color: #ddd;
-            --shadow-color: rgba(0, 0, 0, 0.1);
+            --border-color: #e0e0e0;
+            --shadow-color: rgba(0, 0, 0, 0.15);
+            --accent-color-1: #4CAF50; /* Green */
+            --accent-color-2: #2196F3; /* Blue */
+            --accent-color-3: #FFC107; /* Amber */
+            --accent-color-4: #9C27B0; /* Dark Purple */
         }
 
         body {
@@ -24,36 +29,65 @@
             padding: 0;
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.6;
-            direction: rtl; /* Set text direction to Right-to-Left */
-            text-align: right; /* Align text to the right */
+            line-height: 1.8; /* Increased line height for readability */
+            direction: rtl;
+            text-align: right;
+            scroll-behavior: smooth;
         }
 
         header {
-            background-color: var(--primary-color);
+            background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 1.5em 0;
+            padding: 2em 0;
             text-align: center;
-            box-shadow: 0 2px 5px var(--shadow-color);
+            box-shadow: 0 4px 10px var(--shadow-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: rotate(45deg);
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            transform: rotate(-30deg);
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
         }
 
         main {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 20px auto;
+            padding: 30px 20px;
+            max-width: 1300px; /* Increased max-width */
+            margin: 30px auto; /* Increased margin */
             background-color: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 0 15px var(--shadow-color);
+            border-radius: 12px; /* More rounded corners */
+            box-shadow: 0 0 20px var(--shadow-color);
         }
 
         section {
-            margin-bottom: 40px;
-            padding-bottom: 20px;
+            margin-bottom: 50px; /* Increased margin */
+            padding-bottom: 30px; /* Increased padding */
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -64,72 +98,106 @@
         h2 {
             color: var(--primary-color);
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 2em;
-            border-bottom: 2px solid var(--secondary-color);
+            margin-bottom: 40px; /* Increased margin */
+            font-size: 2.5em; /* Larger heading */
+            border-bottom: 3px solid var(--secondary-color); /* Thicker border */
             display: inline-block;
-            padding-bottom: 5px;
+            padding-bottom: 10px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            letter-spacing: 0.5px;
+        }
+
+        h2::after {
+            content: '✨'; /* Fun emoji */
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        h2::before {
+            content: '✨'; /* Fun emoji */
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         h3 {
             color: var(--text-color);
-            font-size: 1.5em;
-            margin-top: 25px;
-            margin-bottom: 15px;
+            font-size: 1.8em; /* Larger subheadings */
+            margin-top: 30px; /* Increased margin */
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed var(--border-color);
         }
 
         p.instruction {
             text-align: center;
             font-style: italic;
             color: #666;
-            margin-bottom: 20px;
+            margin-bottom: 30px; /* Increased margin */
+            font-size: 1.1em;
         }
 
         /* Alphabet Section */
         .alphabet-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 25px; /* Increased gap */
             justify-content: center;
         }
 
         .alphabet-card {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            box-shadow: 0 2px 8px var(--shadow-color);
-            padding: 20px;
-            width: calc(33% - 40px); /* 3 cards per row, accounting for gap */
+            border: 2px solid var(--border-color); /* Thicker border */
+            border-radius: 10px; /* More rounded */
+            box-shadow: 0 5px 15px var(--shadow-color); /* More prominent shadow */
+            padding: 25px; /* Increased padding */
+            width: calc(33% - 50px); /* Adjust for larger gap */
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: transform 0.2s ease-in-out;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: default; /* Indicate not clickable as a whole */
         }
 
         .alphabet-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px); /* More pronounced lift */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .alphabet-card h3 {
-            color: var(--secondary-color);
-            font-size: 2.2em;
+            font-size: 2.8em; /* Much larger letter */
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-align: center;
-            width: 100%; /* Ensure heading takes full width for center alignment */
+            width: 100%;
+            color: var(--secondary-color); /* Default color for letter */
+            transition: color 0.3s ease-in-out;
         }
+
+        /* Dynamic colors for alphabet cards */
+        .alphabet-card:nth-child(4n+1) h3 { color: var(--accent-color-1); }
+        .alphabet-card:nth-child(4n+2) h3 { color: var(--accent-color-2); }
+        .alphabet-card:nth-child(4n+3) h3 { color: var(--accent-color-3); }
+        .alphabet-card:nth-child(4n) h3 { color: var(--accent-color-4); }
+
 
         .alphabet-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
+            margin-top: 20px; /* Increased margin */
         }
 
         .alphabet-table th, .alphabet-table td {
             border: 1px solid var(--border-color);
-            padding: 10px;
+            padding: 12px; /* Increased padding */
             text-align: center;
+            font-size: 1.05em;
         }
 
         .alphabet-table th {
@@ -139,18 +207,18 @@
         }
 
         .alphabet-table tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: #fcf4f8; /* Lighter even row */
         }
 
         .alphabet-table tr:hover {
-            background-color: #f1f1f1;
+            background-color: #ffe6f2; /* Light pink on hover */
         }
 
         .english-word {
             cursor: pointer;
             font-weight: bold;
             color: var(--primary-color);
-            transition: color 0.2s ease-in-out;
+            transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
         }
 
         .english-word:hover {
@@ -162,57 +230,67 @@
         .grammar-topic {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 8px var(--shadow-color);
+            border-radius: 10px;
+            padding: 30px; /* Increased padding */
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
+            transition: box-shadow 0.3s ease-in-out;
         }
 
-        .grammar-topic h3 {
-            cursor: pointer; /* Make headings speakable */
+        .grammar-topic:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .grammar-topic h3.speakable-heading {
+            cursor: pointer;
             color: var(--primary-color);
-            font-size: 1.8em;
+            font-size: 2em; /* Larger heading */
             margin-top: 0;
-            border-bottom: 1px dashed var(--border-color);
-            padding-bottom: 10px;
+            border-bottom: 2px dashed var(--secondary-color); /* Different dashed line */
+            padding-bottom: 12px;
             transition: color 0.2s ease-in-out;
         }
 
-        .grammar-topic h3:hover {
+        .grammar-topic h3.speakable-heading:hover {
             color: var(--secondary-color);
         }
 
         .grammar-text {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.1em;
         }
 
         .grammar-topic ul {
-            list-style: none; /* Remove default bullet */
-            padding-right: 0; /* Remove default padding */
+            list-style: none;
+            padding-right: 0;
+            margin-top: 15px;
         }
 
         .grammar-topic ul li {
             position: relative;
-            padding-right: 25px; /* Space for custom bullet */
-            margin-bottom: 10px;
+            padding-right: 30px; /* More space for custom bullet */
+            margin-bottom: 12px; /* Increased margin */
+            font-size: 1.05em;
         }
 
         .grammar-topic ul li::before {
-            content: '•'; /* Custom bullet */
+            content: '🌟'; /* Star bullet */
             color: var(--secondary-color);
             font-weight: bold;
             position: absolute;
             right: 0;
+            font-size: 1.2em;
         }
 
         .grammar-topic ul ul {
-            margin-top: 5px;
-            margin-bottom: 5px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-right: 20px; /* Indent sub-list */
         }
 
         .grammar-topic ul ul li::before {
-            content: '–'; /* Sub-bullet */
-            color: var(--primary-color);
+            content: '💡'; /* Lightbulb sub-bullet */
+            color: var(--accent-color-2);
         }
 
         .speakable-word {
@@ -228,109 +306,113 @@
         }
 
         /* New Common Words Table Styles */
-        .info-table-container { /* Renamed for general use */
-            overflow-x: auto; /* Enable horizontal scrolling if table is too wide */
+        .info-table-container {
+            overflow-x: auto;
+            margin-top: 25px; /* Increased margin */
         }
 
-        .info-table { /* Renamed for general use */
+        .info-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            min-width: 600px; /* Ensure table doesn't get too small on mobile */
         }
 
         .info-table th,
         .info-table td {
             border: 1px solid var(--border-color);
-            padding: 12px;
+            padding: 15px; /* More padding */
             text-align: center;
-            font-size: 0.95em;
+            font-size: 1.05em;
         }
 
         .info-table thead th {
             background-color: var(--primary-color);
             color: white;
             font-weight: bold;
+            font-size: 1.1em;
         }
 
         .info-table tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: #fcf4f8; /* Lighter even row */
         }
 
         .info-table tbody tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .info-table .english-word {
-            cursor: pointer;
-            font-weight: bold;
-            color: var(--primary-color);
-            transition: color 0.2s ease-in-out;
-        }
-
-        .info-table .english-word:hover {
-            color: var(--secondary-color);
-            text-decoration: underline;
+            background-color: #ffe6f2; /* Light pink on hover */
         }
         
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: var(--primary-color);
+            padding: 25px; /* Increased padding */
+            background-image: linear-gradient(to left, var(--primary-color), var(--secondary-color));
             color: white;
-            margin-top: 40px;
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 -2px 5px var(--shadow-color);
+            margin-top: 50px;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 -4px 10px var(--shadow-color);
+            font-size: 1.1em;
         }
 
         /* Responsive Design */
-        @media (max-width: 992px) {
+        @media (max-width: 1024px) {
             .alphabet-card {
-                width: calc(50% - 30px); /* 2 cards per row */
+                width: calc(50% - 40px); /* 2 cards per row, adjust for gap */
             }
         }
 
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2em;
+                font-size: 2.5em;
             }
             h2 {
-                font-size: 1.8em;
+                font-size: 2.2em;
             }
             h3 {
-                font-size: 1.3em;
+                font-size: 1.6em;
             }
             .alphabet-card {
                 width: 100%; /* 1 card per row */
             }
             main {
-                margin: 10px auto;
-                padding: 15px;
+                margin: 20px auto;
+                padding: 20px;
             }
             .info-table th,
             .info-table td {
-                padding: 8px;
-                font-size: 0.85em;
+                padding: 10px;
+                font-size: 0.9em;
+            }
+            .grammar-topic ul li {
+                padding-right: 25px;
             }
         }
 
         @media (max-width: 480px) {
             header h1 {
-                font-size: 1.8em;
+                font-size: 2em;
             }
             h2 {
-                font-size: 1.6em;
+                font-size: 1.8em;
+                margin-bottom: 30px;
+            }
+            h2::after, h2::before {
+                display: none; /* Hide emojis on very small screens */
             }
             h3 {
-                font-size: 1.2em;
+                font-size: 1.4em;
             }
-            .alphabet-table th, .alphabet-table td {
+            .alphabet-table th, .alphabet-table td,
+            .info-table th, .info-table td {
                 padding: 8px;
-                font-size: 0.9em;
+                font-size: 0.85em;
             }
-            .info-table th,
-            .info-table td {
-                padding: 6px;
-                font-size: 0.8em;
+            .alphabet-card h3 {
+                font-size: 2.5em;
+            }
+            .grammar-text, .grammar-topic ul li {
+                font-size: 1em;
+            }
+            footer {
+                padding: 15px;
+                font-size: 1em;
             }
         }
     </style>
@@ -344,7 +426,7 @@
         <section id="alphabet-section">
             <h2>الأبجدية الإنجليزية وقائمة الكلمات</h2>
             <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
-            <div class="alphabet-container">
+            <div class="alphabet-container" id="alphabet-container">
                 </div>
         </section>
 
@@ -482,27 +564,27 @@
                 <h3 class="speakable-heading">3. الضمائر (Pronouns)</h3>
                 <p class="grammar-text">الضمائر هي كلمات تحل محل الأسماء لتجنب تكرارها. تُقسم إلى عدة أنواع:</p>
                 <ul>
-                    <li>**ضمائر الفاعل (Subject Pronouns):** تحل محل الاسم الذي يقوم بالفعل.
+                    <li>** ضمائر الفاعل (Subject Pronouns):** تحل محل الاسم الذي يقوم بالفعل.
                         <ul>
                             <li><span class="speakable-word">I</span> (أنا), <span class="speakable-word">you</span> (أنت/أنتم), <span class="speakable-word">he</span> (هو), <span class="speakable-word">she</span> (هي), <span class="speakable-word">it</span> (هو/هي لغير العاقل), <span class="speakable-word">we</span> (نحن), <span class="speakable-word">they</span> (هم/هن).</li>
                             <li>**أمثلة:** <span class="speakable-word">She</span> is my sister. (هي أختي.) <span class="speakable-word">They</span> live in Cairo. (هم يعيشون في القاهرة.)</li>
                         </ul>
                     </li>
-                    <li>**ضمائر المفعول به (Object Pronouns):** تحل محل الاسم الذي يقع عليه الفعل.
+                    <li>** ضمائر المفعول به (Object Pronouns):** تحل محل الاسم الذي يقع عليه الفعل.
                         <ul>
                             <li><span class="speakable-word">me</span> (لي/إياي), <span class="speakable-word">you</span> (لك/إياك), <span class="speakable-word">him</span> (له/إياه), <span class="speakable-word">her</span> (لها/إياها), <span class="speakable-word">it</span> (له/إياه لغير العاقل), <span class="speakable-word">us</span> (لنا/إيانا), <span class="speakable-word">them</span> (لهم/إياهم).</li>
                             <li>**أمثلة:** He gave the book to <span class="speakable-word">me</span>. (أعطاني الكتاب.) I saw <span class="speakable-word">him</span> yesterday. (رأيته أمس.)</li>
                         </ul>
                     </li>
-                    <li>**صفات الملكية (Possessive Adjectives):** تأتي قبل الاسم لتوضح ملكيته.
+                    <li>** صفات الملكية (Possessive Adjectives):** تأتي قبل الاسم لتوضح ملكيته.
                         <ul>
                             <li><span class="speakable-word">my</span> (ملكي), <span class="speakable-word">your</span> (ملكك/ملككم), <span class="speakable-word">his</span> (ملكه), <span class="speakable-word">her</span> (ملكها), <span class="speakable-word">its</span> (ملكه/ملكها لغير العاقل), <span class="speakable-word">our</span> (ملكنا), <span class="speakable-word">their</span> (ملكهم/ملكهن).</li>
                             <li>**أمثلة:** This is <span class="speakable-word">my</span> car. (هذه سيارتي.) <span class="speakable-word">Their</span> house is big. (منزلهم كبير.)</li>
                         </ul>
                     </li>
-                    <li>**ضمائر الملكية (Possessive Pronouns):** تحل محل الاسم وصفة الملكية معاً.
+                    <li>** ضمائر الملكية (Possessive Pronouns):** تحل محل الاسم وصفة الملكية معاً.
                         <ul>
-                            <li><span class="speakable-word">mine</span> (ملكي), <span class="speakable-word">yours</span> (ملكك/ملككم), <span class="speakable-word">his</span> (ملكه), <span class="speakable-word">hers</span> (ملكها), <span class="speakable-word">its</span> (ملكه/ملكها لغير العاقل), <span class="speakable-word">ours</span> (ملكنا), <span class="speakable-word">theirs</span> (ملكهم/ملكهن).</li>
+                            <li><span class="speakable-word">mine</span> (ملكي), <span class="speakable-word">yours</span> (ملكك/ملككم), <span class="speakable-word">himself</span> (نفسه), <span class="speakable-word">hers</span> (ملكها), <span class="speakable-word">its</span> (ملكه/ملكها لغير العاقل), <span class="speakable-word">ours</span> (ملكنا), <span class="speakable-word">theirs</span> (ملكهم/ملكهن).</li>
                             <li>**أمثلة:** This book is <span class="speakable-word">mine</span>. (هذا الكتاب ملكي.) The red car is <span class="speakable-word">theirs</span>. (السيارة الحمراء ملكهم.)</li>
                         </ul>
                     </li>
@@ -680,7 +762,7 @@
                             <th>العربية</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="common-words-tbody">
                         </tbody>
                 </table>
             </div>
@@ -689,6 +771,7 @@
     </main>
 
     <footer>
+        <p>مصمم بـ ❤️ لمتعلمي اللغة الإنجليزية.</p>
         <p>&copy; 2024 تعلم الإنجليزية. جميع الحقوق محفوظة.</p>
     </footer>
 
@@ -1086,8 +1169,8 @@
             ];
 
 
-            const alphabetContainer = document.querySelector('.alphabet-container');
-            const commonWordsTbody = document.querySelector('#common-words-section .info-table tbody'); // Specific selector
+            const alphabetContainer = document.getElementById('alphabet-container');
+            const commonWordsTbody = document.getElementById('common-words-tbody');
             const colorsTbody = document.getElementById('colors-tbody');
             const cardinalNumbersTbody = document.getElementById('cardinal-numbers-tbody');
             const ordinalNumbersTbody = document.getElementById('ordinal-numbers-tbody');
@@ -1107,12 +1190,19 @@
             // Generic function to populate tables
             function populateTable(tbodyElement, data, colsPerRow, type = 'word') {
                 tbodyElement.innerHTML = ''; // Clear existing content
+                // Calculate rows dynamically based on data length and desired columns per row
                 const rows = Math.ceil(data.length / colsPerRow);
 
+                // Create an array to hold rows for better column-wise population
+                const tableRows = [];
                 for (let i = 0; i < rows; i++) {
-                    const row = document.createElement('tr');
-                    for (let j = 0; j < colsPerRow; j++) {
-                        const dataIndex = (j * rows) + i; // Calculate index for vertical population
+                    tableRows.push(document.createElement('tr'));
+                }
+
+                // Populate cells column by column
+                for (let col = 0; col < colsPerRow; col++) {
+                    for (let rowIdx = 0; rowIdx < rows; rowIdx++) {
+                        const dataIndex = col * rows + rowIdx;
 
                         const cell1 = document.createElement('td');
                         const cell2 = document.createElement('td');
@@ -1135,15 +1225,17 @@
                                 cell2.textContent = item.ar;
                             }
                         } else {
-                            // Fill empty cells
+                            // Fill empty cells if data doesn't perfectly fit
                             cell1.textContent = '';
                             cell2.textContent = '';
                         }
-                        row.appendChild(cell1);
-                        row.appendChild(cell2);
+                        tableRows[rowIdx].appendChild(cell1);
+                        tableRows[rowIdx].appendChild(cell2);
                     }
-                    tbodyElement.appendChild(row);
                 }
+
+                // Append all constructed rows to the tbody
+                tableRows.forEach(row => tbodyElement.appendChild(row));
             }
 
 
@@ -1194,51 +1286,17 @@
                 alphabetContainer.appendChild(cardDiv);
             }
 
-            // Populate common words table (5 columns, 10 words per column for 50 words)
+            // Populate common words table (5 columns)
             populateTable(commonWordsTbody, commonWordsData, 5, 'word');
 
-            // Populate colors table (5 columns, 4 words per column for 20 words)
+            // Populate colors table (5 columns)
             populateTable(colorsTbody, colorsData, 5, 'word');
 
             // Populate cardinal numbers table (5 columns)
-            // Need to adjust logic for numbers to display "number" and "English word"
-            // Let's create a specific populate function for number tables for clarity
-            function populateNumberTable(tbodyElement, data, colsPerRow) {
-                tbodyElement.innerHTML = '';
-                const rows = Math.ceil(data.length / colsPerRow);
+            populateTable(cardinalNumbersTbody, cardinalNumbersData, 5, 'number');
 
-                for (let i = 0; i < rows; i++) {
-                    const row = document.createElement('tr');
-                    for (let j = 0; j < colsPerRow; j++) {
-                        const dataIndex = (j * rows) + i;
-
-                        const numCell = document.createElement('td');
-                        const enCell = document.createElement('td');
-
-                        if (dataIndex < data.length) {
-                            const item = data[dataIndex];
-                            numCell.textContent = item.num;
-                            const enSpan = document.createElement('span');
-                            enSpan.classList.add('english-word');
-                            enSpan.textContent = item.en;
-                            enSpan.addEventListener('click', () => speakText(item.en, 'en-US'));
-                            enCell.appendChild(enSpan);
-                        } else {
-                            numCell.textContent = '';
-                            enCell.textContent = '';
-                        }
-                        row.appendChild(numCell);
-                        row.appendChild(enCell);
-                    }
-                    tbodyElement.appendChild(row);
-                }
-            }
-            
-            // Populate cardinal numbers table
-            populateNumberTable(cardinalNumbersTbody, cardinalNumbersData, 5);
-
-            // Populate ordinal numbers table
-            populateNumberTable(ordinalNumbersTbody, ordinalNumbersData, 5);
+            // Populate ordinal numbers table (5 columns)
+            populateTable(ordinalNumbersTbody, ordinalNumbersData, 5, 'number');
 
 
             // Add click event listeners for grammar headings and speakable words
@@ -1248,7 +1306,7 @@
                     if (this.classList.contains('speakable-heading')) {
                         const match = textToSpeak.match(/\((.*?)\)/);
                         if (match && match[1]) {
-                            speakText(match[1], 'en-US');
+                            speakText(match[1], 'en-US'); // Speak English part of heading
                         } else {
                             speakText(textToSpeak, 'ar-SA'); // Default to Arabic if English part not found
                         }
@@ -1266,18 +1324,22 @@
                         return;
                     }
 
-                    const paragraphs = this.querySelectorAll('p, li');
+                    const paragraphs = this.querySelectorAll('p:not(.grammar-topic p .english-word), li:not(.grammar-topic li .english-word)');
                     let fullText = '';
                     paragraphs.forEach(p => {
-                        // Extract only Arabic text for speaking the full section
-                        let arabicText = p.textContent.replace(/\(.*?\)/g, '').trim(); // Remove text in parentheses
-                        arabicText = arabicText.replace(/[a-zA-Z]/g, '').trim(); // Remove all English letters
-                        if (arabicText) {
-                            fullText += arabicText + ' ';
+                        // Extract only Arabic text for speaking the full section, by removing English words in spans
+                        let text = p.textContent;
+                        // Regex to remove content within span.speakable-word tags
+                        text = text.replace(/<span class="speakable-word"[^>]*>.*?<\/span>/g, '');
+                        // Remove English words in parentheses that are not wrapped in speakable-word spans (for headings logic)
+                        text = text.replace(/\((.*?)\)/g, '').trim();
+
+                        if (text) {
+                            fullText += text + ' ';
                         }
                     });
                     if (fullText.trim()) {
-                        speakText(fullText.trim(), 'ar-SA'); // Speak the whole paragraph/list item in Arabic
+                        speakText(fullText.trim(), 'ar-SA'); // Speak the whole Arabic text
                     }
                 });
             });
