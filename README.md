@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
@@ -5,57 +6,61 @@
     <title>يوم جمعة سعيد ودروس إنجليزية</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS الألوان والتأثيرات */
+        /* General Body Styling */
         body {
-            font-family: 'Cairo', sans-serif; /* استخدام خط عربي مميز وواضح */
+            font-family: 'Cairo', sans-serif;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background: linear-gradient(135deg, #FFD700, #FF6347); /* تدرج لوني دافئ */
+            background: linear-gradient(135deg, #FFD700, #FF6347); /* Warm color gradient */
             color: #FFFFFF;
             overflow: hidden;
-            position: relative; /* لتحديد موقع الفقاعات */
+            position: relative;
         }
 
+        /* Main Container Styling */
         .container {
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.6); /* خلفية شبه شفافة أغمق قليلاً */
-            padding: 30px 40px; /* زيادة البادينج الأفقي */
-            border-radius: 20px; /* حواف أكثر استدارة */
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4); /* ظل أوضح */
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent darker background */
+            padding: 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
             transform: scale(0.9);
             animation: appearScale 1.5s ease-out forwards;
-            margin-bottom: 25px; /* مسافة أكبر */
-            max-width: 95%; /* أقصى عرض للحاوية */
+            margin-bottom: 25px;
+            max-width: 95%;
             max-height: 85vh;
-            overflow-y: auto; /* سكرول إذا كانت الكلمات كثيرة */
+            overflow-y: auto; /* Enable scrolling for overflow content */
             scrollbar-width: thin;
             scrollbar-color: #FFFF00 rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(5px); /* تأثير ضبابي على الخلفية */
+            backdrop-filter: blur(5px); /* Blurry background effect */
         }
 
-        /* تخصيص السكرولبار */
+        /* Custom Scrollbar for Container */
         .container::-webkit-scrollbar { width: 8px; }
         .container::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.15); border-radius: 10px; }
         .container::-webkit-scrollbar-thumb { background: #FFFF00; border-radius: 10px; }
 
+        /* Animation for container appearance */
         @keyframes appearScale {
             from { transform: scale(0); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
 
+        /* Main Title Styling */
         h1 {
-            font-size: 3.2em; /* حجم أكبر للعنوان */
+            font-size: 3.2em;
             margin-bottom: 25px;
-            color: #FFFF00;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6); /* ظل أوضح */
+            color: #FFFF00; /* Yellow color */
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
             animation: bounceIn 1s ease-out;
-            letter-spacing: 2px; /* مسافة بين الحروف */
+            letter-spacing: 2px;
         }
 
+        /* Animation for title bounce */
         @keyframes bounceIn {
             0%, 20%, 40%, 60%, 80%, 100% { transition-timing-function: cubic-bezier(0.215, .61, .355, 1); }
             0% { opacity: 0; transform: scale3d(.3, .3, .3); }
@@ -66,88 +71,94 @@
             100% { opacity: 1; transform: scale3d(1, 1, 1); }
         }
 
+        /* Individual Word Item Styling */
         .word-item {
-            margin: 15px 0; /* مسافة أكبر بين العناصر */
+            margin: 15px 0;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInSlideUp 0.8s forwards;
             break-inside: avoid-column;
             display: flex;
-            flex-direction: column; /* جعل الكلمة والمعنى في سطرين */
+            flex-direction: column;
             align-items: center;
             padding: 10px;
             border-radius: 10px;
-            transition: background-color 0.3s ease, transform 0.3s ease; /* تأثير الانتقال */
-            cursor: pointer; /* لإظهار أن العنصر قابل للتفاعل */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
         }
 
         .word-item:hover {
-            background-color: rgba(255, 255, 255, 0.1); /* خلفية عند التمرير */
-            transform: translateY(-5px) scale(1.02); /* تأثير رفع بسيط */
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px) scale(1.02);
         }
 
+        /* English Word and Arabic Meaning Styling */
         .english-word {
-            font-size: 1.6em; /* حجم خط الكلمة الإنجليزية */
-            color: #98FB98;
+            font-size: 1.6em;
+            color: #98FB98; /* Pale Green */
             font-weight: bold;
-            margin-bottom: 5px; /* مسافة تحت الكلمة الإنجليزية */
+            margin-bottom: 5px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .arabic-meaning {
-            font-size: 1.1em; /* حجم خط المعنى العربي */
-            color: #ADD8E6;
-            margin-bottom: 10px; /* مسافة تحت المعنى العربي */
+            font-size: 1.1em;
+            color: #ADD8E6; /* Light Blue */
+            margin-bottom: 10px;
         }
 
+        /* Read Buttons Group Styling */
         .read-buttons-group {
             display: flex;
-            gap: 10px; /* مسافة بين الأزرار (لو احتجنا أكتر من زر مستقبلا) */
+            gap: 10px;
         }
 
+        /* Read Button Styling */
         .read-button {
             background-color: #007bff;
             color: white;
             border: none;
-            border-radius: 8px; /* حواف أكثر استدارة */
-            padding: 8px 15px; /* بادينج أكبر للزر */
+            border-radius: 8px;
+            padding: 8px 15px;
             cursor: pointer;
             font-size: 0.9em;
-            transition: background-color 0.3s ease, transform 0.2s ease; /* تأثير الانتقال */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ظل للزر */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .read-button:hover {
             background-color: #0056b3;
-            transform: translateY(-2px); /* رفع بسيط للزر عند التمرير */
+            transform: translateY(-2px);
         }
         .read-button:active {
-            transform: translateY(0); /* تأثير ضغط للزر */
+            transform: translateY(0);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        /* تأخير أنيميشن ظهور الكلمات - سيتم توليد تأخيرات ديناميكياً باستخدام JS */
+        /* Animation for word items fading in and sliding up */
         @keyframes fadeInSlideUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Note Element Styling */
         .note {
             margin-top: 30px;
-            font-size: 1.3em; /* حجم أكبر للملاحظة */
+            font-size: 1.3em;
             color: #ADD8E6;
             opacity: 0;
             animation: fadeIn 1s forwards;
-            animation-delay: var(--note-delay);
+            animation-delay: var(--note-delay); /* Dynamic delay from JS */
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
+        /* General Fade-in Animation */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
-        /* تأثير فقاعات خفيفة في الخلفية */
+        /* Bubble Background Effect */
         .bubble {
             position: absolute;
             bottom: -100px;
@@ -156,9 +167,10 @@
             background-color: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             animation: bubbleUp 15s infinite ease-in;
-            z-index: -1; /* لجعل الفقاعات خلف المحتوى الرئيسي */
+            z-index: -1;
         }
 
+        /* Individual bubble properties */
         .bubble:nth-child(1) { left: 10%; animation-duration: 12s; width: 60px; height: 60px; opacity: 0.7;}
         .bubble:nth-child(2) { left: 20%; animation-duration: 10s; animation-delay: 2s;}
         .bubble:nth-child(3) { left: 30%; animation-duration: 14s; width: 50px; height: 50px; opacity: 0.6;}
@@ -168,18 +180,19 @@
         .bubble:nth-child(7) { left: 70%; animation-duration: 16s; width: 70px; height: 70px; opacity: 0.8;}
         .bubble:nth-child(8) { left: 80%; animation-duration: 10s; animation-delay: 4s;}
 
+        /* Bubble upward movement animation */
         @keyframes bubbleUp {
             0% { transform: translateY(0) scale(0.5); opacity: 0; }
             50% { opacity: 1; }
             100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
         }
 
-        /* Styles for the new navigation buttons */
+        /* Navigation Buttons Styling */
         .nav-buttons {
             margin-bottom: 20px;
             display: flex;
-            flex-wrap: wrap; /* Allow buttons to wrap */
-            gap: 15px; /* Space between buttons */
+            flex-wrap: wrap;
+            gap: 15px;
             justify-content: center;
         }
 
@@ -187,7 +200,7 @@
             background-color: #6A5ACD; /* MediumSlateBlue */
             color: white;
             border: none;
-            border-radius: 12px; /* More rounded corners */
+            border-radius: 12px;
             padding: 12px 25px;
             cursor: pointer;
             font-size: 1.1em;
@@ -209,26 +222,27 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
+        /* Audio Control Button Styling */
         #audioControl {
-            margin-top: 25px; /* مسافة أكبر */
-            padding: 12px 25px; /* بادينج أكبر للزر */
-            font-size: 1.3em; /* حجم أكبر للخط */
-            background-color: #4CAF50;
+            margin-top: 25px;
+            padding: 12px 25px;
+            font-size: 1.3em;
+            background-color: #4CAF50; /* Green */
             color: white;
             border: none;
-            border-radius: 10px; /* حواف أكثر استدارة */
+            border-radius: 10px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
             opacity: 0;
             animation: fadeIn 1s forwards;
-            animation-delay: var(--button-delay);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* ظل أوضح */
+            animation-delay: var(--button-delay); /* Dynamic delay from JS */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
             font-family: 'Cairo', sans-serif;
         }
 
         #audioControl:hover {
             background-color: #45a049;
-            transform: translateY(-3px) scale(1.03); /* رفع وتكبير بسيط */
+            transform: translateY(-3px) scale(1.03);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
         }
         #audioControl:active {
@@ -236,13 +250,13 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
-        /* استخدام خاصية الأعمدة للكلمات والمعاني معًا */
+        /* Word List Container Column Styling */
         .word-list-container {
-            columns: 2; /* تقسيم الكلمات والمعاني لعمودين */
-            column-gap: 40px; /* مسافة أكبر بين الأعمدة */
+            columns: 2; /* Two columns for word display */
+            column-gap: 40px;
         }
 
-        /* New styles for tense explanations */
+        /* Tense and Pronunciation Explanation Sections */
         .tense-explanation, .pronunciation-rules {
             text-align: right; /* Right-align text for Arabic */
             padding: 20px;
@@ -251,11 +265,12 @@
             margin-top: 20px;
             opacity: 0;
             animation: fadeIn 1s forwards;
-            animation-delay: 0.2s; /* Slight delay for the whole block */
+            animation-delay: 0.2s;
         }
 
+        /* Headings within explanations */
         .tense-explanation h2, .pronunciation-rules h2 {
-            color: #FFFF00;
+            color: #FFFF00; /* Yellow */
             font-size: 2em;
             margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
@@ -271,6 +286,7 @@
             padding-bottom: 5px;
         }
 
+        /* Paragraphs and Lists within explanations */
         .tense-explanation p,
         .tense-explanation ul,
         .pronunciation-rules p,
@@ -279,23 +295,24 @@
             font-size: 1.1em;
             line-height: 1.6;
             margin-bottom: 10px;
-            text-align: right; /* Ensure text alignment for all blocks */
+            text-align: right;
         }
 
         .tense-explanation ul, .pronunciation-rules ul {
-            list-style-type: disc; /* Use discs for general lists */
-            padding-right: 25px; /* Indent for list items */
-            margin-right: 0; /* Reset default margin */
-            text-align: right; /* Align list content */
-            direction: rtl; /* Ensure RTL for list item numbers/bullets */
+            list-style-type: disc;
+            padding-right: 25px;
+            margin-right: 0;
+            text-align: right;
+            direction: rtl; /* Ensure RTL for list item bullets/numbers */
         }
         
         .tense-explanation ul li, .pronunciation-rules ul li {
             margin-bottom: 8px;
         }
 
+        /* Strong text within explanations */
         .tense-explanation strong, .pronunciation-rules strong {
-            color: #FFD700; /* Gold for strong emphasis */
+            color: #FFD700; /* Gold */
             font-weight: bold;
         }
         
@@ -307,18 +324,19 @@
             margin-bottom: 10px;
             display: flex;
             align-items: center;
-            justify-content: space-between; /* To push button to the left */
-            flex-wrap: wrap; /* Allow wrapping on small screens */
+            justify-content: space-between;
+            flex-wrap: wrap;
             gap: 10px;
             border-right: 5px solid #98FB98; /* Highlight examples */
         }
 
         .tense-explanation .examples-list li .english-sentence,
         .pronunciation-rules .examples-list li .english-sentence {
-            flex-grow: 1; /* Allow sentence to take available space */
+            flex-grow: 1;
             text-align: right;
         }
 
+        /* Example Read Button Styling */
         .tense-explanation .read-button.example-button,
         .pronunciation-rules .read-button.example-button {
             background-color: #007bff;
@@ -329,7 +347,7 @@
             cursor: pointer;
             font-size: 0.85em;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            white-space: nowrap; /* Prevent button text from wrapping */
+            white-space: nowrap;
         }
 
         .tense-explanation .read-button.example-button:hover,
@@ -338,7 +356,7 @@
             transform: translateY(-1px);
         }
 
-        /* Styles for the tense list buttons */
+        /* Tense and Pronunciation List Buttons */
         .tense-list, .pronunciation-list {
             display: flex;
             flex-direction: column;
@@ -376,7 +394,7 @@
         }
 
 
-        /* تنسيق للاسكرولبار على المتصفحات التي تدعمها */
+        /* Custom Scrollbar for Webkit Browsers */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -430,7 +448,6 @@
 
     <script>
         // --- Data for different word categories and tenses ---
-
         const wordCategories = {
             friday: [
                 { en: "Relax", ar: "استرخاء" },
@@ -786,30 +803,34 @@
             }
         };
 
+        // Get DOM elements
         const wordListContainer = document.getElementById('wordListContainer');
         const noteElement = document.getElementById('noteElement');
-        const mainTitle = document.getElementById('mainTitle'); // Get main title element
+        const mainTitle = document.getElementById('mainTitle');
         const audio = document.getElementById('backgroundAudio');
         const audioControl = document.getElementById('audioControl');
         let isPlaying = false;
-        let startDelay = 0.1;
+        let startDelay = 0.1; // Initial animation delay for elements
 
-
-        // SpeechSynthesis API
+        // SpeechSynthesis API (Text-to-Speech)
         const synth = window.speechSynthesis;
 
-        // Function to speak text (English only)
+        /**
+         * Speaks the given English text using the Web Speech API.
+         * Prioritizes high-quality English voices.
+         * @param {string} text - The English text to speak.
+         */
         function speakText(text) {
             if (synth.speaking) {
-                synth.cancel();
+                synth.cancel(); // Stop any ongoing speech
             }
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'en-US'; // Set to English only
-            utterance.rate = 0.95;
-            utterance.pitch = 1;
+            utterance.lang = 'en-US'; // Set language to US English
+            utterance.rate = 0.95; // Slightly slower speech for clarity
+            utterance.pitch = 1; // Normal pitch
 
             const voices = synth.getVoices();
-            // Prioritize specific English voices for better quality
+            // Try to find a high-quality Google, Samantha, Karen, or Zira voice
             utterance.voice = voices.find(voice => 
                 voice.lang.startsWith('en') && 
                 (voice.name.includes('Google') || voice.name.includes('Samantha') || voice.name.includes('Karen') || voice.name.includes('Zira'))
@@ -818,9 +839,14 @@
             synth.speak(utterance);
         }
 
-        // Function to display words for a given category (nouns, adjectives, etc.)
+        /**
+         * Displays words for a selected category (e.g., nouns, adjectives).
+         * @param {string} categoryName - The key of the category in `wordCategories`.
+         */
         function displayCategory(categoryName) {
+            // Update main title based on category
             mainTitle.textContent = getCategoryArabicName(categoryName) === 'كلمات الجمعة' ? 'يوم جمعة سعيد!' : `فئة ${getCategoryArabicName(categoryName)}`;
+            
             const wordsToDisplay = wordCategories[categoryName];
             wordListContainer.innerHTML = ''; // Clear previous content
 
@@ -830,13 +856,14 @@
                 return;
             }
 
-            // Restore columns for word lists
+            // Restore column layout for word lists
             wordListContainer.style.columns = '2';
             wordListContainer.style.columnGap = '40px';
 
             wordsToDisplay.forEach((item, index) => {
                 const wordItemDiv = document.createElement('div');
                 wordItemDiv.className = 'word-item';
+                // Apply staggered animation delay
                 wordItemDiv.style.animationDelay = `${startDelay + (index * 0.05)}s`; 
 
                 const englishWord = document.createElement('span');
@@ -854,7 +881,7 @@
                 readEnButton.className = 'read-button';
                 readEnButton.textContent = 'استمع'; 
                 readEnButton.onclick = (event) => {
-                    event.stopPropagation();
+                    event.stopPropagation(); // Prevent parent div's click if it had one
                     speakText(item.en); 
                 };
 
@@ -866,7 +893,7 @@
                 wordListContainer.appendChild(wordItemDiv);
             });
 
-            // Update note text based on category
+            // Update note text based on the displayed category
             let noteText = "";
             if (categoryName === 'friday') {
                 noteText = "نتمنى لكم عطلة نهاية أسبوع هادئة ومبهجة ومليئة بهذه اللحظات الرائعة!";
@@ -875,23 +902,25 @@
             }
             noteElement.textContent = noteText;
 
-            // Reset animation delays for note and audio control
+            // Adjust animation delays for the note and audio control button
             const currentContentDelay = startDelay + (wordsToDisplay.length * 0.05);
             noteElement.style.setProperty('--note-delay', `${currentContentDelay + 0.5}s`);
             audioControl.style.setProperty('--button-delay', `${currentContentDelay + 0.9}s`);
         }
 
-        // NEW FUNCTION: Show list of tenses to choose from
+        /**
+         * Displays a list of English tenses for the user to choose from.
+         */
         function showTenseList() {
             mainTitle.textContent = 'اختر الزمن لتعلم قواعده';
             wordListContainer.innerHTML = ''; // Clear previous content
-            wordListContainer.style.columns = '1'; // Single column for tense list
-            wordListContainer.style.columnGap = '0'; // No gap
+            wordListContainer.style.columns = '1'; // Force single column layout
+            wordListContainer.style.columnGap = '0'; // Remove column gap
 
             const tenseListDiv = document.createElement('div');
             tenseListDiv.className = 'tense-list';
 
-            // Loop through tenses data and create buttons for each
+            // Iterate through tenses data and create a button for each
             for (const key in wordCategories.tenses) {
                 if (wordCategories.tenses.hasOwnProperty(key)) {
                     const tense = wordCategories.tenses[key];
@@ -906,14 +935,16 @@
             noteElement.textContent = "اختر أحد الأزمنة لترى الشرح والأمثلة.";
         }
 
-
-        // NEW FUNCTION: Display details for a specific tense
+        /**
+         * Displays detailed explanation, forms, keywords, and examples for a specific tense.
+         * @param {string} tenseName - The key of the tense in `wordCategories.tenses`.
+         */
         function displayTenseDetails(tenseName) {
             const tenseData = wordCategories.tenses[tenseName];
             wordListContainer.innerHTML = ''; // Clear previous content
             mainTitle.textContent = tenseData.title + " (" + tenseData.arabicTitle + ")"; // Update main title
 
-            // Remove columns for tense explanations
+            // Ensure single column layout for tense explanations
             wordListContainer.style.columns = '1';
             wordListContainer.style.columnGap = '0';
 
@@ -926,15 +957,15 @@
             const tenseDiv = document.createElement('div');
             tenseDiv.className = 'tense-explanation';
 
-            // Explanation
+            // Explanation section
             const explanationTitle = document.createElement('h3');
             explanationTitle.textContent = 'الشرح:';
             tenseDiv.appendChild(explanationTitle);
             const explanation = document.createElement('p');
-            explanation.textContent = tenseData.explanation;
+            explanation.innerHTML = tenseData.explanation; // Use innerHTML for bold tags
             tenseDiv.appendChild(explanation);
 
-            // Form
+            // Form section
             const formTitle = document.createElement('h3');
             formTitle.textContent = 'صيغة الزمن:';
             tenseDiv.appendChild(formTitle);
@@ -952,8 +983,7 @@
             }
             tenseDiv.appendChild(formList);
 
-
-            // Keywords
+            // Keywords section
             const keywordsTitle = document.createElement('h3');
             keywordsTitle.textContent = 'الكلمات الدالة:';
             tenseDiv.appendChild(keywordsTitle);
@@ -965,12 +995,12 @@
             });
             tenseDiv.appendChild(keywordsList);
 
-            // Examples
+            // Examples section
             const examplesTitle = document.createElement('h3');
             examplesTitle.textContent = 'أمثلة:';
             tenseDiv.appendChild(examplesTitle);
             const examplesList = document.createElement('ul');
-            examplesList.className = 'examples-list'; // Add class for specific styling
+            examplesList.className = 'examples-list'; // Apply specific styling for examples
             tenseData.examples.forEach(example => {
                 const listItem = document.createElement('li');
                 const exampleText = document.createElement('span');
@@ -983,6 +1013,7 @@
                 readExampleButton.textContent = 'استمع';
                 readExampleButton.onclick = (event) => {
                     event.stopPropagation();
+                    // Extract only the English part before the first parenthesis for speaking
                     const englishPart = example.split('(')[0].trim();
                     speakText(englishPart); 
                 };
@@ -991,34 +1022,34 @@
             });
             tenseDiv.appendChild(examplesList);
 
-            wordListContainer.appendChild(tenseDiv); // Add the entire tense block
+            wordListContainer.appendChild(tenseDiv); // Add the entire tense explanation block
 
-            // Update note text for tense section
+            // Update note text and animation delays
             noteElement.textContent = "استمع للأمثلة وتمرّن على النطق.";
-
-            // Reset animation delays (simplified for single tense display)
             noteElement.style.setProperty('--note-delay', `0.7s`);
             audioControl.style.setProperty('--button-delay', `1.0s`);
         }
 
-        // NEW FUNCTION: Show pronunciation rules
+        /**
+         * Displays a list of pronunciation rule categories (Vowels, Consonants) for selection.
+         */
         function showPronunciationRules() {
             mainTitle.textContent = 'قواعد النطق في اللغة الإنجليزية';
             wordListContainer.innerHTML = ''; // Clear previous content
-            wordListContainer.style.columns = '1'; // Single column for pronunciation rules
-            wordListContainer.style.columnGap = '0'; // No gap
+            wordListContainer.style.columns = '1'; // Force single column layout
+            wordListContainer.style.columnGap = '0'; // Remove column gap
 
             const pronunciationListDiv = document.createElement('div');
             pronunciationListDiv.className = 'pronunciation-list';
 
-            // Button for Vowels
+            // Button for Vowels rules
             const vowelsButton = document.createElement('button');
             vowelsButton.className = 'pronunciation-selection-button';
             vowelsButton.textContent = wordCategories.pronunciation.vowels.title;
             vowelsButton.onclick = () => displayPronunciationDetails('vowels');
             pronunciationListDiv.appendChild(vowelsButton);
 
-            // Button for Consonants
+            // Button for Consonants rules
             const consonantsButton = document.createElement('button');
             consonantsButton.className = 'pronunciation-selection-button';
             consonantsButton.textContent = wordCategories.pronunciation.consonants.title;
@@ -1029,12 +1060,16 @@
             noteElement.textContent = "اختر نوع الحروف لتعلم قواعد نطقها.";
         }
 
-        // NEW FUNCTION: Display details for pronunciation rules
+        /**
+         * Displays detailed explanation and examples for a specific pronunciation rule type.
+         * @param {string} ruleType - The key of the pronunciation rule in `wordCategories.pronunciation`.
+         */
         function displayPronunciationDetails(ruleType) {
             const ruleData = wordCategories.pronunciation[ruleType];
             wordListContainer.innerHTML = ''; // Clear previous content
             mainTitle.textContent = ruleData.title + " (" + ruleData.arabicTitle + ")"; // Update main title
 
+            // Ensure single column layout for pronunciation explanations
             wordListContainer.style.columns = '1';
             wordListContainer.style.columnGap = '0';
 
@@ -1047,15 +1082,15 @@
             const ruleDiv = document.createElement('div');
             ruleDiv.className = 'pronunciation-rules';
 
-            // Explanation
+            // Explanation section
             const explanationTitle = document.createElement('h3');
             explanationTitle.textContent = 'الشرح:';
             ruleDiv.appendChild(explanationTitle);
             const explanation = document.createElement('p');
-            explanation.textContent = ruleData.explanation;
+            explanation.innerHTML = ruleData.explanation; // Use innerHTML for bold tags
             ruleDiv.appendChild(explanation);
 
-            // Rules and Examples
+            // Iterate through individual rules and their examples
             ruleData.rules.forEach(ruleItem => {
                 const ruleHeading = document.createElement('h3');
                 ruleHeading.textContent = ruleItem.rule;
@@ -1066,12 +1101,12 @@
                 ruleDiv.appendChild(ruleDescription);
 
                 const examplesList = document.createElement('ul');
-                examplesList.className = 'examples-list';
+                examplesList.className = 'examples-list'; // Apply specific styling for examples
                 ruleItem.examples.forEach(example => {
                     const listItem = document.createElement('li');
                     const exampleText = document.createElement('span');
                     exampleText.className = 'english-sentence';
-                    exampleText.textContent = example.en + " " + example.ar; // Display English and Arabic
+                    exampleText.innerHTML = `<strong>${example.en}</strong> ${example.ar}`; // Display English (bold) and Arabic
                     listItem.appendChild(exampleText);
 
                     const readExampleButton = document.createElement('button');
@@ -1090,11 +1125,16 @@
             wordListContainer.appendChild(ruleDiv);
             noteElement.textContent = "استمع للأمثلة وتمرّن على النطق الصحيح.";
 
+            // Reset animation delays for note and audio control
             noteElement.style.setProperty('--note-delay', `0.7s`);
             audioControl.style.setProperty('--button-delay', `1.0s`);
         }
 
-
+        /**
+         * Helper function to get the Arabic name of a category.
+         * @param {string} categoryName - The English category name.
+         * @returns {string} The corresponding Arabic category name.
+         */
         function getCategoryArabicName(categoryName) {
             switch (categoryName) {
                 case 'friday': return 'كلمات الجمعة';
@@ -1109,8 +1149,7 @@
             }
         }
 
-
-        // --- Audio Control ---
+        // --- Audio Control Event Listener ---
         audioControl.addEventListener('click', () => {
             if (isPlaying) {
                 audio.pause();
@@ -1118,28 +1157,33 @@
             } else {
                 audio.play().catch(e => {
                     console.error("Audio play failed:", e);
-                    audioControl.textContent = 'خطأ في تشغيل الموسيقى';
+                    audioControl.textContent = 'خطأ في تشغيل الموسيقى'; // Inform user of error
                 });
                 audioControl.textContent = 'إيقاف الموسيقى';
             }
             isPlaying = !isPlaying;
         });
 
-        // Initial load: Display "Friday" words
+        // --- Initial Page Load Actions ---
         window.addEventListener('load', () => {
-            displayCategory('friday'); // Display Friday words on initial load
+            displayCategory('friday'); // Display "Friday" words when the page first loads
 
+            // Attempt to autoplay audio on load
             audio.play().then(() => {
                 isPlaying = true;
                 audioControl.textContent = 'إيقاف الموسيقى';
             }).catch(e => {
+                // Autoplay is often prevented by browsers, so catch the error.
+                // The user can then manually play using the button.
                 console.log("Audio autoplay prevented. Please use the button.");
                 audioControl.textContent = 'تشغيل الموسيقى';
             });
 
+            // Ensure speech synthesis voices are loaded (important for some browsers)
             if (synth.onvoiceschanged !== undefined) {
                 synth.onvoiceschanged = () => {
-                    // Update voice list if needed
+                    // This callback can be used to re-fetch voices if needed,
+                    // but the `speakText` function already handles voice selection dynamically.
                 };
             }
         });
