@@ -225,6 +225,17 @@
             text-decoration: underline;
         }
 
+        /* Added for color display in the colors section */
+        .color-box {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            vertical-align: middle;
+            margin-left: 8px; /* Adjusted margin for RTL */
+            border-radius: 4px;
+        }
+
         /* Grammar and Tenses Sections */
         .grammar-topic {
             background-color: var(--card-bg);
@@ -440,14 +451,16 @@
                         <tr>
                             <th>الإنجليزية</th>
                             <th>العربية</th>
+                            <th>اللون</th>
                             <th>الإنجليزية</th>
                             <th>العربية</th>
+                            <th>اللون</th>
                             <th>الإنجليزية</th>
                             <th>العربية</th>
+                            <th>اللون</th>
                             <th>الإنجليزية</th>
                             <th>العربية</th>
-                            <th>الإنجليزية</th>
-                            <th>العربية</th>
+                            <th>اللون</th>
                         </tr>
                     </thead>
                     <tbody id="colors-tbody">
@@ -1081,26 +1094,26 @@
             ];
 
             const colorsData = [
-                { en: 'Red', ar: 'أحمر' },
-                { en: 'Blue', ar: 'أزرق' },
-                { en: 'Green', ar: 'أخضر' },
-                { en: 'Yellow', ar: 'أصفر' },
-                { en: 'Orange', ar: 'برتقالي' },
-                { en: 'Purple', ar: 'أرجواني' },
-                { en: 'Pink', ar: 'وردي' },
-                { en: 'Black', ar: 'أسود' },
-                { en: 'White', ar: 'أبيض' },
-                { en: 'Brown', ar: 'بني' },
-                { en: 'Gray', ar: 'رمادي' },
-                { en: 'Silver', ar: 'فضي' },
-                { en: 'Gold', ar: 'ذهبي' },
-                { en: 'Cyan', ar: 'سماوي' },
-                { en: 'Magenta', ar: 'أرجواني فاتح' },
-                { en: 'Teal', ar: 'أزرق مخضر' },
-                { en: 'Olive', ar: 'زيتوني' },
-                { en: 'Maroon', ar: 'كستنائي' },
-                { en: 'Navy', ar: 'كحلي' },
-                { en: 'Lime', ar: 'ليموني' }
+                { en: 'Red', ar: 'أحمر', hex: '#FF0000' },
+                { en: 'Blue', ar: 'أزرق', hex: '#0000FF' },
+                { en: 'Green', ar: 'أخضر', hex: '#008000' },
+                { en: 'Yellow', ar: 'أصفر', hex: '#FFFF00' },
+                { en: 'Orange', ar: 'برتقالي', hex: '#FFA500' },
+                { en: 'Purple', ar: 'أرجواني', hex: '#800080' },
+                { en: 'Pink', ar: 'وردي', hex: '#FFC0CB' },
+                { en: 'Black', ar: 'أسود', hex: '#000000' },
+                { en: 'White', ar: 'أبيض', hex: '#FFFFFF' },
+                { en: 'Brown', ar: 'بني', hex: '#A52A2A' },
+                { en: 'Gray', ar: 'رمادي', hex: '#808080' },
+                { en: 'Silver', ar: 'فضي', hex: '#C0C0C0' },
+                { en: 'Gold', ar: 'ذهبي', hex: '#FFD700' },
+                { en: 'Cyan', ar: 'سماوي', hex: '#00FFFF' },
+                { en: 'Magenta', ar: 'أرجواني فاتح', hex: '#FF00FF' },
+                { en: 'Teal', ar: 'أزرق مخضر', hex: '#008080' },
+                { en: 'Olive', ar: 'زيتوني', hex: '#808000' },
+                { en: 'Maroon', ar: 'كستنائي', hex: '#800000' },
+                { en: 'Navy', ar: 'كحلي', hex: '#000080' },
+                { en: 'Lime', ar: 'ليموني', hex: '#00FF00' }
             ];
 
             const cardinalNumbersData = [
@@ -1189,52 +1202,78 @@
             // Generic function to populate tables
             function populateTable(tbodyElement, data, colsPerRow, type = 'word') {
                 tbodyElement.innerHTML = ''; // Clear existing content
-                // Calculate rows dynamically based on data length and desired columns per row
-                const rows = Math.ceil(data.length / colsPerRow);
+                
+                // For the 'color' type, we actually have 3 columns per data item (en, ar, hex)
+                // So, if colsPerRow is 4, total table columns will be 4 * 3 = 12
+                const actualColsPerDataItem = (type === 'color') ? 3 : 2; 
+                const totalTableColumns = colsPerRow * actualColsPerDataItem;
 
-                // Create an array to hold rows for better column-wise population
-                const tableRows = [];
-                for (let i = 0; i < rows; i++) {
-                    tableRows.push(document.createElement('tr'));
-                }
+                // Calculate the number of rows needed
+                const rowsNeeded = Math.ceil(data.length / colsPerRow);
 
-                // Populate cells column by column
-                for (let col = 0; col < colsPerRow; col++) {
-                    for (let rowIdx = 0; rowIdx < rows; rowIdx++) {
-                        const dataIndex = col * rows + rowIdx;
-
-                        const cell1 = document.createElement('td');
-                        const cell2 = document.createElement('td');
+                for (let i = 0; i < rowsNeeded; i++) {
+                    const row = document.createElement('tr');
+                    for (let j = 0; j < colsPerRow; j++) {
+                        const dataIndex = i + (j * rowsNeeded); // Populate column by column
 
                         if (dataIndex < data.length) {
                             const item = data[dataIndex];
-                            if (type === 'number') {
-                                cell1.textContent = item.num; // Display number
-                                const enSpan = document.createElement('span');
-                                enSpan.classList.add('english-word');
-                                enSpan.textContent = item.en;
-                                enSpan.addEventListener('click', () => speakText(item.en, 'en-US'));
-                                cell2.appendChild(enSpan);
-                            } else { // type === 'word'
+                            if (type === 'color') {
+                                const cell1 = document.createElement('td'); // English word
+                                const cell2 = document.createElement('td'); // Arabic translation
+                                const cell3 = document.createElement('td'); // Color box
+
                                 const enSpan = document.createElement('span');
                                 enSpan.classList.add('english-word');
                                 enSpan.textContent = item.en;
                                 enSpan.addEventListener('click', () => speakText(item.en, 'en-US'));
                                 cell1.appendChild(enSpan);
                                 cell2.textContent = item.ar;
+
+                                const colorBox = document.createElement('span');
+                                colorBox.classList.add('color-box');
+                                colorBox.style.backgroundColor = item.hex;
+                                cell3.appendChild(colorBox);
+
+                                row.appendChild(cell1);
+                                row.appendChild(cell2);
+                                row.appendChild(cell3);
+                            } else { // type === 'word' or 'number'
+                                const cell1 = document.createElement('td');
+                                const cell2 = document.createElement('td');
+
+                                if (type === 'number') {
+                                    cell1.textContent = item.num; // Display number
+                                    const enSpan = document.createElement('span');
+                                    enSpan.classList.add('english-word');
+                                    enSpan.textContent = item.en;
+                                    enSpan.addEventListener('click', () => speakText(item.en, 'en-US'));
+                                    cell2.appendChild(enSpan);
+                                } else { // type === 'word'
+                                    const enSpan = document.createElement('span');
+                                    enSpan.classList.add('english-word');
+                                    enSpan.textContent = item.en;
+                                    enSpan.addEventListener('click', () => speakText(item.en, 'en-US'));
+                                    cell1.appendChild(enSpan);
+                                    cell2.textContent = item.ar;
+                                }
+                                row.appendChild(cell1);
+                                row.appendChild(cell2);
                             }
                         } else {
                             // Fill empty cells if data doesn't perfectly fit
-                            cell1.textContent = '';
-                            cell2.textContent = '';
+                            if (type === 'color') {
+                                row.appendChild(document.createElement('td'));
+                                row.appendChild(document.createElement('td'));
+                                row.appendChild(document.createElement('td'));
+                            } else {
+                                row.appendChild(document.createElement('td'));
+                                row.appendChild(document.createElement('td'));
+                            }
                         }
-                        tableRows[rowIdx].appendChild(cell1);
-                        tableRows[rowIdx].appendChild(cell2);
                     }
+                    tbodyElement.appendChild(row);
                 }
-
-                // Append all constructed rows to the tbody
-                tableRows.forEach(row => tbodyElement.appendChild(row));
             }
 
 
@@ -1288,8 +1327,9 @@
             // Populate common words table (5 columns)
             populateTable(commonWordsTbody, commonWordsData, 5, 'word');
 
-            // Populate colors table (5 columns)
-            populateTable(colorsTbody, colorsData, 5, 'word');
+            // Populate colors table in 4 columns
+            populateTable(colorsTbody, colorsData, 4, 'color');
+
 
             // Populate cardinal numbers table (5 columns)
             populateTable(cardinalNumbersTbody, cardinalNumbersData, 5, 'number');
