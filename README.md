@@ -2378,7 +2378,7 @@
                 font-size: 1.5rem; 
             }
         </style>
-</head>
+
 <body>
 
     <section class="interactive-games" id="interactive-games">
@@ -2771,7 +2771,7 @@
         });
     </script>
         </section>
-        </main>
+        
 
     <footer>
         <p>مصمم بـ ❤️ لأحباب اللغة الإنجليزية</p>
