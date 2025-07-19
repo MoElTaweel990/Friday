@@ -2770,7 +2770,7 @@
             devGames.openGame('matching');
         });
     </script>
-        </section>
+        
         
 
     <footer>
@@ -3041,5 +3041,5 @@
         });
     </script>
 </body>
-</htm
+
 
