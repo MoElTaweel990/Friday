@@ -2,201 +2,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تعلم الإنجليزية: الأبجدية والقواعد</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>تعلم الإنجليزية: الأبجدية والقواعد الأساسية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Code */
         :root {
-            --primary-color: #6a0572; /* Deep Purple */
-            --secondary-color: #ff6f61; /* Coral */
-            --text-color: #333;
-            --bg-color: #fce4ec; /* Light Pink Background */
+            --primary-color: #6a0572;
+            --secondary-color: #ff6f61;
+            --accent-color: #4CAF50;
+            --light-color: #fce4ec;
+            --dark-color: #4a4a68;
             --card-bg: #ffffff;
             --border-color: #e0e0e0;
             --shadow-color: rgba(0, 0, 0, 0.15);
-            --accent-color-1: #4CAF50; /* Green */
-            --accent-color-2: #2196F3; /* Blue */
-            --accent-color-3: #FFC107; /* Amber */
-            --accent-color-4: #9C27B0; /* Dark Purple */
+            --nav-height: 70px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             font-family: 'Cairo', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.8; /* Increased line height for readability */
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.8;
             direction: rtl;
             text-align: right;
             scroll-behavior: smooth;
+            padding-top: var(--nav-height);
         }
 
+        /* Navigation Bar */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, #6a0572, #4a0360);
+            padding: 10px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-scroll-container {
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+            padding: 0 15px;
+            scrollbar-width: none;
+        }
+        
+        .nav-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 8px;
+            padding: 5px 0;
+        }
+        
+        .nav-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 110px;
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .nav-btn.active {
+            background: var(--secondary-color);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 111, 97, 0.4);
+        }
+        
+        .nav-btn i {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-btn:hover i {
+            transform: scale(1.2);
+        }
+        
+        /* Header */
         header {
             background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
             color: white;
             padding: 2em 0;
             text-align: center;
-            box-shadow: 0 4px 10px var(--shadow-color);
             position: relative;
             overflow: hidden;
+            margin-top: 0;
         }
 
-        header::before {
+        header::before, header::after {
             content: '';
             position: absolute;
-            top: -50px;
-            left: -50px;
             width: 200px;
             height: 200px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
+        }
+
+        header::before {
+            top: -50px;
+            left: -50px;
             transform: rotate(45deg);
         }
 
         header::after {
-            content: '';
-            position: absolute;
             bottom: -50px;
             right: -50px;
-            width: 150px;
-            height: 150px;
-            background-color: rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
             transform: rotate(-30deg);
         }
 
         header h1 {
             margin: 0;
-            font-size: 3em;
+            font-size: 2.8rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
         }
 
+        /* Main content */
         main {
             padding: 30px 20px;
-            max-width: 1300px; /* Increased max-width */
-            margin: 30px auto; /* Increased margin */
-            background-color: var(--card-bg);
-            border-radius: 12px; /* More rounded corners */
-            box-shadow: 0 0 20px var(--shadow-color);
+            max-width: 1300px;
+            margin: 30px auto;
         }
 
         section {
-            margin-bottom: 50px; /* Increased margin */
-            padding-bottom: 30px; /* Increased padding */
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        section:last-of-type {
-            border-bottom: none;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 0 20px var(--shadow-color);
+            margin-bottom: 40px;
+            padding: 30px;
+            scroll-margin-top: calc(var(--nav-height) + 20px);
         }
 
         h2 {
             color: var(--primary-color);
             text-align: center;
-            margin-bottom: 40px; /* Increased margin */
-            font-size: 2.5em; /* Larger heading */
-            border-bottom: 3px solid var(--secondary-color); /* Thicker border */
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            border-bottom: 3px solid var(--secondary-color);
             display: inline-block;
             padding-bottom: 10px;
             position: relative;
             left: 50%;
             transform: translateX(-50%);
-            letter-spacing: 0.5px;
+        }
+
+        h2::after, h2::before {
+            content: '✨';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         h2::after {
-            content: '✨'; /* Fun emoji */
-            position: absolute;
             left: -30px;
-            top: 50%;
-            transform: translateY(-50%);
         }
 
         h2::before {
-            content: '✨'; /* Fun emoji */
-            position: absolute;
             right: -30px;
-            top: 50%;
-            transform: translateY(-50%);
         }
 
         h3 {
-            color: var(--text-color);
-            font-size: 1.8em; /* Larger subheadings */
-            margin-top: 30px; /* Increased margin */
-            margin-bottom: 20px;
+            color: var(--dark-color);
+            font-size: 1.8rem;
+            margin: 30px 0 20px;
             padding-bottom: 5px;
             border-bottom: 1px dashed var(--border-color);
         }
 
-        p.instruction {
+        .instruction {
             text-align: center;
             font-style: italic;
             color: #666;
-            margin-bottom: 30px; /* Increased margin */
-            font-size: 1.1em;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
         }
 
         /* Alphabet Section */
         .alphabet-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 25px; /* Increased gap */
+            gap: 25px;
             justify-content: center;
         }
 
         .alphabet-card {
             background-color: var(--card-bg);
-            border: 2px solid var(--border-color); /* Thicker border */
-            border-radius: 10px; /* More rounded */
-            box-shadow: 0 5px 15px var(--shadow-color); /* More prominent shadow */
-            padding: 25px; /* Increased padding */
-            width: calc(33% - 50px); /* Adjust for larger gap */
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            padding: 25px;
+            width: calc(33% - 50px);
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             align-items: center;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            cursor: default; /* Indicate not clickable as a whole */
         }
 
         .alphabet-card:hover {
-            transform: translateY(-8px); /* More pronounced lift */
+            transform: translateY(-8px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .alphabet-card h3 {
-            font-size: 2.8em; /* Much larger letter */
+            font-size: 2.8rem;
             margin-top: 0;
             margin-bottom: 20px;
             text-align: center;
             width: 100%;
-            color: var(--secondary-color); /* Default color for letter */
+            color: var(--secondary-color);
             transition: color 0.3s ease-in-out;
         }
-
-        /* Dynamic colors for alphabet cards */
-        .alphabet-card:nth-child(4n+1) h3 { color: var(--accent-color-1); }
-        .alphabet-card:nth-child(4n+2) h3 { color: var(--accent-color-2); }
-        .alphabet-card:nth-child(4n+3) h3 { color: var(--accent-color-3); }
-        .alphabet-card:nth-child(4n) h3 { color: var(--accent-color-4); }
-
 
         .alphabet-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px; /* Increased margin */
+            margin-top: 20px;
         }
 
         .alphabet-table th, .alphabet-table td {
             border: 1px solid var(--border-color);
-            padding: 12px; /* Increased padding */
+            padding: 12px;
             text-align: center;
-            font-size: 1.05em;
+            font-size: 1.05rem;
         }
 
         .alphabet-table th {
@@ -206,18 +266,18 @@
         }
 
         .alphabet-table tr:nth-child(even) {
-            background-color: #fcf4f8; /* Lighter even row */
+            background-color: #fcf4f8;
         }
 
         .alphabet-table tr:hover {
-            background-color: #ffe6f2; /* Light pink on hover */
+            background-color: #ffe6f2;
         }
 
         .english-word {
             cursor: pointer;
             font-weight: bold;
             color: var(--primary-color);
-            transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
+            transition: color 0.2s ease-in-out;
         }
 
         .english-word:hover {
@@ -225,14 +285,14 @@
             text-decoration: underline;
         }
 
-        /* Added for color display in the colors section */
+        /* Colors Section */
         .color-box {
             display: inline-block;
             width: 20px;
             height: 20px;
             border: 1px solid #ccc;
             vertical-align: middle;
-            margin-left: 8px; /* Adjusted margin for RTL */
+            margin-left: 8px;
             border-radius: 4px;
         }
 
@@ -241,9 +301,9 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            padding: 30px; /* Increased padding */
+            padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s ease-in-out;
         }
 
@@ -251,23 +311,23 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
         }
 
-        .grammar-topic h3.speakable-heading {
+        .grammar-topic h3 {
             cursor: pointer;
             color: var(--primary-color);
-            font-size: 2em; /* Larger heading */
+            font-size: 2rem;
             margin-top: 0;
-            border-bottom: 2px dashed var(--secondary-color); /* Different dashed line */
+            border-bottom: 2px dashed var(--secondary-color);
             padding-bottom: 12px;
             transition: color 0.2s ease-in-out;
         }
 
-        .grammar-topic h3.speakable-heading:hover {
+        .grammar-topic h3:hover {
             color: var(--secondary-color);
         }
 
         .grammar-text {
             margin-bottom: 20px;
-            font-size: 1.1em;
+            font-size: 1.1rem;
         }
 
         .grammar-topic ul {
@@ -278,108 +338,183 @@
 
         .grammar-topic ul li {
             position: relative;
-            padding-right: 30px; /* More space for custom bullet */
-            margin-bottom: 12px; /* Increased margin */
-            font-size: 1.05em;
+            padding-right: 30px;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
         }
 
         .grammar-topic ul li::before {
-            content: '🌟'; /* Star bullet */
+            content: '🌟';
             color: var(--secondary-color);
             font-weight: bold;
             position: absolute;
             right: 0;
-            font-size: 1.2em;
+            font-size: 1.2rem;
         }
 
         .grammar-topic ul ul {
             margin-top: 8px;
             margin-bottom: 8px;
-            padding-right: 20px; /* Indent sub-list */
+            padding-right: 20px;
         }
 
         .grammar-topic ul ul li::before {
-            content: '💡'; /* Lightbulb sub-bullet */
-            color: var(--accent-color-2);
+            content: '💡';
+            color: var(--accent-color);
         }
 
-        .speakable-word {
-            cursor: pointer;
-            color: var(--primary-color);
-            font-weight: bold;
-            transition: color 0.2s ease-in-out;
-        }
-
-        .speakable-word:hover {
-            color: var(--secondary-color);
-            text-decoration: underline;
-        }
-
-        /* New Common Words Table Styles */
+        /* Tables */
         .info-table-container {
             overflow-x: auto;
-            margin-top: 25px; /* Increased margin */
+            margin-top: 25px;
         }
 
         .info-table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 600px; /* Ensure table doesn't get too small on mobile */
+            min-width: 600px;
         }
 
         .info-table th,
         .info-table td {
             border: 1px solid var(--border-color);
-            padding: 15px; /* More padding */
+            padding: 15px;
             text-align: center;
-            font-size: 1.05em;
+            font-size: 1.05rem;
         }
 
         .info-table thead th {
             background-color: var(--primary-color);
             color: white;
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1.1rem;
         }
 
         .info-table tbody tr:nth-child(even) {
-            background-color: #fcf4f8; /* Lighter even row */
+            background-color: #fcf4f8;
         }
 
         .info-table tbody tr:hover {
-            background-color: #ffe6f2; /* Light pink on hover */
+            background-color: #ffe6f2;
         }
         
+        /* Interactive Games Section */
+        .game-card {
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            padding: 25px;
+            margin-bottom: 25px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .game-card h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px dashed var(--secondary-color);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .game-card p {
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+
+        .game-card .play-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .game-card .play-button:hover {
+            background-color: #3e8e41;
+            transform: translateY(-2px);
+        }
+
         footer {
             text-align: center;
-            padding: 25px; /* Increased padding */
+            padding: 25px;
             background-image: linear-gradient(to left, var(--primary-color), var(--secondary-color));
             color: white;
             margin-top: 50px;
-            border-radius: 0 0 12px 12px;
+            border-radius: 12px;
             box-shadow: 0 -4px 10px var(--shadow-color);
-            font-size: 1.1em;
+            font-size: 1.1rem;
+        }
+
+        /* Scroll to top button */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 100;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .scroll-top-btn.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .scroll-top-btn:hover {
+            background: #e55e50;
+            transform: translateY(-5px);
         }
 
         /* Responsive Design */
         @media (max-width: 1024px) {
             .alphabet-card {
-                width: calc(50% - 40px); /* 2 cards per row, adjust for gap */
+                width: calc(50% - 40px);
+            }
+            
+            .nav-btn {
+                min-width: 100px;
+                padding: 8px 12px;
+                font-size: 0.85rem;
             }
         }
 
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2.5em;
+                font-size: 2.2rem;
             }
             h2 {
-                font-size: 2.2em;
+                font-size: 1.8rem;
             }
             h3 {
-                font-size: 1.6em;
+                font-size: 1.6rem;
             }
             .alphabet-card {
-                width: 100%; /* 1 card per row */
+                width: 100%;
             }
             main {
                 margin: 20px auto;
@@ -388,46 +523,105 @@
             .info-table th,
             .info-table td {
                 padding: 10px;
-                font-size: 0.9em;
+                font-size: 0.9rem;
             }
-            .grammar-topic ul li {
-                padding-right: 25px;
+            
+            .nav-btn {
+                min-width: 85px;
+                padding: 6px 8px;
+                font-size: 0.8rem;
+            }
+            
+            .nav-btn i {
+                font-size: 1.2rem;
             }
         }
 
         @media (max-width: 480px) {
             header h1 {
-                font-size: 2em;
+                font-size: 1.8rem;
             }
             h2 {
-                font-size: 1.8em;
+                font-size: 1.6rem;
                 margin-bottom: 30px;
             }
             h2::after, h2::before {
-                display: none; /* Hide emojis on very small screens */
+                display: none;
             }
             h3 {
-                font-size: 1.4em;
-            }
-            .alphabet-table th, .alphabet-table td,
-            .info-table th, .info-table td {
-                padding: 8px;
-                font-size: 0.85em;
+                font-size: 1.4rem;
             }
             .alphabet-card h3 {
-                font-size: 2.5em;
+                font-size: 2.5rem;
             }
             .grammar-text, .grammar-topic ul li {
-                font-size: 1em;
+                font-size: 1rem;
             }
             footer {
                 padding: 15px;
-                font-size: 1em;
+                font-size: 1rem;
+            }
+            
+            .nav-buttons {
+                gap: 5px;
+            }
+            
+            .nav-btn {
+                min-width: 75px;
+                padding: 5px 6px;
+                font-size: 0.75rem;
+            }
+            
+            .nav-btn i {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
+    <div class="nav-container">
+        <div class="nav-scroll-container">
+            <div class="nav-buttons">
+                <div class="nav-btn active" data-section="alphabet-section">
+                    <i class="fas fa-font"></i>
+                    <span>الأبجدية</span>
+                </div>
+                <div class="nav-btn" data-section="pronunciation-section">
+                    <i class="fas fa-microphone-alt"></i>
+                    <span>النطق</span>
+                </div>
+                <div class="nav-btn" data-section="numbers-section">
+                    <i class="fas fa-sort-numeric-up"></i>
+                    <span>الأعداد</span>
+                </div>
+                <div class="nav-btn" data-section="colors-section">
+                    <i class="fas fa-palette"></i>
+                    <span>الألوان</span>
+                </div>
+                <div class="nav-btn" data-section="grammar-section">
+                    <i class="fas fa-book"></i>
+                    <span>القواعد</span>
+                </div>
+                <div class="nav-btn" data-section="tenses-section">
+                    <i class="fas fa-clock"></i>
+                    <span>الأزمنة</span>
+                </div>
+                <div class="nav-btn" data-section="common-words-section">
+                    <i class="fas fa-list"></i>
+                    <span>كلمات شائعة</span>
+                </div>
+                <div class="nav-btn" data-section="games-section">
+                    <i class="fas fa-gamepad"></i>
+                    <span>ألعاب تفاعلية</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <header>
         <h1>تعلم الإنجليزية: الأبجدية والقواعد الأساسية</h1>
     </header>
@@ -440,1661 +634,1402 @@
                 </div>
         </section>
 
-        ---
-
-        <section id="pronunciation-rules-section">
+        <section id="pronunciation-section">
             <h2>قواعد النطق (Pronunciation Rules)</h2>
             <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
-
+            
             <div class="grammar-topic">
-                <h3 class="speakable-heading">1. الحروف المتحركة (Vowels)</h3>
-                <p class="grammar-text">الحروف المتحركة الأساسية هي <span class="speakable-word">A</span>, <span class="speakable-word">E</span>, <span class="speakable-word">I</span>, <span class="speakable-word">O</span>, <span class="speakable-word">U</span>. كل حرف متحرك يمكن أن يكون له نطق قصير أو طويل، بالإضافة إلى أصوات أخرى.</p>
-                <ul>
-                    <li>**حرف <span class="speakable-word">A</span>:**
-                        <ul>
-                            <li>**صوت قصير:** مثل كلمة <span class="speakable-word">cat</span> (a مثل فتحة).</li>
-                            <li>**صوت طويل:** مثل كلمة <span class="speakable-word">name</span> (a مثل أي).</li>
-                            <li>**أصوات أخرى:** مثل كلمة <span class="speakable-word">car</span> (a مثل آ) أو <span class="speakable-word">ball</span> (a مثل أو).</li>
-                        </ul>
-                    </li>
-                    <li>**حرف <span class="speakable-word">E</span>:**
-                        <ul>
-                            <li>**صوت قصير:** مثل كلمة <span class="speakable-word">bed</span> (e مثل كسرة خفيفة).</li>
-                            <li>**صوت طويل:** مثل كلمة <span class="speakable-word">tree</span> (e مثل ياء طويلة).</li>
-                        </ul>
-                    </li>
-                    <li>**حرف <span class="speakable-word">I</span>:**
-                        <ul>
-                            <li>**صوت قصير:** مثل كلمة <span class="speakable-word">pig</span> (i مثل كسرة).</li>
-                            <li>**صوت طويل:** مثل كلمة <span class="speakable-word">bike</span> (i مثل آي).</li>
-                        </ul>
-                    </li>
-                    <li>**حرف <span class="speakable-word">O</span>:**
-                        <ul>
-                            <li>**صوت قصير:** مثل كلمة <span class="speakable-word">dog</span> (o مثل ضمة خفيفة).</li>
-                            <li>**صوت طويل:** مثل كلمة <span class="speakable-word">boat</span> (o مثل او).</li>
-                        </ul>
-                    </li>
-                    <li>**حرف <span class="speakable-word">U</span>:**
-                        <ul>
-                            <li>**صوت قصير:** مثل كلمة <span class="speakable-word">sun</span> (u مثل فتحة قوية).</li>
-                            <li>**صوت طويل:** مثل كلمة <span class="speakable-word">blue</span> (u مثل يو) أو <span class="speakable-word">flute</span> (u مثل أو).</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="grammar-topic">
-                <h3 class="speakable-heading">2. الحروف الساكنة (Consonants)</h3>
-                <p class="grammar-text">معظم الحروف الساكنة لها نطق واحد أو بضعة نطقات شائعة. إليك بعض الأمثلة على الحروف الساكنة التي قد تسبب التباساً في النطق:</p>
-                <ul>
-                    <li>**حرف <span class="speakable-word">C</span>:**
-                        <ul>
-                            <li>**ينطق كـ <span class="speakable-word">S</span>:** عندما يتبعه <span class="speakable-word">E</span>, <span class="speakable-word">I</span>, <span class="speakable-word">Y</span>. أمثلة: <span class="speakable-word">city</span>, <span class="speakable-word">face</span>.</li>
-                            <li>**ينطق كـ <span class="speakable-word">K</span>:** في معظم الحالات الأخرى. أمثلة: <span class="speakable-word">cat</span>, <span class="speakable-word">car</span>.</li>
-                        </ul>
-                    </li>
-                    <li>**حرف <span class="speakable-word">G</span>:**
-                        <ul>
-                            <li>**ينطق كـ <span class="speakable-word">J</span>:** عندما يتبعه <span class="speakable-word">E</span>, <span class="speakable-word">I</span>, <span class="speakable-word">Y</span> (ولكن هناك استثناءات!). أمثلة: <span class="speakable-word">giant</span>, <span class="speakable-word">gym</span>.</li>
-                            <li>**ينطق كـ <span class="speakable-word">غ</span>:** في معظم الحالات الأخرى. أمثلة: <span class="speakable-word">go</span>, <span class="speakable-word">game</span>.</li>
-                        </ul>
-                    </li>
-                    <li>**حرف <span class="speakable-word">S</span>:**
-                        <ul>
-                            <li>**ينطق كـ <span class="speakable-word">س</span>:** أمثلة: <span class="speakable-word">sun</span>, <span class="speakable-word">sit</span>.</li>
-                            <li>**ينطق كـ <span class="speakable-word">ز</span>:** أحياناً في نهاية الكلمات أو بين حرفين متحركين. أمثلة: <span class="speakable-word">is</span>, <span class="speakable-word">bags</span>.</li>
-                        </ul>
-                    </li>
-                    <li>**حرف <span class="speakable-word">K</span> و <span class="speakable-word">N</span>:** عندما يأتي <span class="speakable-word">K</span> قبل <span class="speakable-word">N</span> في بداية الكلمة، يكون حرف <span class="speakable-word">K</span> صامتاً. أمثلة: <span class="speakable-word">know</span>, <span class="speakable-word">knife</span>.</li>
-                </ul>
-            </div>
-
-            <div class="grammar-topic">
-                <h3 class="speakable-heading">3. الحروف المركبة (Diphthongs and Consonant Digraphs)</h3>
-                <p class="grammar-text">الحروف المركبة هي مجموعات من حرفين أو أكثر تنتج صوتاً واحداً. قد تكون حروفاً متحركة مركبة (diphthongs) أو حروفاً ساكنة مركبة (consonant digraphs).</p>
-                <ul>
-                    <li>**الحروف المتحركة المركبة (Diphthongs):**
-                        <ul>
-                            <li>**<span class="speakable-word">OU</span> / <span class="speakable-word">OW</span>:** مثل كلمة <span class="speakable-word">house</span>, <span class="speakable-word">cow</span> (صوت "او" عميق).</li>
-                            <li>**<span class="speakable-word">OI</span> / <span class="speakable-word">OY</span>:** مثل كلمة <span class="speakable-word">coin</span>, <span class="speakable-word">boy</span> (صوت "أوي").</li>
-                            <li>**<span class="speakable-word">EA</span>:** يمكن أن يكون له عدة أصوات. أمثلة: <span class="speakable-word">read</span> (يقرأ - ياء طويلة), <span class="speakable-word">bread</span> (خبز - كسرة خفيفة), <span class="speakable-word">great</span> (عظيم - إي).</li>
-                        </ul>
-                    </li>
-                    <li>**الحروف الساكنة المركبة (Consonant Digraphs):**
-                        <ul>
-                            <li>**<span class="speakable-word">CH</span>:** مثل كلمة <span class="speakable-word">chair</span> (صوت "تش").</li>
-                            <li>**<span class="speakable-word">SH</span>:** مثل كلمة <span class="speakable-word">shoe</span> (صوت "ش").</li>
-                            <li>**<span class="speakable-word">TH</span>:** يمكن أن يكون له صوتان:
-                                <ul>
-                                    <li>**صوت مسموع (voiced):** مثل كلمة <span class="speakable-word">this</span>, <span class="speakable-word">that</span> (مثل الذال).</li>
-                                    <li>**صوت غير مسموع (unvoiced):** مثل كلمة <span class="speakable-word">think</span>, <span class="speakable-word">three</span> (مثل الثاء).</li>
-                                </ul>
-                            </li>
-                            <li>**<span class="speakable-word">PH</span>:** ينطق مثل <span class="speakable-word">F</span>. أمثلة: <span class="speakable-word">phone</span>, <span class="speakable-word">elephant</span>.</li>
-                            <li>**<span class="speakable-word">WH</span>:** في معظم الكلمات، ينطق مثل <span class="speakable-word">W</span>. أمثلة: <span class="speakable-word">what</span>, <span class="speakable-word">when</span>. (في بعض اللهجات، قد ينطق صوت "هو" خفيف).</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        ---
-
-        <section id="cardinal-numbers-section">
-            <h2>الأعداد الأساسية (Cardinal Numbers)</h2>
-            <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
-            <div class="info-table-container">
-                <table class="info-table">
-                    <thead>
-                        <tr>
-                            <th>العدد</th>
-                            <th>الإنجليزية</th>
-                            <th>العدد</th>
-                            <th>الإنجليزية</th>
-                            <th>العدد</th>
-                            <th>الإنجليزية</th>
-                            <th>العدد</th>
-                            <th>الإنجليزية</th>
-                            <th>العدد</th>
-                            <th>الإنجليزية</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cardinal-numbers-tbody">
-                        </tbody>
-                </table>
-            </div>
-        </section>
-
-        ---
-
-        <section id="ordinal-numbers-section">
-            <h2>الأعداد الترتيبية (Ordinal Numbers)</h2>
-            <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
-            <div class="info-table-container">
-                <table class="info-table">
-                    <thead>
-                        <tr>
-                            <th>الترتيب</th>
-                            <th>الإنجليزية</th>
-                            <th>الترتيب</th>
-                            <th>الإنجليزية</th>
-                            <th>الترتيب</th>
-                            <th>الإنجليزية</th>
-                            <th>الترتيب</th>
-                            <th>الإنجليزية</th>
-                            <th>الترتيب</th>
-                            <th>الإنجليزية</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ordinal-numbers-tbody">
-                        </tbody>
-                </table>
-            </div>
-        </section>
-
-        ---
-
-        <section id="colors-section">
-            <h2>الألوان في اللغة الإنجليزية</h2>
-            <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
-            <div class="info-table-container">
-                <table class="info-table">
-                    <thead>
-                        <tr>
-                            <th>الإنجليزية</th>
-                            <th>العربية</th>
-                            <th>اللون</th>
-                            <th>الإنجليزية</th>
-                            <th>العربية</th>
-                            <th>اللون</th>
-                            <th>الإنجليزية</th>
-                            <th>العربية</th>
-                            <th>اللون</th>
-                            <th>الإنجليزية</th>
-                            <th>العربية</th>
-                            <th>اللون</th>
-                        </tr>
-                    </thead>
-                    <tbody id="colors-tbody">
-                        </tbody>
-                </table>
-            </div>
-        </section>
-
-        ---
-
-        <section id="grammar-section">
-            <h2>شرح القواعد الأساسية في اللغة الإنجليزية</h2>
-
-            <div class="grammar-topic">
-                <h3 class="speakable-heading">1. الأفعال المساعدة (Auxiliary Verbs / Helping Verbs)</h3>
-                <p class="grammar-text">الأفعال المساعدة هي أفعال تُستخدم مع الأفعال الرئيسية لتكوين الأزمنة المختلفة، السؤال، النفي، والتعبير عن الإمكانية، الوجوب، أو القدرة. أهم الأفعال المساعدة هي: <span class="speakable-word">be</span>، <span class="speakable-word">do</span>، و <span class="speakable-word">have</span>.</p>
-                <ul>
-                    <li>**Be (يكون):** يُستخدم لتكوين الأزمنة المستمرة والمبني للمجهول. أشكاله: <span class="speakable-word">am</span>, <span class="speakable-word">is</span>, <span class="speakable-word">are</span>, <span class="speakable-word">was</span>, <span class="speakable-word">were</span>, <span class="speakable-word">been</span>, <span class="speakable-word">being</span>.
-                        <ul>
-                            <li>**أمثلة:** He <span class="speakable-word">is</span> reading a book. (هو يقرأ كتاباً.) The car <span class="speakable-word">was</span> repaired. (تم إصلاح السيارة.)</li>
-                        </ul>
-                    </li>
-                    <li>**Do (يفعل):** يُستخدم في صياغة النفي والسؤال في الأزمنة البسيطة وللتأكيد. أشكاله: <span class="speakable-word">do</span>, <span class="speakable-word">does</span>, <span class="speakable-word">did</span>.
-                        <ul>
-                            <li>**أمثلة:** <span class="speakable-word">Do</span> you like coffee? (هل تحب القهوة؟) She <span class="speakable-word">doesn't</span> speak French. (هي لا تتحدث الفرنسية.)</li>
-                        </ul>
-                    </li>
-                    <li>**Have (يملك):** يُستخدم لتكوين الأزمنة التامة. أشكاله: <span class="speakable-word">have</span>, <span class="speakable-word">has</span>, <span class="speakable-word">had</span>.
-                        <ul>
-                            <li>**أمثلة:** I <span class="speakable-word">have</span> finished my work. (لقد أنهيت عملي.) She <span class="speakable-word">has</span> visited Paris. (لقد زارت باريس.)</li>
-                        </ul>
-                    </li>
-                    <li>**الأفعال المساعدة المشروطة (Modal Auxiliary Verbs):** تعبر عن القدرة، الإمكانية، الوجوب، النصيحة، إلخ. أمثلة: <span class="speakable-word">can</span>, <span class="speakable-word">could</span>, <span class="speakable-word">may</span>, <span class="speakable-word">might</span>, <span class="speakable-word">must</span>, <span class="speakable-word">shall</span>, <span class="speakable-word">should</span>, <span class="speakable-word">will</span>, <span class="speakable-word">would</span>.
-                        <ul>
-                            <li>**أمثلة:** I <span class="speakable-word">can</span> swim. (أستطيع السباحة.) You <span class="speakable-word">should</span> study hard. (يجب أن تدرس بجد.)</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="grammar-topic">
-                <h3 class="speakable-heading">2. الأفعال الأساسية (Main Verbs)</h3>
-                <p class="grammar-text">الأفعال الأساسية هي الأفعال التي تحمل المعنى الرئيسي للجملة وتصف الحدث أو الحالة. يمكن أن تكون الأفعال الأساسية <span class="speakable-word">أفعال حركة (action verbs)</span> أو <span class="speakable-word">أفعال حالة (state verbs)</span>.</p>
-                <ul>
-                    <li>**أمثلة على أفعال الحركة:** <span class="speakable-word">run</span> (يجري), <span class="speakable-word">eat</span> (يأكل), <span class="speakable-word">sleep</span> (ينام), <span class="speakable-word">write</span> (يكتب), <span class="speakable-word">walk</span> (يمشي).
-                        <ul>
-                            <li>**أمثلة:** She <span class="speakable-word">eats</span> an apple. (هي تأكل تفاحة.) He <span class="speakable-word">runs</span> fast. (هو يجري بسرعة.)</li>
-                        </ul>
-                    </li>
-                    <li>**أمثلة على أفعال الحالة:** <span class="speakable-word">be</span> (يكون), <span class="speakable-word">seem</span> (يبدو), <span class="speakable-word">feel</span> (يشعر), <span class="speakable-word">know</span> (يعرف), <span class="speakable-word">believe</span> (يؤمن).
-                        <ul>
-                            <li>**أمثلة:** She <span class="speakable-word">is</span> happy. (هي سعيدة.) He <span class="speakable-word">knows</span> the answer. (هو يعرف الإجابة.)</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="grammar-topic">
-                <h3 class="speakable-heading">3. الضمائر (Pronouns)</h3>
-                <p class="grammar-text">الضمائر هي كلمات تحل محل الأسماء لتجنب تكرارها. تُقسم إلى عدة أنواع:</p>
-                <ul>
-                    <li>** ضمائر الفاعل (Subject Pronouns):** تحل محل الاسم الذي يقوم بالفعل.
-                        <ul>
-                            <li><span class="speakable-word">I</span> (أنا), <span class="speakable-word">you</span> (أنت/أنتم), <span class="speakable-word">he</span> (هو), <span class="speakable-word">she</span> (هي), <span class="speakable-word">it</span> (هو/هي لغير العاقل), <span class="speakable-word">we</span> (نحن), <span class="speakable-word">they</span> (هم/هن).</li>
-                            <li>**أمثلة:** <span class="speakable-word">She</span> is my sister. (هي أختي.) <span class="speakable-word">They</span> live in Cairo. (هم يعيشون في القاهرة.)</li>
-                        </ul>
-                    </li>
-                    <li>** ضمائر المفعول به (Object Pronouns):** تحل محل الاسم الذي يقع عليه الفعل.
-                        <ul>
-                            <li><span class="speakable-word">me</span> (لي/إياي), <span class="speakable-word">you</span> (لك/إياك), <span class="speakable-word">him</span> (له/إياه), <span class="speakable-word">her</span> (لها/إياها), <span class="speakable-word">it</span> (له/إياه لغير العاقل), <span class="speakable-word">us</span> (لنا/إيانا), <span class="speakable-word">them</span> (لهم/إياهم).</li>
-                            <li>**أمثلة:** He gave the book to <span class="speakable-word">me</span>. (أعطاني الكتاب.) I saw <span class="speakable-word">him</span> yesterday. (رأيته أمس.)</li>
-                        </ul>
-                    </li>
-                    <li>** صفات الملكية (Possessive Adjectives):** تأتي قبل الاسم لتوضح ملكيته.
-                        <ul>
-                            <li><span class="speakable-word">my</span> (ملكي), <span class="speakable-word">your</span> (ملكك/ملككم), <span class="speakable-word">his</span> (ملكه), <span class="speakable-word">her</span> (ملكها), <span class="speakable-word">its</span> (ملكه/ملكها لغير العاقل), <span class="speakable-word">our</span> (ملكنا), <span class="speakable-word">their</span> (ملكهم/ملكهن).</li>
-                            <li>**أمثلة:** This is <span class="speakable-word">my</span> car. (هذه سيارتي.) <span class="speakable-word">Their</span> house is big. (منزلهم كبير.)</li>
-                        </ul>
-                    </li>
-                    <li>** ضمائر الملكية (Possessive Pronouns):** تحل محل الاسم وصفة الملكية معاً.
-                        <ul>
-                            <li><span class="speakable-word">mine</span> (ملكي), <span class="speakable-word">yours</span> (ملكك/ملككم), <span class="speakable-word">himself</span> (نفسه), <span class="speakable-word">hers</span> (ملكها), <span class="speakable-word">its</span> (ملكه/ملكها لغير العاقل), <span class="speakable-word">ours</span> (ملكنا), <span class="speakable-word">theirs</span> (ملكهم/ملكهن).</li>
-                            <li>**أمثلة:** This book is <span class="speakable-word">mine</span>. (هذا الكتاب ملكي.) The red car is <span class="speakable-word">theirs</span>. (السيارة الحمراء ملكهم.)</li>
-                        </ul>
-                    </li>
-                    <li>**الضمائر الانعكاسية (Reflexive Pronouns):** تشير إلى الفاعل نفسه.
-                        <ul>
-                            <li><span class="speakable-word">myself</span> (نفسي), <span class="speakable-word">yourself</span> (نفسك), <span class="speakable-word">himself</span> (نفسه), <span class="speakable-word">herself</span> (نفسها), <span class="speakable-word">itself</span> (نفسها/نفسه لغير العاقل), <span class="speakable-word">ourselves</span> (أنفسنا), <span class="speakable-word">yourselves</span> (أنفسكم), <span class="speakable-word">themselves</span> (أنفسهم/أنفسهن).</li>
-                            <li>**أمثلة:** She taught <span class="speakable-word">herself</span> to play guitar. (علمت نفسها العزف على الغيتار.) They built the house <span class="speakable-word">themselves</span>. (بنوا المنزل بأنفسهم.)</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="grammar-topic">
-                <h3 class="speakable-heading">4. الصفات (Adjectives)</h3>
-                <p class="grammar-text">الصفات هي كلمات تصف أو تعدل الأسماء والضمائر، وتضيف معلومات عنها مثل اللون، الحجم، الشكل، الحالة، إلخ.</p>
-                <ul>
-                    <li>عادةً ما تأتي الصفة قبل الاسم الذي تصفه.
-                        <ul>
-                            <li>**أمثلة:** a <span class="speakable-word">beautiful</span> flower (زهرة جميلة) a <span class="speakable-word">tall</span> building (مبنى طويل) a <span class="speakable-word">red</span> car (سيارة حمراء)</li>
-                        </ul>
-                    </li>
-                    <li>يمكن أن تأتي الصفة بعد أفعال الربط (linking verbs) مثل <span class="speakable-word">be</span>, <span class="speakable-word">seem</span>, <span class="speakable-word">feel</span>, <span class="speakable-word">look</span>, <span class="speakable-word">sound</span>, <span class="speakable-word">smell</span>, <span class="speakable-word">taste</span>, <span class="speakable-word">become</span>, <span class="speakable-word">get</span>.
-                        <ul>
-                            <li>**أمثلة:** She <span class="speakable-word">is beautiful</span>. (هي جميلة.) The food <span class="speakable-word">tastes delicious</span>. (الطعام مذاقه لذيذ.)</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="tenses-section">
-            <h2>الأزمنة في اللغة الإنجليزية (Tenses) والكلمات الدالة عليها</h2>
-            <p class="instruction">اضغط على أي عنوان زمن أو كلمة إنجليزية لسماع نطقها.</p>
-
-            <div class="grammar-topic">
-                <h3 class="speakable-heading">1. زمن المضارع البسيط (Present Simple)</h3>
-                <p class="grammar-text">يُستخدم للتعبير عن الحقائق العامة، العادات، والجداول الزمنية.</p>
-                <ul>
-                    <li>**الاستخدامات:**
-                        <ul>
-                            <li>الحقائق العامة: The sun <span class="speakable-word">rises</span> in the east. (الشمس تشرق من الشرق.)</li>
-                            <li>العادات والروتين: I <span class="speakable-word">drink</span> coffee every morning. (أشرب القهوة كل صباح.)</li>
-                        </ul>
-                    </li>
-                    <li>**الكلمات الدالة:** <span class="speakable-word">always</span>, <span class="speakable-word">usually</span>, <span class="speakable-word">often</span>, <span class="speakable-word">sometimes</span>, <span class="speakable-word">rarely</span>, <span class="speakable-word">never</span>, <span class="speakable-word">every day</span>/<span class="speakable-word">week</span>/<span class="speakable-word">month</span>/<span class="speakable-word">year</span>, <span class="speakable-word">on Mondays</span>, <span class="speakable-word">at weekends</span>.</li>
-                    <li>**أمثلة:** She <span class="speakable-word">works</span> in a hospital. (هي تعمل في مستشفى.) We <span class="speakable-word">don't eat</span> meat. (نحن لا نأكل اللحم.) <span class="speakable-word">Does</span> he <span class="speakable-word">play</span> tennis? (هل يلعب التنس؟)</li>
-                </ul>
-            </div>
-
-            <div class="grammar-topic">
-                <h3 class="speakable-heading">2. زمن المضارع المستمر (Present Continuous)</h3>
-                <p class="grammar-text">يُستخدم للتعبير عن أفعال تحدث الآن أو في فترة زمنية مؤقتة حول الوقت الحاضر.</p>
-                <ul>
-                    <li>**الاستخدامات:**
-                        <ul>
-                            <li>أفعال تحدث الآن: I <span class="speakable-word">am studying</span> English right now. (أنا أدرس الإنجليزية الآن.)</li>
-                            <li>أفعال مؤقتة: He <span class="speakable-word">is working</span> on a new project this month. (هو يعمل على مشروع جديد هذا الشهر.)</li>
-                        </ul>
-                    </li>
-                    <li>**الكلمات الدالة:** <span class="speakable-word">now</span>, <span class="speakable-word">right now</span>, <span class="speakable-word">at the moment</span>, <span class="speakable-word">currently</span>, <span class="speakable-word">today</span>, <span class="speakable-word">this week</span>/<span class="speakable-word">month</span>/<span class="speakable-word">year</span>, <span class="speakable-word">listen!</span>, <span class="speakable-word">look!</span></li>
-                    <li>**أمثلة:** They <span class="speakable-word">are watching</span> TV. (هم يشاهدون التلفاز.) She <span class="speakable-word">isn't sleeping</span>. (هي لا تنام.) <span class="speakable-word">Are</span> you <span class="speakable-word">listening</span> to me? (هل تستمع إلي؟)</li>
-                </ul>
-            </div>
-
-            <div class="grammar-topic">
-                <h3 class="speakable-heading">3. زمن المضارع التام (Present Perfect)</h3>
-                <p class="grammar-text">يُستخدم للتعبير عن أفعال بدأت في الماضي ولها تأثير على الحاضر، أو أفعال حدثت في وقت غير محدد في الماضي.</p>
-                <ul>
-                    <li>**الاستخدامات:**
-                        <ul>
-                            <li>تجارب سابقة: I <span class="speakable-word">have visited</span> London three times. (لقد زرت لندن ثلاث مرات.)</li>
-                            <li>أفعال بدأت في الماضي وما زالت مستمرة: She <span class="speakable-word">has lived</span> here for five years. (لقد عاشت هنا لمدة خمس سنوات.)</li>
-                        </ul>
-                    </li>
-                    <li>**الكلمات الدالة:** <span class="speakable-word">already</span>, <span class="speakable-word">yet</span>, <span class="speakable-word">just</span>, <span class="speakable-word">ever</span>, <span class="speakable-word">never</span>, <span class="speakable-word">since</span>, <span class="speakable-word">for</span>, <span class="speakable-word">so far</span>, <span class="speakable-word">recently</span>, <span class="speakable-word">lately</span>.</li>
-                    <li>**أمثلة:** They <span class="speakable-word">have bought</span> a new car. (لقد اشتروا سيارة جديدة.) I <span class="speakable-word">haven't seen</span> him since last week. (لم أره منذ الأسبوع الماضي.) <span class="speakable-word">Have</span> you <span class="speakable-word">ever been</span> to New York? (هل سبق لك أن زرت نيويورك؟)</li>
-                </ul>
-            </div>
-
-            <div class="grammar-topic">
-                <h3 class="speakable-heading">4. زمن الماضي البسيط (Past Simple)</h3>
-                <p class="grammar-text">يُستخدم للتعبير عن أفعال أو أحداث انتهت في وقت محدد في الماضي.</p>
-                <ul>
-                    <li>**الاستخدامات:**
-                        <ul>
-                            <li>أحداث منتهية في الماضي: I <span class="speakable-word">went</span> to the cinema yesterday. (ذهبت إلى السينما أمس.)</li>
-                            <li>سلسلة من الأحداث في الماضي: She <span class="speakable-word">woke up</span>, <span class="speakable-word">ate</span> breakfast, and <span class="speakable-word">left</span> for work. (استيقظت، أكلت الفطور، وغادرت للعمل.)</li>
-                        </ul>
-                    </li>
-                    <li>**الكلمات الدالة:** <span class="speakable-word">yesterday</span>, <span class="speakable-word">last night</span>/<span class="speakable-word">week</span>/<span class="speakable-word">month</span>/<span class="speakable-word">year</span>, <span class="speakable-word">ago</span>, <span class="speakable-word">in 2005</span>, <span class="speakable-word">when I was young</span>.</li>
-                    <li>**أمثلة:** He <span class="speakable-word">played</span> football an hour ago. (لعب كرة القدم قبل ساعة.) We <span class="speakable-word">didn't go</span> to the party. (لم نذهب إلى الحفلة.) <span class="speakable-word">Did</span> you <span class="speakable-word">see</span> her? (هل رأيتها؟)</li>
-                </ul>
-            </div>
-
-            <div class="grammar-topic">
-                <h3 class="speakable-heading">5. زمن الماضي المستمر (Past Continuous)</h3>
-                <p class="grammar-text">يُستخدم للتعبير عن أفعال كانت مستمرة في وقت معين في الماضي، أو لحدث كان مستمراً عندما قطعه حدث آخر.</p>
-                <ul>
-                    <li>**الاستخدامات:**
-                        <ul>
-                            <li>حدث كان مستمراً في وقت محدد: At 8 PM yesterday, I <span class="speakable-word">was eating</span> dinner. (في الساعة 8 مساءً أمس، كنت أتناول العشاء.)</li>
-                            <li>حدث طويل قطعه حدث قصير: While I <span class="speakable-word">was reading</span>, the phone <span class="speakable-word">rang</span>. (بينما كنت أقرأ، رن الهاتف.)</li>
-                        </ul>
-                    </li>
-                    <li>**الكلمات الدالة:** <span class="speakable-word">while</span>, <span class="speakable-word">when</span>, <span class="speakable-word">as</span>, <span class="speakable-word">all day</span>/<span class="speakable-word">night yesterday</span>, <span class="speakable-word">at that moment</span>.</li>
-                    <li>**أمثلة:** They <span class="speakable-word">were waiting</span> for the bus. (كانوا ينتظرون الحافلة.) She <span class="speakable-word">wasn't sleeping</span> when I called. (لم تكن نائمة عندما اتصلت.) What <span class="speakable-word">were</span> you <span class="speakable-word">doing</span> at 10 AM? (ماذا كنت تفعل في الساعة 10 صباحاً؟)</li>
-                </ul>
-            </div>
-
-            <div class="grammar-topic">
-                <h3 class="speakable-heading">6. زمن الماضي التام (Past Perfect)</h3>
-                <p class="grammar-text">يُستخدم للتعبير عن حدث وقع قبل حدث آخر في الماضي.</p>
-                <ul>
-                    <li>**الاستخدامات:**
-                        <ul>
-                            <li>حدث سابق لحدث آخر في الماضي: I <span class="speakable-word">had finished</span> my homework before I went out. (كنت قد أنهيت واجبي قبل أن أخرج.)</li>
-                            <li>التقرير عن الكلام غير المباشر: He said he <span class="speakable-word">had seen</span> the movie. (قال إنه شاهد الفيلم.)</li>
-                        </ul>
-                    </li>
-                    <li>**الكلمات الدالة:** <span class="speakable-word">before</span>, <span class="speakable-word">after</span>, <span class="speakable-word">by the time</span>, <span class="speakable-word">already</span>, <span class="speakable-word">yet</span>, <span class="speakable-word">when</span>.</li>
-                    <li>**أمثلة:** By the time we arrived, they <span class="speakable-word">had left</span>. (بحلول الوقت الذي وصلنا فيه، كانوا قد غادروا.) She <span class="speakable-word">had never seen</span> a snow before she went to Canada. (لم تر الثلج من قبل أن ذهبت إلى كندا.)</li>
-                </ul>
-            </div>
-
-            <div class="grammar-topic">
-                <h3 class="speakable-heading">7. زمن المستقبل البسيط (Future Simple)</h3>
-                <p class="grammar-text">يُستخدم للتعبير عن قرارات سريعة، تنبؤات، وعروض.</p>
-                <ul>
-                    <li>**الاستخدامات:**
-                        <ul>
-                            <li>قرارات لحظية: I <span class="speakable-word">will help</span> you. (سأساعدك.)</li>
-                            <li>تنبؤات (معتقد شخصي): I think it <span class="speakable-word">will rain</span> tomorrow. (أعتقد أنها ستمطر غداً.)</li>
-                        </ul>
-                    </li>
-                    <li>**الكلمات الدالة:** <span class="speakable-word">tomorrow</span>, <span class="speakable-word">next week</span>/<span class="speakable-word">month</span>/<span class="speakable-word">year</span>, <span class="speakable-word">in the future</span>, <span class="speakable-word">soon</span>, <span class="speakable-word">probably</span>, <span class="speakable-word">I think</span>, <span class="speakable-word">I believe</span>.</li>
+                <h3>1. الحروف المتحركة (Vowels)</h3>
+                <div class="grammar-text">
+                    <p>الحروف المتحركة الأساسية في اللغة الإنجليزية هي <span class="english-word">A</span>, <span class="english-word">E</span>, <span class="english-word">I</span>, <span class="english-word">O</span>, <span class="english-word">U</span>. هذه الحروف هي العمود الفقري للنطق في الإنجليزية، حيث يمكن لكل حرف متحرك أن ينتج أصواتًا متعددة، وأكثرها شيوعًا هي الأصوات القصيرة والطويلة.</p>
+                    <ul>
+                        <li><strong>حرف A:</strong>
+                            <ul>
+                                <li>الصوت القصير (مثل الفتحة في العربية): يُنطق كـ "آ" خفيف مثل كلمة <span class="english-word">cat</span> (قطة), <span class="english-word">apple</span> (تفاحة), <span class="english-word">back</span> (خلف), <span class="english-word">fan</span> (مروحة), <span class="english-word">sad</span> (حزين).</li>
+                                <li>الصوت الطويل (مثل الألف الممدودة في العربية): يُنطق كـ "إيْ" في كلمة <span class="english-word">name</span> (اسم), <span class="english-word">cake</span> (كعكة), <span class="english-word">plate</span> (طبق), <span class="english-word">game</span> (لعبة), <span class="english-word">face</span> (وجه).</li>
+                            </ul>
+                        </li>
+                        <li><strong>حرف E:</strong>
+                            <ul>
+                                <li>الصوت القصير (مثل الكسرة الخفيفة): يُنطق كـ "إي" قصير مثل كلمة <span class="english-word">bed</span> (سرير), <span class="english-word">red</span> (أحمر), <span class="english-word">pen</span> (قلم), <span class="english-word">egg</span> (بيضة), <span class="english-word">tent</span> (خيمة).</li>
+                                <li>الصوت الطويل (مثل الياء الممدودة في العربية): يُنطق كـ "إيي" طويل مثل كلمة <span class="english-word">tree</span> (شجرة), <span class="english-word">meet</span> (يقابل), <span class="english-word">feet</span> (أقدام), <span class="english-word">sleep</span> (ينام), <span class="english-word">see</span> (يرى).</li>
+                            </ul>
+                        </li>
+                        <li><strong>حرف I:</strong>
+                            <ul>
+                                <li>الصوت القصير (مثل الكسرة الشديدة): يُنطق كـ "إِ" قصير مثل كلمة <span class="english-word">pig</span> (خنزير), <span class="english-word">sit</span> (يجلس), <span class="english-word">fish</span> (سمكة), <span class="english-word">big</span> (كبير), <span class="english-word">milk</span> (حليب).</li>
+                                <li>الصوت الطويل (مثل "آي" في العربية): يُنطق كـ "آي" مثل كلمة <span class="english-word">bike</span> (دراجة), <span class="english-word">light</span> (ضوء), <span class="english-word">time</span> (وقت), <span class="english-word">ice</span> (ثلج), <span class="english-word">five</span> (خمسة).</li>
+                            </ul>
+                        </li>
+                        <li><strong>حرف O:</strong>
+                            <ul>
+                                <li>الصوت القصير (مثل الضمة الخفيفة): يُنطق كـ "أو" قصير مثل كلمة <span class="english-word">dog</span> (كلب), <span class="english-word">hot</span> (حار), <span class="english-word">box</span> (صندوق), <span class="english-word">top</span> (أعلى), <span class="english-word">stop</span> (يتوقف).</li>
+                                <li>الصوت الطويل (مثل الواو الممدودة في العربية): يُنطق كـ "أو" طويل مثل كلمة <span class="english-word">boat</span> (قارب), <span class="english-word">go</span> (يذهب), <span class="english-word">home</span> (منزل), <span class="english-word">snow</span> (ثلج), <span class="english-word">rose</span> (وردة).</li>
+                            </ul>
+                        </li>
+                        <li><strong>حرف U:</strong>
+                            <ul>
+                                <li>الصوت القصير (مثل الضمة الخفيفة): يُنطق كـ "أَ" مثل كلمة <span class="english-word">sun</span> (شمس), <span class="english-word">cup</span> (كوب), <span class="english-word">run</span> (يركض), <span class="english-word">bus</span> (حافلة), <span class="english-word">fun</span> (مرح).</li>
+                                <li>الصوت الطويل (مثل "يو" في العربية): يُنطق كـ "يو" مثل كلمة <span class="english-word">blue</span> (أزرق), <span class="english-word">cute</span> (لطيف), <span class="english-word">music</span> (موسيقى), <span class="english-word">unit</span> (وحدة), <span class="english-word">tube</span> (أنبوب).</li>
+                            </ul>
+                        </li>
                     </ul>
-                    <li>**أمثلة:** They <span class="speakable-word">will travel</span> to Spain next year. (سيسافرون إلى إسبانيا العام القادم.) She <span class="speakable-word">won't forget</span> you. (هي لن تنساك.) <span class="speakable-word">Will</span> you <span class="speakable-word">come</span> to the party? (هل ستأتي إلى الحفلة؟)</li>
-                </ul>
+                </div>
+            </div>
+            
+            <div class="grammar-topic">
+                <h3>2. الحروف الساكنة (Consonants)</h3>
+                <div class="grammar-text">
+                    <p>الحروف الساكنة في اللغة الإنجليزية لها أصوات محددة، ولكن بعضها قد يتغير نطقه بناءً على الحروف التي تليه أو موقعه في الكلمة. فهم هذه الاختلافات يساعد كثيرًا في تحسين النطق.</p>
+                    <ul>
+                        <li><strong>حرف C:</strong>
+                            <ul>
+                                <li>يُنطق كـ **"S"** عندما يتبعه أحد الحروف المتحركة <span class="english-word">E</span>, <span class="english-word">I</span>, <span class="english-word">Y</span>: مثل <span class="english-word">city</span> (مدينة), <span class="english-word">face</span> (وجه), <span class="english-word">ice</span> (ثلج), <span class="english-word">cycle</span> (دورة), <span class="english-word">cent</span> (سنت).</li>
+                                <li>يُنطق كـ **"K"** في معظم الحالات الأخرى: مثل <span class="english-word">cat</span> (قطة), <span class="english-word">car</span> (سيارة), <span class="english-word">cup</span> (كوب), <span class="english-word">cold</span> (بارد), <span class="english-word">cook</span> (يطبخ).</li>
+                            </ul>
+                        </li>
+                        <li><strong>حرف G:</strong>
+                            <ul>
+                                <li>يُنطق كـ **"J"** (مثل الجيم المصرية) عندما يتبعه أحد الحروف المتحركة <span class="english-word">E</span>, <span class="english-word">I</span>, <span class="english-word">Y</span>: مثل <span class="english-word">giant</span> (عملاق), <span class="english-word">gem</span> (جوهرة), <span class="english-word">giraffe</span> (زرافة), <span class="english-word">energy</span> (طاقة), <span class="english-word">gym</span> (صالة ألعاب رياضية).</li>
+                                <li>يُنطق كـ **"غ"** (مثل الغين في العربية) في معظم الحالات الأخرى: مثل <span class="english-word">go</span> (يذهب), <span class="english-word">game</span> (لعبة), <span class="english-word">big</span> (كبير), <span class="english-word">green</span> (أخضر), <span class="english-word">glad</span> (سعيد).</li>
+                            </ul>
+                        </li>
+                        <li><strong>حرف S:</strong>
+                            <ul>
+                                <li>يُنطق كـ **"س"** في بداية الكلمات أو عندما يكون الحرف الذي يليه ساكناً: مثل <span class="english-word">sun</span> (شمس), <span class="english-word">snake</span> (ثعبان), <span class="english-word">sit</span> (يجلس), <span class="english-word">start</span> (يبدأ), <span class="english-word">street</span> (شارع).</li>
+                                <li>يُنطق كـ **"ز"** أحياناً، خاصة بين حرفين متحركين أو في نهاية بعض الكلمات: مثل <span class="english-word">is</span> (يكون), <span class="english-word">has</span> (يملك), <span class="english-word">rise</span> (يرتفع), <span class="english-word">easy</span> (سهل), <span class="english-word">music</span> (موسيقى).</li>
+                            </ul>
+                        </li>
+                        <li><strong>حرف H:</strong>
+                            <ul>
+                                <li>يُنطق كـ **"هـ"** خفيفة في معظم الحالات: مثل <span class="english-word">house</span> (منزل), <span class="english-word">happy</span> (سعيد), <span class="english-word">hand</span> (يد), <span class="english-word">hat</span> (قبعة), <span class="english-word">hello</span> (مرحباً).</li>
+                                <li>يكون صامتاً في بعض الكلمات (خاصة بعد 'W' أو في بدايات كلمات معينة من أصول لاتينية): مثل <span class="english-word">what</span> (ماذا), <span class="english-word">when</span> (متى), <span class="english-word">honest</span> (صادق), <span class="english-word">hour</span> (ساعة), <span class="english-word">rhythm</span> (إيقاع).</li>
+                            </ul>
+                        </li>
+                        <li><strong>حرف R:</strong>
+                            <ul>
+                                <li>يُنطق كـ **"ر"** في معظم الحالات (صوت خفيف وغير مفخم مثل العربية): مثل <span class="english-word">red</span> (أحمر), <span class="english-word">run</span> (يركض), <span class="english-word">river</span> (نهر), <span class="english-word">car</span> (سيارة - في الإنجليزية الأمريكية), <span class="english-word">road</span> (طريق).</li>
+                                <li>في بعض اللهجات (مثل الإنجليزية البريطانية)، قد يكون صامتاً إذا جاء في نهاية الكلمة وبعد حرف متحرك: مثال <span class="english-word">car</span> (كار - بدون نطق الـ R).</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <div class="grammar-topic">
-                <h3 class="speakable-heading">8. المستقبل باستخدام (Be going to)</h3>
-                <p class="grammar-text">يُستخدم للتعبير عن خطط ونوايا مستقبلية، أو للتنبؤات المبنية على أدلة واضحة.</p>
-                <ul>
-                    <li>**الاستخدامات:**
-                        <ul>
-                            <li>خطط ونوايا: I <span class="speakable-word">am going to buy</span> a new car. (أنا ذاهب لشراء سيارة جديدة.)</li>
-                            <li>تنبؤات بناءً على دليل: Look at those clouds! It <span class="speakable-word">is going to rain</span>. (انظر إلى تلك الغيوم! إنها ستمطر.)</li>
-                        </ul>
-                    </li>
-                    <li>**الكلمات الدالة:** <span class="speakable-word">tomorrow</span>, <span class="speakable-word">next week</span>, <span class="speakable-word">soon</span>, <span class="speakable-word">in the near future</span>, <span class="speakable-word">I've decided</span>.</li>
-                    <li>**أمثلة:** We <span class="speakable-word">are going to visit</span> our grandparents. (سنزور أجدادنا.) He <span class="speakable-word">isn't going to study</span> for the exam. (هو لن يدرس للامتحان.) <span class="speakable-word">Are</span> you <span class="speakable-word">going to watch</span> the movie? (هل ستشاهد الفيلم؟)</li>
-                </ul>
+                <h3>3. الحروف المركبة (Digraphs and Blends)</h3>
+                <div class="grammar-text">
+                    <p>الحروف المركبة هي مجموعات من حرفين أو أكثر تنتج صوتًا واحدًا مختلفًا عن نطق كل حرف على حدة. بينما "المزج" (Blends) هي مجموعات من الحروف الساكنة حيث يُنطق كل حرف بصوته ولكن تتداخل الأصوات.</p>
+                    <ul>
+                        <li><strong>CH:</strong> يُنطق كـ "تش" في كلمة <span class="english-word">chair</span>.</li>
+                        <li><strong>SH:</strong> يُنطق كـ "ش" في كلمة <span class="english-word">she</span>.</li>
+                        <li><strong>TH:</strong> له نطقان، إما "ذ" (صوت مجهور) في <span class="english-word">this</span> أو "ث" (صوت مهموس) في <span class="english-word">thin</span>.</li>
+                        <li><strong>WH:</strong> يُنطق كـ "هـو" في كلمة <span class="english-word">what</span> (غالبًا ما يُنطق الـ 'h' بصوت خفيف).</li>
+                        <li><strong>PH:</strong> يُنطق كـ "ف" في كلمة <span class="english-word">phone</span>.</li>
+                        <li><strong>KN:</strong> يُنطق الـ "ن" فقط، الـ 'k' صامتة في بداية الكلمة مثل <span class="english-word">know</span>.</li>
+                        <li><strong>WR:</strong> يُنطق الـ "ر" فقط، الـ 'w' صامتة في بداية الكلمة مثل <span class="english-word">write</span>.</li>
+                        <li><strong>CK:</strong> يُنطق كـ "ك" في نهاية الكلمة <span class="english-word">back</span>.</li>
+                        <li><strong>PL (مزج):</strong> صوتي الـ 'p' والـ 'l' يُنطقان بوضوح ولكن بسرعة معًا مثل <span class="english-word">play</span>.</li>
+                        <li><strong>ST (مزج):</strong> صوتي الـ 's' والـ 't' يُنطقان بوضوح ولكن بسرعة معًا مثل <span class="english-word">stop</span>.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        ---
-
-        <section id="common-words-section">
-            <h2>كلمات إنجليزية شائعة ومعانيها</h2>
+        <section id="numbers-section">
+            <h2>الأعداد في اللغة الإنجليزية</h2>
             <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
+            
             <div class="info-table-container">
+                <h3>الأعداد الأساسية (Cardinal Numbers)</h3>
                 <table class="info-table">
                     <thead>
                         <tr>
+                            <th>العدد</th>
                             <th>الإنجليزية</th>
                             <th>العربية</th>
-                            <th>الإنجليزية</th>
-                            <th>العربية</th>
-                            <th>الإنجليزية</th>
-                            <th>العربية</th>
-                            <th>الإنجليزية</th>
-                            <th>العربية</th>
-                            <th>الإنجليزية</th>
-                            <th>العربية</th>
-                        </tr>
-                    </thead>
-                    <tbody id="common-words-tbody">
-                        </tbody>
-                </table>
-            </div>
-        </section>
-
-    </main>
-
-
-    <script>
-        // JavaScript Code
-        document.addEventListener('DOMContentLoaded', () => {
-            const alphabetData = {
-                'A': [
-                    { en: 'Apple', ar: 'تفاحة' }, { en: 'Ant', ar: 'نملة' }, { en: 'All', ar: 'كل' },
-                    { en: 'Ask', ar: 'يسأل' }, { en: 'Art', ar: 'فن' }, { en: 'Arm', ar: 'ذراع' },
-                    { en: 'Age', ar: 'عمر' }, { en: 'Air', ar: 'هواء' }, { en: 'Able', ar: 'قادر' },
-                    { en: 'Act', ar: 'فعل' }, { en: 'Ace', ar: 'ممتاز' }, { en: 'Aid', ar: 'مساعدة' },
-                    { en: 'Aim', ar: 'هدف' }, { en: 'Ale', ar: 'جعة' }, { en: 'Ape', ar: 'قرد' },
-                    { en: 'Arc', ar: 'قوس' }, { en: 'Are', ar: 'يكون (للمتعدد)' }, { en: 'Ash', ar: 'رماد' },
-                    { en: 'Awe', ar: 'رهبة' }, { en: 'Axis', ar: 'محور' }, { en: 'Award', ar: 'جائزة' },
-                    { en: 'Aware', ar: 'مدرك' }, { en: 'Away', ar: 'بعيد' }, { en: 'Awake', ar: 'مستيقظ' },
-                    { en: 'Adapt', ar: 'يتكيف' }
-                ],
-                'B': [
-                    { en: 'Ball', ar: 'كرة' }, { en: 'Book', ar: 'كتاب' }, { en: 'Big', ar: 'كبير' },
-                    { en: 'Blue', ar: 'أزرق' }, { en: 'Boy', ar: 'ولد' }, { en: 'Bird', ar: 'طائر' },
-                    { en: 'Bake', ar: 'يخبز' }, { en: 'Bank', ar: 'بنك' }, { en: 'Bear', ar: 'دب' },
-                    { en: 'Bed', ar: 'سرير' }, { en: 'Bee', ar: 'نحلة' }, { en: 'Bell', ar: 'جرس' },
-                    { en: 'Belt', ar: 'حزام' }, { en: 'Bench', ar: 'مقعد' }, { en: 'Bend', ar: 'ينحني' },
-                    { en: 'Best', ar: 'الأفضل' }, { en: 'Bet', ar: 'رهان' }, { en: 'Bike', ar: 'دراجة' },
-                    { en: 'Bill', ar: 'فاتورة' }, { en: 'Bind', ar: 'يربط' }, { en: 'Bite', ar: 'يعض' },
-                    { en: 'Black', ar: 'أسود' }, { en: 'Blend', ar: 'يمزج' }, { en: 'Block', ar: 'كتلة' },
-                    { en: 'Blood', ar: 'دم' }
-                ],
-                'C': [
-                    { en: 'Cat', ar: 'قطة' }, { en: 'Car', ar: 'سيارة' }, { en: 'Cup', ar: 'كوب' },
-                    { en: 'Cold', ar: 'بارد' }, { en: 'City', ar: 'مدينة' }, { en: 'Cake', ar: 'كعكة' },
-                    { en: 'Call', ar: 'ينادي' }, { en: 'Calm', ar: 'هادئ' }, { en: 'Camp', ar: 'مخيم' },
-                    { en: 'Can', ar: 'يستطيع / علبة' }, { en: 'Cap', ar: 'قبعة' }, { en: 'Card', ar: 'بطاقة' },
-                    { en: 'Care', ar: 'رعاية' }, { en: 'Case', ar: 'حقيبة / حالة' }, { en: 'Cast', ar: 'يرمي / طاقم' },
-                    { en: 'Catch', ar: 'يمسك' }, { en: 'Cave', ar: 'كهف' }, { en: 'Cell', ar: 'خلية' },
-                    { en: 'Cent', ar: 'سنت' }, { en: 'Chain', ar: 'سلسلة' }, { en: 'Chair', ar: 'كرسي' },
-                    { en: 'Chalk', ar: 'طباشير' }, { en: 'Charm', ar: 'سحر' }, { en: 'Chart', ar: 'رسم بياني' },
-                    { en: 'Chase', ar: 'يطارد' }
-                ],
-                'D': [
-                    { en: 'Dog', ar: 'كلب' }, { en: 'Door', ar: 'باب' }, { en: 'Day', ar: 'يوم' },
-                    { en: 'Dark', ar: 'مظلم' }, { en: 'Dream', ar: 'حلم' }, { en: 'Dance', ar: 'يرقص' },
-                    { en: 'Dare', ar: 'يتجرأ' }, { en: 'Dash', ar: 'يندفع' }, { en: 'Date', ar: 'تاريخ / تمر' },
-                    { en: 'Dawn', ar: 'فجر' }, { en: 'Deal', ar: 'صفقة' }, { en: 'Dear', ar: 'عزيز' },
-                    { en: 'Debt', ar: 'دين' }, { en: 'Deck', ar: 'سطح' }, { en: 'Deep', ar: 'عميق' },
-                    { en: 'Deer', ar: 'غزال' }, { en: 'Defy', ar: 'يتحدى' }, { en: 'Delay', ar: 'تأخير' },
-                    { en: 'Dent', ar: 'انبعاج' }, { en: 'Desk', ar: 'مكتب' }, { en: 'Dew', ar: 'ندى' },
-                    { en: 'Dial', ar: 'يطلب (رقم)' }, { en: 'Dice', ar: 'نرد' }, { en: 'Diet', ar: 'حمية' },
-                    { en: 'Dig', ar: 'يحفر' }
-                ],
-                'E': [
-                    { en: 'Elephant', ar: 'فيل' }, { en: 'Egg', ar: 'بيضة' }, { en: 'Eye', ar: 'عين' },
-                    { en: 'Eat', ar: 'يأكل' }, { en: 'Earth', ar: 'أرض' }, { en: 'Ear', ar: 'أذن' },
-                    { en: 'Early', ar: 'مبكر' }, { en: 'Ease', ar: 'سهولة' }, { en: 'East', ar: 'شرق' },
-                    { en: 'Echo', ar: 'صدى' }, { en: 'Edge', ar: 'حافة' }, { en: 'Edit', ar: 'يحرر' },
-                    { en: 'Eel', ar: 'ثعبان البحر' }, { en: 'Eject', ar: 'يقذف' }, { en: 'Elder', ar: 'أكبر سناً' },
-                    { en: 'Elect', ar: 'ينتخب' }, { en: 'Empty', ar: 'فارغ' }, { en: 'End', ar: 'نهاية' },
-                    { en: 'Enjoy', ar: 'يستمتع' }, { en: 'Enter', ar: 'يدخل' }, { en: 'Equal', ar: 'متساوٍ' },
-                    { en: 'Even', ar: 'حتى / مسطح' }, { en: 'Ever', ar: 'دائماً' }, { en: 'Every', ar: 'كل' },
-                    { en: 'Exact', ar: 'دقيق' }
-                ],
-                'F': [
-                    { en: 'Fish', ar: 'سمكة' }, { en: 'Flower', ar: 'زهرة' }, { en: 'Fast', ar: 'سريع' },
-                    { en: 'Fun', ar: 'ممتع' }, { en: 'Friend', ar: 'صديق' }, { en: 'Face', ar: 'وجه' },
-                    { en: 'Fact', ar: 'حقيقة' }, { en: 'Fade', ar: 'يتلاشى' }, { en: 'Fail', ar: 'يفشل' },
-                    { en: 'Fair', ar: 'عادل / معرض' }, { en: 'Fall', ar: 'يسقط / خريف' }, { en: 'False', ar: 'خطأ' },
-                    { en: 'Fame', ar: 'شهرة' }, { en: 'Fan', ar: 'مروحة / معجب' }, { en: 'Farm', ar: 'مزرعة' },
-                    { en: 'Far', ar: 'بعيد' }, { en: 'Fat', ar: 'سمين' }, { en: 'Fault', ar: 'خطأ / عيب' },
-                    { en: 'Fear', ar: 'خوف' }, { en: 'Feast', ar: 'وليمة' }, { en: 'Feel', ar: 'يشعر' },
-                    { en: 'Feet', ar: 'أقدام' }, { en: 'Fell', ar: 'سقط (ماضي)' }, { en: 'Felt', ar: 'شعر (ماضي)' },
-                    { en: 'Fence', ar: 'سياج' }
-                ],
-                'G': [
-                    { en: 'Girl', ar: 'فتاة' }, { en: 'Green', ar: 'أخضر' }, { en: 'Game', ar: 'لعبة' },
-                    { en: 'Good', ar: 'جيد' }, { en: 'Go', ar: 'يذهب' }, { en: 'Gate', ar: 'بوابة' },
-                    { en: 'Gather', ar: 'يجمع' }, { en: 'Gay', ar: 'مرح' }, { en: 'Gaze', ar: 'يحدق' },
-                    { en: 'Gear', ar: 'ترس / معدات' }, { en: 'Gem', ar: 'جوهرة' }, { en: 'Gene', ar: 'جين' },
-                    { en: 'Get', ar: 'يحصل على' }, { en: 'Ghost', ar: 'شبح' }, { en: 'Giant', ar: 'عملاق' },
-                    { en: 'Gift', ar: 'هدية' }, { en: 'Gird', ar: 'يحزم' }, { en: 'Give', ar: 'يعطي' },
-                    { en: 'Glad', ar: 'سعيد' }, { en: 'Glass', ar: 'زجاج / كوب' }, { en: 'Glim', ar: 'وميض' },
-                    { en: 'Glide', ar: 'ينزلق' }, { en: 'Globe', ar: 'كرة أرضية' }, { en: 'Gloom', ar: 'كآبة' },
-                    { en: 'Glory', ar: 'مجد' }
-                ],
-                'H': [
-                    { en: 'House', ar: 'منزل' }, { en: 'Hand', ar: 'يد' }, { en: 'Happy', ar: 'سعيد' },
-                    { en: 'Hot', ar: 'حار' }, { en: 'Hear', ar: 'يسمع' }, { en: 'Hair', ar: 'شعر' },
-                    { en: 'Halt', ar: 'يتوقف' }, { en: 'Ham', ar: 'لحم خنزير' }, { en: 'Hang', ar: 'يعلق' },
-                    { en: 'Hard', ar: 'صعب' }, { en: 'Harm', ar: 'ضرر' }, { en: 'Hat', ar: 'قبعة' },
-                    { en: 'Hate', ar: 'يكره' }, { en: 'Have', ar: 'يملك' }, { en: 'Hay', ar: 'تبن' },
-                    { en: 'Head', ar: 'رأس' }, { en: 'Heal', ar: 'يشفى' }, { en: 'Heap', ar: 'كومة' },
-                    { en: 'Heart', ar: 'قلب' }, { en: 'Heat', ar: 'حرارة' }, { en: 'Heavy', ar: 'ثقيل' },
-                    { en: 'Heck', ar: 'جحيم (للتعبير)' }, { en: 'Heel', ar: 'كعب' }, { en: 'Heir', ar: 'وريث' },
-                    { en: 'Help', ar: 'مساعدة' }
-                ],
-                'I': [
-                    { en: 'Ice', ar: 'ثلج' }, { en: 'Idea', ar: 'فكرة' }, { en: 'Inside', ar: 'داخل' },
-                    { en: 'Iron', ar: 'حديد / يكوي' }, { en: 'Island', ar: 'جزيرة' }, { en: 'I', ar: 'أنا' },
-                    { en: 'If', ar: 'إذا' }, { en: 'Ill', ar: 'مريض' }, { en: 'Impry', ar: 'يشير ضمنًا' },
-                    { en: 'In', ar: 'في' }, { en: 'Inch', ar: 'بوصة' }, { en: 'Info', ar: 'معلومات' },
-                    { en: 'Ink', ar: 'حبر' }, { en: 'Inn', ar: 'نزل' }, { en: 'Input', ar: 'إدخال' },
-                    { en: 'Inst', ar: 'فوري' }, { en: 'Into', ar: 'إلى' }, { en: 'Invent', ar: 'يخترع' },
-                    { en: 'Invite', ar: 'يدعو' }, { en: 'Iris', ar: 'قزحية' }, { en: 'Irony', ar: 'سخرية' },
-                    { en: 'Is', ar: 'يكون (للمفرد)' }, { en: 'Issue', ar: 'قضية' }, { en: 'Item', ar: 'عنصر' },
-                    { en: 'Itself', ar: 'نفسها / نفسه' }
-                ],
-                'J': [
-                    { en: 'Jump', ar: 'يقفز' }, { en: 'Joy', ar: 'فرح' }, { en: 'Jelly', ar: 'جيلي' },
-                    { en: 'Job', ar: 'وظيفة' }, { en: 'Jet', ar: 'نفاثة' }, { en: 'Jack', ar: 'رافعة / جاك' },
-                    { en: 'Jam', ar: 'مربى / زحام' }, { en: 'Jaw', ar: 'فك' }, { en: 'Jazz', ar: 'جاز' },
-                    { en: 'Jeer', ar: 'يهزأ' }, { en: 'Jest', ar: 'مزحة' }, { en: 'Jewel', ar: 'جوهرة' },
-                    { en: 'Jinx', ar: 'نحس' }, { en: 'Jive', ar: 'يرقص' }, { en: 'Jog', ar: 'يهرول' },
-                    { en: 'Join', ar: 'ينضم' }, { en: 'Joint', ar: 'مفصل' }, { en: 'Joke', ar: 'نكتة' },
-                    { en: 'Jolt', ar: 'صدمة' }, { en: 'Judge', ar: 'قاضي / يحكم' }, { en: 'Juice', ar: 'عصير' },
-                    { en: 'July', ar: 'يوليو' }, { en: 'June', ar: 'يونيو' }, { en: 'Jury', ar: 'هيئة محلفين' },
-                    { en: 'Just', ar: 'فقط / عادل' }
-                ],
-                'K': [
-                    { en: 'King', ar: 'ملك' }, { en: 'Key', ar: 'مفتاح' }, { en: 'Kite', ar: 'طائرة ورقية' },
-                    { en: 'Kiss', ar: 'يقبل' }, { en: 'Knife', ar: 'سكين' }, { en: 'Keep', ar: 'يحتفظ' },
-                    { en: 'Keen', ar: 'حاد / متحمس' }, { en: 'Ken', ar: 'معرفة' }, { en: 'Kepi', ar: 'قبعة عسكرية' },
-                    { en: 'Kernel', ar: 'نواة' }, { en: 'Ketchup', ar: 'كاتشب' }, { en: 'Kettle', ar: 'غلاية' },
-                    { en: 'Kick', ar: 'يركل' }, { en: 'Kid', ar: 'طفل' }, { en: 'Kill', ar: 'يقتل' },
-                    { en: 'Kind', ar: 'نوع / طيب' }, { en: 'Kin', ar: 'أقارب' }, { en: 'Kiss', ar: 'قبلة' },
-                    { en: 'Kit', ar: 'طقم' }, { en: 'Knee', ar: 'ركبة' }, { en: 'Kneel', ar: 'يركع' },
-                    { en: 'Knew', ar: 'عرف (ماضي)' }, { en: 'Knit', ar: 'يحبك' }, { en: 'Knock', ar: 'يطرق' },
-                    { en: 'Knot', ar: 'عقدة' }
-                ],
-                'L': [
-                    { en: 'Lion', ar: 'أسد' }, { en: 'Light', ar: 'ضوء / خفيف' }, { en: 'Love', ar: 'حب' },
-                    { en: 'Live', ar: 'يعيش' }, { en: 'Long', ar: 'طويل' }, { en: 'Lady', ar: 'سيدة' },
-                    { en: 'Lake', ar: 'بحيرة' }, { en: 'Lamp', ar: 'مصباح' }, { en: 'Land', ar: 'أرض / يهبط' },
-                    { en: 'Lap', ar: 'حضن / دورة' }, { en: 'Large', ar: 'كبير' }, { en: 'Last', ar: 'أخير / يدوم' },
-                    { en: 'Late', ar: 'متأخر' }, { en: 'Laugh', ar: 'يضحك' }, { en: 'Lay', ar: 'يضع' },
-                    { en: 'Lead', ar: 'يقود / رصاص' }, { en: 'Leaf', ar: 'ورقة شجر' }, { en: 'Lean', ar: 'يتكئ / نحيل' },
-                    { en: 'Leap', ar: 'يقفز' }, { en: 'Learn', ar: 'يتعلم' }, { en: 'Least', ar: 'الأقل' },
-                    { en: 'Leave', ar: 'يغادر / يترك' }, { en: 'Led', ar: 'قاد (ماضي)' }, { en: 'Left', ar: 'يسار / غادر (ماضي)' },
-                    { en: 'Leg', ar: 'ساق' }
-                ],
-                'M': [
-                    { en: 'Monkey', ar: 'قرد' }, { en: 'Moon', ar: 'قمر' }, { en: 'Man', ar: 'رجل' },
-                    { en: 'More', ar: 'أكثر' }, { en: 'Make', ar: 'يصنع' }, { en: 'Mad', ar: 'غاضب / مجنون' },
-                    { en: 'Made', ar: 'صنع (ماضي)' }, { en: 'Mail', ar: 'بريد' }, { en: 'Main', ar: 'رئيسي' },
-                    { en: 'Male', ar: 'ذكر' }, { en: 'Malt', ar: 'شعير' }, { en: 'Mama', ar: 'ماما' },
-                    { en: 'Map', ar: 'خريطة' }, { en: 'Mark', ar: 'علامة' }, { en: 'Mash', ar: 'يهرس' },
-                    { en: 'Mask', ar: 'قناع' }, { en: 'Mass', ar: 'كتلة / قداس' }, { en: 'Mast', ar: 'سارية' },
-                    { en: 'Mat', ar: 'حصيرة' }, { en: 'Match', ar: 'مباراة / يطابق' }, { en: 'Mate', ar: 'رفيق / يتزاوج' },
-                    { en: 'Max', ar: 'أقصى' }, { en: 'May', ar: 'قد / مايو' }, { en: 'Maze', ar: 'متاهة' },
-                    { en: 'Mead', ar: 'شراب العسل' }
-                ],
-                'N': [
-                    { en: 'Nose', ar: 'أنف' }, { en: 'Night', ar: 'ليل' }, { en: 'New', ar: 'جديد' },
-                    { en: 'Name', ar: 'اسم' }, { en: 'Next', ar: 'التالي' }, { en: 'Nail', ar: 'مسمار / ظفر' },
-                    { en: 'Naked', ar: 'عارٍ' }, { en: 'Nap', ar: 'قيلولة' }, { en: 'Nasty', ar: 'سيء / قذر' },
-                    { en: 'Naught', ar: 'لا شيء' }, { en: 'Near', ar: 'قريب' }, { en: 'Neat', ar: 'أنيق / مرتب' },
-                    { en: 'Neck', ar: 'رقبة' }, { en: 'Need', ar: 'يحتاج' }, { en: 'Needle', ar: 'إبرة' },
-                    { en: 'Nerve', ar: 'عصب' }, { en: 'Nest', ar: 'عش' }, { en: 'Net', ar: 'شبكة' },
-                    { en: 'Never', ar: 'أبداً' }, { en: 'Newt', ar: 'سمندل' }, { en: 'Nice', ar: 'لطيف' },
-                    { en: 'Nick', ar: 'شق / يخدش' }, { en: 'Nifty', ar: 'أنيق' }, { en: 'Night', ar: 'ليل' }
-                ],
-                'O': [
-                    { en: 'Orange', ar: 'برتقال' }, { en: 'Owl', ar: 'بومة' }, { en: 'Old', ar: 'قديم' },
-                    { en: 'Open', ar: 'يفتح / مفتوح' }, { en: 'One', ar: 'واحد' }, { en: 'Oak', ar: 'بلوط' },
-                    { en: 'Oath', ar: 'قسم' }, { en: 'Obey', ar: 'يطيع' }, { en: 'Object', ar: 'غرض / يعترض' },
-                    { en: 'Odd', ar: 'غريب / فردي' }, { en: 'Off', ar: 'خارج / إيقاف' }, { en: 'Offer', ar: 'يعرض / عرض' },
-                    { en: 'Often', ar: 'غالباً' }, { en: 'Oil', ar: 'زيت' }, { en: 'Okay', ar: 'حسناً' },
-                    { en: 'Olden', ar: 'قديم' }, { en: 'Olive', ar: 'زيتون' }, { en: 'On', ar: 'على' },
-                    { en: 'Once', ar: 'مرة واحدة' }, { en: 'Only', ar: 'فقط' }, { en: 'Onto', ar: 'إلى' },
-                    { en: 'Opal', ar: 'أوبال' }, { en: 'Opt', ar: 'يختار' }, { en: 'Oral', ar: 'شفوي' },
-                    { en: 'Order', ar: 'ترتيب / يطلب' }
-                ],
-                'P': [
-                    { en: 'Pen', ar: 'قلم' }, { en: 'Pig', ar: 'خنزير' }, { en: 'Pink', ar: 'وردي' },
-                    { en: 'Play', ar: 'يلعب' }, { en: 'People', ar: 'ناس' }, { en: 'Pack', ar: 'حزمة / يحزم' },
-                    { en: 'Page', ar: 'صفحة' }, { en: 'Paid', ar: 'دفع (ماضي)' }, { en: 'Pain', ar: 'ألم' },
-                    { en: 'Paint', ar: 'يرسم / دهان' }, { en: 'Pair', ar: 'زوج' }, { en: 'Pale', ar: 'شاحب' },
-                    { en: 'Palm', ar: 'كف / نخيل' }, { en: 'Pan', ar: 'مقلاة' }, { en: 'Pane', ar: 'لوح زجاج' },
-                    { en: 'Pant', ar: 'يلهث' }, { en: 'Papa', ar: 'بابا' }, { en: 'Para', ar: 'جزء' },
-                    { en: 'Park', ar: 'حديقة / يركن' }, { en: 'Part', ar: 'جزء' }, { en: 'Pass', ar: 'يمر / يجتاز' },
-                    { en: 'Past', ar: 'ماضي' }, { en: 'Path', ar: 'مسار' }, { en: 'Pause', ar: 'وقفة / يتوقف' },
-                    { en: 'Paw', ar: 'مخلب' }
-                ],
-                'Q': [
-                    { en: 'Queen', ar: 'ملكة' }, { en: 'Quick', ar: 'سريع' }, { en: 'Quiet', ar: 'هادئ' },
-                    { en: 'Quiz', ar: 'اختبار قصير' }, { en: 'Quote', ar: 'يقتبس / اقتباس' }, { en: 'Quack', ar: 'صوت البطة' },
-                    { en: 'Quail', ar: 'سمان' }, { en: 'Quake', ar: 'يهتز / زلزال' }, { en: 'Qualm', ar: 'شك / قلق' },
-                    { en: 'Quant', ar: 'كمية' }, { en: 'Quash', ar: 'يبطل' }, { en: 'Quay', ar: 'رصيف ميناء' },
-                    { en: 'Queer', ar: 'غريب' }, { en: 'Quell', ar: 'يخمد' }, { en: 'Quest', ar: 'بحث' },
-                    { en: 'Queue', ar: 'طابور' }, { en: 'Quill', ar: 'ريشة كتابة' }, { en: 'Quilt', ar: 'لحاف' },
-                    { en: 'Quint', ar: 'خماسي' }, { en: 'Quit', ar: 'يترك / يتوقف' }, { en: 'Quite', ar: 'تماماً' },
-                    { en: 'Quiver', ar: 'يرتجف / جعبة سهام' }, { en: 'Quoin', ar: 'حجر الزاوية' }
-                ],
-                'R': [
-                    { en: 'Rabbit', ar: 'أرنب' }, { en: 'Red', ar: 'أحمر' }, { en: 'Run', ar: 'يجري' },
-                    { en: 'Read', ar: 'يقرأ' }, { en: 'Right', ar: 'صحيح / يمين' }, { en: 'Race', ar: 'سباق / يتسابق' },
-                    { en: 'Rack', ar: 'رف' }, { en: 'Rage', ar: 'غضب' }, { en: 'Raid', ar: 'غارة' },
-                    { en: 'Rail', ar: 'سكة حديد' }, { en: 'Rain', ar: 'مطر' }, { en: 'Raise', ar: 'يرفع' },
-                    { en: 'Rake', ar: 'يجمع' }, { en: 'Ram', ar: 'كبش / يدفع بقوة' }, { en: 'Random', ar: 'عشوائي' },
-                    { en: 'Range', ar: 'مدى / يتراوح' }, { en: 'Rank', ar: 'رتبة' }, { en: 'Rapid', ar: 'سريع' },
-                    { en: 'Rare', ar: 'نادر' }, { en: 'Rat', ar: 'فأر' }, { en: 'Rate', ar: 'سعر / معدل' },
-                    { en: 'Rave', ar: 'يهذو' }, { en: 'Raw', ar: 'خام' }, { en: 'Ray', ar: 'شعاع' },
-                    { en: 'Reach', ar: 'يصل' }
-                ],
-                'S': [
-                    { en: 'Sun', ar: 'شمس' }, { en: 'Star', ar: 'نجمة' }, { en: 'Sit', ar: 'يجلس' },
-                    { en: 'Small', ar: 'صغير' }, { en: 'Sleep', ar: 'ينام' }, { en: 'Sad', ar: 'حزين' },
-                    { en: 'Safe', ar: 'آمن / خزنة' }, { en: 'Said', ar: 'قال (ماضي)' }, { en: 'Sail', ar: 'يبحر / شراع' },
-                    { en: 'Saint', ar: 'قديس' }, { en: 'Sale', ar: 'بيع' }, { en: 'Salt', ar: 'ملح' },
-                    { en: 'Same', ar: 'نفس الـ' }, { en: 'Sand', ar: 'رمل' }, { en: 'Save', ar: 'ينقذ / يوفر' },
-                    { en: 'Saw', ar: 'رأى (ماضي) / منشار' }, { en: 'Say', ar: 'يقول' }, { en: 'Scan', ar: 'يمسح' },
-                    { en: 'Scar', ar: 'ندبة' }, { en: 'Scare', ar: 'يخيف' }, { en: 'Scarf', ar: 'وشاح' },
-                    { en: 'Scene', ar: 'مشهد' }, { en: 'Scent', ar: 'رائحة' }, { en: 'School', ar: 'مدرسة' }
-                ],
-                'T': [
-                    { en: 'Tree', ar: 'شجرة' }, { en: 'Table', ar: 'طاولة' }, { en: 'Talk', ar: 'يتحدث' },
-                    { en: 'Time', ar: 'وقت' }, { en: 'Take', ar: 'يأخذ' }, { en: 'Tail', ar: 'ذيل' },
-                    { en: 'Tale', ar: 'حكاية' }, { en: 'Tall', ar: 'طويل' }, { en: 'Tame', ar: 'يروض / أليف' },
-                    { en: 'Tank', ar: 'خزان / دبابة' }, { en: 'Tap', ar: 'حنفية / ينقر' }, { en: 'Tape', ar: 'شريط / يسجل' },
-                    { en: 'Tar', ar: 'قطران' }, { en: 'Target', ar: 'هدف' }, { en: 'Task', ar: 'مهمة' },
-                    { en: 'Taste', ar: 'يتذوق / طعم' }, { en: 'Tax', ar: 'ضريبة' }, { en: 'Teach', ar: 'يعلم' },
-                    { en: 'Team', ar: 'فريق' }, { en: 'Tear', ar: 'يمزق / دمعة' }, { en: 'Tech', ar: 'تكنولوجيا' },
-                    { en: 'Teen', ar: 'مراهق' }, { en: 'Tell', ar: 'يخبر' }
-                ],
-                'U': [
-                    { en: 'Umbrella', ar: 'مظلة' }, { en: 'Up', ar: 'فوق' }, { en: 'Under', ar: 'تحت' },
-                    { en: 'Use', ar: 'يستخدم' }, { en: 'Ugly', ar: 'قبيح' }, { en: 'Uncle', ar: 'عم / خال' },
-                    { en: 'Uncut', ar: 'غير مقطوع' }, { en: 'Undue', ar: 'غير مبرر' }, { en: 'Undo', ar: 'يتراجع' },
-                    { en: 'Unfit', ar: 'غير لائق' }, { en: 'Unfold', ar: 'يكشف' }, { en: 'Unison', ar: 'انسجام' },
-                    { en: 'Unit', ar: 'وحدة' }, { en: 'Unite', ar: 'يتحد' }, { en: 'Untie', ar: 'يفك' },
-                    { en: 'Until', ar: 'حتى' }, { en: 'Unused', ar: 'غير مستخدم' }, { en: 'Unwise', ar: 'غير حكيم' },
-                    { en: 'Upset', ar: 'منزعج / يقلب' }, { en: 'Urban', ar: 'حضري' }, { en: 'Urge', ar: 'يحث / إلحاح' },
-                    { en: 'Urgent', ar: 'عاجل' }, { en: 'Urn', ar: 'جرة / رماد' }, { en: 'Us', ar: 'نحن (مفعول به)' },
-                    { en: 'Usual', ar: 'معتاد' }
-                ],
-                'V': [
-                    { en: 'Van', ar: 'شاحنة صغيرة' }, { en: 'Vase', ar: 'مزهرية' }, { en: 'Voice', ar: 'صوت' },
-                    { en: 'Very', ar: 'جداً' }, { en: 'Visit', ar: 'يزور / زيارة' }, { en: 'Vain', ar: 'عبثي / مغرور' },
-                    { en: 'Vale', ar: 'وادي' }, { en: 'Valet', ar: 'خادم' }, { en: 'Valid', ar: 'صالح' },
-                    { en: 'Valley', ar: 'وادي' }, { en: 'Value', ar: 'قيمة' }, { en: 'Vane', ar: 'ريشة دوارة' },
-                    { en: 'Vary', ar: 'يختلف' }, { en: 'Vast', ar: 'واسع' }, { en: 'Vault', ar: 'قبو' },
-                    { en: 'Veal', ar: 'لحم عجل' }, { en: 'Veer', ar: 'ينحرف' }, { en: 'Veil', ar: 'حجاب' },
-                    { en: 'Vein', ar: 'وريد' }, { en: 'Veld', ar: 'سهول' }, { en: 'Venom', ar: 'سم' },
-                    { en: 'Vent', ar: 'فتحة تهوية' }, { en: 'Verb', ar: 'فعل' }, { en: 'Verse', ar: 'آية / بيت شعر' },
-                    { en: 'Vest', ar: 'سترة' }
-                ],
-                'W': [
-                    { en: 'Water', ar: 'ماء' }, { en: 'Write', ar: 'يكتب' }, { en: 'Walk', ar: 'يمشي' },
-                    { en: 'Warm', ar: 'دافئ' }, { en: 'Work', ar: 'يعمل / عمل' }, { en: 'Wage', ar: 'أجر' },
-                    { en: 'Wait', ar: 'ينتظر' }, { en: 'Wake', ar: 'يستيقظ' }, { en: 'Wall', ar: 'جدار' },
-                    { en: 'Want', ar: 'يريد' }, { en: 'War', ar: 'حرب' }, { en: 'Ward', ar: 'جناح' },
-                    { en: 'Ware', ar: 'بضاعة' }, { en: 'Warn', ar: 'يحذر' }, { en: 'Wash', ar: 'يغسل' },
-                    { en: 'Waste', ar: 'يهدر / نفايات' }, { en: 'Watch', ar: 'يشاهد / ساعة' }, { en: 'Wave', ar: 'موجة / يلوح' },
-                    { en: 'Wax', ar: 'شمع' }, { en: 'Way', ar: 'طريق' }, { en: 'We', ar: 'نحن' },
-                    { en: 'Weak', ar: 'ضعيف' }
-                ],
-                'X': [
-                    { en: 'X-ray', ar: 'أشعة سينية' }, { en: 'Xylophone', ar: 'إكسيليفون' }, { en: 'Xenon', ar: 'زينون' },
-                    { en: 'Xeric', ar: 'جاف' }, { en: 'Xylograph', ar: 'نقش خشبي' }, { en: 'Xylitol', ar: 'إكسيليتول' },
-                    { en: 'Xylan', ar: 'زيلان' }, { en: 'Xylene', ar: 'زيلين' }, { en: 'Xanthic', ar: 'أصفر' },
-                    { en: 'Xanthin', ar: 'زانثين' }, { en: 'Xanthoma', ar: 'ورم أصفر' }, { en: 'Xebec', ar: 'سفينة شراعية' },
-                    { en: 'Xenia', ar: 'ضيافة' }, { en: 'Xenical', ar: 'زينيكال' }, { en: 'Xenograft', ar: 'طعم أجنبي' },
-                    { en: 'Xeriscape', ar: 'تنسيق طبيعي جاف' }, { en: 'Xeroderma', ar: 'جفاف الجلد' }, { en: 'Xerox', ar: 'ينسخ / آلة تصوير' },
-                    { en: 'Xerophyte', ar: 'نبات جفافي' }, { en: 'Xiphoid', ar: 'خنجري الشكل' }, { en: 'Xylose', ar: 'سكر الخشب' },
-                    { en: 'Xyst', ar: 'رواق' }, { en: 'Xystus', ar: 'ممر مغطى' }
-                ],
-                'Y': [
-                    { en: 'Yellow', ar: 'أصفر' }, { en: 'Yes', ar: 'نعم' }, { en: 'You', ar: 'أنت / أنتم' },
-                    { en: 'Year', ar: 'سنة' }, { en: 'Young', ar: 'شاب' }, { en: 'Yacht', ar: 'يخت' },
-                    { en: 'Yak', ar: 'حيوان الياك' }, { en: 'Yam', ar: 'بطاطا' }, { en: 'Yank', ar: 'يسحب بقوة' },
-                    { en: 'Yap', ar: 'ينبح' }, { en: 'Yard', ar: 'ساحة / ياردة' }, { en: 'Yarn', ar: 'خيط / قصة' },
-                    { en: 'Yelp', ar: 'يصرخ' }, { en: 'Yet', ar: 'بعد / حتى الآن' }, { en: 'Yield', ar: 'ينتج / يستسلم' },
-                    { en: 'Yoga', ar: 'يوغا' }, { en: 'Yogurt', ar: 'زبادي' }, { en: 'Yoke', ar: 'نير' },
-                    { en: 'Your', ar: 'لك / لكم' }, { en: 'Yours', ar: 'ملكك / ملككم' }, { en: 'Youth', ar: 'شباب' },
-                    { en: 'Yawn', ar: 'يتثاءب' }, { en: 'Zeal', ar: 'حماس' }
-                ],
-                'Z': [
-                    { en: 'Zebra', ar: 'حمار وحشي' }, { en: 'Zoo', ar: 'حديقة حيوان' }, { en: 'Zip', ar: 'سحاب / يغلق بسحاب' },
-                    { en: 'Zone', ar: 'منطقة' }, { en: 'Zero', ar: 'صفر' }, { en: 'Zany', ar: 'غريب الأطوار' },
-                    { en: 'Zap', ar: 'يقضي على' }, { en: 'Zenith', ar: 'ذروة' }, { en: 'Zephyr', ar: 'نسيم عليل' },
-                    { en: 'Zepto', ar: 'زبتو (بادئة)' }, { en: 'Zest', ar: 'حماس / قشرة الحمضيات' }, { en: 'Zigzag', ar: 'متعرج' },
-                    { en: 'Zinc', ar: 'زنك' }, { en: 'Zing', ar: 'حيوية' }, { en: 'Zinnia', ar: 'زينية (زهرة)' },
-                    { en: 'Zion', ar: 'صهيون' }, { en: 'Zipper', ar: 'سحاب' }, { en: 'Zircon', ar: 'زركون' },
-                    { en: 'Zodiac', ar: 'برج فلكي' }, { en: 'Zombie', ar: 'زومبي' }, { en: 'Zoom', ar: 'يكبر / يسرع' }
-                ]
-            };
-
-            const commonWordsData = [
-                { en: 'the', ar: 'الـ' }, { en: 'be', ar: 'يكون' }, { en: 'to', ar: 'إلى' }, { en: 'of', ar: 'من' }, { en: 'and', ar: 'و' },
-                { en: 'a', ar: 'أ' }, { en: 'in', ar: 'في' }, { en: 'that', ar: 'ذلك' }, { en: 'have', ar: 'يملك' }, { en: 'I', ar: 'أنا' },
-                { en: 'it', ar: 'هو/هي (لغير العاقل)' }, { en: 'for', ar: 'لأجل' }, { en: 'not', ar: 'لا' }, { en: 'on', ar: 'على' }, { en: 'with', ar: 'مع' },
-                { en: 'he', ar: 'هو' }, { en: 'as', ar: 'كـ' }, { en: 'you', ar: 'أنت/أنتم' }, { en: 'do', ar: 'يفعل' }, { en: 'at', ar: 'في' },
-                { en: 'this', ar: 'هذا' }, { en: 'but', ar: 'لكن' }, { en: 'his', ar: 'ملكه' }, { en: 'by', ar: 'بواسطة' }, { en: 'from', ar: 'من' },
-                { en: 'they', ar: 'هم/هن' }, { en: 'we', ar: 'نحن' }, { en: 'say', ar: 'يقول' }, { en: 'her', ar: 'لها' }, { en: 'she', ar: 'هي' },
-                { en: 'or', ar: 'أو' }, { en: 'an', ar: 'أ (للمفرد)' }, { en: 'will', ar: 'سوف' }, { en: 'my', ar: 'ملكي' }, { en: 'one', ar: 'واحد' },
-                { en: 'all', ar: 'كل' }, { en: 'would', ar: 'كان سـ' }, { en: 'there', ar: 'هناك' }, { en: 'their', ar: 'ملكهم/ملكهن' }, { en: 'what', ar: 'ماذا' },
-                { en: 'so', ar: 'لذا' }, { en: 'up', ar: 'فوق' }, { en: 'out', ar: 'خارج' }, { en: 'if', ar: 'إذا' }, { en: 'get', ar: 'يحصل على' },
-                { en: 'which', ar: 'أي' }, { en: 'go', ar: 'يذهب' }, { en: 'me', ar: 'لي/إياي' }, { en: 'when', ar: 'متى' }, { en: 'make', ar: 'يصنع' },
-                { en: 'can', ar: 'يستطيع' }, { en: 'like', ar: 'يحب/مثل' }, { en: 'time', ar: 'وقت' }, { en: 'no', ar: 'لا' }, { en: 'just', ar: 'فقط' },
-                { en: 'him', ar: 'له/إياه' }, { en: 'know', ar: 'يعرف' }, { en: 'take', ar: 'يأخذ' }, { en: 'person', ar: 'شخص' }, { en: 'into', ar: 'إلى' },
-                { en: 'year', ar: 'سنة' }, { en: 'your', ar: 'لك/لكم' }, { en: 'good', ar: 'جيد' }, { en: 'some', ar: 'بعض' }, { en: 'could', ar: 'كان يستطيع' },
-                { en: 'them', ar: 'لهم/إياهم' }, { en: 'see', ar: 'يرى' }, { en: 'other', ar: 'آخر' }, { en: 'than', ar: 'من' }, { en: 'then', ar: 'ثم' },
-                { en: 'now', ar: 'الآن' }, { en: 'look', ar: 'ينظر' }, { en: 'only', ar: 'فقط' }, { en: 'come', ar: 'يأتي' }, { en: 'its', ar: 'ملكها/ملكه (لغير العاقل)' },
-                { en: 'over', ar: 'فوق/انتهى' }, { en: 'think', ar: 'يعتقد' }, { en: 'also', ar: 'أيضاً' }, { en: 'back', ar: 'خلف' }, { en: 'after', ar: 'بعد' },
-                { en: 'use', ar: 'يستخدم' }, { en: 'two', ar: 'اثنين' }, { en: 'how', ar: 'كيف' }, { en: 'our', ar: 'ملكنا' }, { en: 'work', ar: 'يعمل/عمل' },
-                { en: 'first', ar: 'أول' }, { en: 'well', ar: 'جيداً' }, { en: 'way', ar: 'طريق' }, { en: 'even', ar: 'حتى' }, { en: 'new', ar: 'جديد' },
-                { en: 'want', ar: 'يريد' }, { en: 'because', ar: 'لأن' }, { en: 'any', ar: 'أي' }, { en: 'these', ar: 'هؤلاء' }, { en: 'give', ar: 'يعطي' },
-                { en: 'day', ar: 'يوم' }, { en: 'most', ar: 'معظم' }, { en: 'us', ar: 'نحن (مفعول به)' }, { en: 'man', ar: 'رجل' }, { en: 'find', ar: 'يجد' }
-            ];
-
-            const colorsData = [
-                { en: 'Red', ar: 'أحمر', hex: '#FF0000' },
-                { en: 'Blue', ar: 'أزرق', hex: '#0000FF' },
-                { en: 'Green', ar: 'أخضر', hex: '#008000' },
-                { en: 'Yellow', ar: 'أصفر', hex: '#FFFF00' },
-                { en: 'Orange', ar: 'برتقالي', hex: '#FFA500' },
-                { en: 'Purple', ar: 'أرجواني', hex: '#800080' },
-                { en: 'Pink', ar: 'وردي', hex: '#FFC0CB' },
-                { en: 'Black', ar: 'أسود', hex: '#000000' },
-                { en: 'White', ar: 'أبيض', hex: '#FFFFFF' },
-                { en: 'Brown', ar: 'بني', hex: '#A52A2A' },
-                { en: 'Gray', ar: 'رمادي', hex: '#808080' },
-                { en: 'Silver', ar: 'فضي', hex: '#C0C0C0' },
-                { en: 'Gold', ar: 'ذهبي', hex: '#FFD700' },
-                { en: 'Cyan', ar: 'سماوي', hex: '#00FFFF' },
-                { en: 'Magenta', ar: 'أرجواني فاتح', hex: '#FF00FF' },
-                { en: 'Teal', ar: 'أزرق مخضر', hex: '#008080' },
-                { en: 'Olive', ar: 'زيتوني', hex: '#808000' },
-                { en: 'Maroon', ar: 'كستنائي', hex: '#800000' },
-                { en: 'Navy', ar: 'كحلي', hex: '#000080' },
-                { en: 'Lime', ar: 'ليموني', hex: '#00FF00' }
-            ];
-
-            const cardinalNumbersData = [
-                { num: 1, en: 'One', ar: 'واحد' },
-                { num: 2, en: 'Two', ar: 'اثنان' },
-                { num: 3, en: 'Three', ar: 'ثلاثة' },
-                { num: 4, en: 'Four', ar: 'أربعة' },
-                { num: 5, en: 'Five', ar: 'خمسة' },
-                { num: 6, en: 'Six', ar: 'ستة' },
-                { num: 7, en: 'Seven', ar: 'سبعة' },
-                { num: 8, en: 'Eight', ar: 'ثمانية' },
-                { num: 9, en: 'Nine', ar: 'تسعة' },
-                { num: 10, en: 'Ten', ar: 'عشرة' },
-                { num: 11, en: 'Eleven', ar: 'أحد عشر' },
-                { num: 12, en: 'Twelve', ar: 'اثنا عشر' },
-                { num: 13, en: 'Thirteen', ar: 'ثلاثة عشر' },
-                { num: 14, en: 'Fourteen', ar: 'أربعة عشر' },
-                { num: 15, en: 'Fifteen', ar: 'خمسة عشر' },
-                { num: 16, en: 'Sixteen', ar: 'ستة عشر' },
-                { num: 17, en: 'Seventeen', ar: 'سبعة عشر' },
-                { num: 18, en: 'Eighteen', ar: 'ثمانية عشر' },
-                { num: 19, en: 'Nineteen', ar: 'تسعة عشر' },
-                { num: 20, en: 'Twenty', ar: 'عشرون' },
-                { num: 21, en: 'Twenty-one', ar: 'واحد وعشرون' },
-                { num: 30, en: 'Thirty', ar: 'ثلاثون' },
-                { num: 40, en: 'Forty', ar: 'أربعون' },
-                { num: 50, en: 'Fifty', ar: 'خمسون' },
-                { num: 60, en: 'Sixty', ar: 'ستون' },
-                { num: 70, en: 'Seventy', ar: 'سبعون' },
-                { num: 80, en: 'Eighty', ar: 'ثمانون' },
-                { num: 90, en: 'Ninety', ar: 'تسعون' },
-                { num: 100, en: 'One hundred', ar: 'مائة' },
-                { num: 1000, en: 'One thousand', ar: 'ألف' },
-                { num: 1000000, en: 'One million', ar: 'مليون' }
-            ];
-
-            const ordinalNumbersData = [
-                { num: 1, en: 'First', ar: 'الأول' },
-                { num: 2, en: 'Second', ar: 'الثاني' },
-                { num: 3, en: 'Third', ar: 'الثالث' },
-                { num: 4, en: 'Fourth', ar: 'الرابع' },
-                { num: 5, en: 'Fifth', ar: 'الخامس' },
-                { num: 6, en: 'Sixth', ar: 'السادس' },
-                { num: 7, en: 'Seventh', ar: 'السابع' },
-                { num: 8, en: 'Eighth', ar: 'الثامن' },
-                { num: 9, en: 'Ninth', ar: 'التاسع' },
-                { num: 10, en: 'Tenth', ar: 'العاشر' },
-                { num: 11, en: 'Eleventh', ar: 'الحادي عشر' },
-                { num: 12, en: 'Twelfth', ar: 'الثاني عشر' },
-                { num: 13, en: 'Thirteenth', ar: 'الثالث عشر' },
-                { num: 14, en: 'Fourteenth', ar: 'الرابع عشر' },
-                { num: 15, en: 'Fifteenth', ar: 'الخامس عشر' },
-                { num: 16, en: 'Sixteenth', ar: 'السادس عشر' },
-                { num: 17, en: 'Seventeenth', ar: 'السابع عشر' },
-                { num: 18, en: 'Eighteenth', ar: 'الثامن عشر' },
-                { num: 19, en: 'Nineteenth', ar: 'التاسع عشر' },
-                { num: 20, en: 'Twentieth', ar: 'العشرون' },
-                { num: 21, en: 'Twenty-first', ar: 'الحادي والعشرون' },
-                { num: 22, en: 'Twenty-second', ar: 'الثاني والعشرون' },
-                { num: 30, en: 'Thirtieth', ar: 'الثلاثون' },
-                { num: 40, en: 'Fortieth', ar: 'الأربعون' },
-                { num: 50, en: 'Fiftieth', ar: 'الخمسون' },
-                { num: 100, en: 'Hundredth', ar: 'المائة' },
-                { num: 1000, en: 'Thousandth', ar: 'الألف' }
-            ];
-
-
-            const alphabetContainer = document.getElementById('alphabet-container');
-            const commonWordsTbody = document.getElementById('common-words-tbody');
-            const colorsTbody = document.getElementById('colors-tbody');
-            const cardinalNumbersTbody = document.getElementById('cardinal-numbers-tbody');
-            const ordinalNumbersTbody = document.getElementById('ordinal-numbers-tbody');
-
-
-            // Function to speak text
-            function speakText(text, lang = 'en-US') {
-                const synth = window.speechSynthesis;
-                if (synth.speaking) {
-                    synth.cancel(); // Stop current speech if any
-                }
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = lang; // Set language for pronunciation
-                synth.speak(utterance);
-            }
-
-            // Generic function to populate tables
-            function populateTable(tbodyElement, data, colsPerRow, type = 'word') {
-                tbodyElement.innerHTML = ''; // Clear existing content
-                
-                // For the 'color' type, we actually have 3 columns per data item (en, ar, hex)
-                // So, if colsPerRow is 4, total table columns will be 4 * 3 = 12
-                const actualColsPerDataItem = (type === 'color') ? 3 : 2; 
-                const totalTableColumns = colsPerRow * actualColsPerDataItem;
-
-                // Calculate the number of rows needed
-                const rowsNeeded = Math.ceil(data.length / colsPerRow);
-
-                for (let i = 0; i < rowsNeeded; i++) {
-                    const row = document.createElement('tr');
-                    for (let j = 0; j < colsPerRow; j++) {
-                        const dataIndex = i + (j * rowsNeeded); // Populate column by column
-
-                        if (dataIndex < data.length) {
-                            const item = data[dataIndex];
-                            if (type === 'color') {
-                                const cell1 = document.createElement('td'); // English word
-                                const cell2 = document.createElement('td'); // Arabic translation
-                                const cell3 = document.createElement('td'); // Color box
-
-                                const enSpan = document.createElement('span');
-                                enSpan.classList.add('english-word');
-                                enSpan.textContent = item.en;
-                                enSpan.addEventListener('click', () => speakText(item.en, 'en-US'));
-                                cell1.appendChild(enSpan);
-                                cell2.textContent = item.ar;
-
-                                const colorBox = document.createElement('span');
-                                colorBox.classList.add('color-box');
-                                colorBox.style.backgroundColor = item.hex;
-                                cell3.appendChild(colorBox);
-
-                                row.appendChild(cell1);
-                                row.appendChild(cell2);
-                                row.appendChild(cell3);
-                            } else { // type === 'word' or 'number'
-                                const cell1 = document.createElement('td');
-                                const cell2 = document.createElement('td');
-
-                                if (type === 'number') {
-                                    cell1.textContent = item.num; // Display number
-                                    const enSpan = document.createElement('span');
-                                    enSpan.classList.add('english-word');
-                                    enSpan.textContent = item.en;
-                                    enSpan.addEventListener('click', () => speakText(item.en, 'en-US'));
-                                    cell2.appendChild(enSpan);
-                                } else { // type === 'word'
-                                    const enSpan = document.createElement('span');
-                                    enSpan.classList.add('english-word');
-                                    enSpan.textContent = item.en;
-                                    enSpan.addEventListener('click', () => speakText(item.en, 'en-US'));
-                                    cell1.appendChild(enSpan);
-                                    cell2.textContent = item.ar;
-                                }
-                                row.appendChild(cell1);
-                                row.appendChild(cell2);
-                            }
-                        } else {
-                            // Fill empty cells if data doesn't perfectly fit
-                            if (type === 'color') {
-                                row.appendChild(document.createElement('td'));
-                                row.appendChild(document.createElement('td'));
-                                row.appendChild(document.createElement('td'));
-                            } else {
-                                row.appendChild(document.createElement('td'));
-                                row.appendChild(document.createElement('td'));
-                            }
-                        }
-                    }
-                    tbodyElement.appendChild(row);
-                }
-            }
-
-
-            // Generate alphabet cards dynamically
-            for (const letter in alphabetData) {
-                const words = alphabetData[letter];
-
-                const cardDiv = document.createElement('div');
-                cardDiv.classList.add('alphabet-card');
-
-                const cardHeader = document.createElement('h3');
-                cardHeader.textContent = letter;
-                cardDiv.appendChild(cardHeader);
-
-                const table = document.createElement('table');
-                table.classList.add('alphabet-table');
-                table.innerHTML = `
-                    <thead>
-                        <tr>
+                            <th>العدد</th>
                             <th>الإنجليزية</th>
                             <th>العربية</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><span class="english-word">One</span></td>
+                            <td>واحد</td>
+                            <td>11</td>
+                            <td><span class="english-word">Eleven</span></td>
+                            <td>أحد عشر</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><span class="english-word">Two</span></td>
+                            <td>اثنان</td>
+                            <td>12</td>
+                            <td><span class="english-word">Twelve</span></td>
+                            <td>اثنا عشر</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><span class="english-word">Three</span></td>
+                            <td>ثلاثة</td>
+                            <td>20</td>
+                            <td><span class="english-word">Twenty</span></td>
+                            <td>عشرون</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><span class="english-word">Four</span></td>
+                            <td>أربعة</td>
+                            <td>30</td>
+                            <td><span class="english-word">Thirty</span></td>
+                            <td>ثلاثون</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><span class="english-word">Five</span></td>
+                            <td>خمسة</td>
+                            <td>100</td>
+                            <td><span class="english-word">One hundred</span></td>
+                            <td>مائة</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td><span class="english-word">Ten</span></td>
+                            <td>عشرة</td>
+                            <td>1000</td>
+                            <td><span class="english-word">One thousand</span></td>
+                            <td>ألف</td>
+                        </tr>
                     </tbody>
-                `;
-                const tbody = table.querySelector('tbody');
+                </table>
+            </div>
+            
+            <div class="info-table-container" style="margin-top: 40px;">
+                <h3>الأعداد الترتيبية (Ordinal Numbers)</h3>
+                <table class="info-table">
+                    <thead>
+                        <tr>
+                            <th>الترتيب</th>
+                            <th>الإنجليزية</th>
+                            <th>العربية</th>
+                            <th>الترتيب</th>
+                            <th>الإنجليزية</th>
+                            <th>العربية</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>الأول</td>
+                            <td><span class="english-word">First</span></td>
+                            <td>أول</td>
+                            <td>الحادي عشر</td>
+                            <td><span class="english-word">Eleventh</span></td>
+                            <td>حادي عشر</td>
+                        </tr>
+                        <tr>
+                            <td>الثاني</td>
+                            <td><span class="english-word">Second</span></td>
+                            <td>ثاني</td>
+                            <td>الثاني عشر</td>
+                            <td><span class="english-word">Twelfth</span></td>
+                            <td>ثاني عشر</td>
+                        </tr>
+                        <tr>
+                            <td>الثالث</td>
+                            <td><span class="english-word">Third</span></td>
+                            <td>ثالث</td>
+                            <td>العشرون</td>
+                            <td><span class="english-word">Twentieth</span></td>
+                            <td>عشرون</td>
+                        </tr>
+                        <tr>
+                            <td>الرابع</td>
+                            <td><span class="english-word">Fourth</span></td>
+                            <td>رابع</td>
+                            <td>المائة</td>
+                            <td><span class="english-word">Hundredth</span></td>
+                            <td>مائة</td>
+                        </tr>
+                        <tr>
+                            <td>الخامس</td>
+                            <td><span class="english-word">Fifth</span></td>
+                            <td>خامس</td>
+                            <td>الألف</td>
+                            <td><span class="english-word">Thousandth</span></td>
+                            <td>ألف</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-                words.forEach(word => {
-                    const row = document.createElement('tr');
-                    const enCell = document.createElement('td');
-                    const arCell = document.createElement('td');
+        <section id="colors-section">
+            <h2>الألوان في اللغة الإنجليزية</h2>
+            <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
+            
+            <div class="info-table-container">
+                <table class="info-table">
+                    <thead>
+                        <tr>
+                            <th>الإنجليزية</th>
+                            <th>العربية</th>
+                            <th>اللون</th>
+                            <th>الإنجليزية</th>
+                            <th>العربية</th>
+                            <th>اللون</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="english-word">Red</span></td>
+                            <td>أحمر</td>
+                            <td><span class="color-box" style="background-color: #FF0000;"></span></td>
+                            <td><span class="english-word">Blue</span></td>
+                            <td>أزرق</td>
+                            <td><span class="color-box" style="background-color: #0000FF;"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="english-word">Green</span></td>
+                            <td>أخضر</td>
+                            <td><span class="color-box" style="background-color: #008000;"></span></td>
+                            <td><span class="english-word">Yellow</span></td>
+                            <td>أصفر</td>
+                            <td><span class="color-box" style="background-color: #FFFF00;"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="english-word">Orange</span></td>
+                            <td>برتقالي</td>
+                            <td><span class="color-box" style="background-color: #FFA500;"></span></td>
+                            <td><span class="english-word">Purple</span></td>
+                            <td>أرجواني</td>
+                            <td><span class="color-box" style="background-color: #800080;"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="english-word">Pink</span></td>
+                            <td>وردي</td>
+                            <td><span class="color-box" style="background-color: #FFC0CB;"></span></td>
+                            <td><span class="english-word">Brown</span></td>
+                            <td>بني</td>
+                            <td><span class="color-box" style="background-color: #A52A2A;"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="english-word">Black</span></td>
+                            <td>أسود</td>
+                            <td><span class="color-box" style="background-color: #000000;"></span></td>
+                            <td><span class="english-word">White</span></td>
+                            <td>أبيض</td>
+                            <td><span class="color-box" style="background-color: #FFFFFF; border: 1px solid #ccc;"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="english-word">Gray</span></td>
+                            <td>رمادي</td>
+                            <td><span class="color-box" style="background-color: #808080;"></span></td>
+                            <td><span class="english-word">Gold</span></td>
+                            <td>ذهبي</td>
+                            <td><span class="color-box" style="background-color: #FFD700;"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-                    const enSpan = document.createElement('span');
-                    enSpan.classList.add('english-word');
-                    enSpan.textContent = word.en;
-                    enSpan.addEventListener('click', () => speakText(word.en, 'en-US')); // Speak English word
+        <section id="grammar-section">
+            <h2>شرح القواعد الأساسية في اللغة الإنجليزية</h2>
+            
+            <div class="grammar-topic">
+                <h3>1. الأفعال (Verbs)</h3>
+                <div class="grammar-text">
+                    <p>الفعل هو كلمة تُعبر عن حدث أو حالة أو وجود، وهو العنصر الأساسي في أي جملة إنجليزية. تنقسم الأفعال إلى نوعين رئيسيين: الأفعال الأساسية (Main Verbs) والأفعال المساعدة (Auxiliary Verbs).</p>
+                    
+                    <h4>أ. الأفعال الأساسية (Main Verbs)</h4>
+                    <p>هي الأفعال التي تحمل المعنى الرئيسي للجملة وتصف الحدث أو الحالة. يمكن أن تكون هذه الأفعال منتظمة (Regular) أو غير منتظمة (Irregular).</p>
+                    <ul>
+                        <li><strong>أمثلة:</strong>
+                            <ul>
+                                <li>He <span class="english-word">eats</span> an apple every day. (يأكل تفاحة كل يوم.)</li>
+                                <li>She <span class="english-word">works</span> in a big office. (هي تعمل في مكتب كبير.)</li>
+                                <li>They <span class="english-word">play</span> football on weekends. (هم يلعبون كرة القدم في عطلات نهاية الأسبوع.)</li>
+                                <li>I <span class="english-word">read</span> a book last night. (قرأت كتابًا الليلة الماضية.)</li>
+                                <li>We <span class="english-word">travel</span> to new countries. (نسافر إلى بلدان جديدة.)</li>
+                            </ul>
+                        </li>
+                    </ul>
 
-                    enCell.appendChild(enSpan);
-                    arCell.textContent = word.ar;
+                    <h4>ب. الأفعال المساعدة (Auxiliary Verbs)</h4>
+                    <p>هي أفعال تُستخدم مع الأفعال الرئيسية لتكوين الأزمنة المختلفة، السؤال، النفي، والتعبير عن الإمكانية، الوجوب، أو القدرة. لا تحمل معنى رئيسيًا بمفردها.</p>
+                    <ul>
+                        <li><strong>Be (يكون):</strong> يُستخدم لتكوين الأزمنة المستمرة والمبني للمجهول.
+                            <ul>
+                                <li>أشكاله: <span class="english-word">am</span>, <span class="english-word">is</span>, <span class="english-word">are</span> (في المضارع), <span class="english-word">was</span>, <span class="english-word">were</span> (في الماضي).</li>
+                                <li><strong>أمثلة:</strong>
+                                    <ul>
+                                        <li>I <span class="english-word">am</span> learning English. (أنا أتعلم الإنجليزية.)</li>
+                                        <li>She <span class="english-word">is</span> singing a beautiful song. (هي تغني أغنية جميلة.)</li>
+                                        <li>They <span class="english-word">are</span> playing in the park. (هم يلعبون في الحديقة.)</li>
+                                        <li>He <span class="english-word">was</span> studying all night. (كان يدرس طوال الليل.)</li>
+                                        <li>We <span class="english-word">were</span> watching a movie. (كنا نشاهد فيلمًا.)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>Do (يفعل):</strong> يُستخدم في صياغة النفي والسؤال في الأزمنة البسيطة وللتأكيد.
+                            <ul>
+                                <li>أشكاله: <span class="english-word">do</span>, <span class="english-word">does</span> (في المضارع), <span class="english-word">did</span> (في الماضي).</li>
+                                <li><strong>أمثلة:</strong>
+                                    <ul>
+                                        <li><span class="english-word">Do</span> you like coffee? (هل تحب القهوة؟)</li>
+                                        <li>She <span class="english-word">does</span> not speak French. (هي لا تتحدث الفرنسية.)</li>
+                                        <li>They <span class="english-word">did</span> not go to the party. (هم لم يذهبوا إلى الحفلة.)</li>
+                                        <li>I <span class="english-word">do</span> believe in you. (أنا أؤمن بك حقًا.)</li>
+                                        <li>What <span class="english-word">did</span> he say? (ماذا قال؟)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>Have (يملك):</strong> يُستخدم لتكوين الأزمنة التامة.
+                            <ul>
+                                <li>أشكاله: <span class="english-word">have</span>, <span class="english-word">has</span> (في المضارع), <span class="english-word">had</span> (في الماضي).</li>
+                                <li><strong>أمثلة:</strong>
+                                    <ul>
+                                        <li>I <span class="english-word">have</span> finished my homework. (لقد أنهيت واجبي.)</li>
+                                        <li>He <span class="english-word">has</span> lived here for five years. (لقد عاش هنا لخمس سنوات.)</li>
+                                        <li>They <span class="english-word">had</span> already left when I arrived. (كانوا قد غادروا بالفعل عندما وصلت.)</li>
+                                        <li>We <span class="english-word">have</span> seen that movie before. (لقد رأينا هذا الفيلم من قبل.)</li>
+                                        <li>She <span class="english-word">has</span> visited many countries. (لقد زارت العديد من البلدان.)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="grammar-topic">
+                <h3>2. الضمائر (Pronouns)</h3>
+                <div class="grammar-text">
+                    <p>الضمائر هي كلمات تحل محل الأسماء لتجنب تكرارها وجعل الجمل أكثر سلاسة. تُقسم إلى عدة أنواع:</p>
+                    
+                    <h4>أ. ضمائر الفاعل (Subject Pronouns)</h4>
+                    <p>تُستخدم كفاعل للفعل في الجملة، أي من يقوم بالفعل.</p>
+                    <ul>
+                        <li><span class="english-word">I</span> (أنا)</li>
+                        <li><span class="english-word">You</span> (أنت / أنتم)</li>
+                        <li><span class="english-word">He</span> (هو - للمذكر العاقل)</li>
+                        <li><span class="english-word">She</span> (هي - للمؤنث العاقل)</li>
+                        <li><span class="english-word">It</span> (هو / هي - لغير العاقل والمفرد)</li>
+                        <li><span class="english-word">We</span> (نحن)</li>
+                        <li><span class="english-word">They</span> (هم / هن - للجمع عاقل وغير عاقل)</li>
+                    </ul>
+                    <ul>
+                        <li><strong>أمثلة:</strong>
+                            <ul>
+                                <li><span class="english-word">I</span> am a student. (أنا طالب.)</li>
+                                <li><span class="english-word">She</span> loves to read books. (هي تحب قراءة الكتب.)</li>
+                                <li><span class="english-word">They</span> went to the cinema yesterday. (هم ذهبوا إلى السينما أمس.)</li>
+                                <li><span class="english-word">It</span> is raining outside. (إنها تمطر في الخارج.)</li>
+                                <li><span class="english-word">We</span> are going to the beach. (نحن ذاهبون إلى الشاطئ.)</li>
+                            </ul>
+                        </li>
+                    </ul>
 
-                    row.appendChild(enCell);
-                    row.appendChild(arCell);
-                    tbody.appendChild(row);
-                });
+                    <h4>ب. ضمائر المفعول به (Object Pronouns)</h4>
+                    <p>تُستخدم كـمفعول به للفعل أو بعد حروف الجر، أي من يقع عليه الفعل.</p>
+                    <ul>
+                        <li><span class="english-word">Me</span> (لي / إياي)</li>
+                        <li><span class="english-word">You</span> (لك / إياك)</li>
+                        <li><span class="english-word">Him</span> (له / إياه)</li>
+                        <li><span class="english-word">Her</span> (لها / إياها)</li>
+                        <li><span class="english-word">It</span> (له / لها - لغير العاقل)</li>
+                        <li><span class="english-word">Us</span> (لنا / إيانا)</li>
+                        <li><span class="english-word">Them</span> (لهم / إياهم)</li>
+                    </ul>
+                    <ul>
+                        <li><strong>أمثلة:</strong>
+                            <ul>
+                                <li>He saw <span class="english-word">me</span> at the store. (رآني في المتجر.)</li>
+                                <li>I will call <span class="english-word">you</span> later. (سأتصل بك لاحقًا.)</li>
+                                <li>She gave the book to <span class="english-word">him</span>. (هي أعطت الكتاب له.)</li>
+                                <li>Please help <span class="english-word">her</span> with the bags. (من فضلك ساعدها في الحقائب.)</li>
+                                <li>The dog chased <span class="english-word">it</span>. (الكلب طاردها.)</li>
+                            </ul>
+                        </li>
+                    </ul>
 
-                cardDiv.appendChild(table);
-                alphabetContainer.appendChild(cardDiv);
-            }
+                    <h4>ج. صفات الملكية (Possessive Adjectives)</h4>
+                    <p>تُستخدم لوصف اسم وتُشير إلى الملكية. تأتي دائمًا قبل الاسم الذي تصفه.</p>
+                    <ul>
+                        <li><span class="english-word">My</span> (لي / خاصتي)</li>
+                        <li><span class="english-word">Your</span> (لك / خاصتك)</li>
+                        <li><span class="english-word">His</span> (له / خاصته)</li>
+                        <li><span class="english-word">Her</span> (لها / خاصتها)</li>
+                        <li><span class="english-word">Its</span> (له / لها - لغير العاقل)</li>
+                        <li><span class="english-word">Our</span> (لنا / خاصتنا)</li>
+                        <li><span class="english-word">Their</span> (لهم / خاصتهم)</li>
+                    </ul>
+                    <ul>
+                        <li><strong>أمثلة:</strong>
+                            <ul>
+                                <li>This is <span class="english-word">my</span> car. (هذه سيارتي.)</li>
+                                <li>Is that <span class="english-word">your</span> phone? (هل هذا هاتفك؟)</li>
+                                <li>He lost <span class="english-word">his</span> keys. (لقد فقد مفاتيحه.)</li>
+                                <li>She loves <span class="english-word">her</span> new dress. (هي تحب فستانها الجديد.)</li>
+                                <li>The cat is playing with <span class="english-word">its</span> toy. (القط يلعب بلعبته.)</li>
+                            </ul>
+                        </li>
+                    </ul>
 
-            // Populate common words table (5 columns)
-            populateTable(commonWordsTbody, commonWordsData, 5, 'word');
+                    <h4>د. ضمائر الملكية (Possessive Pronouns)</h4>
+                    <p>تحل محل صفة الملكية والاسم الذي تصفه لتجنب التكرار. لا تأتي قبل اسم.</p>
+                    <ul>
+                        <li><span class="english-word">Mine</span> (ملكي)</li>
+                        <li><span class="english-word">Yours</span> (ملكك / ملككم)</li>
+                        <li><span class="english-word">His</span> (ملكه)</li>
+                        <li><span class="english-word">Hers</span> (ملكها)</li>
+                        <li><span class="english-word">Its</span> (ملكه / ملكها - لغير العاقل)</li>
+                        <li><span class="english-word">Ours</span> (ملكنا)</li>
+                        <li><span class="english-word">Theirs</span> (ملكهم)</li>
+                    </ul>
+                    <ul>
+                        <li><strong>أمثلة:</strong>
+                            <ul>
+                                <li>This book is <span class="english-word">mine</span>. (هذا الكتاب ملكي.)</li>
+                                <li>That car is <span class="english-word">yours</span>. (تلك السيارة ملكك.)</li>
+                                <li>The blue umbrella is <span class="english-word">his</span>. (المظلة الزرقاء ملكه.)</li>
+                                <li>The idea was <span class="english-word">hers</span>. (الفكرة كانت ملكها.)</li>
+                                <li>The responsibility is <span class="english-word">ours</span>. (المسؤولية ملكنا.)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-            // Populate colors table in 4 columns
-            populateTable(colorsTbody, colorsData, 4, 'color');
+            <div class="grammar-topic">
+                <h3>3. الصفات (Adjectives)</h3>
+                <div class="grammar-text">
+                    <p>الصفات هي كلمات تصف الأسماء أو الضمائر، وتُعطي معلومات إضافية عنها مثل الحجم، اللون، الشكل، الكمية، أو الجودة. تأتي الصفات عادةً قبل الاسم الذي تصفه أو بعد أفعال الربط (مثل <span class="english-word">be</span>, <span class="english-word">feel</span>, <span class="english-word">seem</span>).</p>
+                    <ul>
+                        <li><strong>أمثلة:</strong>
+                            <ul>
+                                <li>She has a <span class="english-word">beautiful</span> dress. (لديها فستان جميل.)</li>
+                                <li>He is a <span class="english-word">tall</span> man. (هو رجل طويل.)</li>
+                                <li>The weather is <span class="english-word">cold</span> today. (الطقس بارد اليوم.)</li>
+                                <li>I saw a <span class="english-word">red</span> car. (رأيت سيارة حمراء.)</li>
+                                <li>This is an <span class="english-word">interesting</span> story. (هذه قصة مثيرة للاهتمام.)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
+       <section id="tenses-section">
+    <h2>الأزمنة في اللغة الإنجليزية (Tenses)</h2>
+    <p class="instruction">اضغط على أي عنوان زمن أو كلمة إنجليزية لسماع نطقها.</p>
 
-            // Populate cardinal numbers table (5 columns)
-            populateTable(cardinalNumbersTbody, cardinalNumbersData, 5, 'number');
+    <div class="grammar-topic">
+        <h3>1. زمن المضارع البسيط (Present Simple)</h3>
+        <div class="grammar-text">
+            <p>يُستخدم زمن المضارع البسيط للتعبير عن الحقائق العامة، العادات والروتين اليومي، والجداول الزمنية الثابتة. يُعد من أبسط الأزمنة وأكثرها شيوعًا.</p>
+            
+            <h4>أ. الاستخدامات:</h4>
+            <ul>
+                <li><strong>الحقائق العامة والحقائق العلمية:</strong> أشياء صحيحة دائمًا.
+                    <ul>
+                        <li>The sun <span class="english-word">rises</span> in the east. (الشمس تشرق من الشرق.)</li>
+                        <li>Water <span class="english-word">boils</span> at 100 degrees Celsius. (الماء يغلي عند 100 درجة مئوية.)</li>
+                    </ul>
+                </li>
+                <li><strong>العادات والروتين اليومي:</strong> أفعال تتكرر بانتظام.
+                    <ul>
+                        <li>I <span class="english-word">drink</span> coffee every morning. (أنا أشرب القهوة كل صباح.)</li>
+                        <li>She <span class="english-word">goes</span> to school by bus. (هي تذهب إلى المدرسة بالحافلة.)</li>
+                    </ul>
+                </li>
+                <li><strong>الجداول الزمنية الثابتة:</strong> مثل مواعيد القطارات أو الحصص.
+                    <ul>
+                        <li>The train <span class="english-word">leaves</span> at 7 PM. (القطار يغادر في الساعة 7 مساءً.)</li>
+                        <li>The movie <span class="english-word">starts</span> at 9 o'clock. (الفيلم يبدأ في الساعة 9.)</li>
+                    </ul>
+                </li>
+                <li><strong>وصف حالة ثابتة أو مشاعر دائمة:</strong>
+                    <ul>
+                        <li>He <span class="english-word">lives</span> in Cairo. (هو يعيش في القاهرة.)</li>
+                        <li>She <span class="english-word">loves</span> chocolate. (هي تحب الشوكولاتة.)</li>
+                    </ul>
+                </li>
+            </ul>
 
-            // Populate ordinal numbers table (5 columns)
-            populateTable(ordinalNumbersTbody, ordinalNumbersData, 5, 'number');
+            <h4>ب. الكلمات الدالة (Keywords):</h4>
+            <ul>
+                <li><span class="english-word">Always</span> (دائماً)</li>
+                <li><span class="english-word">Usually</span> (عادةً)</li>
+                <li><span class="english-word">Often</span> (غالباً)</li>
+                <li><span class="english-word">Sometimes</span> (أحياناً)</li>
+                <li><span class="english-word">Seldom</span> (نادراً)</li>
+                <li><span class="english-word">Never</span> (أبداً)</li>
+                <li><span class="english-word">Every day/week/year</span> (كل يوم/أسبوع/سنة)</li>
+                <li><span class="english-word">On Mondays/weekends</span> (في أيام الاثنين/عطلات نهاية الأسبوع)</li>
+            </ul>
 
+            <h4>ج. التكوين (Formation):</h4>
+            <ul>
+                <li><strong>الفاعل (I, You, We, They) + الفعل في صورته الأساسية (Base Form):</strong>
+                    <ul>
+                        <li>I <span class="english-word">play</span> football.</li>
+                        <li>We <span class="english-word">study</span> English.</li>
+                    </ul>
+                </li>
+                <li><strong>الفاعل (He, She, It) + الفعل + s/es/ies:</strong>
+                    <ul>
+                        <li>He <span class="english-word">plays</span> football.</li>
+                        <li>She <span class="english-word">studies</span> English.</li>
+                    </ul>
+                </li>
+            </ul>
 
-            // Add click event listeners for grammar headings and speakable words
-            document.querySelectorAll('.speakable-heading, .speakable-word').forEach(element => {
-                element.addEventListener('click', function() {
-                    const textToSpeak = this.textContent;
-                    if (this.classList.contains('speakable-heading')) {
-                        const match = textToSpeak.match(/\((.*?)\)/);
-                        if (match && match[1]) {
-                            speakText(match[1], 'en-US'); // Speak English part of heading
-                        } else {
-                            speakText(textToSpeak, 'ar-SA'); // Default to Arabic if English part not found
-                        }
-                    } else if (this.classList.contains('speakable-word')) {
-                        speakText(textToSpeak, 'en-US'); // Always speak .speakable-word in English
-                    }
-                });
-            });
+            <h4>د. أمثلة (10 Examples):</h4>
+            <ol>
+                <li>I <span class="english-word">wake up</span> at 7 AM every day. (أستيقظ في السابعة صباحاً كل يوم.)</li>
+                <li>She <span class="english-word">reads</span> a book before bed. (هي تقرأ كتاباً قبل النوم.)</li>
+                <li>They <span class="english-word">work</span> in a big company. (هم يعملون في شركة كبيرة.)</li>
+                <li>He <span class="english-word">drinks</span> tea in the morning. (هو يشرب الشاي في الصباح.)</li>
+                <li>We <span class="english-word">go</span> to the gym twice a week. (نحن نذهب إلى النادي مرتين في الأسبوع.)</li>
+                <li>The store <span class="english-word">opens</span> at 9 AM. (المتجر يفتح في التاسعة صباحاً.)</li>
+                <li>Cats <span class="english-word">love</span> milk. (القطط تحب الحليب.)</li>
+                <li>It <span class="english-word">rains</span> a lot in winter. (تمطر كثيراً في الشتاء.)</li>
+                <li>You always <span class="english-word">help</span> me. (أنت دائماً تساعدني.)</li>
+                <li>My parents <span class="english-word">live</span> in a small town. (والداي يعيشان في بلدة صغيرة.)</li>
+            </ol>
 
-            // Speak entire grammar topic content when clicking on a grammar-topic div (excluding nested speakable elements)
-            document.querySelectorAll('.grammar-topic').forEach(topicDiv => {
-                topicDiv.addEventListener('click', function(event) {
-                    // Prevent speaking the whole topic if a specific speakable element inside was clicked
-                    if (event.target.classList.contains('speakable-heading') || event.target.classList.contains('speakable-word')) {
-                        return;
-                    }
+            <h4>هـ. السؤال والنفي (Questions and Negation):</h4>
+            <ul>
+                <li><strong>للسؤال:</strong> نستخدم <span class="english-word">Do</span> أو <span class="english-word">Does</span> في بداية الجملة.
+                    <ul>
+                        <li><span class="english-word">Do</span> I/you/we/they + الفعل في صورته الأساسية ...?
+                            <ul>
+                                <li><span class="english-word">Do</span> you like pizza? (هل تحب البيتزا؟)</li>
+                                <li><span class="english-word">Do</span> they play tennis? (هل يلعبون التنس؟)</li>
+                            </ul>
+                        </li>
+                        <li><span class="english-word">Does</span> he/she/it + الفعل في صورته الأساسية ...?
+                            <ul>
+                                <li><span class="english-word">Does</span> she speak Spanish? (هل تتحدث الإسبانية؟)</li>
+                                <li><span class="english-word">Does</span> it work? (هل يعمل؟)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>للنفي:</strong> نستخدم <span class="english-word">don't</span> (<span class="english-word">do not</span>) أو <span class="english-word">doesn't</span> (<span class="english-word">does not</span>) قبل الفعل.
+                    <ul>
+                        <li>I/You/We/They <span class="english-word">don't</span> + الفعل في صورته الأساسية.
+                            <ul>
+                                <li>I <span class="english-word">don't</span> understand. (أنا لا أفهم.)</li>
+                                <li>They <span class="english-word">don't</span> live here. (هم لا يعيشون هنا.)</li>
+                            </ul>
+                        </li>
+                        <li>He/She/It <span class="english-word">doesn't</span> + الفعل في صورته الأساسية.
+                            <ul>
+                                <li>She <span class="english-word">doesn't</span> like coffee. (هي لا تحب القهوة.)</li>
+                                <li>He <span class="english-word">doesn't</span> watch TV. (هو لا يشاهد التلفاز.)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-                    const paragraphs = this.querySelectorAll('p:not(.grammar-topic p .english-word), li:not(.grammar-topic li .english-word)');
-                    let fullText = '';
-                    paragraphs.forEach(p => {
-                        // Extract only Arabic text for speaking the full section, by removing English words in spans
-                        let text = p.textContent;
-                        // Regex to remove content within span.speakable-word tags
-                        text = text.replace(/<span class="speakable-word"[^>]*>.*?<\/span>/g, '');
-                        // Remove English words in parentheses that are not wrapped in speakable-word spans (for headings logic)
-                        text = text.replace(/\((.*?)\)/g, '').trim();
+    <div class="grammar-topic">
+        <h3>2. زمن المضارع المستمر (Present Continuous)</h3>
+        <div class="grammar-text">
+            <p>يُستخدم زمن المضارع المستمر للتعبير عن أفعال تحدث الآن في لحظة الكلام، أو في فترة زمنية مؤقتة حول الوقت الحاضر، أو لترتيبات مستقبلية مؤكدة.</p>
+            
+            <h4>أ. الاستخدامات:</h4>
+            <ul>
+                <li><strong>أفعال تحدث الآن:</strong> النشاطات التي تجري في هذه اللحظة.
+                    <ul>
+                        <li>I <span class="english-word">am writing</span> an email right now. (أنا أكتب بريداً إلكترونياً الآن.)</li>
+                        <li>She <span class="english-word">is cooking</span> dinner. (هي تطهو العشاء.)</li>
+                    </ul>
+                </li>
+                <li><strong>أفعال مؤقتة:</strong> نشاطات تحدث في فترة مؤقتة وليست دائمة.
+                    <ul>
+                        <li>He <span class="english-word">is studying</span> for his exams this week. (هو يدرس لامتحاناته هذا الأسبوع.)</li>
+                        <li>They <span class="english-word">are living</span> in a rented apartment. (هم يعيشون في شقة مستأجرة.)</li>
+                    </ul>
+                </li>
+                <li><strong>ترتيبات مستقبلية مؤكدة:</strong> أحداث مخططة ومؤكدة في المستقبل القريب.
+                    <ul>
+                        <li>We <span class="english-word">are meeting</span> Sarah tomorrow. (سنقابل سارة غداً.)</li>
+                        <li>The bus <span class="english-word">is arriving</span> in ten minutes. (الحافلة ستصل خلال عشر دقائق.)</li>
+                    </ul>
+                </li>
+                <li><strong>التعبير عن الانزعاج من عادة متكررة (مع Always):</strong>
+                    <ul>
+                        <li>He <span class="english-word">is always complaining</span>. (هو دائم الشكوى.)</li>
+                    </ul>
+                </li>
+            </ul>
 
-                        if (text) {
-                            fullText += text + ' ';
-                        }
-                    });
-                    if (fullText.trim()) {
-                        speakText(fullText.trim(), 'ar-SA'); // Speak the whole Arabic text
-                    }
-                });
-            });
-        });
-    </script>
-   <html lang="ar" dir="rtl">
-   <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>الأزمنة في اللغة الإنجليزية والأسئلة التدريبية</title>
-   <style>
-   :root {
-   --primary-color: #6a0572;
-   --secondary-color: #ff6f61;
-   --text-color: #333;
-   --bg-color: #fce4ec;
-   --card-bg: #ffffff;
-   --border-color: #e0e0e0;
-   --shadow-color: rgba(0, 0, 0, 0.15);
-   --accent-color-1: #4CAF50;
-   --accent-color-2: #2196F3;
-   --accent-color-3: #FFC107;
-   --accent-color-4: #9C27B0;
-   }
-   
-   body {
-   font-family: 'Cairo', sans-serif;
-   margin: 0;
-   padding: 0;
-   background-color: var(--bg-color);
-   color: var(--text-color);
-   line-height: 1.8;
-   direction: rtl;
-   text-align: right;
-   scroll-behavior: smooth;
-   }
-   
-   header {
-   background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-   color: white;
-   padding: 2em 0;
-   text-align: center;
-   box-shadow: 0 4px 10px var(--shadow-color);
-   }
-   
-   main {
-   padding: 30px 20px;
-   max-width: 1300px;
-   margin: 30px auto;
-   background-color: var(--card-bg);
-   border-radius: 12px;
-   box-shadow: 0 0 20px var(--shadow-color);
-   }
-   
-   section {
-   margin-bottom: 50px;
-   padding-bottom: 30px;
-   border-bottom: 1px solid var(--border-color);
-   }
-   
-   h2 {
-   color: var(--primary-color);
-   text-align: center;
-   margin-bottom: 40px;
-   font-size: 2.5em;
-   border-bottom: 3px solid var(--secondary-color);
-   display: inline-block;
-   padding-bottom: 10px;
-   position: relative;
-   left: 50%;
-   transform: translateX(-50%);
-   }
-   
-   h3 {
-   color: var(--text-color);
-   font-size: 1.8em;
-   margin-top: 30px;
-   margin-bottom: 20px;
-   padding-bottom: 5px;
-   border-bottom: 1px dashed var(--border-color);
-   }
-   
-   .grammar-topic {
-   background-color: var(--card-bg);
-   border: 1px solid var(--border-color);
-   border-radius: 10px;
-   padding: 30px;
-   margin-bottom: 30px;
-   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-   transition: box-shadow 0.3s ease-in-out;
-   }
-   
-   .grammar-topic:hover {
-   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-   }
-   
-   .grammar-topic h3.speakable-heading {
-   cursor: pointer;
-   color: var(--primary-color);
-   font-size: 2em;
-   margin-top: 0;
-   border-bottom: 2px dashed var(--secondary-color);
-   padding-bottom: 12px;
-   transition: color 0.2s ease-in-out;
-   }
-   
-   .grammar-topic h3.speakable-heading:hover {
-   color: var(--secondary-color);
-   }
-   
-   .grammar-text {
-   margin-bottom: 20px;
-   font-size: 1.1em;
-   }
-   
-   .grammar-topic ul {
-   list-style: none;
-   padding-right: 0;
-   margin-top: 15px;
-   }
-   
-   .grammar-topic ul li {
-   position: relative;
-   padding-right: 30px;
-   margin-bottom: 12px;
-   font-size: 1.05em;
-   }
-   
-   .grammar-topic ul li::before {
-   content: '🌟';
-   color: var(--secondary-color);
-   font-weight: bold;
-   position: absolute;
-   right: 0;
-   font-size: 1.2em;
-   }
-   
-   .speakable-word {
-   cursor: pointer;
-   color: var(--primary-color);
-   font-weight: bold;
-   transition: color 0.2s ease-in-out;
-   }
-   
-   .speakable-word:hover {
-   color: var(--secondary-color);
-   text-decoration: underline;
-   }
-   
-   .exercises-section {
-   margin-top: 40px;
-   padding-top: 20px;
-   border-top: 2px dashed #ccc;
-   }
-   
-   .question-group {
-   background-color: #f9f9f9;
-   padding: 20px;
-   border-radius: 8px;
-   margin-bottom: 30px;
-   border: 1px solid #ddd;
-   }
-   
-   .question-group ol {
-   list-style-type: decimal;
-   padding-right: 20px;
-   }
-   
-   .question-group li {
-   margin-bottom: 15px;
-   padding: 5px 0;
-   }
-   
-   .question-group label {
-   display: block;
-   margin-bottom: 5px;
-   font-weight: bold;
-   }
-   
-   .question-group .options span {
-   margin-left: 15px;
-   display: inline-block;
-   }
-   
-   .correct-answer {
-   color: #4CAF50;
-   font-weight: bold;
-   margin-top: 5px;
-   display: block;
-   }
-   
-   footer {
-   text-align: center;
-   padding: 25px;
-   background-image: linear-gradient(to left, var(--primary-color), var(--secondary-color));
-   color: white;
-   margin-top: 50px;
-   border-radius: 0 0 12px 12px;
-   box-shadow: 0 -4px 10px var(--shadow-color);
-   font-size: 1.1em;
-   }
-   
-   @media (max-width: 768px) {
-   h2 {
-   font-size: 2.2em;
-   }
-   h3 {
-   font-size: 1.6em;
-   }
-   }
-   </style>
-   </head>
-   <body>
-   <header>
-   <h1>الأزمنة في اللغة الإنجليزية والأسئلة التدريبية</h1>
-   </header>
-   
-   <main>
-   <section id="tenses-section">
-   <h2>الأزمنة في اللغة الإنجليزية (Tenses) والكلمات الدالة عليها</h2>
-   <p class="instruction">اضغط على أي عنوان زمن أو كلمة إنجليزية لسماع نطقها.</p>
-   
-   <!-- Present Simple -->
-   <div class="grammar-topic">
-   <h3 class="speakable-heading">1. زمن المضارع البسيط (Present Simple)</h3>
-   <p class="grammar-text">يُستخدم للتعبير عن الحقائق العامة، العادات، والجداول الزمنية.</p>
-   <ul>
-   <li>**الاستخدامات:**
-   <ul>
-   <li>الحقائق العامة: The sun <span class="speakable-word">rises</span> in the east. (الشمس تشرق من الشرق.)</li>
-   <li>العادات والروتين: I <span class="speakable-word">drink</span> coffee every morning. (أشرب القهوة كل صباح.)</li>
-   </ul>
-   </li>
-   <li>**الكلمات الدالة:** <span class="speakable-word">always</span>, <span class="speakable-word">usually</span>, <span class="speakable-word">often</span>, <span class="speakable-word">sometimes</span>, <span class="speakable-word">rarely</span>, <span class="speakable-word">never</span>, <span class="speakable-word">every day</span>/<span class="speakable-word">week</span>/<span class="speakable-word">month</span>/<span class="speakable-word">year</span>, <span class="speakable-word">on Mondays</span>, <span class="speakable-word">at weekends</span>.</li>
-   <li>**أمثلة وجمل (10 أمثلة):**
-   <ul>
-   <li>She <span class="speakable-word">works</span> in a hospital. (هي تعمل في مستشفى.)</li>
-   <li>We <span class="speakable-word">don't eat</span> meat. (نحن لا نأكل اللحم.)</li>
-   <li><span class="speakable-word">Does</span> he <span class="speakable-word">play</span> tennis? (هل يلعب التنس؟)</li>
-   <li>They <span class="speakable-word">live</span> in New York. (هم يعيشون في نيويورك.)</li>
-   <li>The train <span class="speakable-word">leaves</span> at 7 AM. (القطار يغادر في الساعة 7 صباحًا.)</li>
-   </ul>
-   </li>
-   </ul>
-   
-   <div class="exercises-section">
-   <h4>أسئلة تدريبية على المضارع البسيط (Present Simple)</h4>
-   <p>اختر الإجابة الصحيحة:</p>
-   <div class="question-group">
-   <ol>
-   <li>
-   <label>He usually _____ (go) to work by bus.</label>
-   <div class="options">
-   <span><input type="radio" name="q1_ps" value="a"> a) go</span>
-   <span><input type="radio" name="q1_ps" value="b"> b) goes</span>
-   <span><input type="radio" name="q1_ps" value="c"> c) going</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: b) goes</span>
-   </li>
-   <li>
-   <label>Do they _____ (live) in Cairo?</label>
-   <div class="options">
-   <span><input type="radio" name="q2_ps" value="a"> a) live</span>
-   <span><input type="radio" name="q2_ps" value="b"> b) lives</span>
-   <span><input type="radio" name="q2_ps" value="c"> c) living</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: a) live</span>
-   </li>
-   <li>
-   <label>She _____ (not / like) coffee.</label>
-   <div class="options">
-   <span><input type="radio" name="q3_ps" value="a"> a) don't like</span>
-   <span><input type="radio" name="q3_ps" value="b"> b) doesn't like</span>
-   <span><input type="radio" name="q3_ps" value="c"> c) isn't liking</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: b) doesn't like</span>
-   </li>
-   <li>
-   <label>The sun _____ (rise) in the east.</label>
-   <div class="options">
-   <span><input type="radio" name="q4_ps" value="a"> a) rise</span>
-   <span><input type="radio" name="q4_ps" value="b"> b) rises</span>
-   <span><input type="radio" name="q4_ps" value="c"> c) rising</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: b) rises</span>
-   </li>
-   <li>
-   <label>What time _____ the train _____ (leave)?</label>
-   <div class="options">
-   <span><input type="radio" name="q5_ps" value="a"> a) do / leave</span>
-   <span><input type="radio" name="q5_ps" value="b"> b) does / leave</span>
-   <span><input type="radio" name="q5_ps" value="c"> c) is / leaving</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: b) does / leave</span>
-   </li>
-   </ol>
-   </div>
-   </div>
-   </div>
-   
-   <!-- Present Continuous -->
-   <div class="grammar-topic">
-   <h3 class="speakable-heading">2. زمن المضارع المستمر (Present Continuous)</h3>
-   <p class="grammar-text">يُستخدم للتعبير عن أفعال تحدث الآن أو في فترة زمنية مؤقتة حول الوقت الحاضر.</p>
-   <ul>
-   <li>**الاستخدامات:**
-   <ul>
-   <li>أفعال تحدث الآن: I <span class="speakable-word">am studying</span> English right now. (أنا أدرس الإنجليزية الآن.)</li>
-   <li>أفعال مؤقتة: He <span class="speakable-word">is working</span> on a new project this month. (هو يعمل على مشروع جديد هذا الشهر.)</li>
-   </ul>
-   </li>
-   <li>**الكلمات الدالة:** <span class="speakable-word">now</span>, <span class="speakable-word">right now</span>, <span class="speakable-word">at the moment</span>, <span class="speakable-word">currently</span>, <span class="speakable-word">today</span>, <span class="speakable-word">this week</span>/<span class="speakable-word">month</span>/<span class="speakable-word">year</span>, <span class="speakable-word">listen!</span>, <span class="speakable-word">look!</span></li>
-   <li>**أمثلة وجمل (10 أمثلة):**
-   <ul>
-   <li>They <span class="speakable-word">are watching</span> TV. (هم يشاهدون التلفاز.)</li>
-   <li>She <span class="speakable-word">isn't sleeping</span>. (هي لا تنام.)</li>
-   <li><span class="speakable-word">Are</span> you <span class="speakable-word">listening</span> to me? (هل تستمع إلي؟)</li>
-   <li>I <span class="speakable-word">am writing</span> an email. (أنا أكتب بريدًا إلكترونيًا.)</li>
-   <li>The children <span class="speakable-word">are playing</span> outside. (الأطفال يلعبون في الخارج.)</li>
-   </ul>
-   </li>
-   </ul>
-   
-   <div class="exercises-section">
-   <h4>أسئلة تدريبية على المضارع المستمر (Present Continuous)</h4>
-   <p>اختر الإجابة الصحيحة:</p>
-   <div class="question-group">
-   <ol>
-   <li>
-   <label>She _____ (study) English right now.</label>
-   <div class="options">
-   <span><input type="radio" name="q1_pc" value="a"> a) study</span>
-   <span><input type="radio" name="q1_pc" value="b"> b) studies</span>
-   <span><input type="radio" name="q1_pc" value="c"> c) is studying</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: c) is studying</span>
-   </li>
-   <li>
-   <label>They _____ (not / watch) TV at the moment.</label>
-   <div class="options">
-   <span><input type="radio" name="q2_pc" value="a"> a) don't watch</span>
-   <span><input type="radio" name="q2_pc" value="b"> b) aren't watching</span>
-   <span><input type="radio" name="q2_pc" value="c"> c) isn't watching</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: b) aren't watching</span>
-   </li>
-   <li>
-   <label>_____ you _____ (listen) to music?</label>
-   <div class="options">
-   <span><input type="radio" name="q3_pc" value="a"> a) Do / listen</span>
-   <span><input type="radio" name="q3_pc" value="b"> b) Are / listening</span>
-   <span><input type="radio" name="q3_pc" value="c"> c) Is / listening</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: b) Are / listening</span>
-   </li>
-   <li>
-   <label>Look! The baby _____ (sleep).</label>
-   <div class="options">
-   <span><input type="radio" name="q4_pc" value="a"> a) sleep</span>
-   <span><input type="radio" name="q4_pc" value="b"> b) sleeps</span>
-   <span><input type="radio" name="q4_pc" value="c"> c) is sleeping</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: c) is sleeping</span>
-   </li>
-   <li>
-   <label>What _____ he _____ (do) now?</label>
-   <div class="options">
-   <span><input type="radio" name="q5_pc" value="a"> a) do / do</span>
-   <span><input type="radio" name="q5_pc" value="b"> b) does / do</span>
-   <span><input type="radio" name="q5_pc" value="c"> c) is / doing</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: c) is / doing</span>
-   </li>
-   </ol>
-   </div>
-   </div>
-   </div>
-   
-   <!-- Present Perfect -->
-   <div class="grammar-topic">
-   <h3 class="speakable-heading">3. زمن المضارع التام (Present Perfect)</h3>
-   <p class="grammar-text">يُستخدم للتعبير عن أفعال بدأت في الماضي ولها تأثير على الحاضر، أو أفعال حدثت في وقت غير محدد في الماضي.</p>
-   <ul>
-   <li>**الاستخدامات:**
-   <ul>
-   <li>تجارب سابقة: I <span class="speakable-word">have visited</span> London three times. (لقد زرت لندن ثلاث مرات.)</li>
-   <li>أفعال بدأت في الماضي وما زالت مستمرة: She <span class="speakable-word">has lived</span> here for five years. (لقد عاشت هنا لمدة خمس سنوات.)</li>
-   </ul>
-   </li>
-   <li>**الكلمات الدالة:** <span class="speakable-word">already</span>, <span class="speakable-word">yet</span>, <span class="speakable-word">just</span>, <span class="speakable-word">ever</span>, <span class="speakable-word">never</span>, <span class="speakable-word">since</span>, <span class="speakable-word">for</span>, <span class="speakable-word">so far</span>, <span class="speakable-word">recently</span>, <span class="speakable-word">lately</span>.</li>
-   <li>**أمثلة وجمل (10 أمثلة):**
-   <ul>
-   <li>They <span class="speakable-word">have bought</span> a new car. (لقد اشتروا سيارة جديدة.)</li>
-   <li>I <span class="speakable-word">haven't seen</span> him since last week. (لم أره منذ الأسبوع الماضي.)</li>
-   <li><span class="speakable-word">Have</span> you <span class="speakable-word">ever been</span> to New York? (هل سبق لك أن زرت نيويورك؟)</li>
-   <li>She <span class="speakable-word">has just finished</span> her homework. (لقد أنهت واجباتها للتو.)</li>
-   <li>We <span class="speakable-word">have lived</span> in this city for ten years. (لقد عشنا في هذه المدينة لمدة عشر سنوات.)</li>
-   </ul>
-   </li>
-   </ul>
-   
-   <div class="exercises-section">
-   <h4>أسئلة تدريبية على المضارع التام (Present Perfect)</h4>
-   <p>اختر الإجابة الصحيحة:</p>
-   <div class="question-group">
-   <ol>
-   <li>
-   <label>I _____ (visit) London three times.</label>
-   <div class="options">
-   <span><input type="radio" name="q1_pp" value="a"> a) visit</span>
-   <span><input type="radio" name="q1_pp" value="b"> b) visited</span>
-   <span><input type="radio" name="q1_pp" value="c"> c) have visited</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: c) have visited</span>
-   </li>
-   <li>
-   <label>She _____ (not / finish) her homework yet.</label>
-   <div class="options">
-   <span><input type="radio" name="q2_pp" value="a"> a) hasn't finished</span>
-   <span><input type="radio" name="q2_pp" value="b"> b) haven't finished</span>
-   <span><input type="radio" name="q2_pp" value="c"> c) didn't finish</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: a) hasn't finished</span>
-   </li>
-   <li>
-   <label>_____ you ever _____ (be) to New York?</label>
-   <div class="options">
-   <span><input type="radio" name="q3_pp" value="a"> a) Did / be</span>
-   <span><input type="radio" name="q3_pp" value="b"> b) Have / been</span>
-   <span><input type="radio" name="q3_pp" value="c"> c) Are / being</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: b) Have / been</span>
-   </li>
-   <li>
-   <label>He _____ just _____ (eat) dinner.</label>
-   <div class="options">
-   <span><input type="radio" name="q4_pp" value="a"> a) has / eaten</span>
-   <span><input type="radio" name="q4_pp" value="b"> b) have / eaten</span>
-   <span><input type="radio" name="q4_pp" value="c"> c) had / eaten</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: a) has / eaten</span>
-   </li>
-   <li>
-   <label>They _____ (live) here since 2010.</label>
-   <div class="options">
-   <span><input type="radio" name="q5_pp" value="a"> a) live</span>
-   <span><input type="radio" name="q5_pp" value="b"> b) lived</span>
-   <span><input type="radio" name="q5_pp" value="c"> c) have lived</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: c) have lived</span>
-   </li>
-   </ol>
-   </div>
-   </div>
-   </div>
-   
-   <!-- Past Simple -->
-   <div class="grammar-topic">
-   <h3 class="speakable-heading">4. زمن الماضي البسيط (Past Simple)</h3>
-   <p class="grammar-text">يُستخدم للتعبير عن أفعال أو أحداث انتهت في وقت محدد في الماضي.</p>
-   <ul>
-   <li>**الاستخدامات:**
-   <ul>
-   <li>أحداث منتهية في الماضي: I <span class="speakable-word">went</span> to the cinema yesterday. (ذهبت إلى السينما أمس.)</li>
-   <li>سلسلة من الأحداث في الماضي: She <span class="speakable-word">woke up</span>, <span class="speakable-word">ate</span> breakfast, and <span class="speakable-word">left</span> for work. (استيقظت، أكلت الفطور، وغادرت للعمل.)</li>
-   </ul>
-   </li>
-   <li>**الكلمات الدالة:** <span class="speakable-word">yesterday</span>, <span class="speakable-word">last night</span>/<span class="speakable-word">week</span>/<span class="speakable-word">month</span>/<span class="speakable-word">year</span>, <span class="speakable-word">ago</span>, <span class="speakable-word">in 2005</span>, <span class="speakable-word">when I was young</span>.</li>
-   <li>**أمثلة وجمل (10 أمثلة):**
-   <ul>
-   <li>He <span class="speakable-word">played</span> football an hour ago. (لعب كرة القدم قبل ساعة.)</li>
-   <li>We <span class="speakable-word">didn't go</span> to the party. (لم نذهب إلى الحفلة.)</li>
-   <li><span class="speakable-word">Did</span> you <span class="speakable-word">see</span> her? (هل رأيتها؟)</li>
-   <li>She <span class="speakable-word">visited</span> her grandparents last weekend. (زارت أجدادها نهاية الأسبوع الماضي.)</li>
-   <li>They <span class="speakable-word">moved</span> to London in 2010. (انتقلوا إلى لندن في 2010.)</li>
-   </ul>
-   </li>
-   </ul>
-   
-   <div class="exercises-section">
-   <h4>أسئلة تدريبية على الماضي البسيط (Past Simple)</h4>
-   <p>اختر الإجابة الصحيحة:</p>
-   <div class="question-group">
-   <ol>
-   <li>
-   <label>He _____ (go) to school yesterday.</label>
-   <div class="options">
-   <span><input type="radio" name="q1_past" value="a"> a) go</span>
-   <span><input type="radio" name="q1_past" value="b"> b) goes</span>
-   <span><input type="radio" name="q1_past" value="c"> c) went</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: c) went</span>
-   </li>
-   <li>
-   <label>She _____ (not / eat) breakfast this morning.</label>
-   <div class="options">
-   <span><input type="radio" name="q2_past" value="a"> a) didn't eat</span>
-   <span><input type="radio" name="q2_past" value="b"> b) doesn't eat</span>
-   <span><input type="radio" name="q2_past" value="c"> c) hasn't eaten</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: a) didn't eat</span>
-   </li>
-   <li>
-   <label>_____ you _____ (see) the movie last night?</label>
-   <div class="options">
-   <span><input type="radio" name="q3_past" value="a"> a) Did / see</span>
-   <span><input type="radio" name="q3_past" value="b"> b) Do / see</span>
-   <span><input type="radio" name="q3_past" value="c"> c) Are / seeing</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: a) Did / see</span>
-   </li>
-   <li>
-   <label>They _____ (play) football last Saturday.</label>
-   <div class="options">
-   <span><input type="radio" name="q4_past" value="a"> a) play</span>
-   <span><input type="radio" name="q4_past" value="b"> b) played</span>
-   <span><input type="radio" name="q4_past" value="c"> c) plays</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: b) played</span>
-   </li>
-   <li>
-   <label>I _____ (be) in London last year.</label>
-   <div class="options">
-   <span><input type="radio" name="q5_past" value="a"> a) am</span>
-   <span><input type="radio" name="q5_past" value="b"> b) was</span>
-   <span><input type="radio" name="q5_past" value="c"> c) were</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: b) was</span>
-   </li>
-   </ol>
-   </div>
-   </div>
-   </div>
-   
-   <!-- Future Simple -->
-   <div class="grammar-topic">
-   <h3 class="speakable-heading">5. زمن المستقبل البسيط (Future Simple)</h3>
-   <p class="grammar-text">يُستخدم للتعبير عن قرارات سريعة، تنبؤات، وعروض.</p>
-   <ul>
-   <li>**الاستخدامات:**
-   <ul>
-   <li>قرارات لحظية: I <span class="speakable-word">will help</span> you. (سأساعدك.)</li>
-   <li>تنبؤات (معتقد شخصي): I think it <span class="speakable-word">will rain</span> tomorrow. (أعتقد أنها ستمطر غداً.)</li>
-   </ul>
-   </li>
-   <li>**الكلمات الدالة:** <span class="speakable-word">tomorrow</span>, <span class="speakable-word">next week</span>/<span class="speakable-word">month</span>/<span class="speakable-word">year</span>, <span class="speakable-word">in the future</span>, <span class="speakable-word">soon</span>, <span class="speakable-word">probably</span>, <span class="speakable-word">I think</span>, <span class="speakable-word">I believe</span>.</li>
-   <li>**أمثلة وجمل (10 أمثلة):**
-   <ul>
-   <li>They <span class="speakable-word">will travel</span> to Spain next year. (سيسافرون إلى إسبانيا العام القادم.)</li>
-   <li>She <span class="speakable-word">won't forget</span> you. (هي لن تنساك.)</li>
-   <li><span class="speakable-word">Will</span> you <span class="speakable-word">come</span> to the party? (هل ستأتي إلى الحفلة؟)</li>
-   <li>I <span class="speakable-word">will call</span> you later. (سأتصل بك لاحقاً.)</li>
-   <li>He <span class="speakable-word">will not pass</span> the exam. (هو لن يجتاز الامتحان.)</li>
-   </ul>
-   </li>
-   </ul>
-   
-   <div class="exercises-section">
-   <h4>أسئلة تدريبية على المستقبل البسيط (Future Simple)</h4>
-   <p>اختر الإجابة الصحيحة:</p>
-   <div class="question-group">
-   <ol>
-   <li>
-   <label>She _____ (visit) her parents tomorrow.</label>
-   <div class="options">
-   <span><input type="radio" name="q1_future" value="a"> a) visit</span>
-   <span><input type="radio" name="q1_future" value="b"> b) visits</span>
-   <span><input type="radio" name="q1_future" value="c"> c) will visit</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: c) will visit</span>
-   </li>
-   <li>
-   <label>They _____ (not / come) to the meeting.</label>
-   <div class="options">
-   <span><input type="radio" name="q2_future" value="a"> a) won't come</span>
-   <span><input type="radio" name="q2_future" value="b"> b) don't come</span>
-   <span><input type="radio" name="q2_future" value="c"> c) aren't coming</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: a) won't come</span>
-   </li>
-   <li>
-   <label>_____ you _____ (help) me with this?</label>
-   <div class="options">
-   <span><input type="radio" name="q3_future" value="a"> a) Do / help</span>
-   <span><input type="radio" name="q3_future" value="b"> b) Are / helping</span>
-   <span><input type="radio" name="q3_future" value="c"> c) Will / help</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: c) Will / help</span>
-   </li>
-   <li>
-   <label>I think it _____ (rain) later.</label>
-   <div class="options">
-   <span><input type="radio" name="q4_future" value="a"> a) rain</span>
-   <span><input type="radio" name="q4_future" value="b"> b) rains</span>
-   <span><input type="radio" name="q4_future" value="c"> c) will rain</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: c) will rain</span>
-   </li>
-   <li>
-   <label>We _____ (be) there at 8 PM.</label>
-   <div class="options">
-   <span><input type="radio" name="q5_future" value="a"> a) are</span>
-   <span><input type="radio" name="q5_future" value="b"> b) will be</span>
-   <span><input type="radio" name="q5_future" value="c"> c) be</span>
-   </div>
-   <span class="correct-answer">الإجابة الصحيحة: b) will be</span>
-   </li>
-   </ol>
-   </div>
-   </div>
-   </div>
-   </section>
-   </main>
+            <h4>ب. الكلمات الدالة (Keywords):</h4>
+            <ul>
+                <li><span class="english-word">Now</span> (الآن)</li>
+                <li><span class="english-word">Right now</span> (في هذه اللحظة بالضبط)</li>
+                <li><span class="english-word">At the moment</span> (في هذه اللحظة)</li>
+                <li><span class="english-word">Look!</span> (انظر!)</li>
+                <li><span class="english-word">Listen!</span> (استمع!)</li>
+                <li><span class="english-word">Currently</span> (حالياً)</li>
+                <li><span class="english-word">Today</span> (اليوم)</li>
+                <li><span class="english-word">This week/month/year</span> (هذا الأسبوع/الشهر/العام)</li>
+            </ul>
 
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ألعاب تعلم الإنجليزية</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+            <h4>ج. التكوين (Formation):</h4>
+            <ul>
+                <li><strong>الفاعل + فعل <span class="english-word">be</span> (am/is/are) + الفعل + ing (Present Participle):</strong>
+                    <ul>
+                        <li>I <span class="english-word">am working</span>.</li>
+                        <li>She <span class="english-word">is singing</span>.</li>
+                        <li>They <span class="english-word">are playing</span>.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>د. أمثلة (10 Examples):</h4>
+            <ol>
+                <li>I <span class="english-word">am watching</span> a movie now. (أنا أشاهد فيلماً الآن.)</li>
+                <li>She <span class="english-word">is studying</span> English at the university. (هي تدرس الإنجليزية في الجامعة.)</li>
+                <li>They <span class="english-word">are playing</span> football in the park. (هم يلعبون كرة القدم في الحديقة.)</li>
+                <li>He <span class="english-word">is having</span> dinner with his family. (هو يتناول العشاء مع عائلته.)</li>
+                <li>We <span class="english-word">are listening</span> to music. (نحن نستمع إلى الموسيقى.)</li>
+                <li>The birds <span class="english-word">are singing</span> outside. (الطيور تغرد في الخارج.)</li>
+                <li>Look! It <span class="english-word">is snowing</span>. (انظر! إنها تمطر ثلجاً.)</li>
+                <li>My brother <span class="english-word">is learning</span> to drive. (أخي يتعلم القيادة.)</li>
+                <li>You <span class="english-word">are wearing</span> a beautiful dress. (أنت ترتدين فستاناً جميلاً.)</li>
+                <li>They <span class="english-word">are building</span> a new house. (هم يبنون منزلاً جديداً.)</li>
+            </ol>
+
+            <h4>هـ. السؤال والنفي (Questions and Negation):</h4>
+            <ul>
+                <li><strong>للسؤال:</strong> نضع فعل <span class="english-word">be</span> (am/is/are) قبل الفاعل.
+                    <ul>
+                        <li><span class="english-word">Am</span> I + الفعل + ing ...?</li>
+                        <li><span class="english-word">Is</span> he/she/it + الفعل + ing ...?
+                            <ul>
+                                <li><span class="english-word">Is</span> she working? (هل هي تعمل؟)</li>
+                            </ul>
+                        </li>
+                        <li><span class="english-word">Are</span> you/we/they + الفعل + ing ...?
+                            <ul>
+                                <li><span class="english-word">Are</span> you listening? (هل أنت تستمع؟)</li>
+                                <li><span class="english-word">Are</span> they coming? (هل هم قادمون؟)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>للنفي:</strong> نضع <span class="english-word">not</span> بعد فعل <span class="english-word">be</span> (am/is/are).
+                    <ul>
+                        <li>I <span class="english-word">am not</span> + الفعل + ing.
+                            <ul>
+                                <li>I <span class="english-word">am not</span> sleeping. (أنا لا أنام.)</li>
+                            </ul>
+                        </li>
+                        <li>He/She/It <span class="english-word">is not</span> (isn't) + الفعل + ing.
+                            <ul>
+                                <li>She <span class="english-word">isn't</span> studying. (هي لا تدرس.)</li>
+                            </ul>
+                        </li>
+                        <li>You/We/They <span class="english-word">are not</span> (aren't) + الفعل + ing.
+                            <ul>
+                                <li>We <span class="english-word">aren't</span> playing. (نحن لا نلعب.)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="grammar-topic">
+        <h3>3. زمن الماضي البسيط (Past Simple)</h3>
+        <div class="grammar-text">
+            <p>يُستخدم زمن الماضي البسيط للتعبير عن أفعال أو أحداث اكتملت في وقت محدد في الماضي. من المهم معرفة الأفعال المنتظمة (Regular Verbs) والأفعال غير المنتظمة (Irregular Verbs) في هذا الزمن.</p>
+            
+            <h4>أ. الاستخدامات:</h4>
+            <ul>
+                <li><strong>أحداث مكتملة في الماضي:</strong>
+                    <ul>
+                        <li>I <span class="english-word">visited</span> Paris last year. (زرت باريس العام الماضي.)</li>
+                        <li>She <span class="english-word">finished</span> her homework an hour ago. (هي أنهت واجبها قبل ساعة.)</li>
+                    </ul>
+                </li>
+                <li><strong>سلسلة من الأحداث في الماضي:</strong>
+                    <ul>
+                        <li>He <span class="english-word">woke up</span>, <span class="english-word">ate</span> breakfast, and <span class="english-word">went</span> to work. (استيقظ، تناول الفطور، وذهب إلى العمل.)</li>
+                    </ul>
+                </li>
+                <li><strong>عادات في الماضي (لم تعد تحدث الآن):</strong>
+                    <ul>
+                        <li>When I was a child, I often <span class="english-word">played</span> in the park. (عندما كنت طفلاً، كنت ألعب غالباً في الحديقة.)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>ب. الكلمات الدالة (Keywords):</h4>
+            <ul>
+                <li><span class="english-word">Yesterday</span> (أمس)</li>
+                <li><span class="english-word">Last night/week/month/year</span> (الليلة/الأسبوع/الشهر/السنة الماضية)</li>
+                <li><span class="english-word">Ago</span> (منذ) - (e.g., two days <span class="english-word">ago</span>)</li>
+                <li><span class="english-word">In 2010</span> (في عام 2010) - أي تاريخ محدد في الماضي</li>
+                <li><span class="english-word">When I was young</span> (عندما كنت صغيراً)</li>
+            </ul>
+
+            <h4>ج. التكوين (Formation):</h4>
+            <ul>
+                <li><strong>للأفعال المنتظمة (Regular Verbs):</strong> نضيف <span class="english-word">-ed</span> إلى نهاية الفعل.
+                    <ul>
+                        <li><span class="english-word">Play</span> &rarr; <span class="english-word">Played</span></li>
+                        <li><span class="english-word">Work</span> &rarr; <span class="english-word">Worked</span></li>
+                        <li><span class="english-word">Visit</span> &rarr; <span class="english-word">Visited</span></li>
+                    </ul>
+                </li>
+                <li><strong>للأفعال غير المنتظمة (Irregular Verbs):</strong> تتغير صيغة الفعل بالكامل (يجب حفظها).
+                    <ul>
+                        <li><span class="english-word">Go</span> &rarr; <span class="english-word">Went</span></li>
+                        <li><span class="english-word">Eat</span> &rarr; <span class="english-word">Ate</span></li>
+                        <li><span class="english-word">See</span> &rarr; <span class="english-word">Saw</span></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>د. أمثلة (10 Examples):</h4>
+            <ol>
+                <li>I <span class="english-word">watched</span> a great movie yesterday. (شاهدت فيلماً رائعاً أمس.)</li>
+                <li>She <span class="english-word">went</span> to London last summer. (هي ذهبت إلى لندن الصيف الماضي.)</li>
+                <li>They <span class="english-word">ate</span> pizza for dinner. (هم أكلوا بيتزا للعشاء.)</li>
+                <li>He <span class="english-word">played</span> football when he was a child. (هو لعب كرة القدم عندما كان طفلاً.)</li>
+                <li>We <span class="english-word">visited</span> our grandparents last weekend. (زرنا أجدادنا عطلة نهاية الأسبوع الماضية.)</li>
+                <li>The class <span class="english-word">started</span> at 8 AM. (بدأت الحصة في الساعة 8 صباحاً.)</li>
+                <li>She <span class="english-word">bought</span> a new car. (هي اشترت سيارة جديدة.)</li>
+                <li>I <span class="english-word">saw</span> him at the supermarket. (رأيته في السوبر ماركت.)</li>
+                <li>They <span class="english-word">finished</span> the project on time. (هم أنهوا المشروع في الوقت المحدد.)</li>
+                <li>The birds <span class="english-word">flew</span> south for the winter. (الطيور طارت جنوباً للشتاء.)</li>
+            </ol>
+
+            <h4>هـ. السؤال والنفي (Questions and Negation):</h4>
+            <ul>
+                <li><strong>للسؤال:</strong> نستخدم <span class="english-word">Did</span> في بداية الجملة لجميع الفاعلين، ونعيد الفعل إلى صورته الأساسية.
+                    <ul>
+                        <li><span class="english-word">Did</span> + الفاعل + الفعل في صورته الأساسية ...?
+                            <ul>
+                                <li><span class="english-word">Did</span> you go to the party? (هل ذهبت إلى الحفلة؟)</li>
+                                <li><span class="english-word">Did</span> she call you? (هل اتصلت بك؟)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>للنفي:</strong> نستخدم <span class="english-word">didn't</span> (<span class="english-word">did not</span>) قبل الفعل، ونعيد الفعل إلى صورته الأساسية.
+                    <ul>
+                        <li>الفاعل + <span class="english-word">didn't</span> + الفعل في صورته الأساسية.
+                            <ul>
+                                <li>I <span class="english-word">didn't</span> like the movie. (لم أحب الفيلم.)</li>
+                                <li>They <span class="english-word">didn't</span> come to school yesterday. (هم لم يأتوا إلى المدرسة أمس.)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="grammar-topic">
+        <h3>4. زمن الماضي المستمر (Past Continuous)</h3>
+        <div class="grammar-text">
+            <p>يُستخدم زمن الماضي المستمر للتعبير عن فعل كان مستمراً في نقطة معينة في الماضي، أو فعلين كانا يحدثان في نفس الوقت في الماضي، أو فعل كان مستمراً وقطعه فعل آخر.</p>
+            
+            <h4>أ. الاستخدامات:</h4>
+            <ul>
+                <li><strong>فعل كان مستمراً في نقطة معينة في الماضي:</strong>
+                    <ul>
+                        <li>At 8 AM, I <span class="english-word">was having</span> breakfast. (في الساعة الثامنة صباحاً، كنت أتناول الفطور.)</li>
+                        <li>What <span class="english-word">were you doing</span> yesterday evening? (ماذا كنت تفعل مساء أمس؟)</li>
+                    </ul>
+                </li>
+                <li><strong>فعلان مستمران في نفس الوقت في الماضي:</strong>
+                    <ul>
+                        <li>While I <span class="english-word">was reading</span>, my sister <span class="english-word">was watching</span> TV. (بينما كنت أقرأ، كانت أختي تشاهد التلفاز.)</li>
+                    </ul>
+                </li>
+                <li><strong>فعل مستمر في الماضي قطعه فعل آخر (عادة ماضي بسيط):</strong>
+                    <ul>
+                        <li>I <span class="english-word">was sleeping</span> when the phone <span class="english-word">rang</span>. (كنت نائماً عندما رن الهاتف.)</li>
+                        <li>She <span class="english-word">was walking</span> home when she <span class="english-word">saw</span> an accident. (كانت تمشي إلى المنزل عندما رأت حادثاً.)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>ب. الكلمات الدالة (Keywords):</h4>
+            <ul>
+                <li><span class="english-word">While</span> (بينما)</li>
+                <li><span class="english-word">When</span> (عندما)</li>
+                <li><span class="english-word">As</span> (بينما/حينما)</li>
+                <li><span class="english-word">At that time</span> (في ذلك الوقت)</li>
+                <li><span class="english-word">All day yesterday</span> (طوال يوم أمس)</li>
+            </ul>
+
+            <h4>ج. التكوين (Formation):</h4>
+            <ul>
+                <li><strong>الفاعل + فعل <span class="english-word">be</span> في الماضي (was/were) + الفعل + ing (Present Participle):</strong>
+                    <ul>
+                        <li>I/He/She/It <span class="english-word">was working</span>.</li>
+                        <li>You/We/They <span class="english-word">were playing</span>.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>د. أمثلة (10 Examples):</h4>
+            <ol>
+                <li>I <span class="english-word">was studying</span> when you called me. (كنت أدرس عندما اتصلت بي.)</li>
+                <li>She <span class="english-word">was cooking</span> dinner while he <span class="english-word">was watching</span> TV. (كانت تطهو العشاء بينما هو يشاهد التلفاز.)</li>
+                <li>They <span class="english-word">were playing</span> outside when it started to rain. (كانوا يلعبون في الخارج عندما بدأت تمطر.)</li>
+                <li>At 6 PM yesterday, I <span class="english-word">was driving</span> home. (في الساعة 6 مساءً أمس، كنت أقود السيارة إلى المنزل.)</li>
+                <li>He <span class="english-word">was reading</span> a book all morning. (هو كان يقرأ كتاباً طوال الصباح.)</li>
+                <li>We <span class="english-word">were talking</span> about our plans. (كنا نتحدث عن خططنا.)</li>
+                <li>The students <span class="english-word">were listening</span> to the teacher. (الطلاب كانوا يستمعون إلى المعلم.)</li>
+                <li>What <span class="english-word">were you doing</span> at midnight? (ماذا كنت تفعل في منتصف الليل؟)</li>
+                <li>She <span class="english-word">was waiting</span> for the bus. (كانت تنتظر الحافلة.)</li>
+                <li>The children <span class="english-word">were laughing</span> loudly. (الأطفال كانوا يضحكون بصوت عالٍ.)</li>
+            </ol>
+
+            <h4>هـ. السؤال والنفي (Questions and Negation):</h4>
+            <ul>
+                <li><strong>للسؤال:</strong> نضع فعل <span class="english-word">be</span> في الماضي (was/were) قبل الفاعل.
+                    <ul>
+                        <li><span class="english-word">Was</span> I/he/she/it + الفعل + ing ...?
+                            <ul>
+                                <li><span class="english-word">Was</span> she crying? (هل كانت تبكي؟)</li>
+                            </ul>
+                        </li>
+                        <li><span class="english-word">Were</span> you/we/they + الفعل + ing ...?
+                            <ul>
+                                <li><span class="english-word">Were</span> you sleeping? (هل كنت نائماً؟)</li>
+                                <li><span class="english-word">Were</span> they working? (هل كانوا يعملون؟)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>للنفي:</strong> نضع <span class="english-word">not</span> بعد فعل <span class="english-word">be</span> في الماضي (was/were).
+                    <ul>
+                        <li>I/He/She/It <span class="english-word">was not</span> (wasn't) + الفعل + ing.
+                            <ul>
+                                <li>He <span class="english-word">wasn't</span> listening. (هو لم يكن يستمع.)</li>
+                            </ul>
+                        </li>
+                        <li>You/We/They <span class="english-word">were not</span> (weren't) + الفعل + ing.
+                            <ul>
+                                <li>We <span class="english-word">weren't</span> expecting you. (لم نكن نتوقع قدومك.)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="grammar-topic">
+        <h3>5. زمن المستقبل البسيط (Future Simple)</h3>
+        <div class="grammar-text">
+            <p>يُستخدم زمن المستقبل البسيط للتعبير عن تنبؤات، قرارات سريعة، وعروض أو وعود للمستقبل. يمكن تكوينه باستخدام <span class="english-word">will</span> أو <span class="english-word">be going to</span>، مع اختلافات طفيفة في الاستخدام.</p>
+            
+            <h4>أ. الاستخدامات:</h4>
+            <ul>
+                <li><strong>تنبؤات (Predictions):</strong> غالبًا ما تكون غير مؤكدة ومبنية على رأي شخصي.
+                    <ul>
+                        <li>I think it <span class="english-word">will rain</span> tomorrow. (أعتقد أنها ستمطر غداً.)</li>
+                        <li>He <span class="english-word">will probably win</span> the game. (من المحتمل أن يفوز بالمباراة.)</li>
+                    </ul>
+                </li>
+                <li><strong>قرارات سريعة (Spontaneous Decisions):</strong> قرارات يتم اتخاذها في لحظة الكلام.
+                    <ul>
+                        <li>"I'm thirsty." "I <span class="english-word">will get</span> you some water." ("أنا عطشان." "سأحضر لك بعض الماء.")</li>
+                        <li>"The phone is ringing." "I <span class="english-word">will answer</span> it." ("الهاتف يرن." "سأجيب عليه.")</li>
+                    </ul>
+                </li>
+                <li><strong>عروض، وعود، تهديدات (Offers, Promises, Threats):</strong>
+                    <ul>
+                        <li>I <span class="english-word">will help</span> you with your homework. (سأساعدك في واجباتك.)</li>
+                        <li>I <span class="english-word">will call</span> you later. (سأتصل بك لاحقاً.)</li>
+                    </ul>
+                </li>
+                <li><strong>باستخدام <span class="english-word">be going to</span> (خطط ونوايا مؤكدة):</strong> للتعبير عن خطط ونوايا مستقبلية تم اتخاذ قرار بشأنها مسبقاً، أو تنبؤات مبنية على دليل حالي.
+                    <ul>
+                        <li>We <span class="english-word">are going to visit</span> our friends next week. (سنزور أصدقاءنا الأسبوع المقبل.)</li>
+                        <li>Look at those dark clouds. It <span class="english-word">is going to rain</span>. (انظر إلى تلك الغيوم الداكنة. ستمطر.)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>ب. الكلمات الدالة (Keywords):</h4>
+            <ul>
+                <li><span class="english-word">Tomorrow</span> (غداً)</li>
+                <li><span class="english-word">Next week/month/year</span> (الأسبوع/الشهر/السنة القادمة)</li>
+                <li><span class="english-word">Soon</span> (قريباً)</li>
+                <li><span class="english-word">Later</span> (لاحقاً)</li>
+                <li><span class="english-word">In the future</span> (في المستقبل)</li>
+                <li><span class="english-word">I think</span>, <span class="english-word">I believe</span>, <span class="english-word">Probably</span> (للتنبؤات بـ <span class="english-word">will</span>)</li>
+            </ul>
+
+            <h4>ج. التكوين (Formation):</h4>
+            <ul>
+                <li><strong>باستخدام <span class="english-word">Will</span>: الفاعل + <span class="english-word">will</span> + الفعل في صورته الأساسية.</strong>
+                    <ul>
+                        <li>I <span class="english-word">will travel</span>.</li>
+                        <li>They <span class="english-word">will study</span>.</li>
+                    </ul>
+                </li>
+                <li><strong>باستخدام <span class="english-word">Be going to</span>: الفاعل + فعل <span class="english-word">be</span> (am/is/are) + <span class="english-word">going to</span> + الفعل في صورته الأساسية.</strong>
+                    <ul>
+                        <li>I <span class="english-word">am going to travel</span>.</li>
+                        <li>They <span class="english-word">are going to study</span>.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>د. أمثلة (10 Examples):</h4>
+            <ol>
+                <li>I <span class="english-word">will help</span> you with your bags. (سأساعدك في حقائبك.)</li>
+                <li>She <span class="english-word">is going to start</span> a new job next month. (هي ستبدأ عملاً جديداً الشهر المقبل.)</li>
+                <li>They <span class="english-word">will probably win</span> the match. (من المحتمل أن يفوزوا بالمباراة.)</li>
+                <li>We <span class="english-word">are going to buy</span> a new car. (سنشتري سيارة جديدة.)</li>
+                <li>He <span class="english-word">will call</span> you back in five minutes. (سيتصل بك بعد خمس دقائق.)</li>
+                <li>It <span class="english-word">will be</span> sunny tomorrow. (سيكون الجو مشمساً غداً.)</li>
+                <li>I think I <span class="english-word">will have</span> some tea. (أعتقد أنني سأتناول بعض الشاي.)</li>
+                <li>They <span class="english-word">are going to build</span> a hospital in this area. (هم سيبنون مستشفى في هذه المنطقة.)</li>
+                <li>You <span class="english-word">will enjoy</span> the party. (ستستمتع بالحفلة.)</li>
+                <li>She <span class="english-word">is going to learn</span> French. (هي ستتعلم الفرنسية.)</li>
+            </ol>
+
+            <h4>هـ. السؤال والنفي (Questions and Negation):</h4>
+            <ul>
+                <li><strong>للسؤال بـ <span class="english-word">Will</span>:</strong> نضع <span class="english-word">Will</span> قبل الفاعل.
+                    <ul>
+                        <li><span class="english-word">Will</span> + الفاعل + الفعل في صورته الأساسية ...?
+                            <ul>
+                                <li><span class="english-word">Will</span> you come to the party? (هل ستأتي إلى الحفلة؟)</li>
+                                <li><span class="english-word">Will</span> she help us? (هل ستساعدنا؟)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>للنفي بـ <span class="english-word">Will</span>:</strong> نستخدم <span class="english-word">won't</span> (<span class="english-word">will not</span>) قبل الفعل.
+                    <ul>
+                        <li>الفاعل + <span class="english-word">won't</span> + الفعل في صورته الأساسية.
+                            <ul>
+                                <li>I <span class="english-word">won't</span> be late. (لن أتأخر.)</li>
+                                <li>They <span class="english-word">won't</span> agree. (لن يوافقوا.)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>للسؤال بـ <span class="english-word">Be going to</span>:</strong> نضع فعل <span class="english-word">be</span> (am/is/are) قبل الفاعل.
+                    <ul>
+                        <li><span class="english-word">Am</span> I / <span class="english-word">Is</span> he/she/it / <span class="english-word">Are</span> you/we/they + <span class="english-word">going to</span> + الفعل في صورته الأساسية ...?
+                            <ul>
+                                <li><span class="english-word">Are</span> you <span class="english-word">going to</span> study tonight? (هل ستدرس الليلة؟)</li>
+                                <li><span class="english-word">Is</span> she <span class="english-word">going to</span> travel? (هل ستسافر؟)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>للنفي بـ <span class="english-word">Be going to</span>:</strong> نضع <span class="english-word">not</span> بعد فعل <span class="english-word">be</span> (am/is/are).
+                    <ul>
+                        <li>الفاعل + <span class="english-word">am/is/are not</span> + <span class="english-word">going to</span> + الفعل في صورته الأساسية.
+                            <ul>
+                                <li>I <span class="english-word">am not going to</span> eat that. (لن آكل ذلك.)</li>
+                                <li>They <span class="english-word">aren't going to</span> finish on time. (لن ينهوا في الوقت المحدد.)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="grammar-topic">
+        <h3>6. زمن المضارع التام (Present Perfect)</h3>
+        <div class="grammar-text">
+            <p>يربط زمن المضارع التام الماضي بالحاضر. يُستخدم للتعبير عن أفعال بدأت في الماضي ولها تأثير أو علاقة بالحاضر، أو أفعال حدثت في وقت غير محدد في الماضي.</p>
+            
+            <h4>أ. الاستخدامات:</h4>
+            <ul>
+                <li><strong>أفعال بدأت في الماضي وما زالت مستمرة حتى الآن:</strong>
+                    <ul>
+                        <li>I <span class="english-word">have lived</span> in this city for 10 years. (عشت في هذه المدينة لمدة 10 سنوات - وما زلت أعيش.)</li>
+                        <li>She <span class="english-word">has worked</span> here since 2015. (هي تعمل هنا منذ عام 2015 - وما زالت تعمل.)</li>
+                    </ul>
+                </li>
+                <li><strong>تجارب أو أحداث حدثت في وقت غير محدد في الماضي (التركيز على النتيجة في الحاضر):</strong>
+                    <ul>
+                        <li>I <span class="english-word">have visited</span> New York. (لقد زرت نيويورك - التجربة مهمة، وليس متى حدثت.)</li>
+                        <li>He <span class="english-word">has lost</span> his keys. (لقد فقد مفاتيحه - والآن لا يملكها.)</li>
+                    </ul>
+                </li>
+                <li><strong>أحداث حديثة جدًا (غالبًا مع <span class="english-word">just</span>):</strong>
+                    <ul>
+                        <li>She <span class="english-word">has just finished</span> her homework. (هي أنهت واجبها للتو.)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>ب. الكلمات الدالة (Keywords):</h4>
+            <ul>
+                <li><span class="english-word">For</span> (لمدة) - يتبعه مدة زمنية (e.g., <span class="english-word">for five years</span>)</li>
+                <li><span class="english-word">Since</span> (منذ) - يتبعه نقطة زمنية محددة (e.g., <span class="english-word">since 2020</span>)</li>
+                <li><span class="english-word">Already</span> (بالفعل)</li>
+                <li><span class="english-word">Yet</span> (بعد) - تستخدم في النفي والسؤال</li>
+                <li><span class="english-word">Just</span> (للتو/فقط)</li>
+                <li><span class="english-word">Ever</span> (من قبل) - في السؤال</li>
+                <li><span class="english-word">Never</span> (أبداً)</li>
+                <li><span class="english-word">Recently</span> (مؤخراً)</li>
+                <li><span class="english-word">Lately</span> (مؤخراً)</li>
+            </ul>
+
+            <h4>ج. التكوين (Formation):</h4>
+            <ul>
+                <li><strong>الفاعل + <span class="english-word">have</span> أو <span class="english-word">has</span> + الفعل في التصريف الثالث (Past Participle):</strong>
+                    <ul>
+                        <li>I/You/We/They <span class="english-word">have seen</span>.</li>
+                        <li>He/She/It <span class="english-word">has gone</span>.</li>
+                    </ul>
+                </li>
+                <li><strong>التصريف الثالث (Past Participle):</strong>
+                    <ul>
+                        <li>للأفعال المنتظمة: هو نفسه صيغة الماضي البسيط (الفعل + <span class="english-word">-ed</span>).
+                            <ul>
+                                <li><span class="english-word">Work</span> &rarr; <span class="english-word">Worked</span></li>
+                            </ul>
+                        </li>
+                        <li>للأفعال غير المنتظمة: صيغة مختلفة (يجب حفظها).
+                            <ul>
+                                <li><span class="english-word">See</span> &rarr; <span class="english-word">Seen</span></li>
+                                <li><span class="english-word">Go</span> &rarr; <span class="english-word">Gone</span></li>
+                                <li><span class="english-word">Eat</span> &rarr; <span class="english-word">Eaten</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>د. أمثلة (10 Examples):</h4>
+            <ol>
+                <li>I <span class="english-word">have visited</span> many countries. (لقد زرت العديد من البلدان.)</li>
+                <li>She <span class="english-word">has lived</span> in New York since 2010. (هي عاشت في نيويورك منذ عام 2010.)</li>
+                <li>They <span class="english-word">have just arrived</span>. (هم وصلوا للتو.)</li>
+                <li>He <span class="english-word">has never eaten</span> sushi. (هو لم يأكل السوشي أبداً.)</li>
+                <li>We <span class="english-word">have finished</span> our project. (لقد أنهينا مشروعنا.)</li>
+                <li>The company <span class="english-word">has grown</span> a lot recently. (الشركة نمت كثيراً مؤخراً.)</li>
+                <li>Have you <span class="english-word">ever seen</span> a ghost? (هل رأيت شبحاً من قبل؟)</li>
+                <li>She <span class="english-word">has bought</span> a new phone. (هي اشترت هاتفاً جديداً.)</li>
+                <li>I <span class="english-word">haven't seen</span> him lately. (لم أره مؤخراً.)</li>
+                <li>They <span class="english-word">have known</span> each other for years. (هم يعرفون بعضهم البعض لسنوات.)</li>
+            </ol>
+
+            <h4>هـ. السؤال والنفي (Questions and Negation):</h4>
+            <ul>
+                <li><strong>للسؤال:</strong> نضع <span class="english-word">Have</span> أو <span class="english-word">Has</span> قبل الفاعل.
+                    <ul>
+                        <li><span class="english-word">Have</span> I/you/we/they + الفعل في التصريف الثالث ...?
+                            <ul>
+                                <li><span class="english-word">Have</span> you finished? (هل انتهيت؟)</li>
+                                <li><span class="english-word">Have</span> they left yet? (هل غادروا بعد؟)</li>
+                            </ul>
+                        </li>
+                        <li><span class="english-word">Has</span> he/she/it + الفعل في التصريف الثالث ...?
+                            <ul>
+                                <li><span class="english-word">Has</span> she arrived? (هل وصلت؟)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>للنفي:</strong> نضع <span class="english-word">not</span> بعد <span class="english-word">have</span> أو <span class="english-word">has</span>.
+                    <ul>
+                        <li>I/You/We/They <span class="english-word">have not</span> (<span class="english-word">haven't</span>) + الفعل في التصريف الثالث.
+                            <ul>
+                                <li>I <span class="english-word">haven't</span> seen that movie. (لم أشاهد ذلك الفيلم.)</li>
+                            </ul>
+                        </li>
+                        <li>He/She/It <span class="english-word">has not</span> (<span class="english-word">hasn't</span>) + الفعل في التصريف الثالث.
+                            <ul>
+                                <li>He <span class="english-word">hasn't</span> called me back. (لم يتصل بي بعد.)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="grammar-topic">
+        <h3>7. زمن المضارع التام المستمر (Present Perfect Continuous)</h3>
+        <div class="grammar-text">
+            <p>يُستخدم زمن المضارع التام المستمر للتعبير عن أفعال بدأت في الماضي واستمرت حتى الآن أو توقفت للتو، مع التركيز على مدة النشاط.</p>
+            
+            <h4>أ. الاستخدامات:</h4>
+            <ul>
+                <li><strong>أفعال بدأت في الماضي وما زالت مستمرة (التركيز على المدة):</strong>
+                    <ul>
+                        <li>I <span class="english-word">have been studying</span> English for two hours. (أنا أدرس الإنجليزية لمدة ساعتين - وما زلت أدرس.)</li>
+                        <li>She <span class="english-word">has been working</span> all day. (هي تعمل طوال اليوم - وما زالت تعمل.)</li>
+                    </ul>
+                </li>
+                <li><strong>أفعال انتهت للتو ولها نتيجة واضحة في الحاضر:</strong>
+                    <ul>
+                        <li>Her eyes are red because she <span class="english-word">has been crying</span>. (عيناها حمراوان لأنها كانت تبكي.)</li>
+                        <li>The ground is wet. It <span class="english-word">has been raining</span>. (الأرض مبللة. لقد كانت تمطر.)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>ب. الكلمات الدالة (Keywords):</h4>
+            <ul>
+                <li><span class="english-word">For</span> (لمدة)</li>
+                <li><span class="english-word">Since</span> (منذ)</li>
+                <li><span class="english-word">How long</span> (كم المدة) - في السؤال</li>
+                <li><span class="english-word">All day/morning/week</span> (طوال اليوم/الصباح/الأسبوع)</li>
+                <li><span class="english-word">Recently</span> (مؤخراً)</li>
+                <li><span class="english-word">Lately</span> (مؤخراً)</li>
+            </ul>
+
+            <h4>ج. التكوين (Formation):</h4>
+            <ul>
+                <li><strong>الفاعل + <span class="english-word">have been</span> أو <span class="english-word">has been</span> + الفعل + ing (Present Participle):</strong>
+                    <ul>
+                        <li>I/You/We/They <span class="english-word">have been waiting</span>.</li>
+                        <li>He/She/It <span class="english-word">has been sleeping</span>.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>د. أمثلة (10 Examples):</h4>
+            <ol>
+                <li>I <span class="english-word">have been learning</span> Arabic for three years. (أنا أتعلم العربية لمدة ثلاث سنوات.)</li>
+                <li>She <span class="english-word">has been cooking</span> since morning. (هي تطهو منذ الصباح.)</li>
+                <li>They <span class="english-word">have been living</span> in this house for five months. (هم يعيشون في هذا المنزل لمدة خمسة أشهر.)</li>
+                <li>He <span class="english-word">has been working</span> on this project all week. (هو يعمل على هذا المشروع طوال الأسبوع.)</li>
+                <li>We <span class="english-word">have been waiting</span> for you for an hour. (كنا ننتظرك لمدة ساعة.)</li>
+                <li>It <span class="english-word">has been raining</span> heavily. (كانت تمطر بغزارة.)</li>
+                <li>The children <span class="english-word">have been playing</span> outside. (الأطفال كانوا يلعبون في الخارج.)</li>
+                <li>How long <span class="english-word">have you been studying</span>? (كم المدة التي كنت تدرس فيها؟)</li>
+                <li>She <span class="english-word">has been feeling</span> tired lately. (هي تشعر بالتعب مؤخراً.)</li>
+                <li>They <span class="english-word">have been planning</span> their trip. (هم يخططون لرحلتهم.)</li>
+            </ol>
+
+            <h4>هـ. السؤال والنفي (Questions and Negation):</h4>
+            <ul>
+                <li><strong>للسؤال:</strong> نضع <span class="english-word">Have</span> أو <span class="english-word">Has</span> قبل الفاعل.
+                    <ul>
+                        <li><span class="english-word">Have</span> I/you/we/they <span class="english-word">been</span> + الفعل + ing ...?
+                            <ul>
+                                <li><span class="english-word">Have</span> you <span class="english-word">been waiting</span> long? (هل كنت تنتظر طويلاً؟)</li>
+                            </ul>
+                        </li>
+                        <li><span class="english-word">Has</span> he/she/it <span class="english-word">been</span> + الفعل + ing ...?
+                            <ul>
+                                <li><span class="english-word">Has</span> she <span class="english-word">been sleeping</span>? (هل كانت نائمة؟)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>للنفي:</strong> نضع <span class="english-word">not</span> بعد <span class="english-word">have</span> أو <span class="english-word">has</span>.
+                    <ul>
+                        <li>I/You/We/They <span class="english-word">have not been</span> (<span class="english-word">haven't been</span>) + الفعل + ing.
+                            <ul>
+                                <li>I <span class="english-word">haven't been</span> feeling well. (لم أكن أشعر بخير.)</li>
+                            </ul>
+                        </li>
+                        <li>He/She/It <span class="english-word">has not been</span> (<span class="english-word">hasn't been</span>) + الفعل + ing.
+                            <ul>
+                                <li>He <span class="english-word">hasn't been</span> studying. (هو لم يكن يدرس.)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="grammar-topic">
+        <h3>8. زمن الماضي التام (Past Perfect)</h3>
+        <div class="grammar-text">
+            <p>يُستخدم زمن الماضي التام للتعبير عن حدث وقع واكتمل قبل حدث آخر في الماضي. يُظهر الترتيب الزمني للأحداث الماضية.</p>
+            
+            <h4>أ. الاستخدامات:</h4>
+            <ul>
+                <li><strong>حدث اكتمل قبل حدث آخر في الماضي:</strong> غالباً ما يستخدم مع الماضي البسيط.
+                    <ul>
+                        <li>When I arrived, the train <span class="english-word">had already left</span>. (عندما وصلت، كان القطار قد غادر بالفعل.)</li>
+                        <li>She <span class="english-word">had finished</span> her work before she went home. (هي أنهت عملها قبل أن تذهب إلى المنزل.)</li>
+                    </ul>
+                </li>
+                <li><strong>السبب والنتيجة في الماضي:</strong>
+                    <ul>
+                        <li>He was tired because he <span class="english-word">had worked</span> all night. (كان متعباً لأنه عمل طوال الليل.)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>ب. الكلمات الدالة (Keywords):</h4>
+            <ul>
+                <li><span class="english-word">Before</span> (قبل)</li>
+                <li><span class="english-word">After</span> (بعد)</li>
+                <li><span class="english-word">By the time</span> (بحلول الوقت)</li>
+                <li><span class="english-word">Already</span> (بالفعل)</li>
+                <li><span class="english-word">When</span> (عندما)</li>
+                <li><span class="english-word">Until then</span> (حتى ذلك الحين)</li>
+            </ul>
+
+            <h4>ج. التكوين (Formation):</h4>
+            <ul>
+                <li><strong>الفاعل + <span class="english-word">had</span> + الفعل في التصريف الثالث (Past Participle):</strong>
+                    <ul>
+                        <li>I/You/He/She/It/We/They <span class="english-word">had eaten</span>.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>د. أمثلة (10 Examples):</h4>
+            <ol>
+                <li>I <span class="english-word">had never seen</span> such a beautiful place before I visited Egypt. (لم أر مكاناً جميلاً كهذا قبل أن أزور مصر.)</li>
+                <li>She <span class="english-word">had already left</span> when he arrived. (كانت قد غادرت بالفعل عندما وصل.)</li>
+                <li>By the time we got to the cinema, the movie <span class="english-word">had started</span>. (بحلول الوقت الذي وصلنا فيه إلى السينما، كان الفيلم قد بدأ.)</li>
+                <li>He <span class="english-word">had eaten</span> all the cake before I got home. (هو كان قد أكل كل الكعكة قبل أن أصل إلى المنزل.)</li>
+                <li>They <span class="english-word">had finished</span> their homework before they went to play. (هم كانوا قد أنهوا واجباتهم قبل أن يذهبوا للعب.)</li>
+                <li>The patient <span class="english-word">had died</span> before the doctor arrived. (المريض كان قد توفي قبل وصول الطبيب.)</li>
+                <li>We <span class="english-word">had planned</span> the trip long before. (كنا قد خططنا للرحلة قبل فترة طويلة.)</li>
+                <li>He <span class="english-word">had heard</span> the news from his friend. (هو كان قد سمع الأخبار من صديقه.)</li>
+                <li>I <span class="english-word">had lived</span> in London for five years before I moved to Paris. (كنت قد عشت في لندن لمدة خمس سنوات قبل أن أنتقل إلى باريس.)</li>
+                <li>She realized she <span class="english-word">had forgotten</span> her wallet. (أدركت أنها قد نسيت محفظتها.)</li>
+            </ol>
+
+            <h4>هـ. السؤال والنفي (Questions and Negation):</h4>
+            <ul>
+                <li><strong>للسؤال:</strong> نضع <span class="english-word">Had</span> قبل الفاعل.
+                    <ul>
+                        <li><span class="english-word">Had</span> + الفاعل + الفعل في التصريف الثالث ...?
+                            <ul>
+                                <li><span class="english-word">Had</span> you eaten before you came? (هل كنت قد أكلت قبل أن تأتي؟)</li>
+                                <li><span class="english-word">Had</span> she finished her work? (هل كانت قد أنهت عملها؟)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>للنفي:</strong> نضع <span class="english-word">not</span> بعد <span class="english-word">had</span>.
+                    <ul>
+                        <li>الفاعل + <span class="english-word">had not</span> (<span class="english-word">hadn't</span>) + الفعل في التصريف الثالث.
+                            <ul>
+                                <li>I <span class="english-word">hadn't</span> seen him before that day. (لم أره قبل ذلك اليوم.)</li>
+                                <li>They <span class="english-word">hadn't</span> prepared for the meeting. (هم لم يكونوا قد استعدوا للاجتماع.)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+ </section>
+
+  <section id="common-words-section">
+            <h2>كلمات إنجليزية شائعة ومعانيها</h2>
+            <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
+            
+            <div class="info-table-container">
+                <table class="info-table">
+                    <thead>
+                        <tr>
+                            <th>الإنجليزية</th>
+                            <th>العربية</th>
+                            <th>الإنجليزية</th>
+                            <th>العربية</th>
+                            <th>الإنجليزية</th>
+                            <th>العربية</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="english-word">Hello</span></td>
+                            <td>مرحبًا</td>
+                            <td><span class="english-word">Goodbye</span></td>
+                            <td>وداعًا</td>
+                            <td><span class="english-word">Please</span></td>
+                            <td>من فضلك</td>
+                        </tr>
+                        <tr>
+                            <td><span class="english-word">Thank you</span></td>
+                            <td>شكرًا</td>
+                            <td><span class="english-word">Sorry</span></td>
+                            <td>آسف</td>
+                            <td><span class="english-word">Yes</span></td>
+                            <td>نعم</td>
+                        </tr>
+                        <tr>
+                            <td><span class="english-word">No</span></td>
+                            <td>لا</td>
+                            <td><span class="english-word">What</span></td>
+                            <td>ماذا</td>
+                            <td><span class="english-word">Where</span></td>
+                            <td>أين</td>
+                        </tr>
+                        <tr>
+                            <td><span class="english-word">When</span></td>
+                            <td>متى</td>
+                            <td><span class="english-word">Why</span></td>
+                            <td>لماذا</td>
+                            <td><span class="english-word">How</span></td>
+                            <td>كيف</td>
+                        </tr>
+                        <tr>
+                            <td><span class="english-word">Man</span></td>
+                            <td>رجل</td>
+                            <td><span class="english-word">Woman</span></td>
+                            <td>امرأة</td>
+                            <td><span class="english-word">Child</span></td>
+                            <td>طفل</td>
+                        </tr>
+                        <tr>
+                            <td><span class="english-word">Family</span></td>
+                            <td>عائلة</td>
+                            <td><span class="english-word">Friend</span></td>
+                            <td>صديق</td>
+                            <td><span class="english-word">House</span></td>
+                            <td>منزل</td>
+                        </tr>
+                        <tr>
+                            <td><span class="english-word">Food</span></td>
+                            <td>طعام</td>
+                            <td><span class="english-word">Water</span></td>
+                            <td>ماء</td>
+                            <td><span class="english-word">Time</span></td>
+                            <td>وقت</td>
+                        </tr>
+                        <tr>
+                            <td><span class="english-word">Day</span></td>
+                            <td>يوم</td>
+                            <td><span class="english-word">Night</span></td>
+                            <td>ليل</td>
+                            <td><span class="english-word">Week</span></td>
+                            <td>أسبوع</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="games-section">
+            <h2>ألعاب تفاعلية لتعزيز تعلمك</h2>
+            <p class="instruction">استمتع بتعلم الإنجليزية بطريقة ممتعة وتفاعلية! اختر اللعبة التي تفضلها.</p>
+
+          
     <style>
         /* CSS Styles for the games */
         :root {
@@ -2835,53 +2770,276 @@
             devGames.openGame('matching');
         });
     </script>
-</body>
-</html>
+        </section>
+        </main>
 
-   
-   <footer>
-   <p>مصمم بـ ❤️ لأحباب اللغة الإنجليزية</p>
-   <p>&copy; 2024 تعلم الإنجليزية. جميع الحقوق محفوظة.</p>
-   </footer>
-   
-   <script>
-   document.addEventListener('DOMContentLoaded', () => {
-   // Function to speak text
-   function speakText(text, lang = 'en-US') {
-   const synth = window.speechSynthesis;
-   if (synth.speaking) {
-   synth.cancel();
-   }
-   const utterance = new SpeechSynthesisUtterance(text);
-   utterance.lang = lang;
-   synth.speak(utterance);
-   }
-   
-   // Add click event listeners
-   document.querySelectorAll('.speakable-heading, .speakable-word').forEach(element => {
-   element.addEventListener('click', function() {
-   const textToSpeak = this.textContent;
-   if (this.classList.contains('speakable-heading')) {
-   const match = textToSpeak.match(/\((.*?)\)/);
-   if (match && match[1]) {
-   speakText(match[1], 'en-US');
-   } else {
-   speakText(textToSpeak, 'ar-SA');
-   }
-   } else if (this.classList.contains('speakable-word')) {
-   speakText(textToSpeak, 'en-US');
-   }
-   });
-   });
-   
-   // Highlight correct answers on click
-   document.querySelectorAll('input[type="radio"]').forEach(radio => {
-   radio.addEventListener('click', function() {
-   const correctAnswer = this.closest('li').querySelector('.correct-answer');
-   correctAnswer.style.display = 'block';
-   });
-   });
-   });
-   </script>
-   </body>
-   </html>
+    <footer>
+        <p>مصمم بـ ❤️ لأحباب اللغة الإنجليزية</p>
+        <p>&copy; 2024 تعلم الإنجليزية. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        // Alphabet data
+        const alphabetData = {
+            'A': [
+                { en: 'Apple', ar: 'تفاحة' }, { en: 'Ant', ar: 'نملة' }, { en: 'All', ar: 'كل' },
+                { en: 'Ask', ar: 'يسأل' }, { en: 'Art', ar: 'فن' }, { en: 'Arm', ar: 'ذراع' }
+            ],
+            'B': [
+                { en: 'Ball', ar: 'كرة' }, { en: 'Book', ar: 'كتاب' }, { en: 'Big', ar: 'كبير' },
+                { en: 'Blue', ar: 'أزرق' }, { en: 'Boy', ar: 'ولد' }, { en: 'Bird', ar: 'طائر' }
+            ],
+            'C': [
+                { en: 'Cat', ar: 'قطة' }, { en: 'Car', ar: 'سيارة' }, { en: 'Cup', ar: 'كوب' },
+                { en: 'Cold', ar: 'بارد' }, { en: 'City', ar: 'مدينة' }, { en: 'Cake', ar: 'كعكة' }
+            ],
+            'D': [
+                { en: 'Dog', ar: 'كلب' }, { en: 'Door', ar: 'باب' }, { en: 'Day', ar: 'يوم' },
+                { en: 'Dark', ar: 'مظلم' }, { en: 'Dream', ar: 'حلم' }, { en: 'Dance', ar: 'يرقص' }
+            ],
+            'E': [
+                { en: 'Elephant', ar: 'فيل' }, { en: 'Egg', ar: 'بيضة' }, { en: 'Eye', ar: 'عين' },
+                { en: 'Eat', ar: 'يأكل' }, { en: 'Earth', ar: 'أرض' }, { en: 'Ear', ar: 'أذن' }
+            ],
+            'F': [
+                { en: 'Fish', ar: 'سمكة' }, { en: 'Flower', ar: 'زهرة' }, { en: 'Friend', ar: 'صديق' },
+                { en: 'Fast', ar: 'سريع' }, { en: 'Family', ar: 'عائلة' }, { en: 'Fly', ar: 'يطير' }
+            ],
+            'G': [
+                { en: 'Goat', ar: 'ماعز' }, { en: 'Green', ar: 'أخضر' }, { en: 'Good', ar: 'جيد' },
+                { en: 'Girl', ar: 'فتاة' }, { en: 'Game', ar: 'لعبة' }, { en: 'Glass', ar: 'زجاج' }
+            ],
+            'H': [
+                { en: 'House', ar: 'منزل' }, { en: 'Hand', ar: 'يد' }, { en: 'Happy', ar: 'سعيد' },
+                { en: 'Hat', ar: 'قبعة' }, { en: 'Home', ar: 'منزل' }, { en: 'Hear', ar: 'يسمع' }
+            ],
+            'I': [
+                { en: 'Ice', ar: 'ثلج' }, { en: 'Ink', ar: 'حبر' }, { en: 'Inside', ar: 'بالداخل' },
+                { en: 'Idea', ar: 'فكرة' }, { en: 'Island', ar: 'جزيرة' }, { en: 'Iron', ar: 'حديد/يكوي' }
+            ],
+            'J': [
+                { en: 'Jacket', ar: 'سترة' }, { en: 'Jump', ar: 'يقفز' }, { en: 'Juice', ar: 'عصير' },
+                { en: 'Joy', ar: 'فرح' }, { en: 'Join', ar: 'ينضم' }, { en: 'Jet', ar: 'طائرة نفاثة' }
+            ],
+            'K': [
+                { en: 'King', ar: 'ملك' }, { en: 'Key', ar: 'مفتاح' }, { en: 'Kite', ar: 'طائرة ورقية' },
+                { en: 'Kiss', ar: 'يقبل' }, { en: 'Keep', ar: 'يحفظ' }, { en: 'Kind', ar: 'طيب' }
+            ],
+            'L': [
+                { en: 'Lion', ar: 'أسد' }, { en: 'Lamp', ar: 'مصباح' }, { en: 'Love', ar: 'حب' },
+                { en: 'Light', ar: 'ضوء' }, { en: 'Leg', ar: 'ساق' }, { en: 'Look', ar: 'ينظر' }
+            ],
+            'M': [
+                { en: 'Monkey', ar: 'قرد' }, { en: 'Moon', ar: 'قمر' }, { en: 'Man', ar: 'رجل' },
+                { en: 'Milk', ar: 'حليب' }, { en: 'Map', ar: 'خريطة' }, { en: 'Music', ar: 'موسيقى' }
+            ],
+            'N': [
+                { en: 'Nest', ar: 'عش' }, { en: 'Nose', ar: 'أنف' }, { en: 'Night', ar: 'ليل' },
+                { en: 'New', ar: 'جديد' }, { en: 'Name', ar: 'اسم' }, { en: 'North', ar: 'شمال' }
+            ],
+            'O': [
+                { en: 'Orange', ar: 'برتقالي/برتقالة' }, { en: 'Owl', ar: 'بومة' }, { en: 'Open', ar: 'يفتح' },
+                { en: 'Old', ar: 'قديم' }, { en: 'One', ar: 'واحد' }, { en: 'Often', ar: 'غالباً' }
+            ],
+            'P': [
+                { en: 'Pig', ar: 'خنزير' }, { en: 'Pen', ar: 'قلم' }, { en: 'Play', ar: 'يلعب' },
+                { en: 'Park', ar: 'حديقة' }, { en: 'Please', ar: 'من فضلك' }, { en: 'Purple', ar: 'أرجواني' }
+            ],
+            'Q': [
+                { en: 'Queen', ar: 'ملكة' }, { en: 'Quick', ar: 'سريع' }, { en: 'Quiet', ar: 'هادئ' },
+                { en: 'Question', ar: 'سؤال' }, { en: 'Quack', ar: 'صوت البطة' }, { en: 'Quilt', ar: 'لحاف' }
+            ],
+            'R': [
+                { en: 'Rabbit', ar: 'أرنب' }, { en: 'Red', ar: 'أحمر' }, { en: 'Run', ar: 'يركض' },
+                { en: 'Rain', ar: 'مطر' }, { en: 'Read', ar: 'يقرأ' }, { en: 'Right', ar: 'صحيح/يمين' }
+            ],
+            'S': [
+                { en: 'Sun', ar: 'شمس' }, { en: 'Star', ar: 'نجمة' }, { en: 'Sing', ar: 'يغني' },
+                { en: 'Sleep', ar: 'ينام' }, { en: 'Stop', ar: 'يتوقف' }, { en: 'Sister', ar: 'أخت' }
+            ],
+            'T': [
+                { en: 'Tiger', ar: 'نمر' }, { en: 'Tree', ar: 'شجرة' }, { en: 'Table', ar: 'طاولة' },
+                { en: 'Train', ar: 'قطار' }, { en: 'Talk', ar: 'يتحدث' }, { en: 'Time', ar: 'وقت' }
+            ],
+            'U': [
+                { en: 'Umbrella', ar: 'مظلة' }, { en: 'Up', ar: 'فوق' }, { en: 'Under', ar: 'تحت' },
+                { en: 'Uniform', ar: 'زي رسمي' }, { en: 'Unit', ar: 'وحدة' }, { en: 'Us', ar: 'نا/نحن' }
+            ],
+            'V': [
+                { en: 'Van', ar: 'شاحنة صغيرة' }, { en: 'Violin', ar: 'كمان' }, { en: 'Voice', ar: 'صوت' },
+                { en: 'Visit', ar: 'يزور' }, { en: 'Very', ar: 'جداً' }, { en: 'View', ar: 'منظر' }
+            ],
+            'W': [
+                { en: 'Watch', ar: 'ساعة يد/يشاهد' }, { en: 'Water', ar: 'ماء' }, { en: 'Window', ar: 'نافذة' },
+                { en: 'Walk', ar: 'يمشي' }, { en: 'Warm', ar: 'دافئ' }, { en: 'Write', ar: 'يكتب' }
+            ],
+            'X': [
+                { en: 'Xylophone', ar: 'إكسيلفون' }, { en: 'X-ray', ar: 'أشعة سينية' }, { en: 'Box', ar: 'صندوق' },
+                { en: 'Fox', ar: 'ثعلب' }, { en: 'Six', ar: 'ستة' }, { en: 'Exact', ar: 'دقيق' }
+            ],
+            'Y': [
+                { en: 'Yellow', ar: 'أصفر' }, { en: 'Yacht', ar: 'يخت' }, { en: 'Yes', ar: 'نعم' },
+                { en: 'You', ar: 'أنت' }, { en: 'Year', ar: 'سنة' }, { en: 'Yet', ar: 'بعد' }
+            ],
+            'Z': [
+                { en: 'Zebra', ar: 'حمار وحشي' }, { en: 'Zoo', ar: 'حديقة حيوان' }, { en: 'Zero', ar: 'صفر' },
+                { en: 'Zip', ar: 'سحاب' }, { en: 'Zone', ar: 'منطقة' }, { en: 'Zoom', ar: 'تكبير' }
+            ]
+        };
+
+        // Function to speak text
+        function speakText(text, lang = 'en-US') {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = lang;
+                utterance.rate = 0.9;
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Generate alphabet cards
+        function generateAlphabetCards() {
+            const container = document.getElementById('alphabet-container');
+            container.innerHTML = '';
+            
+            for (const letter in alphabetData) {
+                const words = alphabetData[letter];
+                
+                const card = document.createElement('div');
+                card.className = 'alphabet-card';
+                
+                const header = document.createElement('h3');
+                header.textContent = letter;
+                card.appendChild(header);
+                
+                const table = document.createElement('table');
+                table.className = 'alphabet-table';
+                
+                // Create table header
+                const thead = document.createElement('thead');
+                const headerRow = document.createElement('tr');
+                const header1 = document.createElement('th');
+                header1.textContent = 'الإنجليزية';
+                const header2 = document.createElement('th');
+                header2.textContent = 'العربية';
+                headerRow.appendChild(header1);
+                headerRow.appendChild(header2);
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+                
+                // Create table body
+                const tbody = document.createElement('tbody');
+                
+                words.forEach(word => {
+                    const row = document.createElement('tr');
+                    const cell1 = document.createElement('td');
+                    const cell2 = document.createElement('td');
+                    
+                    const enWord = document.createElement('span');
+                    enWord.className = 'english-word';
+                    enWord.textContent = word.en;
+                    enWord.addEventListener('click', () => speakText(word.en, 'en-US'));
+                    
+                    cell1.appendChild(enWord);
+                    cell2.textContent = word.ar;
+                    
+                    row.appendChild(cell1);
+                    row.appendChild(cell2);
+                    tbody.appendChild(row);
+                });
+                
+                table.appendChild(tbody);
+                card.appendChild(table);
+                container.appendChild(card);
+            }
+        }
+        
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Generate alphabet cards
+            generateAlphabetCards();
+            
+            // Add click event listeners to all english words
+            document.querySelectorAll('.english-word').forEach(word => {
+                word.addEventListener('click', function() {
+                    speakText(this.textContent, 'en-US');
+                });
+            });
+            
+            // Navigation buttons
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const sections = document.querySelectorAll('section');
+            const scrollTopBtn = document.querySelector('.scroll-top-btn');
+            
+            // Set active section on page load
+            function setActiveSection() {
+                const scrollPosition = window.scrollY + 150;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        const sectionId = section.id;
+                        navButtons.forEach(btn => {
+                            if (btn.dataset.section === sectionId) {
+                                btn.classList.add('active');
+                            } else {
+                                btn.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }
+            
+            // Scroll to section on button click
+            navButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const sectionId = this.dataset.section;
+                    const section = document.getElementById(sectionId);
+                    
+                    if (section) {
+                        // Update active button
+                        navButtons.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // Scroll to section
+                        window.scrollTo({
+                            top: section.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Show/hide scroll to top button
+            function toggleScrollTopButton() {
+                if (window.scrollY > 300) {
+                    scrollTopBtn.classList.add('show');
+                } else {
+                    scrollTopBtn.classList.remove('show');
+                }
+            }
+            
+            // Scroll to top functionality
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Event listeners
+            window.addEventListener('scroll', function() {
+                setActiveSection();
+                toggleScrollTopButton();
+            });
+            
+            // Initialize
+            setActiveSection();
+            toggleScrollTopButton();
+        });
+    </script>
+</body>
+</htm
+
