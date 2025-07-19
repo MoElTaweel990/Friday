@@ -1479,767 +1479,659 @@
             });
         });
     </script>
-    <!DOCTYPE html>
-    <html lang="ar" dir="rtl">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الأزمنة في اللغة الإنجليزية والأسئلة التدريبية</title>
-    <style>
-    body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    margin: 20px;
-    background-color: #f4f4f4;
-    color: #333;
-    }
-    .container {
-    max-width: 900px;
-    margin: auto;
-    background: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-    h1, h2, h3 {
-    color: #2c3e50;
-    }
-    h2 {
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 10px;
-    margin-bottom: 25px;
-    }
-    h3 {
-    color: #3498db;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    }
-    .grammar-topic {
-    margin-bottom: 40px;
-    padding: 20px;
-    background-color: #eaf2f8;
-    border-left: 5px solid #3498db;
-    border-radius: 5px;
-    }
-    .grammar-text {
-    font-size: 1.1em;
-    margin-bottom: 15px;
-    }
-    ul {
-    list-style-type: disc;
-    margin-left: 25px;
-    margin-bottom: 15px;
-    }
-    li {
-    margin-bottom: 8px;
-    }
-    .speakable-word, .speakable-heading {
-    cursor: pointer;
-    text-decoration: underline;
-    color: #2980b9;
-    }
-    .speakable-word:hover, .speakable-heading:hover {
-    color: #1a527f;
-    }
-    .instruction {
-    font-style: italic;
-    color: #555;
-    margin-bottom: 20px;
-    }
-    .exercises-section {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 2px dashed #ccc;
-    }
-    .question-group {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    border: 1px solid #ddd;
-    }
-    .question-group ol {
-    list-style-type: decimal;
-    padding-right: 20px; /* For RTL support */
-    margin-left: 0;
-    }
-    .question-group li {
-    margin-bottom: 15px;
-    padding: 5px 0;
-    }
-    .question-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    }
-    .question-group input[type="radio"],
-    .question-group input[type="text"] {
-    margin-left: 5px; /* For RTL support */
-    margin-right: 0;
-    }
-    .question-group .options span {
-    margin-left: 15px; /* Space between options */
-    display: inline-block;
-    }
-    .question-group .fill-in-the-blank input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 150px;
-    text-align: right; /* For RTL input */
-    }
-    </style>
-    </head>
-    <body>
-    <div class="container">
-    <section id="tenses-section">
-    <h2>الأزمنة في اللغة الإنجليزية (Tenses) والكلمات الدالة عليها</h2>
-    <p class="instruction">اضغط على أي عنوان زمن أو كلمة إنجليزية لسماع نطقها.</p>
-    
-    <div class="grammar-topic">
-    <h3 class="speakable-heading">1. زمن المضارع البسيط (Present Simple)</h3>
-    <p class="grammar-text">يُستخدم للتعبير عن الحقائق العامة، العادات، والجداول الزمنية.</p>
-    <ul>
-    <li>**الاستخدامات:**
-    <ul>
-    <li>الحقائق العامة: The sun <span class="speakable-word">rises</span> in the east. (الشمس تشرق من الشرق.)</li>
-    <li>العادات والروتين: I <span class="speakable-word">drink</span> coffee every morning. (أشرب القهوة كل صباح.)</li>
-    </ul>
-    </li>
-    <li>**الكلمات الدالة:** <span class="speakable-word">always</span>, <span class="speakable-word">usually</span>, <span class="speakable-word">often</span>, <span class="speakable-word">sometimes</span>, <span class="speakable-word">rarely</span>, <span class="speakable-word">never</span>, <span class="speakable-word">every day</span>/<span class="speakable-word">week</span>/<span class="speakable-word">month</span>/<span class="speakable-word">year</span>, <span class="speakable-word">on Mondays</span>, <span class="speakable-word">at weekends</span>.</li>
-    <li>**أمثلة وجمل (10 أمثلة):**
-    <ul>
-    <li>She <span class="speakable-word">works</span> in a hospital. (هي تعمل في مستشفى.)</li>
-    <li>We <span class="speakable-word">don't eat</span> meat. (نحن لا نأكل اللحم.)</li>
-    <li><span class="speakable-word">Does</span> he <span class="speakable-word">play</span> tennis? (هل يلعب التنس؟)</li>
-    <li>They <span class="speakable-word">live</span> in New York. (هم يعيشون في نيويورك.)</li>
-    <li>The train <span class="speakable-word">leaves</span> at 7 AM. (القطار يغادر في الساعة 7 صباحًا.)</li>
-    <li>Birds <span class="speakable-word">sing</span> in the morning. (الطيور تغني في الصباح.)</li>
-    <li>He <span class="speakable-word">doesn't like</span> vegetables. (هو لا يحب الخضروات.)</li>
-    <li><span class="speakable-word">Do</span> you <span class="speakable-word">speak</span> Arabic? (هل تتحدث العربية؟)</li>
-    <li>My parents <span class="speakable-word">visit</span> us every summer. (والداي يزوروننا كل صيف.)</li>
-    <li>It <span class="speakable-word">gets</span> cold in winter. (يصبح الجو باردًا في الشتاء.)</li>
-    </ul>
-    </li>
-    <li>**صيغة السؤال والإجابة:**
-    <ul>
-    <li>**للسؤال:** نستخدم <span class="speakable-word">Do</span> مع (I, you, we, they) و <span class="speakable-word">Does</span> مع (he, she, it) ثم الفعل الأصلي.
-    <ul>
-    <li><span class="speakable-word">Do</span> you <span class="speakable-word">work</span> here?</li>
-    <li><span class="speakable-word">Does</span> she <span class="speakable-word">live</span> near?</li>
-    </ul>
-    </li>
-    <li>**للإجابة (قصيرة):**
-    <ul>
-    <li>Yes, I <span class="speakable-word">do</span>. / No, I <span class="speakable-word">don't</span>.</li>
-    <li>Yes, she <span class="speakable-word">does</span>. / No, she <span class="speakable-word">doesn't</span>.</li>
-    </ul>
-    </li>
-    </ul>
-    </li>
-    </ul>
-    
-    <div class="exercises-section">
-    <h4>أسئلة تدريبية على المضارع البسيط (Present Simple)</h4>
-    <p>اختر الإجابة الصحيحة أو أكمل الفراغ:</p>
-    <div class="question-group">
-    <ol>
-    <li>
-    <label>He usually _____ (go) to work by bus.</label>
-    <div class="options">
-    <span><input type="radio" name="q1_ps" value="a"> a) go</span>
-    <span><input type="radio" name="q1_ps" value="b"> b) goes</span>
-    <span><input type="radio" name="q1_ps" value="c"> c) going</span>
-    </div>
-    </li>
-    <li>
-    <label>Do they _____ (live) in Cairo?</label>
-    <div class="options">
-    <span><input type="radio" name="q2_ps" value="a"> a) live</span>
-    <span><input type="radio" name="q2_ps" value="b"> b) lives</span>
-    <span><input type="radio" name="q2_ps" value="c"> c) living</span>
-    </div>
-    </li>
-    <li>
-    <label>She _____ (not / like) coffee.</label>
-    <div class="options">
-    <span><input type="radio" name="q3_ps" value="a"> a) don't like</span>
-    <span><input type="radio" name="q3_ps" value="b"> b) doesn't like</span>
-    <span><input type="radio" name="q3_ps" value="c"> c) isn't liking</span>
-    </div>
-    </li>
-    <li>
-    <label>The sun _____ (rise) in the east.</label>
-    <div class="options">
-    <span><input type="radio" name="q4_ps" value="a"> a) rise</span>
-    <span><input type="radio" name="q4_ps" value="b"> b) rises</span>
-    <span><input type="radio" name="q4_ps" value="c"> c) rising</span>
-    </div>
-    </li>
-    <li>
-    <label>What time _____ the train _____ (leave)?</label>
-    <div class="options">
-    <span><input type="radio" name="q5_ps" value="a"> a) do / leave</span>
-    <span><input type="radio" name="q5_ps" value="b"> b) does / leave</span>
-    <span><input type="radio" name="q5_ps" value="c"> c) is / leaving</span>
-    </div>
-    </li>
-    <li>
-    <label>I _____ (drink) tea every morning.</label>
-    <div class="options">
-    <span><input type="radio" name="q6_ps" value="a"> a) drink</span>
-    <span><input type="radio" name="q6_ps" value="b"> b) drinks</span>
-    <span><input type="radio" name="q6_ps" value="c"> c) am drinking</span>
-    </div>
-    </li>
-    <li>
-    <label>Birds _____ (sing) beautifully.</label>
-    <div class="options">
-    <span><input type="radio" name="q7_ps" value="a"> a) sing</span>
-    <span><input type="radio" name="q7_ps" value="b"> b) sings</span>
-    <span><input type="radio" name="q7_ps" value="c"> c) are singing</span>
-    </div>
-    </li>
-    <li>
-    <label>My brother _____ (not / watch) TV very often.</label>
-    <div class="options">
-    <span><input type="radio" name="q8_ps" value="a"> a) don't watch</span>
-    <span><input type="radio" name="q8_ps" value="b"> b) doesn't watch</span>
-    <span><input type="radio" name="q8_ps" value="c"> c) isn't watching</span>
-    </div>
-    </li>
-    <li>
-    <label>_____ you _____ (play) the guitar?</label>
-    <div class="options">
-    <span><input type="radio" name="q9_ps" value="a"> a) Do / play</span>
-    <span><input type="radio" name="q9_ps" value="b"> b) Does / play</span>
-    <span><input type="radio" name="q9_ps" value="c"> c) Are / playing</span>
-    </div>
-    </li>
-    <li>
-    <label>We _____ (visit) our relatives on holidays.</label>
-    <div class="options">
-    <span><input type="radio" name="q10_ps" value="a"> a) visit</span>
-    <span><input type="radio" name="q10_ps" value="b"> b) visits</span>
-    <span><input type="radio" name="q10_ps" value="c"> c) are visiting</span>
-    </div>
-    </li>
-    <li>
-    <label>He always _____ (help) his friends.</label>
-    <div class="options">
-    <span><input type="radio" name="q11_ps" value="a"> a) help</span>
-    <span><input type="radio" name="q11_ps" value="b"> b) helps</span>
-    <span><input type="radio" name="q11_ps" value="c"> c) helping</span>
-    </div>
-    </li>
-    <li>
-    <label>Where _____ she _____ (work)?</label>
-    <div class="options">
-    <span><input type="radio" name="q12_ps" value="a"> a) do / work</span>
-    <span><input type="radio" name="q12_ps" value="b"> b) does / work</span>
-    <span><input type="radio" name="q12_ps" value="c"> c) is / working</span>
-    </div>
-    </li>
-    <li>
-    <label>They _____ (not / speak) French.</label>
-    <div class="options">
-    <span><input type="radio" name="q13_ps" value="a"> a) don't speak</span>
-    <span><input type="radio" name="q13_ps" value="b"> b) doesn't speak</span>
-    <span><input type="radio" name="q13_ps" value="c"> c) aren't speaking</span>
-    </div>
-    </li>
-    <li>
-    <label>Water _____ (boil) at 100 degrees Celsius.</label>
-    <div class="options">
-    <span><input type="radio" name="q14_ps" value="a"> a) boil</span>
-    <span><input type="radio" name="q14_ps" value="b"> b) boils</span>
-    <span><input type="radio" name="q14_ps" value="c"> c) boiling</span>
-    </div>
-    </li>
-    <li>
-    <label>How often _____ he _____ (go) to the gym?</label>
-    <div class="options">
-    <span><input type="radio" name="q15_ps" value="a"> a) do / go</span>
-    <span><input type="radio" name="q15_ps" value="b"> b) does / go</span>
-    <span><input type="radio" name="q15_ps" value="c"> c) is / going</span>
-    </div>
-    </li>
-    <li>
-    <label>My parents _____ (live) in a big house.</label>
-    <div class="options">
-    <span><input type="radio" name="q16_ps" value="a"> a) live</span>
-    <span><input type="radio" name="q16_ps" value="b"> b) lives</span>
-    <span><input type="radio" name="q16_ps" value="c"> c) are living</span>
-    </div>
-    </li>
-    <li>
-    <label>I _____ (not / eat) meat.</label>
-    <div class="options">
-    <span><input type="radio" name="q17_ps" value="a"> a) don't eat</span>
-    <span><input type="radio" name="q17_ps" value="b"> b) doesn't eat</span>
-    <span><input type="radio" name="q17_ps" value="c"> c) am not eating</span>
-    </div>
-    </li>
-    <li>
-    <label>The museum _____ (open) at 9 AM daily.</label>
-    <div class="options">
-    <span><input type="radio" name="q18_ps" value="a"> a) open</span>
-    <span><input type="radio" name="q18_ps" value="b"> b) opens</span>
-    <span><input type="radio" name="q18_ps" value="c"> c) opening</span>
-    </div>
-    </li>
-    <li>
-    <label>_____ it _____ (rain) a lot in winter here?</label>
-    <div class="options">
-    <span><input type="radio" name="q19_ps" value="a"> a) Do / rain</span>
-    <span><input type="radio" name="q19_ps" value="b"> b) Does / rain</span>
-    <span><input type="radio" name="q19_ps" value="c"> c) Is / raining</span>
-    </div>
-    </li>
-    <li>
-    <label>Cats _____ (love) to sleep.</label>
-    <div class="options">
-    <span><input type="radio" name="q20_ps" value="a"> a) love</span>
-    <span><input type="radio" name="q20_ps" value="b"> b) loves</span>
-    <span><input type="radio" name="q20_ps" value="c"> c) are loving</span>
-    </div>
-    </li>
-    </ol>
-    </div>
-    </div>
-    </div>
-    
-    <div class="grammar-topic">
-    <h3 class="speakable-heading">2. زمن المضارع المستمر (Present Continuous)</h3>
-    <p class="grammar-text">يُستخدم للتعبير عن أفعال تحدث الآن أو في فترة زمنية مؤقتة حول الوقت الحاضر.</p>
-    <ul>
-    <li>**الاستخدامات:**
-    <ul>
-    <li>أفعال تحدث الآن: I <span class="speakable-word">am studying</span> English right now. (أنا أدرس الإنجليزية الآن.)</li>
-    <li>أفعال مؤقتة: He <span class="speakable-word">is working</span> on a new project this month. (هو يعمل على مشروع جديد هذا الشهر.)</li>
-    </ul>
-    </li>
-    <li>**الكلمات الدالة:** <span class="speakable-word">now</span>, <span class="speakable-word">right now</span>, <span class="speakable-word">at the moment</span>, <span class="speakable-word">currently</span>, <span class="speakable-word">today</span>, <span class="speakable-word">this week</span>/<span class="speakable-word">month</span>/<span class="speakable-word">year</span>, <span class="speakable-word">listen!</span>, <span class="speakable-word">look!</span></li>
-    <li>**أمثلة وجمل (10 أمثلة):**
-    <ul>
-    <li>They <span class="speakable-word">are watching</span> TV. (هم يشاهدون التلفاز.)</li>
-    <li>She <span class="speakable-word">isn't sleeping</span>. (هي لا تنام.)</li>
-    <li><span class="speakable-word">Are</span> you <span class="speakable-word">listening</span> to me? (هل تستمع إلي؟)</li>
-    <li>I <span class="speakable-word">am writing</span> an email. (أنا أكتب بريدًا إلكترونيًا.)</li>
-    <li>The children <span class="speakable-word">are playing</span> outside. (الأطفال يلعبون في الخارج.)</li>
-    <li>He <span class="speakable-word">is not reading</span> the newspaper. (هو لا يقرأ الجريدة.)</li>
-    <li><span class="speakable-word">Is</span> it <span class="speakable-word">raining</span>? (هل تمطر؟)</li>
-    <li>We <span class="speakable-word">are having</span> dinner. (نحن نتناول العشاء.)</li>
-    <li>Look! The baby <span class="speakable-word">is smiling</span>. (انظر! الطفل يبتسم.)</li>
-    <li>They <span class="speakable-word">are preparing</span> for a trip. (هم يستعدون لرحلة.)</li>
-    </ul>
-    </li>
-    <li>**صيغة السؤال والإجابة:**
-    <ul>
-    <li>**للسؤال:** نستخدم (am, is, are) ثم الفاعل ثم الفعل مضافاً إليه <span class="speakable-word">-ing</span>.
-    <ul>
-    <li><span class="speakable-word">Are</span> they <span class="speakable-word">working</span>?</li>
-    <li><span class="speakable-word">Is</span> he <span class="speakable-word">coming</span>?</li>
-    </ul>
-    </li>
-    <li>**للإجابة (قصيرة):**
-    <ul>
-    <li>Yes, they <span class="speakable-word">are</span>. / No, they <span class="speakable-word">aren't</span>.</li>
-    <li>Yes, he <span class="speakable-word">is</span>. / No, he <span class="speakable-word">isn't</span>.</li>
-    </ul>
-    </li>
-    </ul>
-    </li>
-    </ul>
-    
-    <div class="exercises-section">
-    <h4>أسئلة تدريبية على المضارع المستمر (Present Continuous)</h4>
-    <p>اختر الإجابة الصحيحة أو أكمل الفراغ:</p>
-    <div class="question-group">
-    <ol>
-    <li>
-    <label>She _____ (study) English right now.</label>
-    <div class="options">
-    <span><input type="radio" name="q1_pc" value="a"> a) study</span>
-    <span><input type="radio" name="q1_pc" value="b"> b) studies</span>
-    <span><input type="radio" name="q1_pc" value="c"> c) is studying</span>
-    </div>
-    </li>
-    <li>
-    <label>They _____ (not / watch) TV at the moment.</label>
-    <div class="options">
-    <span><input type="radio" name="q2_pc" value="a"> a) don't watch</span>
-    <span><input type="radio" name="q2_pc" value="b"> b) aren't watching</span>
-    <span><input type="radio" name="q2_pc" value="c"> c) isn't watching</span>
-    </div>
-    </li>
-    <li>
-    <label>_____ you _____ (listen) to music?</label>
-    <div class="options">
-    <span><input type="radio" name="q3_pc" value="a"> a) Do / listen</span>
-    <span><input type="radio" name="q3_pc" value="b"> b) Are / listening</span>
-    <span><input type="radio" name="q3_pc" value="c"> c) Is / listening</span>
-    </div>
-    </li>
-    <li>
-    <label>Look! The baby _____ (sleep).</label>
-    <div class="options">
-    <span><input type="radio" name="q4_pc" value="a"> a) sleep</span>
-    <span><input type="radio" name="q4_pc" value="b"> b) sleeps</span>
-    <span><input type="radio" name="q4_pc" value="c"> c) is sleeping</span>
-    </div>
-    </li>
-    <li>
-    <label>What _____ he _____ (do) now?</label>
-    <div class="options">
-    <span><input type="radio" name="q5_pc" value="a"> a) do / do</span>
-    <span><input type="radio" name="q5_pc" value="b"> b) does / do</span>
-    <span><input type="radio" name="q5_pc" value="c"> c) is / doing</span>
-    </div>
-    </li>
-    <li>
-    <label>I _____ (write) an email currently.</label>
-    <div class="options">
-    <span><input type="radio" name="q6_pc" value="a"> a) write</span>
-    <span><input type="radio" name="q6_pc" value="b"> b) writes</span>
-    <span><input type="radio" name="q6_pc" value="c"> c) am writing</span>
-    </div>
-    </li>
-    <li>
-    <label>The children _____ (play) outside.</label>
-    <div class="options">
-    <span><input type="radio" name="q7_pc" value="a"> a) play</span>
-    <span><input type="radio" name="q7_pc" value="b"> b) plays</span>
-    <span><input type="radio" name="q7_pc" value="c"> c) are playing</span>
-    </div>
-    </li>
-    <li>
-    <label>We _____ (not / have) dinner right now.</label>
-    <div class="options">
-    <span><input type="radio" name="q8_pc" value="a"> a) don't have</span>
-    <span><input type="radio" name="q8_pc" value="b"> b) aren't having</span>
-    <span><input type="radio" name="q8_pc" value="c"> c) isn't having</span>
-    </div>
-    </li>
-    <li>
-    <label>_____ it _____ (rain) outside?</label>
-    <div class="options">
-    <span><input type="radio" name="q9_pc" value="a"> a) Do / rain</span>
-    <span><input type="radio" name="q9_pc" value="b"> b) Does / rain</span>
-    <span><input type="radio" name="q9_pc" value="c"> c) Is / raining</span>
-    </div>
-    </li>
-    <li>
-    <label>My sister _____ (work) on a new project this week.</label>
-    <div class="options">
-    <span><input type="radio" name="q10_pc" value="a"> a) work</span>
-    <span><input type="radio" name="q10_pc" value="b"> b) works</span>
-    <span><input type="radio" name="q10_pc" value="c"> c) is working</span>
-    </div>
-    </li>
-    <li>
-    <label>Why _____ you _____ (cry)?</label>
-    <div class="options">
-    <span><input type="radio" name="q11_pc" value="a"> a) do / cry</span>
-    <span><input type="radio" name="q11_pc" value="b"> b) are / crying</span>
-    <span><input type="radio" name="q11_pc" value="c"> c) is / crying</span>
-    </div>
-    </li>
-    <li>
-    <label>He _____ (read) a very interesting book.</label>
-    <div class="options">
-    <span><input type="radio" name="q12_pc" value="a"> a) read</span>
-    <span><input type="radio" name="q12_pc" value="b"> b) reads</span>
-    <span><input type="radio" name="q12_pc" value="c"> c) is reading</span>
-    </div>
-    </li>
-    <li>
-    <label>They _____ (prepare) for a big presentation today.</label>
-    <div class="options">
-    <span><input type="radio" name="q13_pc" value="a"> a) prepare</span>
-    <span><input type="radio" name="q13_pc" value="b"> b) prepares</span>
-    <span><input type="radio" name="q13_pc" value="c"> c) are preparing</span>
-    </div>
-    </li>
-    <li>
-    <label>Be quiet! I _____ (try) to concentrate.</label>
-    <div class="options">
-    <span><input type="radio" name="q14_pc" value="a"> a) try</span>
-    <span><input type="radio" name="q14_pc" value="b"> b) tries</span>
-    <span><input type="radio" name="q14_pc" value="c"> c) am trying</span>
-    </div>
-    </li>
-    <li>
-    <label>_____ she _____ (wait) for someone?</label>
-    <div class="options">
-    <span><input type="radio" name="q15_pc" value="a"> a) Do / wait</span>
-    <span><input type="radio" name="q15_pc" value="b"> b) Does / wait</span>
-    <span><input type="radio" name="q15_pc" value="c"> c) Is / waiting</span>
-    </div>
-    </li>
-    <li>
-    <label>The sun _____ (shine) brightly.</label>
-    <div class="options">
-    <span><input type="radio" name="q16_pc" value="a"> a) shine</span>
-    <span><input type="radio" name="q16_pc" value="b"> b) shines</span>
-    <span><input type="radio" name="q16_pc" value="c"> c) is shining</span>
-    </div>
-    </li>
-    <li>
-    <label>I _____ (not / feel) well today.</label>
-    <div class="options">
-    <span><input type="radio" name="q17_pc" value="a"> a) don't feel</span>
-    <span><input type="radio" name="q17_pc" value="b"> b) am not feeling</span>
-    <span><input type="radio" name="q17_pc" value="c"> c) isn't feeling</span>
-    </div>
-    </li>
-    <li>
-    <label>The company _____ (develop) a new product.</label>
-    <div class="options">
-    <span><input type="radio" name="q18_pc" value="a"> a) develop</span>
-    <span><input type="radio" name="q18_pc" value="b"> b) develops</span>
-    <span><input type="radio" name="q18_pc" value="c"> c) is developing</span>
-    </div>
-    </li>
-    <li>
-    <label>What music _____ they _____ (listen) to?</label>
-    <div class="options">
-    <span><input type="radio" name="q19_pc" value="a"> a) do / listen</span>
-    <span><input type="radio" name="q19_pc" value="b"> b) are / listening</span>
-    <span><input type="radio" name="q19_pc" value="c"> c) is / listening</span>
-    </div>
-    </li>
-    <li>
-    <label>We _____ (have) a great time at the party.</label>
-    <div class="options">
-    <span><input type="radio" name="q20_pc" value="a"> a) have</span>
-    <span><input type="radio" name="q20_pc" value="b"> b) has</span>
-    <span><input type="radio" name="q20_pc" value="c"> c) are having</span>
-    </div>
-    </li>
-    </ol>
-    </div>
-    </div>
-    </div>
-    
-    <div class="grammar-topic">
-    <h3 class="speakable-heading">3. زمن المضارع التام (Present Perfect)</h3>
-    <p class="grammar-text">يُستخدم للتعبير عن أفعال بدأت في الماضي ولها تأثير على الحاضر، أو أفعال حدثت في وقت غير محدد في الماضي.</p>
-    <ul>
-    <li>**الاستخدامات:**
-    <ul>
-    <li>تجارب سابقة: I <span class="speakable-word">have visited</span> London three times. (لقد زرت لندن ثلاث مرات.)</li>
-    <li>أفعال بدأت في الماضي وما زالت مستمرة: She <span class="speakable-word">has lived</span> here for five years. (لقد عاشت هنا لمدة خمس سنوات.)</li>
-    </ul>
-    </li>
-    <li>**الكلمات الدالة:** <span class="speakable-word">already</span>, <span class="speakable-word">yet</span>, <span class="speakable-word">just</span>, <span class="speakable-word">ever</span>, <span class="speakable-word">never</span>, <span class="speakable-word">since</span>, <span class="speakable-word">for</span>, <span class="speakable-word">so far</span>, <span class="speakable-word">recently</span>, <span class="speakable-word">lately</span>.</li>
-    <li>**أمثلة وجمل (10 أمثلة):**
-    <ul>
-    <li>They <span class="speakable-word">have bought</span> a new car. (لقد اشتروا سيارة جديدة.)</li>
-    <li>I <span class="speakable-word">haven't seen</span> him since last week. (لم أره منذ الأسبوع الماضي.)</li>
-    <li><span class="speakable-word">Have</span> you <span class="speakable-word">ever been</span> to New York? (هل سبق لك أن زرت نيويورك؟)</li>
-    <li>She <span class="speakable-word">has just finished</span> her homework. (لقد أنهت واجباتها للتو.)</li>
-    <li>We <span class="speakable-word">have lived</span> in this city for ten years. (لقد عشنا في هذه المدينة لمدة عشر سنوات.)</li>
-    <li>He <span class="speakable-word">hasn't called</span> me back yet. (هو لم يتصل بي بعد.)</li>
-    <li><span class="speakable-word">Has</span> she <span class="speakable-word">read</span> this book? (هل قرأت هذا الكتاب؟)</li>
-    <li>They <span class="speakable-word">have never traveled</span> abroad. (لم يسافروا إلى الخارج قط.)</li>
-    <li>My sister <span class="speakable-word">has lost</span> her keys. (أختي فقدت مفاتيحها.)</li>
-    <li>The company <span class="speakable-word">has grown</span> significantly recently. (الشركة نمت بشكل ملحوظ مؤخرًا.)</li>
-    </ul>
-    </li>
-    <li>**صيغة السؤال والإجابة:**
-    <ul>
-    <li>**للسؤال:** نستخدم <span class="speakable-word">Have</span> مع (I, you, we, they) و <span class="speakable-word">Has</span> مع (he, she, it) ثم الفاعل ثم التصريف الثالث للفعل.
-    <ul>
-    <li><span class="speakable-word">Have</span> you <span class="speakable-word">eaten</span>?</li>
-    <li><span class="speakable-word">Has</span> she <span class="speakable-word">visited</span> Rome?</li>
-    </ul>
-    </li>
-    <li>**للإجابة (قصيرة):**
-    <ul>
-    <li>Yes, I <span class="speakable-word">have</span>. / No, I <span class="speakable-word">haven't</span>.</li>
-    <li>Yes, she <span class="speakable-word">has</span>. / No, she <span class="speakable-word">hasn't</span>.</li>
-    </ul>
-    </li>
-    </ul>
-    </li>
-    </ul>
-    
-    <div class="exercises-section">
-    <h4>أسئلة تدريبية على المضارع التام (Present Perfect)</h4>
-    <p>اختر الإجابة الصحيحة أو أكمل الفراغ:</p>
-    <div class="question-group">
-    <ol>
-    <li>
-    <label>I _____ (visit) London three times.</label>
-    <div class="options">
-    <span><input type="radio" name="q1_pp" value="a"> a) visit</span>
-    <span><input type="radio" name="q1_pp" value="b"> b) visited</span>
-    <span><input type="radio" name="q1_pp" value="c"> c) have visited</span>
-    </div>
-    </li>
-    <li>
-    <label>She _____ (not / finish) her homework yet.</label>
-    <div class="options">
-    <span><input type="radio" name="q2_pp" value="a"> a) hasn't finished</span>
-    <span><input type="radio" name="q2_pp" value="b"> b) haven't finished</span>
-    <span><input type="radio" name="q2_pp" value="c"> c) didn't finish</span>
-    </div>
-    </li>
-    <li>
-    <label>_____ you ever _____ (be) to New York?</label>
-    <div class="options">
-    <span><input type="radio" name="q3_pp" value="a"> a) Did / be</span>
-    <span><input type="radio" name="q3_pp" value="b"> b) Have / been</span>
-    <span><input type="radio" name="q3_pp" value="c"> c) Are / being</span>
-    </div>
-    </li>
-    <li>
-    <label>He _____ just _____ (eat) dinner.</label>
-    <div class="options">
-    <span><input type="radio" name="q4_pp" value="a"> a) has / eaten</span>
-    <span><input type="radio" name="q4_pp" value="b"> b) have / eaten</span>
-    <span><input type="radio" name="q4_pp" value="c"> c) had / eaten</span>
-    </div>
-    </li>
-    <li>
-    <label>They _____ (live) here since 2010.</label>
-    <div class="options">
-    <span><input type="radio" name="q5_pp" value="a"> a) live</span>
-    <span><input type="radio" name="q5_pp" value="b"> b) lived</span>
-    <span><input type="radio" name="q5_pp" value="c"> c) have lived</span>
-    </div>
-    </li>
-    <li>
-    <label>We _____ (buy) a new car recently.</label>
-    <div class="options">
-    <span><input type="radio" name="q6_pp" value="a"> a) buy</span>
-    <span><input type="radio" name="q6_pp" value="b"> b) bought</span>
-    <span><input type="radio" name="q6_pp" value="c"> c) have bought</span>
-    </div>
-    </li>
-    <li>
-    <label>My brother _____ (never / see) snow.</label>
-    <div class="options">
-    <span><input type="radio" name="q7_pp" value="a"> a) never sees</span>
-    <span><input type="radio" name="q7_pp" value="b"> b) has never seen</span>
-    <span><input type="radio" name="q7_pp" value="c"> c) never saw</span>
-    </div>
-    </li>
-    <li>
-    <label>How long _____ she _____ (work) in this company?</label>
-    <div class="options">
-    <span><input type="radio" name="q8_pp" value="a"> a) has / worked</span>
-    <span><input type="radio" name="q8_pp" value="b"> b) have / worked</span>
-    <span><input type="radio" name="q8_pp" value="c"> c) did / work</span>
-    </div>
-    </li>
-    <li>
-    <label>I _____ (not / see) him for ages.</label>
-    <div class="options">
-    <span><input type="radio" name="q9_pp" value="a"> a) didn't see</span>
-    <span><input type="radio" name="q9_pp" value="b"> b) haven't seen</span>
-    <span><input type="radio" name="q9_pp" value="c"> c) am not seeing</span>
-    </div>
-    </li>
-    <li>
-    <label>The company _____ (grow) significantly so far.</label>
-    <div class="options">
-    <span><input type="radio" name="q10_pp" value="a"> a) grew</span>
-    <span><input type="radio" name="q10_pp" value="b"> b) has grown</span>
-    <span><input type="radio" name="q10_pp" value="c"> c) had grown</span>
-    </div>
-    </li>
-    <li>
-    <label>_____ they _____ (finish) the report already?</label>
-    <div class="options">
-    <span><input type="radio" name="q11_pp" value="a"> a) Did / finish</span>
-    <span><input type="radio" name="q11_pp" value="b"> b) Have / finished</span>
-    <span><input type="radio" name="q11_pp" value="c"> c) Are / finishing</span>
-    </div>
-    </li>
-    <li>
-    <label>She _____ (lose) her keys.</label>
-    <div class="options">
-    <span><input type="radio" name="q12_pp" value="a"> a) lose</span>
-    <span><input type="radio" name="q12_pp" value="b"> b) lost</span>
-    <span><input type="radio" name="q12_pp" value="c"> c) has lost</span>
-    </div>
-    </li>
-    <li>
-    <label>We _____ (know) each other for many years.</label>
-    <div class="options">
-    <span><input type="radio" name="q13_pp" value="a"> a) know</span>
-    <span><input type="radio" name="q13_pp" value="b"> b) knew</span>
-    <span><input type="radio" name="q13_pp" value="c"> c) have known</span>
-    </div>
-    </li>
-    <li>
-    <label>He _____ (not / call) me back yet.</label>
-    <div class="options">
-    <span><input type="radio" name="q14_pp" value="a"> a) didn't call</span>
-    <span><input type="radio" name="q14_pp" value="b"> b) hasn't called</span>
-    <span><input type="radio" name="q14_pp" value="c"> c) isn't calling</span>
-    </div>
-    </li>
-    <li>
-    <label>_____ you _____ (read) this book before?</label>
-    <div class="options">
-    <span><input type="radio" name="q15_pp" value="a"> a) Did / read</span>
-    <span><input type="radio" name="q15_pp" value="b"> b) Have / read</span>
-    <span><input type="radio" name="q15_pp" value="c"> c) Are / reading</span>
-    </div>
-    </li>
-    <li>
-    <label>They _____ (travel) all over the world.</label>
-    <div class="options">
-    <span><input type="radio" name="q16_pp" value="a"> a) traveled</span>
-    <span><input type="radio" name="q16_pp" value="b"> b) have traveled</span>
-    <span><input type="radio" name="q16_pp" value="c"> c) are traveling</span>
-    </div>
-    </li>
-    <li>
-    <label>I _____ (just / arrive) home.</label>
-    <div class="options">
-    <span><input type="radio" name="q17_pp" value="a"> a) just arrive</span>
-    <span><input type="radio" name="q17_pp" value="b"> b) just arrived</span>
-    <span><input type="radio" name="q17_pp" value="c"> c) have just arrived</span>
-    </div>
-    </li>
-    <li>
-    <label>My parents _____ (move) to a new house.</label>
-    <div class="options">
-    <span><input type="radio" name="q18_pp" value="a"> a) moved</span>
-    <span><input type="radio" name="q18_pp" value="b"> b) have moved</span>
-    <span><input type="radio" name="q18_pp" value="c"> c) are moving</span>
-    </div>
-    </li>
-    <li>
-    <label>How many times _____ you _____ (eat) sushi?</label>
-    <div class="options">
-    <span><input type="radio" name="q19_pp" value="a"> a) did / eat</span>
-    <span><input type="radio" name="q19_pp" value="b"> b) have / eaten</span>
-    <span><input type="radio" name="q19_pp" value="c"> c) are / eating</span>
-    </div>
-    </li>
-    <li>
-    <label>She _____ (be) sick since Monday.</label>
-    <div class="options">
-    <span><input type="radio" name="q20_pp" value="a"> a) was</span>
-    <span><input type="radio" name="q20_pp" value="b"> b) has been</span>
-    <span><input type="radio" name="q20_pp" value="c"> c) is being</span>
-    </div>
-    </li>
-    </ol>
-    </div>
-    </div>
-    </div>
-    
-    <footer>
-    <p>مصمم بـ ❤️ لأحباب اللغة الإنجليزية.</p>
-    <p>&copy; 2024 تعلم الإنجليزية. جميع الحقوق محفوظة.</p>
-    </footer>
+   <!DOCTYPE html>
+   <html lang="ar" dir="rtl">
+   <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>الأزمنة في اللغة الإنجليزية والأسئلة التدريبية</title>
+   <style>
+   :root {
+   --primary-color: #6a0572;
+   --secondary-color: #ff6f61;
+   --text-color: #333;
+   --bg-color: #fce4ec;
+   --card-bg: #ffffff;
+   --border-color: #e0e0e0;
+   --shadow-color: rgba(0, 0, 0, 0.15);
+   --accent-color-1: #4CAF50;
+   --accent-color-2: #2196F3;
+   --accent-color-3: #FFC107;
+   --accent-color-4: #9C27B0;
+   }
+   
+   body {
+   font-family: 'Cairo', sans-serif;
+   margin: 0;
+   padding: 0;
+   background-color: var(--bg-color);
+   color: var(--text-color);
+   line-height: 1.8;
+   direction: rtl;
+   text-align: right;
+   scroll-behavior: smooth;
+   }
+   
+   header {
+   background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+   color: white;
+   padding: 2em 0;
+   text-align: center;
+   box-shadow: 0 4px 10px var(--shadow-color);
+   }
+   
+   main {
+   padding: 30px 20px;
+   max-width: 1300px;
+   margin: 30px auto;
+   background-color: var(--card-bg);
+   border-radius: 12px;
+   box-shadow: 0 0 20px var(--shadow-color);
+   }
+   
+   section {
+   margin-bottom: 50px;
+   padding-bottom: 30px;
+   border-bottom: 1px solid var(--border-color);
+   }
+   
+   h2 {
+   color: var(--primary-color);
+   text-align: center;
+   margin-bottom: 40px;
+   font-size: 2.5em;
+   border-bottom: 3px solid var(--secondary-color);
+   display: inline-block;
+   padding-bottom: 10px;
+   position: relative;
+   left: 50%;
+   transform: translateX(-50%);
+   }
+   
+   h3 {
+   color: var(--text-color);
+   font-size: 1.8em;
+   margin-top: 30px;
+   margin-bottom: 20px;
+   padding-bottom: 5px;
+   border-bottom: 1px dashed var(--border-color);
+   }
+   
+   .grammar-topic {
+   background-color: var(--card-bg);
+   border: 1px solid var(--border-color);
+   border-radius: 10px;
+   padding: 30px;
+   margin-bottom: 30px;
+   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+   transition: box-shadow 0.3s ease-in-out;
+   }
+   
+   .grammar-topic:hover {
+   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+   }
+   
+   .grammar-topic h3.speakable-heading {
+   cursor: pointer;
+   color: var(--primary-color);
+   font-size: 2em;
+   margin-top: 0;
+   border-bottom: 2px dashed var(--secondary-color);
+   padding-bottom: 12px;
+   transition: color 0.2s ease-in-out;
+   }
+   
+   .grammar-topic h3.speakable-heading:hover {
+   color: var(--secondary-color);
+   }
+   
+   .grammar-text {
+   margin-bottom: 20px;
+   font-size: 1.1em;
+   }
+   
+   .grammar-topic ul {
+   list-style: none;
+   padding-right: 0;
+   margin-top: 15px;
+   }
+   
+   .grammar-topic ul li {
+   position: relative;
+   padding-right: 30px;
+   margin-bottom: 12px;
+   font-size: 1.05em;
+   }
+   
+   .grammar-topic ul li::before {
+   content: '🌟';
+   color: var(--secondary-color);
+   font-weight: bold;
+   position: absolute;
+   right: 0;
+   font-size: 1.2em;
+   }
+   
+   .speakable-word {
+   cursor: pointer;
+   color: var(--primary-color);
+   font-weight: bold;
+   transition: color 0.2s ease-in-out;
+   }
+   
+   .speakable-word:hover {
+   color: var(--secondary-color);
+   text-decoration: underline;
+   }
+   
+   .exercises-section {
+   margin-top: 40px;
+   padding-top: 20px;
+   border-top: 2px dashed #ccc;
+   }
+   
+   .question-group {
+   background-color: #f9f9f9;
+   padding: 20px;
+   border-radius: 8px;
+   margin-bottom: 30px;
+   border: 1px solid #ddd;
+   }
+   
+   .question-group ol {
+   list-style-type: decimal;
+   padding-right: 20px;
+   }
+   
+   .question-group li {
+   margin-bottom: 15px;
+   padding: 5px 0;
+   }
+   
+   .question-group label {
+   display: block;
+   margin-bottom: 5px;
+   font-weight: bold;
+   }
+   
+   .question-group .options span {
+   margin-left: 15px;
+   display: inline-block;
+   }
+   
+   .correct-answer {
+   color: #4CAF50;
+   font-weight: bold;
+   margin-top: 5px;
+   display: block;
+   }
+   
+   footer {
+   text-align: center;
+   padding: 25px;
+   background-image: linear-gradient(to left, var(--primary-color), var(--secondary-color));
+   color: white;
+   margin-top: 50px;
+   border-radius: 0 0 12px 12px;
+   box-shadow: 0 -4px 10px var(--shadow-color);
+   font-size: 1.1em;
+   }
+   
+   @media (max-width: 768px) {
+   h2 {
+   font-size: 2.2em;
+   }
+   h3 {
+   font-size: 1.6em;
+   }
+   }
+   </style>
+   </head>
+   <body>
+   <header>
+   <h1>الأزمنة في اللغة الإنجليزية والأسئلة التدريبية</h1>
+   </header>
+   
+   <main>
+   <section id="tenses-section">
+   <h2>الأزمنة في اللغة الإنجليزية (Tenses) والكلمات الدالة عليها</h2>
+   <p class="instruction">اضغط على أي عنوان زمن أو كلمة إنجليزية لسماع نطقها.</p>
+   
+   <!-- Present Simple -->
    <div class="grammar-topic">
-    
-</body>
-</html>
+   <h3 class="speakable-heading">1. زمن المضارع البسيط (Present Simple)</h3>
+   <p class="grammar-text">يُستخدم للتعبير عن الحقائق العامة، العادات، والجداول الزمنية.</p>
+   <ul>
+   <li>**الاستخدامات:**
+   <ul>
+   <li>الحقائق العامة: The sun <span class="speakable-word">rises</span> in the east. (الشمس تشرق من الشرق.)</li>
+   <li>العادات والروتين: I <span class="speakable-word">drink</span> coffee every morning. (أشرب القهوة كل صباح.)</li>
+   </ul>
+   </li>
+   <li>**الكلمات الدالة:** <span class="speakable-word">always</span>, <span class="speakable-word">usually</span>, <span class="speakable-word">often</span>, <span class="speakable-word">sometimes</span>, <span class="speakable-word">rarely</span>, <span class="speakable-word">never</span>, <span class="speakable-word">every day</span>/<span class="speakable-word">week</span>/<span class="speakable-word">month</span>/<span class="speakable-word">year</span>, <span class="speakable-word">on Mondays</span>, <span class="speakable-word">at weekends</span>.</li>
+   <li>**أمثلة وجمل (10 أمثلة):**
+   <ul>
+   <li>She <span class="speakable-word">works</span> in a hospital. (هي تعمل في مستشفى.)</li>
+   <li>We <span class="speakable-word">don't eat</span> meat. (نحن لا نأكل اللحم.)</li>
+   <li><span class="speakable-word">Does</span> he <span class="speakable-word">play</span> tennis? (هل يلعب التنس؟)</li>
+   <li>They <span class="speakable-word">live</span> in New York. (هم يعيشون في نيويورك.)</li>
+   <li>The train <span class="speakable-word">leaves</span> at 7 AM. (القطار يغادر في الساعة 7 صباحًا.)</li>
+   </ul>
+   </li>
+   </ul>
+   
+   <div class="exercises-section">
+   <h4>أسئلة تدريبية على المضارع البسيط (Present Simple)</h4>
+   <p>اختر الإجابة الصحيحة:</p>
+   <div class="question-group">
+   <ol>
+   <li>
+   <label>He usually _____ (go) to work by bus.</label>
+   <div class="options">
+   <span><input type="radio" name="q1_ps" value="a"> a) go</span>
+   <span><input type="radio" name="q1_ps" value="b"> b) goes</span>
+   <span><input type="radio" name="q1_ps" value="c"> c) going</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: b) goes</span>
+   </li>
+   <li>
+   <label>Do they _____ (live) in Cairo?</label>
+   <div class="options">
+   <span><input type="radio" name="q2_ps" value="a"> a) live</span>
+   <span><input type="radio" name="q2_ps" value="b"> b) lives</span>
+   <span><input type="radio" name="q2_ps" value="c"> c) living</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: a) live</span>
+   </li>
+   <li>
+   <label>She _____ (not / like) coffee.</label>
+   <div class="options">
+   <span><input type="radio" name="q3_ps" value="a"> a) don't like</span>
+   <span><input type="radio" name="q3_ps" value="b"> b) doesn't like</span>
+   <span><input type="radio" name="q3_ps" value="c"> c) isn't liking</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: b) doesn't like</span>
+   </li>
+   <li>
+   <label>The sun _____ (rise) in the east.</label>
+   <div class="options">
+   <span><input type="radio" name="q4_ps" value="a"> a) rise</span>
+   <span><input type="radio" name="q4_ps" value="b"> b) rises</span>
+   <span><input type="radio" name="q4_ps" value="c"> c) rising</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: b) rises</span>
+   </li>
+   <li>
+   <label>What time _____ the train _____ (leave)?</label>
+   <div class="options">
+   <span><input type="radio" name="q5_ps" value="a"> a) do / leave</span>
+   <span><input type="radio" name="q5_ps" value="b"> b) does / leave</span>
+   <span><input type="radio" name="q5_ps" value="c"> c) is / leaving</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: b) does / leave</span>
+   </li>
+   </ol>
+   </div>
+   </div>
+   </div>
+   
+   <!-- Present Continuous -->
+   <div class="grammar-topic">
+   <h3 class="speakable-heading">2. زمن المضارع المستمر (Present Continuous)</h3>
+   <p class="grammar-text">يُستخدم للتعبير عن أفعال تحدث الآن أو في فترة زمنية مؤقتة حول الوقت الحاضر.</p>
+   <ul>
+   <li>**الاستخدامات:**
+   <ul>
+   <li>أفعال تحدث الآن: I <span class="speakable-word">am studying</span> English right now. (أنا أدرس الإنجليزية الآن.)</li>
+   <li>أفعال مؤقتة: He <span class="speakable-word">is working</span> on a new project this month. (هو يعمل على مشروع جديد هذا الشهر.)</li>
+   </ul>
+   </li>
+   <li>**الكلمات الدالة:** <span class="speakable-word">now</span>, <span class="speakable-word">right now</span>, <span class="speakable-word">at the moment</span>, <span class="speakable-word">currently</span>, <span class="speakable-word">today</span>, <span class="speakable-word">this week</span>/<span class="speakable-word">month</span>/<span class="speakable-word">year</span>, <span class="speakable-word">listen!</span>, <span class="speakable-word">look!</span></li>
+   <li>**أمثلة وجمل (10 أمثلة):**
+   <ul>
+   <li>They <span class="speakable-word">are watching</span> TV. (هم يشاهدون التلفاز.)</li>
+   <li>She <span class="speakable-word">isn't sleeping</span>. (هي لا تنام.)</li>
+   <li><span class="speakable-word">Are</span> you <span class="speakable-word">listening</span> to me? (هل تستمع إلي؟)</li>
+   <li>I <span class="speakable-word">am writing</span> an email. (أنا أكتب بريدًا إلكترونيًا.)</li>
+   <li>The children <span class="speakable-word">are playing</span> outside. (الأطفال يلعبون في الخارج.)</li>
+   </ul>
+   </li>
+   </ul>
+   
+   <div class="exercises-section">
+   <h4>أسئلة تدريبية على المضارع المستمر (Present Continuous)</h4>
+   <p>اختر الإجابة الصحيحة:</p>
+   <div class="question-group">
+   <ol>
+   <li>
+   <label>She _____ (study) English right now.</label>
+   <div class="options">
+   <span><input type="radio" name="q1_pc" value="a"> a) study</span>
+   <span><input type="radio" name="q1_pc" value="b"> b) studies</span>
+   <span><input type="radio" name="q1_pc" value="c"> c) is studying</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: c) is studying</span>
+   </li>
+   <li>
+   <label>They _____ (not / watch) TV at the moment.</label>
+   <div class="options">
+   <span><input type="radio" name="q2_pc" value="a"> a) don't watch</span>
+   <span><input type="radio" name="q2_pc" value="b"> b) aren't watching</span>
+   <span><input type="radio" name="q2_pc" value="c"> c) isn't watching</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: b) aren't watching</span>
+   </li>
+   <li>
+   <label>_____ you _____ (listen) to music?</label>
+   <div class="options">
+   <span><input type="radio" name="q3_pc" value="a"> a) Do / listen</span>
+   <span><input type="radio" name="q3_pc" value="b"> b) Are / listening</span>
+   <span><input type="radio" name="q3_pc" value="c"> c) Is / listening</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: b) Are / listening</span>
+   </li>
+   <li>
+   <label>Look! The baby _____ (sleep).</label>
+   <div class="options">
+   <span><input type="radio" name="q4_pc" value="a"> a) sleep</span>
+   <span><input type="radio" name="q4_pc" value="b"> b) sleeps</span>
+   <span><input type="radio" name="q4_pc" value="c"> c) is sleeping</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: c) is sleeping</span>
+   </li>
+   <li>
+   <label>What _____ he _____ (do) now?</label>
+   <div class="options">
+   <span><input type="radio" name="q5_pc" value="a"> a) do / do</span>
+   <span><input type="radio" name="q5_pc" value="b"> b) does / do</span>
+   <span><input type="radio" name="q5_pc" value="c"> c) is / doing</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: c) is / doing</span>
+   </li>
+   </ol>
+   </div>
+   </div>
+   </div>
+   
+   <!-- Present Perfect -->
+   <div class="grammar-topic">
+   <h3 class="speakable-heading">3. زمن المضارع التام (Present Perfect)</h3>
+   <p class="grammar-text">يُستخدم للتعبير عن أفعال بدأت في الماضي ولها تأثير على الحاضر، أو أفعال حدثت في وقت غير محدد في الماضي.</p>
+   <ul>
+   <li>**الاستخدامات:**
+   <ul>
+   <li>تجارب سابقة: I <span class="speakable-word">have visited</span> London three times. (لقد زرت لندن ثلاث مرات.)</li>
+   <li>أفعال بدأت في الماضي وما زالت مستمرة: She <span class="speakable-word">has lived</span> here for five years. (لقد عاشت هنا لمدة خمس سنوات.)</li>
+   </ul>
+   </li>
+   <li>**الكلمات الدالة:** <span class="speakable-word">already</span>, <span class="speakable-word">yet</span>, <span class="speakable-word">just</span>, <span class="speakable-word">ever</span>, <span class="speakable-word">never</span>, <span class="speakable-word">since</span>, <span class="speakable-word">for</span>, <span class="speakable-word">so far</span>, <span class="speakable-word">recently</span>, <span class="speakable-word">lately</span>.</li>
+   <li>**أمثلة وجمل (10 أمثلة):**
+   <ul>
+   <li>They <span class="speakable-word">have bought</span> a new car. (لقد اشتروا سيارة جديدة.)</li>
+   <li>I <span class="speakable-word">haven't seen</span> him since last week. (لم أره منذ الأسبوع الماضي.)</li>
+   <li><span class="speakable-word">Have</span> you <span class="speakable-word">ever been</span> to New York? (هل سبق لك أن زرت نيويورك؟)</li>
+   <li>She <span class="speakable-word">has just finished</span> her homework. (لقد أنهت واجباتها للتو.)</li>
+   <li>We <span class="speakable-word">have lived</span> in this city for ten years. (لقد عشنا في هذه المدينة لمدة عشر سنوات.)</li>
+   </ul>
+   </li>
+   </ul>
+   
+   <div class="exercises-section">
+   <h4>أسئلة تدريبية على المضارع التام (Present Perfect)</h4>
+   <p>اختر الإجابة الصحيحة:</p>
+   <div class="question-group">
+   <ol>
+   <li>
+   <label>I _____ (visit) London three times.</label>
+   <div class="options">
+   <span><input type="radio" name="q1_pp" value="a"> a) visit</span>
+   <span><input type="radio" name="q1_pp" value="b"> b) visited</span>
+   <span><input type="radio" name="q1_pp" value="c"> c) have visited</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: c) have visited</span>
+   </li>
+   <li>
+   <label>She _____ (not / finish) her homework yet.</label>
+   <div class="options">
+   <span><input type="radio" name="q2_pp" value="a"> a) hasn't finished</span>
+   <span><input type="radio" name="q2_pp" value="b"> b) haven't finished</span>
+   <span><input type="radio" name="q2_pp" value="c"> c) didn't finish</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: a) hasn't finished</span>
+   </li>
+   <li>
+   <label>_____ you ever _____ (be) to New York?</label>
+   <div class="options">
+   <span><input type="radio" name="q3_pp" value="a"> a) Did / be</span>
+   <span><input type="radio" name="q3_pp" value="b"> b) Have / been</span>
+   <span><input type="radio" name="q3_pp" value="c"> c) Are / being</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: b) Have / been</span>
+   </li>
+   <li>
+   <label>He _____ just _____ (eat) dinner.</label>
+   <div class="options">
+   <span><input type="radio" name="q4_pp" value="a"> a) has / eaten</span>
+   <span><input type="radio" name="q4_pp" value="b"> b) have / eaten</span>
+   <span><input type="radio" name="q4_pp" value="c"> c) had / eaten</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: a) has / eaten</span>
+   </li>
+   <li>
+   <label>They _____ (live) here since 2010.</label>
+   <div class="options">
+   <span><input type="radio" name="q5_pp" value="a"> a) live</span>
+   <span><input type="radio" name="q5_pp" value="b"> b) lived</span>
+   <span><input type="radio" name="q5_pp" value="c"> c) have lived</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: c) have lived</span>
+   </li>
+   </ol>
+   </div>
+   </div>
+   </div>
+   
+   <!-- Past Simple -->
+   <div class="grammar-topic">
+   <h3 class="speakable-heading">4. زمن الماضي البسيط (Past Simple)</h3>
+   <p class="grammar-text">يُستخدم للتعبير عن أفعال أو أحداث انتهت في وقت محدد في الماضي.</p>
+   <ul>
+   <li>**الاستخدامات:**
+   <ul>
+   <li>أحداث منتهية في الماضي: I <span class="speakable-word">went</span> to the cinema yesterday. (ذهبت إلى السينما أمس.)</li>
+   <li>سلسلة من الأحداث في الماضي: She <span class="speakable-word">woke up</span>, <span class="speakable-word">ate</span> breakfast, and <span class="speakable-word">left</span> for work. (استيقظت، أكلت الفطور، وغادرت للعمل.)</li>
+   </ul>
+   </li>
+   <li>**الكلمات الدالة:** <span class="speakable-word">yesterday</span>, <span class="speakable-word">last night</span>/<span class="speakable-word">week</span>/<span class="speakable-word">month</span>/<span class="speakable-word">year</span>, <span class="speakable-word">ago</span>, <span class="speakable-word">in 2005</span>, <span class="speakable-word">when I was young</span>.</li>
+   <li>**أمثلة وجمل (10 أمثلة):**
+   <ul>
+   <li>He <span class="speakable-word">played</span> football an hour ago. (لعب كرة القدم قبل ساعة.)</li>
+   <li>We <span class="speakable-word">didn't go</span> to the party. (لم نذهب إلى الحفلة.)</li>
+   <li><span class="speakable-word">Did</span> you <span class="speakable-word">see</span> her? (هل رأيتها؟)</li>
+   <li>She <span class="speakable-word">visited</span> her grandparents last weekend. (زارت أجدادها نهاية الأسبوع الماضي.)</li>
+   <li>They <span class="speakable-word">moved</span> to London in 2010. (انتقلوا إلى لندن في 2010.)</li>
+   </ul>
+   </li>
+   </ul>
+   
+   <div class="exercises-section">
+   <h4>أسئلة تدريبية على الماضي البسيط (Past Simple)</h4>
+   <p>اختر الإجابة الصحيحة:</p>
+   <div class="question-group">
+   <ol>
+   <li>
+   <label>He _____ (go) to school yesterday.</label>
+   <div class="options">
+   <span><input type="radio" name="q1_past" value="a"> a) go</span>
+   <span><input type="radio" name="q1_past" value="b"> b) goes</span>
+   <span><input type="radio" name="q1_past" value="c"> c) went</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: c) went</span>
+   </li>
+   <li>
+   <label>She _____ (not / eat) breakfast this morning.</label>
+   <div class="options">
+   <span><input type="radio" name="q2_past" value="a"> a) didn't eat</span>
+   <span><input type="radio" name="q2_past" value="b"> b) doesn't eat</span>
+   <span><input type="radio" name="q2_past" value="c"> c) hasn't eaten</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: a) didn't eat</span>
+   </li>
+   <li>
+   <label>_____ you _____ (see) the movie last night?</label>
+   <div class="options">
+   <span><input type="radio" name="q3_past" value="a"> a) Did / see</span>
+   <span><input type="radio" name="q3_past" value="b"> b) Do / see</span>
+   <span><input type="radio" name="q3_past" value="c"> c) Are / seeing</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: a) Did / see</span>
+   </li>
+   <li>
+   <label>They _____ (play) football last Saturday.</label>
+   <div class="options">
+   <span><input type="radio" name="q4_past" value="a"> a) play</span>
+   <span><input type="radio" name="q4_past" value="b"> b) played</span>
+   <span><input type="radio" name="q4_past" value="c"> c) plays</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: b) played</span>
+   </li>
+   <li>
+   <label>I _____ (be) in London last year.</label>
+   <div class="options">
+   <span><input type="radio" name="q5_past" value="a"> a) am</span>
+   <span><input type="radio" name="q5_past" value="b"> b) was</span>
+   <span><input type="radio" name="q5_past" value="c"> c) were</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: b) was</span>
+   </li>
+   </ol>
+   </div>
+   </div>
+   </div>
+   
+   <!-- Future Simple -->
+   <div class="grammar-topic">
+   <h3 class="speakable-heading">5. زمن المستقبل البسيط (Future Simple)</h3>
+   <p class="grammar-text">يُستخدم للتعبير عن قرارات سريعة، تنبؤات، وعروض.</p>
+   <ul>
+   <li>**الاستخدامات:**
+   <ul>
+   <li>قرارات لحظية: I <span class="speakable-word">will help</span> you. (سأساعدك.)</li>
+   <li>تنبؤات (معتقد شخصي): I think it <span class="speakable-word">will rain</span> tomorrow. (أعتقد أنها ستمطر غداً.)</li>
+   </ul>
+   </li>
+   <li>**الكلمات الدالة:** <span class="speakable-word">tomorrow</span>, <span class="speakable-word">next week</span>/<span class="speakable-word">month</span>/<span class="speakable-word">year</span>, <span class="speakable-word">in the future</span>, <span class="speakable-word">soon</span>, <span class="speakable-word">probably</span>, <span class="speakable-word">I think</span>, <span class="speakable-word">I believe</span>.</li>
+   <li>**أمثلة وجمل (10 أمثلة):**
+   <ul>
+   <li>They <span class="speakable-word">will travel</span> to Spain next year. (سيسافرون إلى إسبانيا العام القادم.)</li>
+   <li>She <span class="speakable-word">won't forget</span> you. (هي لن تنساك.)</li>
+   <li><span class="speakable-word">Will</span> you <span class="speakable-word">come</span> to the party? (هل ستأتي إلى الحفلة؟)</li>
+   <li>I <span class="speakable-word">will call</span> you later. (سأتصل بك لاحقاً.)</li>
+   <li>He <span class="speakable-word">will not pass</span> the exam. (هو لن يجتاز الامتحان.)</li>
+   </ul>
+   </li>
+   </ul>
+   
+   <div class="exercises-section">
+   <h4>أسئلة تدريبية على المستقبل البسيط (Future Simple)</h4>
+   <p>اختر الإجابة الصحيحة:</p>
+   <div class="question-group">
+   <ol>
+   <li>
+   <label>She _____ (visit) her parents tomorrow.</label>
+   <div class="options">
+   <span><input type="radio" name="q1_future" value="a"> a) visit</span>
+   <span><input type="radio" name="q1_future" value="b"> b) visits</span>
+   <span><input type="radio" name="q1_future" value="c"> c) will visit</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: c) will visit</span>
+   </li>
+   <li>
+   <label>They _____ (not / come) to the meeting.</label>
+   <div class="options">
+   <span><input type="radio" name="q2_future" value="a"> a) won't come</span>
+   <span><input type="radio" name="q2_future" value="b"> b) don't come</span>
+   <span><input type="radio" name="q2_future" value="c"> c) aren't coming</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: a) won't come</span>
+   </li>
+   <li>
+   <label>_____ you _____ (help) me with this?</label>
+   <div class="options">
+   <span><input type="radio" name="q3_future" value="a"> a) Do / help</span>
+   <span><input type="radio" name="q3_future" value="b"> b) Are / helping</span>
+   <span><input type="radio" name="q3_future" value="c"> c) Will / help</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: c) Will / help</span>
+   </li>
+   <li>
+   <label>I think it _____ (rain) later.</label>
+   <div class="options">
+   <span><input type="radio" name="q4_future" value="a"> a) rain</span>
+   <span><input type="radio" name="q4_future" value="b"> b) rains</span>
+   <span><input type="radio" name="q4_future" value="c"> c) will rain</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: c) will rain</span>
+   </li>
+   <li>
+   <label>We _____ (be) there at 8 PM.</label>
+   <div class="options">
+   <span><input type="radio" name="q5_future" value="a"> a) are</span>
+   <span><input type="radio" name="q5_future" value="b"> b) will be</span>
+   <span><input type="radio" name="q5_future" value="c"> c) be</span>
+   </div>
+   <span class="correct-answer">الإجابة الصحيحة: b) will be</span>
+   </li>
+   </ol>
+   </div>
+   </div>
+   </div>
+   </section>
+   </main>
+   
+   <footer>
+   <p>مصمم بـ ❤️ لأحباب اللغة الإنجليزية</p>
+   <p>&copy; 2024 تعلم الإنجليزية. جميع الحقوق محفوظة.</p>
+   </footer>
+   
+   <script>
+   document.addEventListener('DOMContentLoaded', () => {
+   // Function to speak text
+   function speakText(text, lang = 'en-US') {
+   const synth = window.speechSynthesis;
+   if (synth.speaking) {
+   synth.cancel();
+   }
+   const utterance = new SpeechSynthesisUtterance(text);
+   utterance.lang = lang;
+   synth.speak(utterance);
+   }
+   
+   // Add click event listeners
+   document.querySelectorAll('.speakable-heading, .speakable-word').forEach(element => {
+   element.addEventListener('click', function() {
+   const textToSpeak = this.textContent;
+   if (this.classList.contains('speakable-heading')) {
+   const match = textToSpeak.match(/\((.*?)\)/);
+   if (match && match[1]) {
+   speakText(match[1], 'en-US');
+   } else {
+   speakText(textToSpeak, 'ar-SA');
+   }
+   } else if (this.classList.contains('speakable-word')) {
+   speakText(textToSpeak, 'en-US');
+   }
+   });
+   });
+   
+   // Highlight correct answers on click
+   document.querySelectorAll('input[type="radio"]').forEach(radio => {
+   radio.addEventListener('click', function() {
+   const correctAnswer = this.closest('li').querySelector('.correct-answer');
+   correctAnswer.style.display = 'block';
+   });
+   });
+   });
+   </script>
+   </body>
+   </html>
