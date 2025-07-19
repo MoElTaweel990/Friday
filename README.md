@@ -1479,7 +1479,7 @@
             });
         });
     </script>
-   <!DOCTYPE html>
+   
    <html lang="ar" dir="rtl">
    <head>
    <meta charset="UTF-8">
@@ -2088,6 +2088,757 @@
    </div>
    </section>
    </main>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ألعاب تعلم الإنجليزية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Styles for the games */
+        :root {
+            --primary: #FF6F61;
+            --secondary: #6A0572;
+            --accent: #FFD166;
+            --light: #FCE4EC;
+            --dark: #4A4A68;
+            --success: #06D6A0;
+            --blue: #118AB2;
+            --green: #1DB954;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            direction: rtl; /* لضمان دعم اللغة العربية */
+            text-align: right; /* لمحاذاة النص لليمين */
+        }
+
+        /* Common Section Title Style */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--dark);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Button Styles (common for all games) */
+        .btn {
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 6px 15px rgba(255, 111, 97, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #ff5343;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 111, 97, 0.6);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--light);
+            transform: translateY(-3px);
+        }
+
+        /* Interactive Games Section */
+        .interactive-games {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #e8f4f8 0%, #d6edff 100%);
+            border-radius: 20px;
+            max-width: 1000px;
+            margin: 40px auto;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 25px;
+            border-radius: 30px;
+            background: white;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .game-content {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .game-content.active {
+            display: block;
+        }
+
+        .game-title {
+            text-align: center;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        /* Matching Game */
+        .matching-game {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .card {
+            height: 100px;
+            background: var(--light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem; /* Adjusted for icons/emojis */
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card .card-inner {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        .card .card-front,
+        .card .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 2rem; /* Adjusted for icons/emojis */
+            padding: 5px; 
+            text-align: center;
+        }
+
+        .card .card-front {
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        .card .card-back {
+            background: var(--accent);
+            color: white;
+            transform: rotateY(180deg);
+            /* No image specific styles needed here anymore */
+        }
+        
+        .card.matched .card-back {
+            background: var(--success);
+        }
+
+        /* Pronunciation Game */
+        .pronunciation-game {
+            text-align: center;
+        }
+
+        .word-display {
+            font-size: 3rem;
+            margin: 20px 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .pronunciation-btn {
+            padding: 15px 30px;
+            background: var(--blue);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: inline-flex; 
+            align-items: center;
+            gap: 10px;
+            margin: 0 5px; 
+            transition: all 0.3s ease;
+        }
+
+        .pronunciation-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .pronunciation-btn:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .feedback {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            min-height: 30px;
+            font-weight: bold;
+        }
+        .pronunciation-controls {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px; 
+            margin-top: 20px;
+        }
+
+        /* Word Scramble Game */
+        .scramble-game {
+            text-align: center;
+        }
+
+        .scramble-word {
+            font-size: 2.5rem;
+            letter-spacing: 8px;
+            margin: 20px 0;
+            color: var(--secondary);
+            font-weight: bold;
+            text-transform: uppercase;
+            word-break: break-all; 
+        }
+
+        .scramble-input {
+            padding: 10px 15px;
+            border: 2px solid var(--secondary);
+            border-radius: 10px;
+            font-size: 1.2rem;
+            width: 300px;
+            max-width: 80%;
+            text-align: center;
+        }
+
+        .scramble-result {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            min-height: 30px;
+            font-weight: bold;
+        }
+        .scramble-controls .btn-primary {
+            min-width: 100px;
+            justify-content: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .matching-game {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .matching-game {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            .tab-btn {
+                width: 80%; 
+                max-width: 300px;
+            }
+            .pronunciation-controls {
+                flex-direction: column;
+            }
+            .pronunciation-btn {
+                margin: 5px auto; 
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            .matching-game {
+                grid-template-columns: 1fr;
+            }
+            .scramble-input {
+                width: 100%;
+                max-width: unset;
+            }
+            .scramble-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            .card {
+                height: 80px; 
+            }
+            .card .card-front, .card .card-back {
+                font-size: 1.5rem; 
+            }
+        </style>
+</head>
+<body>
+
+    <section class="interactive-games" id="interactive-games">
+        <div class="section-title">
+            <h2>الألعاب التفاعلية</h2>
+            <p>العب وتعلم الإنجليزية في نفس الوقت!</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="devGames.openGame('matching')">مطابقة الصور</button>
+            <button class="tab-btn" onclick="devGames.openGame('pronunciation')">اختبار النطق</button>
+            <button class="tab-btn" onclick="devGames.openGame('scramble')">ترتيب الكلمة</button>
+        </div>
+
+        <div id="matching" class="game-content active">
+            <h3 class="game-title">لعبة مطابقة الصور مع الكلمات</h3>
+            <p style="text-align: center; margin-bottom: 20px; color: var(--dark);">انقر على البطاقات لقلبها وابحث عن الرموز التعبيرية (الإيموجي) التي تطابق الكلمات</p>
+            <div class="matching-game" id="matchingGame"></div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-primary" onclick="devGames.resetMatchingGame()">
+                    <i class="fas fa-redo"></i> اعادة اللعبة
+                </button>
+            </div>
+        </div>
+
+        <div id="pronunciation" class="game-content">
+            <h3 class="game-title">لعبة اختبار النطق</h3>
+            <div class="pronunciation-game">
+                <div class="word-display" id="wordDisplay"></div>
+                <div class="pronunciation-controls">
+                    <button class="pronunciation-btn" id="listenPronunciationBtn" onclick="devGames.speakWord()">
+                        <i class="fas fa-volume-up"></i> استمع للنطق الصحيح
+                    </button>
+                    </div>
+                <button class="btn btn-primary" style="margin-top: 20px;" id="nextPronunciationWordBtn" onclick="devGames.nextPronunciationWord()">
+                    <i class="fas fa-arrow-right"></i> كلمة جديدة
+                </button>
+                <div class="feedback" id="feedback"></div>
+            </div>
+        </div>
+
+        <div id="scramble" class="game-content">
+            <h3 class="game-title">لعبة ترتيب الحروف</h3>
+            <div class="scramble-game">
+                <p style="color: var(--dark);">رتب الحروف لتكوين الكلمة الصحيحة</p>
+                <div class="scramble-word" id="scrambleWord"></div>
+                <div class="scramble-controls">
+                    <input type="text" class="scramble-input" id="scrambleInput" placeholder="اكتب الكلمة هنا">
+                    <button class="btn btn-primary" onclick="devGames.checkScramble()">
+                        <i class="fas fa-check"></i> تحقق
+                    </button>
+                </div>
+                <button class="btn btn-secondary" onclick="devGames.newScramble()">
+                    <i class="fas fa-redo"></i> كلمة جديدة
+                </button>
+                <div class="scramble-result" id="scrambleResult"></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const devGames = (function() {
+            function speakLetter(textToSpeak) {
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+                    utterance.lang = 'en-US';
+                    utterance.rate = 0.8;
+                    speechSynthesis.speak(utterance);
+                } else {
+                    console.warn("Your browser does not support speech synthesis.");
+                }
+            }
+
+            // 1. Matching Game Logic
+            const allMatchingPairs = [
+                { word: 'Apple', arabic: 'تفاحة', icon: '🍎' }, 
+                { word: 'Banana', arabic: 'موزة', icon: '🍌' },
+                { word: 'Orange', arabic: 'برتقالة', icon: '🍊' },
+                { word: 'Strawberry', arabic: 'فراولة', icon: '🍓' },
+                { word: 'Grapes', arabic: 'عنب', icon: '🍇' },
+                { word: 'Watermelon', arabic: 'بطيخ', icon: '🍉' },
+                { word: 'Lemon', arabic: 'ليمون', icon: '🍋' },
+                { word: 'Peach', arabic: 'خوخ', icon: '🍑' },
+                { word: 'Cat', arabic: 'قطة', icon: '🐈' },
+                { word: 'Dog', arabic: 'كلب', icon: '🐕' },
+                { word: 'House', arabic: 'منزل', icon: '🏠' },
+                { word: 'Tree', arabic: 'شجرة', icon: '🌳' },
+                { word: 'Car', arabic: 'سيارة', icon: '🚗' },
+                { word: 'Book', arabic: 'كتاب', icon: '📚' },
+                { word: 'Ball', arabic: 'كرة', icon: '⚽' },
+                { word: 'Sun', arabic: 'شمس', icon: '☀️' },
+                { word: 'Moon', arabic: 'قمر', icon: '🌙' },
+                { word: 'Star', arabic: 'نجمة', icon: '⭐' },
+                { word: 'Flower', arabic: 'زهرة', icon: '🌸' },
+                // أضف هنا باقي الـ 200 كلمة وأيقونة (إيموجي)
+            ];
+            
+            let flippedCards = [];
+            let matchedPairsCount = 0;
+            let canFlip = true;
+            const numberOfPairsToPlay = 10; 
+
+            function createMatchingGame() {
+                const gameContainer = document.getElementById('matchingGame');
+                gameContainer.innerHTML = '';
+                flippedCards = [];
+                matchedPairsCount = 0;
+                canFlip = true;
+                
+                const shuffledAllPairs = [...allMatchingPairs].sort(() => Math.random() - 0.5);
+                const selectedPairs = shuffledAllPairs.slice(0, numberOfPairsToPlay);
+
+                const cardsData = [];
+                selectedPairs.forEach(pair => {
+                    cardsData.push({ type: 'word', value: pair.word, matchId: pair.word });
+                    cardsData.push({ type: 'icon', value: pair.icon, matchId: pair.word }); 
+                });
+                
+                cardsData.sort(() => Math.random() - 0.5);
+                
+                cardsData.forEach((data, index) => {
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+                    card.dataset.matchId = data.matchId;
+                    card.dataset.type = data.type;
+                    
+                    let backContent = data.value; 
+
+                    card.innerHTML = `
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back">${backContent}</div>
+                        </div>
+                    `;
+                    card.addEventListener('click', function() {
+                        if (canFlip && !this.classList.contains('flipped') && !this.classList.contains('matched')) {
+                            this.classList.add('flipped');
+                            flippedCards.push(this);
+                            
+                            if (data.type === 'word') {
+                                speakLetter(data.value); 
+                            }
+
+                            if (flippedCards.length === 2) {
+                                canFlip = false; 
+                                setTimeout(checkMatch, 1000);
+                            }
+                        }
+                    });
+                    gameContainer.appendChild(card);
+                });
+            }
+            
+            function checkMatch() {
+                const [card1, card2] = flippedCards;
+                
+                if (card1.dataset.matchId === card2.dataset.matchId) {
+                    card1.classList.add('matched');
+                    card2.classList.add('matched');
+                    matchedPairsCount++;
+                    speakLetter("Good job!"); 
+
+                    if (matchedPairsCount === numberOfPairsToPlay) { 
+                        setTimeout(() => {
+                            alert('تهانينا! لقد طابقت جميع الكلمات!');
+                            speakLetter("Congratulations! You matched all the words!");
+                        }, 500);
+                    }
+                } else {
+                    speakLetter("Try again."); 
+                    setTimeout(() => {
+                        card1.classList.remove('flipped');
+                        card2.classList.remove('flipped');
+                    }, 800);
+                }
+                
+                flippedCards = []; 
+                canFlip = true; 
+            }
+            
+            function resetMatchingGame() {
+                createMatchingGame();
+            }
+
+            // 2. Pronunciation Game Logic
+            const pronunciationWords = [
+                { word: 'Apple', arabic: 'تفاحة' }, { word: 'Banana', arabic: 'موزة' },
+                { word: 'Cat', arabic: 'قطة' }, { word: 'Dog', arabic: 'كلب' },
+                { word: 'Elephant', arabic: 'فيل' }, { word: 'Fish', arabic: 'سمكة' },
+                { word: 'Grape', arabic: 'عنب' }, { word: 'House', arabic: 'منزل' },
+                { word: 'Book', arabic: 'كتاب' }, { word: 'Table', arabic: 'طاولة' },
+                { word: 'Chair', arabic: 'كرسي' }, { word: 'Sun', arabic: 'شمس' },
+                { word: 'Moon', arabic: 'قمر' }, { word: 'Star', arabic: 'نجمة' },
+                { word: 'Water', arabic: 'ماء' }, { word: 'Milk', arabic: 'حليب' },
+                { word: 'Bread', arabic: 'خبز' }, { word: 'Car', arabic: 'سيارة' },
+                { word: 'Bike', arabic: 'دراجة' }, { word: 'Tree', arabic: 'شجرة' },
+                { word: 'Flower', arabic: 'زهرة' }, { word: 'Bird', arabic: 'طائر' },
+                { word: 'Frog', arabic: 'ضفدع' }, { word: 'Lion', arabic: 'أسد' },
+                { word: 'Tiger', arabic: 'نمر' }, { word: 'Zebra', arabic: 'حمار وحشي' },
+                { word: 'Bear', arabic: 'دب' }, { word: 'Fox', arabic: 'ثعلب' },
+                { word: 'School', arabic: 'مدرسة' }, { word: 'Teacher', arabic: 'معلم' },
+                { word: 'Student', arabic: 'طالب' }, { word: 'Friend', arabic: 'صديق' },
+                { word: 'Family', arabic: 'عائلة' }, { word: 'Home', arabic: 'منزل' },
+                { word: 'Park', arabic: 'حديقة' }, { word: 'Store', arabic: 'متجر' },
+                { word: 'Hospital', arabic: 'مستشفى' }, { word: 'Office', arabic: 'مكتب' },
+                { word: 'Doctor', arabic: 'طبيب' }, { word: 'Nurse', arabic: 'ممرضة' },
+                { word: 'Police', arabic: 'شرطة' }, { word: 'Fireman', arabic: 'رجل إطفاء' },
+                { word: 'Chef', arabic: 'طباخ' }, { word: 'Farmer', arabic: 'مزارع' },
+                { word: 'Singer', arabic: 'مغنّي' }, { word: 'Dancer', arabic: 'راقص' },
+                { word: 'Artist', arabic: 'فنان' }, { word: 'Writer', arabic: 'كاتب' },
+                { word: 'Happy', arabic: 'سعيد' }, { word: 'Sad', arabic: 'حزين' },
+                { word: 'Big', arabic: 'كبير' }, { word: 'Small', arabic: 'صغير' },
+                { word: 'Hot', arabic: 'حار' }, { word: 'Cold', arabic: 'بارد' },
+                { word: 'Fast', arabic: 'سريع' }, { word: 'Slow', arabic: 'بطيء' },
+                { word: 'New', arabic: 'جديد' }, { word: 'Old', arabic: 'قديم' },
+                { word: 'Clean', arabic: 'نظيف' }, { word: 'Dirty', arabic: 'متسخ' },
+                { word: 'Tall', arabic: 'طويل' }, { word: 'Short', arabic: 'قصير' },
+                { word: 'Good', arabic: 'جيد' }, { word: 'Bad', arabic: 'سيئ' },
+                { word: 'Red', arabic: 'أحمر' }, { word: 'Blue', arabic: 'أزرق' },
+                { word: 'Green', arabic: 'أخضر' }, { word: 'Yellow', arabic: 'أصفر' },
+                { word: 'Black', arabic: 'أسود' }, { word: 'White', arabic: 'أبيض' },
+                { word: 'Brown', arabic: 'بني' }, { word: 'Purple', arabic: 'أرجواني' },
+                { word: 'Pink', arabic: 'وردي' }, { word: 'Orange', arabic: 'برتقالي' },
+                { word: 'One', arabic: 'واحد' }, { word: 'Two', arabic: 'اثنان' },
+                { word: 'Three', arabic: 'ثلاثة' }, { word: 'Four', arabic: 'أربعة' },
+                { word: 'Five', arabic: 'خمسة' }, { word: 'Six', arabic: 'ستة' },
+                { word: 'Seven', arabic: 'سبعة' }, { word: 'Eight', arabic: 'ثمانية' },
+                { word: 'Nine', arabic: 'تسعة' }, { word: 'Ten', arabic: 'عشرة' },
+                { word: 'Eleven', arabic: 'أحد عشر' }, { word: 'Twelve', arabic: 'اثنا عشر' },
+                { word: 'Thirteen', arabic: 'ثلاثة عشر' }, { word: 'Fourteen', arabic: 'أربعة عشر' },
+                { word: 'Fifteen', arabic: 'خمسة عشر' }, { word: 'Sixteen', arabic: 'ستة عشر' },
+                { word: 'Seventeen', arabic: 'سبعة عشر' }, { word: 'Eighteen', arabic: 'ثمانية عشر' },
+                { word: 'Nineteen', arabic: 'تسعة عشر' }, { word: 'Twenty', arabic: 'عشرون' },
+                { word: 'Thirty', arabic: 'ثلاثون' }, { word: 'Forty', arabic: 'أربعون' },
+                { word: 'Fifty', arabic: 'خمسون' }, { word: 'Sixty', arabic: 'ستون' },
+                { word: 'Seventy', arabic: 'سبعون' }, { word: 'Eighty', arabic: 'ثمانون' },
+                { word: 'Ninety', arabic: 'تسعون' }, { word: 'Hundred', arabic: 'مئة' },
+                { word: 'Day', arabic: 'يوم' }, { word: 'Night', arabic: 'ليل' },
+                { word: 'Morning', arabic: 'صباح' }, { word: 'Evening', arabic: 'مساء' },
+                { word: 'Yesterday', arabic: 'أمس' }, { word: 'Today', arabic: 'اليوم' },
+                { word: 'Tomorrow', arabic: 'غداً' }, { word: 'Week', arabic: 'أسبوع' },
+                { word: 'Month', arabic: 'شهر' }, { word: 'Year', arabic: 'سنة' },
+                { word: 'January', arabic: 'يناير' }, { word: 'February', arabic: 'فبراير' },
+                { word: 'March', arabic: 'مارس' }, { word: 'April', arabic: 'أبريل' },
+                { word: 'May', arabic: 'مايو' }, { word: 'June', arabic: 'يونيو' },
+                { word: 'July', arabic: 'يوليو' }, { word: 'August', arabic: 'أغسطس' },
+                { word: 'September', arabic: 'سبتمبر' }, { word: 'October', arabic: 'أكتوبر' },
+                { word: 'November', arabic: 'نوفمبر' }, { word: 'December', arabic: 'ديسمبر' },
+                { word: 'Spring', arabic: 'ربيع' }, { word: 'Summer', arabic: 'صيف' },
+                { word: 'Autumn', arabic: 'خريف' }, { word: 'Winter', arabic: 'شتاء' },
+                { word: 'North', arabic: 'شمال' }, { word: 'South', arabic: 'جنوب' },
+                { word: 'East', arabic: 'شرق' }, { word: 'West', arabic: 'غرب' },
+                { word: 'Up', arabic: 'فوق' }, { word: 'Down', arabic: 'تحت' },
+                { word: 'In', arabic: 'في' }, { word: 'Out', arabic: 'خارج' },
+                { word: 'On', arabic: 'على' }, { word: 'Off', arabic: 'إيقاف' },
+                { word: 'Near', arabic: 'قريب' }, { word: 'Far', arabic: 'بعيد' },
+                { word: 'Left', arabic: 'يسار' }, { word: 'Right', arabic: 'يمين' },
+                { word: 'Yes', arabic: 'نعم' }, { word: 'No', arabic: 'لا' },
+                { word: 'Hello', arabic: 'مرحباً' }, { word: 'Goodbye', arabic: 'وداعاً' },
+                { word: 'Please', arabic: 'رجاءً' }, { word: 'Thank you', arabic: 'شكراً لك' },
+                { word: 'Sorry', arabic: 'آسف' }, { word: 'Excuse me', arabic: 'عفواً' },
+                { word: 'Brother', arabic: 'أخ' }, { word: 'Sister', arabic: 'أخت' },
+                { word: 'Mother', arabic: 'أم' }, { word: 'Father', arabic: 'أب' },
+                { word: 'Son', arabic: 'ابن' }, { word: 'Daughter', arabic: 'ابنة' },
+                { word: 'Grandfather', arabic: 'جد' }, { word: 'Grandmother', arabic: 'جدة' }
+            ];
+            let currentPronunciationWordIndex = 0;
+            // تم حذف المتغيرات المتعلقة بـ SpeechRecognition و MediaRecorder
+            
+            const listenBtn = document.getElementById('listenPronunciationBtn');
+            const nextWordBtn = document.getElementById('nextPronunciationWordBtn');
+            const feedbackElement = document.getElementById('feedback');
+
+            // لم يعد هناك حاجة للتحقق من APIs التعرف على الكلام هنا
+            // لأن زر "تحدث وقارن" قد تم حذفه.
+
+            function displayPronunciationWord() {
+                const wordData = pronunciationWords[currentPronunciationWordIndex];
+                document.getElementById('wordDisplay').textContent = wordData.word;
+                let instructions = `
+                    <p>الكلمة: <strong>${wordData.word}</strong> (${wordData.arabic})</p>
+                    <p style="color: var(--blue); margin-top: 10px;">استمع جيداً للنطق الصحيح ثم حاول تقليده!</p>
+                `;
+                feedbackElement.innerHTML = instructions;
+            }
+            
+            function speakWord() {
+                const word = pronunciationWords[currentPronunciationWordIndex].word;
+                speakLetter(word);
+            }
+
+            function nextPronunciationWord() {
+                currentPronunciationWordIndex = (currentPronunciationWordIndex + 1) % pronunciationWords.length;
+                displayPronunciationWord();
+            }
+            
+            // 3. Word Scramble Game Logic (Remains the same as previous version)
+            const scrambleWords = [
+                'APPLE', 'BANANA', 'ORANGE', 'CAT', 'DOG', 'SUN', 'MOON', 'STAR', 'BOOK', 'BALL',
+                'TREE', 'FLOWER', 'BIRD', 'FISH', 'FROG', 'LION', 'TIGER', 'ZEBRA', 'BEAR', 'FOX',
+                'HOUSE', 'CAR', 'BIKE', 'SPOON', 'FORK', 'KNIFE', 'PLATE', 'CUP', 'GLASS', 'JUICE',
+                'WATER', 'MILK', 'BREAD', 'CHEESE', 'EGG', 'RICE', 'PASTA', 'PIZZA', 'CAKE', 'COOKIE',
+                'TABLE', 'CHAIR', 'BED', 'SOFA', 'LAMP', 'DOOR', 'WINDOW', 'WALL', 'ROOF', 'FLOOR',
+                'PENCIL', 'PEN', 'PAPER', 'ERASER', 'RULER', 'BAG', 'SHOE', 'HAT', 'SHIRT', 'PANTS',
+                'DRESS', 'COAT', 'SOCKS', 'GLOVES', 'SCARF', 'CLOUD', 'RAIN', 'SNOW', 'WIND', 'STORM',
+                'SKY', 'OCEAN', 'RIVER', 'LAKE', 'MOUNTAIN', 'HILL', 'VALLEY', 'DESERT', 'FOREST', 'FIELD',
+                'ROAD', 'BRIDGE', 'TRAIN', 'BUS', 'PLANE', 'BOAT', 'SHIP', 'TRUCK', 'TAXI', 'JEEP',
+                'SCHOOL', 'TEACHER', 'STUDENT', 'FRIEND', 'FAMILY', 'HOME', 'PARK', 'STORE', 'HOSPITAL', 'OFFICE',
+                'DOCTOR', 'NURSE', 'POLICE', 'FIREMAN', 'CHEF', 'FARMER', 'SINGER', 'DANCER', 'ARTIST', 'WRITER'
+            ];
+            let currentScrambleWord = '';
+            
+            function setupScrambleGame() {
+                currentScrambleWord = scrambleWords[Math.floor(Math.random() * scrambleWords.length)];
+                const scrambled = shuffleWord(currentScrambleWord);
+                document.getElementById('scrambleWord').textContent = scrambled;
+                document.getElementById('scrambleInput').value = '';
+                document.getElementById('scrambleResult').innerHTML = '';
+            }
+            
+            function shuffleWord(word) {
+                const letters = word.split('');
+                for (let i = letters.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [letters[i], letters[j]] = [letters[j], letters[i]];
+                }
+                return letters.join('');
+            }
+            
+            function checkScramble() {
+                const userInput = document.getElementById('scrambleInput').value.toUpperCase();
+                const resultElement = document.getElementById('scrambleResult');
+                
+                if (userInput === currentScrambleWord) {
+                    resultElement.innerHTML = '<p style="color: var(--success);">✓ أحسنت! الإجابة صحيحة!</p>';
+                    speakLetter("Excellent!");
+                    setTimeout(newScramble, 1500); 
+                } else {
+                    resultElement.innerHTML = '<p style="color: var(--primary);">✗ حاول مرة أخرى!</p>';
+                    speakLetter("Try again!");
+                }
+            }
+            
+            function newScramble() {
+                setupScrambleGame();
+            }
+            
+            // Tab Switching Functions
+            function openGame(gameId) {
+                document.querySelectorAll('.game-content').forEach(game => {
+                    game.classList.remove('active');
+                });
+                
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                document.getElementById(gameId).classList.add('active');
+                document.querySelector(`.tab-btn[onclick="devGames.openGame('${gameId}')"]`).classList.add('active');
+                
+                // Initialize the selected game
+                if (gameId === 'matching') {
+                    createMatchingGame();
+                } else if (gameId === 'pronunciation') {
+                    currentPronunciationWordIndex = Math.floor(Math.random() * pronunciationWords.length); 
+                    displayPronunciationWord();
+                    // تأكد من أن زر الاستماع متاح
+                    if (listenBtn) listenBtn.disabled = false;
+                    if (nextWordBtn) nextWordBtn.disabled = false;
+
+                } else if (gameId === 'scramble') {
+                    setupScrambleGame();
+                }
+            }
+
+            // Public interface of the devGames module
+            return {
+                openGame: openGame,
+                resetMatchingGame: resetMatchingGame,
+                speakWord: speakWord,
+                nextPronunciationWord: nextPronunciationWord,
+                checkScramble: checkScramble,
+                newScramble: newScramble
+            };
+        })(); 
+
+        // Initialize the first game when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            devGames.openGame('matching');
+        });
+    </script>
+</body>
+</html>
+
    
    <footer>
    <p>مصمم بـ ❤️ لأحباب اللغة الإنجليزية</p>
