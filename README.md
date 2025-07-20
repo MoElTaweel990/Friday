@@ -45,6 +45,7 @@
             background: linear-gradient(135deg, #6a0572, #4a0360);
             padding: 10px 0;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            height: var(--nav-height);
         }
         
         .nav-scroll-container {
@@ -164,18 +165,27 @@
             padding: 30px;
             scroll-margin-top: calc(var(--nav-height) + 20px);
         }
+        
+        .section-intro {
+            text-align: center;
+            font-size: 1.15rem;
+            margin-bottom: 30px;
+            color: #555;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
         h2 {
             color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 40px;
+            text-align: center; /* Ensures text is centered */
+            margin: 0 auto 20px auto; /* Centers the block itself */
             font-size: 2.2rem;
             border-bottom: 3px solid var(--secondary-color);
-            display: inline-block;
+            display: block; /* Ensure it's a block for margin: auto to work */
             padding-bottom: 10px;
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%);
+            position: relative; /* Keep for pseudo-elements */
+            width: fit-content; /* Make the width fit content for centering with margin: auto */
         }
 
         h2::after, h2::before {
@@ -199,6 +209,7 @@
             margin: 30px 0 20px;
             padding-bottom: 5px;
             border-bottom: 1px dashed var(--border-color);
+            text-align: center; /* Center h3 elements */
         }
 
         .instruction {
@@ -210,74 +221,79 @@
         }
 
         /* Alphabet Section */
-        .alphabet-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
+        #alphabet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            gap: 15px;
             justify-content: center;
+            margin-bottom: 30px;
         }
 
-        .alphabet-card {
-            background-color: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px var(--shadow-color);
-            padding: 25px;
-            width: calc(33% - 50px);
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-
-        .alphabet-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .alphabet-card h3 {
-            font-size: 2.8rem;
-            margin-top: 0;
-            margin-bottom: 20px;
-            text-align: center;
-            width: 100%;
-            color: var(--secondary-color);
-            transition: color 0.3s ease-in-out;
-        }
-
-        .alphabet-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        .alphabet-table th, .alphabet-table td {
-            border: 1px solid var(--border-color);
-            padding: 12px;
-            text-align: center;
-            font-size: 1.05rem;
-        }
-
-        .alphabet-table th {
+        .alphabet-letter-button {
             background-color: var(--primary-color);
             color: white;
+            font-size: 2.5rem;
             font-weight: bold;
+            padding: 15px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--primary-color);
         }
 
-        .alphabet-table tr:nth-child(even) {
-            background-color: #fcf4f8;
+        .alphabet-letter-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            border-color: var(--secondary-color);
         }
 
-        .alphabet-table tr:hover {
-            background-color: #ffe6f2;
+        .alphabet-letter-button.active-letter {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        #words-display-area {
+            margin-top: 40px;
+            padding: 30px;
+            background-color: var(--light-color);
+            border-radius: 12px;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
+            min-height: 200px;
+            display: none; /* Hidden by default, JS will show it */
+            flex-direction: column;
+            gap: 15px;
+            border: 2px dashed var(--secondary-color);
+        }
+
+        .word-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .word-item:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .english-word {
             cursor: pointer;
             font-weight: bold;
             color: var(--primary-color);
+            font-size: 1.2rem;
             transition: color 0.2s ease-in-out;
+            direction: ltr; /* Ensure English words are LTR */
+            text-align: left;
         }
 
         .english-word:hover {
@@ -285,7 +301,12 @@
             text-decoration: underline;
         }
 
-        /* Colors Section */
+        .arabic-translation {
+            color: var(--dark-color);
+            font-size: 1.1rem;
+        }
+        
+        /* Colors Section specific */
         .color-box {
             display: inline-block;
             width: 20px;
@@ -310,7 +331,7 @@
         .grammar-topic:hover {
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
         }
-
+        
         .grammar-topic h3 {
             cursor: pointer;
             color: var(--primary-color);
@@ -421,7 +442,6 @@
             margin-bottom: 20px;
             border-bottom: 2px dashed var(--secondary-color);
             padding-bottom: 10px;
-            display: inline-block;
         }
 
         .game-card p {
@@ -492,10 +512,6 @@
 
         /* Responsive Design */
         @media (max-width: 1024px) {
-            .alphabet-card {
-                width: calc(50% - 40px);
-            }
-            
             .nav-btn {
                 min-width: 100px;
                 padding: 8px 12px;
@@ -512,9 +528,6 @@
             }
             h3 {
                 font-size: 1.6rem;
-            }
-            .alphabet-card {
-                width: 100%;
             }
             main {
                 margin: 20px auto;
@@ -535,6 +548,29 @@
             .nav-btn i {
                 font-size: 1.2rem;
             }
+
+            #alphabet-grid {
+                grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+                gap: 10px;
+            }
+
+            .alphabet-letter-button {
+                font-size: 2rem;
+                padding: 10px 0;
+            }
+
+            .word-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .english-word {
+                font-size: 1.1rem;
+            }
+            .arabic-translation {
+                font-size: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -550,9 +586,6 @@
             }
             h3 {
                 font-size: 1.4rem;
-            }
-            .alphabet-card h3 {
-                font-size: 2.5rem;
             }
             .grammar-text, .grammar-topic ul li {
                 font-size: 1rem;
@@ -574,6 +607,16 @@
             
             .nav-btn i {
                 font-size: 1rem;
+            }
+
+            #alphabet-grid {
+                grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+                gap: 8px;
+            }
+
+            .alphabet-letter-button {
+                font-size: 1.8rem;
+                padding: 8px 0;
             }
         }
     </style>
@@ -629,48 +672,109 @@
     <main>
         <section id="alphabet-section">
             <h2>الأبجدية الإنجليزية وقائمة الكلمات</h2>
-            <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
+            <p class="section-intro">
+                هنا تبدأ رحلتك مع حروف اللغة الإنجليزية. استكشف الحروف الأبجدية، واضغط على أي حرف لترى قائمة من الكلمات التي تبدأ به مع ترجمتها. هذه هي خطوتك الأولى لبناء مفرداتك.
+            </p>
+            <p class="instruction">اضغط على أي حرف لعرض 10 كلمات تبدأ به. اضغط على الكلمة لسماع نطقها.</p>
             <div class="alphabet-container" id="alphabet-container">
+                <div id="alphabet-grid">
+                    </div>
+                <div id="words-display-area">
+                    <p style="text-align: center; color: #777;">اختر حرفًا من الأعلى لعرض الكلمات.</p>
                 </div>
+            </div>
         </section>
 
         <section id="pronunciation-section">
             <h2>قواعد النطق (Pronunciation Rules)</h2>
-            <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
+            <p class="section-intro">
+                النطق الصحيح هو مفتاح الثقة في التحدث. في هذا القسم، سنستعرض أهم قواعد نطق الحروف المتحركة، الساكنة، والمركبة بطريقة مبسطة. سيساعدك هذا على فهم كيف تتغير أصوات الحروف في الكلمات المختلفة.
+            </p>
+            <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها الصحيح وممارسة استماعك.</p>
             
             <div class="grammar-topic">
                 <h3>1. الحروف المتحركة (Vowels)</h3>
                 <div class="grammar-text">
-                    <p>الحروف المتحركة الأساسية في اللغة الإنجليزية هي <span class="english-word">A</span>, <span class="english-word">E</span>, <span class="english-word">I</span>, <span class="english-word">O</span>, <span class="english-word">U</span>. هذه الحروف هي العمود الفقري للنطق في الإنجليزية، حيث يمكن لكل حرف متحرك أن ينتج أصواتًا متعددة، وأكثرها شيوعًا هي الأصوات القصيرة والطويلة.</p>
+                    <p>الحروف المتحركة الأساسية في اللغة الإنجليزية هي 
+                        <span class="english-word">A</span>, 
+                        <span class="english-word">E</span>, 
+                        <span class="english-word">I</span>, 
+                        <span class="english-word">O</span>, 
+                        <span class="english-word">U</span>. هذه الحروف هي العمود الفقري للنطق في الإنجليزية، حيث يمكن لكل حرف متحرك أن ينتج أصواتًا متعددة، وأكثرها شيوعًا هي الأصوات القصيرة والطويلة.
+                    </p>
                     <ul>
                         <li><strong>حرف A:</strong>
                             <ul>
-                                <li>الصوت القصير (مثل الفتحة في العربية): يُنطق كـ "آ" خفيف مثل كلمة <span class="english-word">cat</span> (قطة), <span class="english-word">apple</span> (تفاحة), <span class="english-word">back</span> (خلف), <span class="english-word">fan</span> (مروحة), <span class="english-word">sad</span> (حزين).</li>
-                                <li>الصوت الطويل (مثل الألف الممدودة في العربية): يُنطق كـ "إيْ" في كلمة <span class="english-word">name</span> (اسم), <span class="english-word">cake</span> (كعكة), <span class="english-word">plate</span> (طبق), <span class="english-word">game</span> (لعبة), <span class="english-word">face</span> (وجه).</li>
+                                <li>الصوت القصير (مثل الفتحة في العربية): يُنطق كـ "آ" خفيف مثل كلمة 
+                                    <span class="english-word">cat</span> (قطة), 
+                                    <span class="english-word">apple</span> (تفاحة), 
+                                    <span class="english-word">back</span> (خلف).
+                                </li>
+                                <li>الصوت الطويل (مثل الألف الممدودة في العربية): يُنطق كـ "إيْ" في كلمة 
+                                    <span class="english-word">name</span> (اسم), 
+                                    <span class="english-word">cake</span> (كعكة), 
+                                    <span class="english-word">game</span> (لعبة).
+                                </li>
                             </ul>
                         </li>
-                        <li><strong>حرف E:</strong>
+                        <li>
+                            <strong>حرف E:</strong>
                             <ul>
-                                <li>الصوت القصير (مثل الكسرة الخفيفة): يُنطق كـ "إي" قصير مثل كلمة <span class="english-word">bed</span> (سرير), <span class="english-word">red</span> (أحمر), <span class="english-word">pen</span> (قلم), <span class="english-word">egg</span> (بيضة), <span class="english-word">tent</span> (خيمة).</li>
-                                <li>الصوت الطويل (مثل الياء الممدودة في العربية): يُنطق كـ "إيي" طويل مثل كلمة <span class="english-word">tree</span> (شجرة), <span class="english-word">meet</span> (يقابل), <span class="english-word">feet</span> (أقدام), <span class="english-word">sleep</span> (ينام), <span class="english-word">see</span> (يرى).</li>
+                                <li>الصوت القصير (مثل الكسرة الخفيفة): يُنطق كـ "إي" قصير مثل كلمة 
+                                    <span class="english-word">bed</span> (سرير), 
+                                    <span class="english-word">red</span> (أحمر), 
+                                    <span class="english-word">pen</span> (قلم).
+                                </li>
+                                <li>الصوت الطويل (مثل الياء الممدودة في العربية): يُنطق كـ "إيي" طويل مثل كلمة 
+                                    <span class="english-word">tree</span> (شجرة), 
+                                    <span class="english-word">meet</span> (يقابل), 
+                                    <span class="english-word">see</span> (يرى).
+                                </li>
                             </ul>
                         </li>
-                        <li><strong>حرف I:</strong>
+                        <li>
+                            <strong>حرف I:</strong>
                             <ul>
-                                <li>الصوت القصير (مثل الكسرة الشديدة): يُنطق كـ "إِ" قصير مثل كلمة <span class="english-word">pig</span> (خنزير), <span class="english-word">sit</span> (يجلس), <span class="english-word">fish</span> (سمكة), <span class="english-word">big</span> (كبير), <span class="english-word">milk</span> (حليب).</li>
-                                <li>الصوت الطويل (مثل "آي" في العربية): يُنطق كـ "آي" مثل كلمة <span class="english-word">bike</span> (دراجة), <span class="english-word">light</span> (ضوء), <span class="english-word">time</span> (وقت), <span class="english-word">ice</span> (ثلج), <span class="english-word">five</span> (خمسة).</li>
+                                <li>الصوت القصير (مثل الكسرة الشديدة): يُنطق كـ "إِ" قصير مثل كلمة 
+                                    <span class="english-word">pig</span> (خنزير), 
+                                    <span class="english-word">sit</span> (يجلس), 
+                                    <span class="english-word">fish</span> (سمكة).
+                                </li>
+                                <li>الصوت الطويل (مثل "آي" في العربية): يُنطق كـ "آي" مثل كلمة 
+                                    <span class="english-word">bike</span> (دراجة), 
+                                    <span class="english-word">light</span> (ضوء), 
+                                    <span class="english-word">time</span> (وقت).
+                                </li>
                             </ul>
                         </li>
-                        <li><strong>حرف O:</strong>
+                        <li>
+                            <strong>حرف O:</strong>
                             <ul>
-                                <li>الصوت القصير (مثل الضمة الخفيفة): يُنطق كـ "أو" قصير مثل كلمة <span class="english-word">dog</span> (كلب), <span class="english-word">hot</span> (حار), <span class="english-word">box</span> (صندوق), <span class="english-word">top</span> (أعلى), <span class="english-word">stop</span> (يتوقف).</li>
-                                <li>الصوت الطويل (مثل الواو الممدودة في العربية): يُنطق كـ "أو" طويل مثل كلمة <span class="english-word">boat</span> (قارب), <span class="english-word">go</span> (يذهب), <span class="english-word">home</span> (منزل), <span class="english-word">snow</span> (ثلج), <span class="english-word">rose</span> (وردة).</li>
+                                <li>الصوت القصير (مثل الضمة الخفيفة): يُنطق كـ "أو" قصير مثل كلمة 
+                                    <span class="english-word">dog</span> (كلب), 
+                                    <span class="english-word">hot</span> (حار), 
+                                    <span class="english-word">box</span> (صندوق).
+                                </li>
+                                <li>الصوت الطويل (مثل الواو الممدودة في العربية): يُنطق كـ "أو" طويل مثل كلمة 
+                                    <span class="english-word">boat</span> (قارب), 
+                                    <span class="english-word">go</span> (يذهب), 
+                                    <span class="english-word">home</span> (منزل).
+                                </li>
                             </ul>
                         </li>
-                        <li><strong>حرف U:</strong>
+                        <li>
+                            <strong>حرف U:</strong>
                             <ul>
-                                <li>الصوت القصير (مثل الضمة الخفيفة): يُنطق كـ "أَ" مثل كلمة <span class="english-word">sun</span> (شمس), <span class="english-word">cup</span> (كوب), <span class="english-word">run</span> (يركض), <span class="english-word">bus</span> (حافلة), <span class="english-word">fun</span> (مرح).</li>
-                                <li>الصوت الطويل (مثل "يو" في العربية): يُنطق كـ "يو" مثل كلمة <span class="english-word">blue</span> (أزرق), <span class="english-word">cute</span> (لطيف), <span class="english-word">music</span> (موسيقى), <span class="english-word">unit</span> (وحدة), <span class="english-word">tube</span> (أنبوب).</li>
+                                <li>الصوت القصير (مثل الضمة الخفيفة): يُنطق كـ "أَ" مثل كلمة 
+                                    <span class="english-word">sun</span> (شمس), 
+                                    <span class="english-word">cup</span> (كوب), 
+                                    <span class="english-word">run</span> (يركض).
+                                </li>
+                                <li>الصوت الطويل (مثل "يو" في العربية): يُنطق كـ "يو" مثل كلمة 
+                                    <span class="english-word">blue</span> (أزرق),
+                                    <span class="english-word">cute</span> (لطيف), 
+                                    <span class="english-word">music</span> (موسيقى).
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -684,32 +788,52 @@
                     <ul>
                         <li><strong>حرف C:</strong>
                             <ul>
-                                <li>يُنطق كـ **"S"** عندما يتبعه أحد الحروف المتحركة <span class="english-word">E</span>, <span class="english-word">I</span>, <span class="english-word">Y</span>: مثل <span class="english-word">city</span> (مدينة), <span class="english-word">face</span> (وجه), <span class="english-word">ice</span> (ثلج), <span class="english-word">cycle</span> (دورة), <span class="english-word">cent</span> (سنت).</li>
-                                <li>يُنطق كـ **"K"** في معظم الحالات الأخرى: مثل <span class="english-word">cat</span> (قطة), <span class="english-word">car</span> (سيارة), <span class="english-word">cup</span> (كوب), <span class="english-word">cold</span> (بارد), <span class="english-word">cook</span> (يطبخ).</li>
+                                <li>يُنطق كـ **"S"** عندما يتبعه أحد الحروف المتحركة 
+                                    <span class="english-word">E</span>, 
+                                    <span class="english-word">I</span>, 
+                                    <span class="english-word">Y</span>: مثل 
+                                    <span class="english-word">city</span> (مدينة), 
+                                    <span class="english-word">face</span> (وجه), 
+                                    <span class="english-word">cycle</span> (دورة).
+                                </li>
+                                <li>يُنطق كـ **"K"** في معظم الحالات الأخرى: مثل 
+                                    <span class="english-word">cat</span> (قطة), 
+                                    <span class="english-word">car</span> (سيارة), 
+                                    <span class="english-word">cold</span> (بارد).
+                                </li>
                             </ul>
                         </li>
-                        <li><strong>حرف G:</strong>
+                        <li>
+                            <strong>حرف G:</strong>
                             <ul>
-                                <li>يُنطق كـ **"J"** (مثل الجيم المصرية) عندما يتبعه أحد الحروف المتحركة <span class="english-word">E</span>, <span class="english-word">I</span>, <span class="english-word">Y</span>: مثل <span class="english-word">giant</span> (عملاق), <span class="english-word">gem</span> (جوهرة), <span class="english-word">giraffe</span> (زرافة), <span class="english-word">energy</span> (طاقة), <span class="english-word">gym</span> (صالة ألعاب رياضية).</li>
-                                <li>يُنطق كـ **"غ"** (مثل الغين في العربية) في معظم الحالات الأخرى: مثل <span class="english-word">go</span> (يذهب), <span class="english-word">game</span> (لعبة), <span class="english-word">big</span> (كبير), <span class="english-word">green</span> (أخضر), <span class="english-word">glad</span> (سعيد).</li>
+                                <li>يُنطق كـ **"J"** (مثل الجيم المصرية) عندما يتبعه أحد الحروف المتحركة 
+                                    <span class="english-word">E</span>, 
+                                    <span class="english-word">I</span>, 
+                                    <span class="english-word">Y</span>: مثل 
+                                    <span class="english-word">giant</span> (عملاق), 
+                                    <span class="english-word">gem</span> (جوهرة),
+                                    <span class="english-word">gym</span> (صالة ألعاب رياضية).
+                                </li>
+                                <li>يُنطق كـ "غ" (مثل الغين في العربية) في معظم الحالات الأخرى: مثل 
+                                    <span class="english-word">go</span> (يذهب), 
+                                    <span class="english-word">game</span> (لعبة), 
+                                    <span class="english-word">green</span> (أخضر).
+                                </li>
                             </ul>
                         </li>
-                        <li><strong>حرف S:</strong>
+                        <li>
+                            <strong>حرف S:</strong>
                             <ul>
-                                <li>يُنطق كـ **"س"** في بداية الكلمات أو عندما يكون الحرف الذي يليه ساكناً: مثل <span class="english-word">sun</span> (شمس), <span class="english-word">snake</span> (ثعبان), <span class="english-word">sit</span> (يجلس), <span class="english-word">start</span> (يبدأ), <span class="english-word">street</span> (شارع).</li>
-                                <li>يُنطق كـ **"ز"** أحياناً، خاصة بين حرفين متحركين أو في نهاية بعض الكلمات: مثل <span class="english-word">is</span> (يكون), <span class="english-word">has</span> (يملك), <span class="english-word">rise</span> (يرتفع), <span class="english-word">easy</span> (سهل), <span class="english-word">music</span> (موسيقى).</li>
-                            </ul>
-                        </li>
-                        <li><strong>حرف H:</strong>
-                            <ul>
-                                <li>يُنطق كـ **"هـ"** خفيفة في معظم الحالات: مثل <span class="english-word">house</span> (منزل), <span class="english-word">happy</span> (سعيد), <span class="english-word">hand</span> (يد), <span class="english-word">hat</span> (قبعة), <span class="english-word">hello</span> (مرحباً).</li>
-                                <li>يكون صامتاً في بعض الكلمات (خاصة بعد 'W' أو في بدايات كلمات معينة من أصول لاتينية): مثل <span class="english-word">what</span> (ماذا), <span class="english-word">when</span> (متى), <span class="english-word">honest</span> (صادق), <span class="english-word">hour</span> (ساعة), <span class="english-word">rhythm</span> (إيقاع).</li>
-                            </ul>
-                        </li>
-                        <li><strong>حرف R:</strong>
-                            <ul>
-                                <li>يُنطق كـ **"ر"** في معظم الحالات (صوت خفيف وغير مفخم مثل العربية): مثل <span class="english-word">red</span> (أحمر), <span class="english-word">run</span> (يركض), <span class="english-word">river</span> (نهر), <span class="english-word">car</span> (سيارة - في الإنجليزية الأمريكية), <span class="english-word">road</span> (طريق).</li>
-                                <li>في بعض اللهجات (مثل الإنجليزية البريطانية)، قد يكون صامتاً إذا جاء في نهاية الكلمة وبعد حرف متحرك: مثال <span class="english-word">car</span> (كار - بدون نطق الـ R).</li>
+                                <li>يُنطق كـ **"س"** في بداية الكلمات أو عندما يكون الحرف الذي يليه ساكناً: مثل 
+                                    <span class="english-word">sun</span> (شمس), 
+                                    <span class="english-word">start</span> (يبدأ), 
+                                    <span class="english-word">street</span> (شارع).
+                                </li>
+                                <li>يُنطق كـ **"ز"** أحياناً، خاصة بين حرفين متحركين أو في نهاية بعض الكلمات: مثل 
+                                    <span class="english-word">is</span> (يكون), 
+                                    <span class="english-word">rose</span> (وردة), 
+                                    <span class="english-word">easy</span> (سهل).
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -717,95 +841,77 @@
             </div>
 
             <div class="grammar-topic">
-                <h3>3. الحروف المركبة (Digraphs and Blends)</h3>
+                <h3>3. الحروف المركبة (Digraphs)</h3>
                 <div class="grammar-text">
-                    <p>الحروف المركبة هي مجموعات من حرفين أو أكثر تنتج صوتًا واحدًا مختلفًا عن نطق كل حرف على حدة. بينما "المزج" (Blends) هي مجموعات من الحروف الساكنة حيث يُنطق كل حرف بصوته ولكن تتداخل الأصوات.</p>
+                    <p>الحروف المركبة هي زوج من الحروف التي تنتج صوتًا واحدًا. وهي شائعة جدًا في اللغة الإنجليزية.</p>
                     <ul>
-                        <li><strong>CH:</strong> يُنطق كـ "تش" في كلمة <span class="english-word">chair</span>.</li>
-                        <li><strong>SH:</strong> يُنطق كـ "ش" في كلمة <span class="english-word">she</span>.</li>
-                        <li><strong>TH:</strong> له نطقان، إما "ذ" (صوت مجهور) في <span class="english-word">this</span> أو "ث" (صوت مهموس) في <span class="english-word">thin</span>.</li>
-                        <li><strong>WH:</strong> يُنطق كـ "هـو" في كلمة <span class="english-word">what</span> (غالبًا ما يُنطق الـ 'h' بصوت خفيف).</li>
-                        <li><strong>PH:</strong> يُنطق كـ "ف" في كلمة <span class="english-word">phone</span>.</li>
-                        <li><strong>KN:</strong> يُنطق الـ "ن" فقط، الـ 'k' صامتة في بداية الكلمة مثل <span class="english-word">know</span>.</li>
-                        <li><strong>WR:</strong> يُنطق الـ "ر" فقط، الـ 'w' صامتة في بداية الكلمة مثل <span class="english-word">write</span>.</li>
-                        <li><strong>CK:</strong> يُنطق كـ "ك" في نهاية الكلمة <span class="english-word">back</span>.</li>
-                        <li><strong>PL (مزج):</strong> صوتي الـ 'p' والـ 'l' يُنطقان بوضوح ولكن بسرعة معًا مثل <span class="english-word">play</span>.</li>
-                        <li><strong>ST (مزج):</strong> صوتي الـ 's' والـ 't' يُنطقان بوضوح ولكن بسرعة معًا مثل <span class="english-word">stop</span>.</li>
+                        <li><strong>CH:</strong> يُنطق كـ "تش" مثل 
+                            <span class="english-word">chair</span> (كرسي), 
+                            <span class="english-word">teacher</span> (معلم), 
+                            <span class="english-word">watch</span> (ساعة يد/يشاهد).
+                        </li>
+                        <li><strong>SH:</strong> يُنطق كـ "ش" مثل 
+                            <span class="english-word">ship</span> (سفينة), 
+                            <span class="english-word">shop</span> (متجر), 
+                            <span class="english-word">fish</span> (سمكة).
+                        </li>
+                        <li><strong>TH:</strong> له صوتان:
+                            <ul>
+                                <li>صوت مهموس (بدون اهتزاز الأحبال الصوتية) كـ "ث" مثل 
+                                    <span class="english-word">three</span> (ثلاثة), 
+                                    <span class="english-word">think</span> (يفكر), 
+                                    <span class="english-word">bath</span> (حمام).
+                                </li>
+                                <li>صوت مجهور (مع اهتزاز الأحبال الصوتية) كـ "ذ" مثل 
+                                    <span class="english-word">this</span> (هذا), 
+                                    <span class="english-word">that</span> (ذلك), 
+                                    <span class="english-word">mother</span> (أم).
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>PH:</strong> يُنطق كـ "ف" مثل 
+                            <span class="english-word">phone</span> (هاتف), 
+                            <span class="english-word">photo</span> (صورة), 
+                            <span class="english-word">elephant</span> (فيل).
+                        </li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <section id="numbers-section">
-            <h2>الأعداد في اللغة الإنجليزية</h2>
-            <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
-            
+            <h2>الأعداد الأساسية (Numbers)</h2>
+            <p class="section-intro">الأرقام جزء لا يتجزأ من المحادثات اليومية، من تحديد الوقت إلى التسوق. هذا الجدول يوضح لكم الأعداد الأساسية وكيفية كتابتها ونطقها باللغة الإنجليزية.</p>
             <div class="info-table-container">
-                <h3>الأعداد الأساسية (Cardinal Numbers)</h3>
                 <table class="info-table">
                     <thead>
                         <tr>
-                            <th>العدد</th>
-                            <th>الإنجليزية</th>
-                            <th>العربية</th>
-                            <th>العدد</th>
-                            <th>الإنجليزية</th>
-                            <th>العربية</th>
+                            <th>الرقم</th>
+                            <th>الكلمة الإنجليزية</th>
+                            <th>الترجمة العربية</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><span class="english-word">One</span></td>
-                            <td>واحد</td>
-                            <td>11</td>
-                            <td><span class="english-word">Eleven</span></td>
-                            <td>أحد عشر</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><span class="english-word">Two</span></td>
-                            <td>اثنان</td>
-                            <td>12</td>
-                            <td><span class="english-word">Twelve</span></td>
-                            <td>اثنا عشر</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><span class="english-word">Three</span></td>
-                            <td>ثلاثة</td>
-                            <td>20</td>
-                            <td><span class="english-word">Twenty</span></td>
-                            <td>عشرون</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td><span class="english-word">Four</span></td>
-                            <td>أربعة</td>
-                            <td>30</td>
-                            <td><span class="english-word">Thirty</span></td>
-                            <td>ثلاثون</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><span class="english-word">Five</span></td>
-                            <td>خمسة</td>
-                            <td>100</td>
-                            <td><span class="english-word">One hundred</span></td>
-                            <td>مائة</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td><span class="english-word">Ten</span></td>
-                            <td>عشرة</td>
-                            <td>1000</td>
-                            <td><span class="english-word">One thousand</span></td>
-                            <td>ألف</td>
-                        </tr>
+                        <tr><td>1</td><td class="english-word">One</td><td>واحد</td></tr>
+                        <tr><td>2</td><td class="english-word">Two</td><td>اثنان</td></tr>
+                        <tr><td>3</td><td class="english-word">Three</td><td>ثلاثة</td></tr>
+                        <tr><td>4</td><td class="english-word">Four</td><td>أربعة</td></tr>
+                        <tr><td>5</td><td class="english-word">Five</td><td>خمسة</td></tr>
+                        <tr><td>6</td><td class="english-word">Six</td><td>ستة</td></tr>
+                        <tr><td>7</td><td class="english-word">Seven</td><td>سبعة</td></tr>
+                        <tr><td>8</td><td class="english-word">Eight</td><td>ثمانية</td></tr>
+                        <tr><td>9</td><td class="english-word">Nine</td><td>تسعة</td></tr>
+                        <tr><td>10</td><td class="english-word">Ten</td><td>عشرة</td></tr>
+                        <tr><td>11</td><td class="english-word">Eleven</td><td>أحد عشر</td></tr>
+                        <tr><td>12</td><td class="english-word">Twelve</td><td>اثنا عشر</td></tr>
+                        <tr><td>13</td><td class="english-word">Thirteen</td><td>ثلاثة عشر</td></tr>
+                        <tr><td>20</td><td class="english-word">Twenty</td><td>عشرون</td></tr>
+                        <tr><td>30</td><td class="english-word">Thirty</td><td>ثلاثون</td></tr>
+                        <tr><td>100</td><td class="english-word">One Hundred</td><td>مائة</td></tr>
+                        <tr><td>1000</td><td class="english-word">One Thousand</td><td>ألف</td></tr>
                     </tbody>
                 </table>
             </div>
-            
             <div class="info-table-container" style="margin-top: 40px;">
                 <h3>الأعداد الترتيبية (Ordinal Numbers)</h3>
                 <table class="info-table">
@@ -866,77 +972,37 @@
         </section>
 
         <section id="colors-section">
-            <h2>الألوان في اللغة الإنجليزية</h2>
-            <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
-            
+            <h2>الألوان (Colors)</h2>
+            <p class="section-intro">تستخدم الألوان لوصف كل شيء حولنا. تعلم أسماء الألوان الشائعة باللغة الإنجليزية سيساعدك على التعبير عن نفسك بشكل أفضل وأكثر دقة.</p>
             <div class="info-table-container">
                 <table class="info-table">
                     <thead>
                         <tr>
-                            <th>الإنجليزية</th>
-                            <th>العربية</th>
                             <th>اللون</th>
-                            <th>الإنجليزية</th>
-                            <th>العربية</th>
-                            <th>اللون</th>
+                            <th>الكلمة الإنجليزية</th>
+                            <th>الترجمة العربية</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><span class="english-word">Red</span></td>
-                            <td>أحمر</td>
-                            <td><span class="color-box" style="background-color: #FF0000;"></span></td>
-                            <td><span class="english-word">Blue</span></td>
-                            <td>أزرق</td>
-                            <td><span class="color-box" style="background-color: #0000FF;"></span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="english-word">Green</span></td>
-                            <td>أخضر</td>
-                            <td><span class="color-box" style="background-color: #008000;"></span></td>
-                            <td><span class="english-word">Yellow</span></td>
-                            <td>أصفر</td>
-                            <td><span class="color-box" style="background-color: #FFFF00;"></span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="english-word">Orange</span></td>
-                            <td>برتقالي</td>
-                            <td><span class="color-box" style="background-color: #FFA500;"></span></td>
-                            <td><span class="english-word">Purple</span></td>
-                            <td>أرجواني</td>
-                            <td><span class="color-box" style="background-color: #800080;"></span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="english-word">Pink</span></td>
-                            <td>وردي</td>
-                            <td><span class="color-box" style="background-color: #FFC0CB;"></span></td>
-                            <td><span class="english-word">Brown</span></td>
-                            <td>بني</td>
-                            <td><span class="color-box" style="background-color: #A52A2A;"></span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="english-word">Black</span></td>
-                            <td>أسود</td>
-                            <td><span class="color-box" style="background-color: #000000;"></span></td>
-                            <td><span class="english-word">White</span></td>
-                            <td>أبيض</td>
-                            <td><span class="color-box" style="background-color: #FFFFFF; border: 1px solid #ccc;"></span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="english-word">Gray</span></td>
-                            <td>رمادي</td>
-                            <td><span class="color-box" style="background-color: #808080;"></span></td>
-                            <td><span class="english-word">Gold</span></td>
-                            <td>ذهبي</td>
-                            <td><span class="color-box" style="background-color: #FFD700;"></span></td>
-                        </tr>
+                        <tr><td><span class="color-box" style="background-color: red;"></span></td><td class="english-word">Red</td><td>أحمر</td></tr>
+                        <tr><td><span class="color-box" style="background-color: blue;"></span></td><td class="english-word">Blue</td><td>أزرق</td></tr>
+                        <tr><td><span class="color-box" style="background-color: green;"></span></td><td class="english-word">Green</td><td>أخضر</td></tr>
+                        <tr><td><span class="color-box" style="background-color: yellow;"></span></td><td class="english-word">Yellow</td><td>أصفر</td></tr>
+                        <tr><td><span class="color-box" style="background-color: black;"></span></td><td class="english-word">Black</td><td>أسود</td></tr>
+                        <tr><td><span class="color-box" style="background-color: white;"></span></td><td class="english-word">White</td><td>أبيض</td></tr>
+                        <tr><td><span class="color-box" style="background-color: orange;"></span></td><td class="english-word">Orange</td><td>برتقالي</td></tr>
+                        <tr><td><span class="color-box" style="background-color: purple;"></span></td><td class="english-word">Purple</td><td>بنفسجي</td></tr>
+                        <tr><td><span class="color-box" style="background-color: brown;"></span></td><td class="english-word">Brown</td><td>بني</td></tr>
+                        <tr><td><span class="color-box" style="background-color: pink;"></span></td><td class="english-word">Pink</td><td>وردي</td></tr>
+                        <tr><td><span class="color-box" style="background-color: grey;"></span></td><td class="english-word">Gray</td><td>رمادي</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
         <section id="grammar-section">
-            <h2>شرح القواعد الأساسية في اللغة الإنجليزية</h2>
+          
+                                                                        <h2>شرح القواعد الأساسية في اللغة الإنجليزية</h2>
             
             <div class="grammar-topic">
                 <h3>1. الأفعال (Verbs)</h3>
@@ -1123,7 +1189,6 @@
                 </div>
             </div>
         </section>
-
        <section id="tenses-section">
     <h2>الأزمنة في اللغة الإنجليزية (Tenses)</h2>
     <p class="instruction">اضغط على أي عنوان زمن أو كلمة إنجليزية لسماع نطقها.</p>
@@ -1939,93 +2004,137 @@
     </div>
  </section>
 
-  <section id="common-words-section">
-            <h2>كلمات إنجليزية شائعة ومعانيها</h2>
-            <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها.</p>
+        <section id="common-words-section">
+            <h2>كلمات شائعة (Common Words)</h2>
+            <p class="section-intro">
+               بناء حصيلة لغوية قوية يبدأ من الكلمات الأساسية. نستعرض هنا مجموعات من المفردات الشائعة والمصنفة حسب الموضوع (مثل أيام الأسبوع وأفراد العائلة) لتسهيل عملية الحفظ والربط.
+            </p>
+            <p class="instruction">اضغط على أي كلمة إنجليزية لسماع نطقها وتثبيت المعلومة.</p>
             
+            <h3>أيام الأسبوع (Days of the Week)</h3>
             <div class="info-table-container">
                 <table class="info-table">
-                    <thead>
-                        <tr>
-                            <th>الإنجليزية</th>
-                            <th>العربية</th>
-                            <th>الإنجليزية</th>
-                            <th>العربية</th>
-                            <th>الإنجليزية</th>
-                            <th>العربية</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="english-word">Hello</span></td>
-                            <td>مرحبًا</td>
-                            <td><span class="english-word">Goodbye</span></td>
-                            <td>وداعًا</td>
-                            <td><span class="english-word">Please</span></td>
-                            <td>من فضلك</td>
-                        </tr>
-                        <tr>
-                            <td><span class="english-word">Thank you</span></td>
-                            <td>شكرًا</td>
-                            <td><span class="english-word">Sorry</span></td>
-                            <td>آسف</td>
-                            <td><span class="english-word">Yes</span></td>
-                            <td>نعم</td>
-                        </tr>
-                        <tr>
-                            <td><span class="english-word">No</span></td>
-                            <td>لا</td>
-                            <td><span class="english-word">What</span></td>
-                            <td>ماذا</td>
-                            <td><span class="english-word">Where</span></td>
-                            <td>أين</td>
-                        </tr>
-                        <tr>
-                            <td><span class="english-word">When</span></td>
-                            <td>متى</td>
-                            <td><span class="english-word">Why</span></td>
-                            <td>لماذا</td>
-                            <td><span class="english-word">How</span></td>
-                            <td>كيف</td>
-                        </tr>
-                        <tr>
-                            <td><span class="english-word">Man</span></td>
-                            <td>رجل</td>
-                            <td><span class="english-word">Woman</span></td>
-                            <td>امرأة</td>
-                            <td><span class="english-word">Child</span></td>
-                            <td>طفل</td>
-                        </tr>
-                        <tr>
-                            <td><span class="english-word">Family</span></td>
-                            <td>عائلة</td>
-                            <td><span class="english-word">Friend</span></td>
-                            <td>صديق</td>
-                            <td><span class="english-word">House</span></td>
-                            <td>منزل</td>
-                        </tr>
-                        <tr>
-                            <td><span class="english-word">Food</span></td>
-                            <td>طعام</td>
-                            <td><span class="english-word">Water</span></td>
-                            <td>ماء</td>
-                            <td><span class="english-word">Time</span></td>
-                            <td>وقت</td>
-                        </tr>
-                        <tr>
-                            <td><span class="english-word">Day</span></td>
-                            <td>يوم</td>
-                            <td><span class="english-word">Night</span></td>
-                            <td>ليل</td>
-                            <td><span class="english-word">Week</span></td>
-                            <td>أسبوع</td>
-                        </tr>
+                     <tbody>
+                        <tr><td class="english-word">Saturday</td><td>السبت</td></tr>
+                        <tr><td class="english-word">Sunday</td><td>الأحد</td></tr>
+                        <tr><td class="english-word">Monday</td><td>الإثنين</td></tr>
+                        <tr><td class="english-word">Tuesday</td><td>الثلاثاء</td></tr>
+                        <tr><td class="english-word">Wednesday</td><td>الأربعاء</td></tr>
+                        <tr><td class="english-word">Thursday</td><td>الخميس</td></tr>
+                        <tr><td class="english-word">Friday</td><td>الجمعة</td></tr>
                     </tbody>
                 </table>
             </div>
-        </section>
 
-        <section id="games-section">
+            <h3>أفراد العائلة (Family Members)</h3>
+            <div class="info-table-container">
+                <table class="info-table">
+                    <tbody>
+                        <tr><td class="english-word">Father</td><td>أب</td></tr>
+                        <tr><td class="english-word">Mother</td><td>أم</td></tr>
+                        <tr><td class="english-word">Brother</td><td>أخ</td></tr>
+                        <tr><td class="english-word">Sister</td><td>أخت</td></tr>
+                        <tr><td class="english-word">Son</td><td>ابن</td></tr>
+                        <tr><td class="english-word">Daughter</td><td>ابنة</td></tr>
+                    </tbody>
+                </table>
+            </div>
+<section id="common-words-section">
+    <h2>كلمات شائعة (Common Words)</h2>
+    <p class="section-intro">
+        ابدأ في بناء مفرداتك اليومية مع هذه القائمة من الكلمات والجمل الأكثر استخدامًا في اللغة الإنجليزية. اضغط على أي كلمة إنجليزية لسماع نطقها الصحيح وممارسة استماعك.
+    </p>
+    <p class="instruction">اضغط على الكلمة الإنجليزية لسماع نطقها.</p>
+
+    <div class="info-table-container">
+        <table class="info-table">
+            <thead>
+                <tr>
+                    <th>الإنجليزية</th>
+                    <th>العربية</th>
+                    <th>الإنجليزية</th>
+                    <th>العربية</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="english-word">Hello</span></td>
+                    <td>مرحبًا</td>
+                    <td><span class="english-word">Goodbye</span></td>
+                    <td>وداعًا</td>
+                </tr>
+                <tr>
+                    <td><span class="english-word">Please</span></td>
+                    <td>من فضلك</td>
+                    <td><span class="english-word">Thank you</span></td>
+                    <td>شكرًا</td>
+                </tr>
+                <tr>
+                    <td><span class="english-word">Sorry</span></td>
+                    <td>آسف</td>
+                    <td><span class="english-word">Yes</span></td>
+                    <td>نعم</td>
+                </tr>
+                <tr>
+                    <td><span class="english-word">No</span></td>
+                    <td>لا</td>
+                    <td><span class="english-word">What</span></td>
+                    <td>ماذا</td>
+                </tr>
+                <tr>
+                    <td><span class="english-word">Where</span></td>
+                    <td>أين</td>
+                    <td><span class="english-word">When</span></td>
+                    <td>متى</td>
+                </tr>
+                <tr>
+                    <td><span class="english-word">Why</span></td>
+                    <td>لماذا</td>
+                    <td><span class="english-word">How</span></td>
+                    <td>كيف</td>
+                </tr>
+                <tr>
+                    <td><span class="english-word">Man</span></td>
+                    <td>رجل</td>
+                    <td><span class="english-word">Woman</span></td>
+                    <td>امرأة</td>
+                </tr>
+                <tr>
+                    <td><span class="english-word">Child</span></td>
+                    <td>طفل</td>
+                    <td><span class="english-word">Family</span></td>
+                    <td>عائلة</td>
+                </tr>
+                <tr>
+                    <td><span class="english-word">Friend</span></td>
+                    <td>صديق</td>
+                    <td><span class="english-word">House</span></td>
+                    <td>منزل</td>
+                </tr>
+                <tr>
+                    <td><span class="english-word">Food</span></td>
+                    <td>طعام</td>
+                    <td><span class="english-word">Water</span></td>
+                    <td>ماء</td>
+                </tr>
+                <tr>
+                    <td><span class="english-word">Time</span></td>
+                    <td>وقت</td>
+                    <td><span class="english-word">Day</span></td>
+                    <td>يوم</td>
+                </tr>
+                <tr>
+                    <td><span class="english-word">Night</span></td>
+                    <td>ليل</td>
+                    <td><span class="english-word">Week</span></td>
+                    <td>أسبوع</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+            <section class="interactive-games" id="interactive-games">
+                <section id="games-section">
             <h2>ألعاب تفاعلية لتعزيز تعلمك</h2>
             <p class="instruction">استمتع بتعلم الإنجليزية بطريقة ممتعة وتفاعلية! اختر اللعبة التي تفضلها.</p>
 
@@ -2378,7 +2487,7 @@
                 font-size: 1.5rem; 
             }
         </style>
-
+</head>
 <body>
 
     <section class="interactive-games" id="interactive-games">
@@ -2770,276 +2879,166 @@
             devGames.openGame('matching');
         });
     </script>
-        
-        
+        </section>
+
+        </section>
 
     <footer>
-        <p>مصمم بـ ❤️ لأحباب اللغة الإنجليزية</p>
-        <p>&copy; 2024 تعلم الإنجليزية. جميع الحقوق محفوظة.</p>
+        <p>تم التصميم والتطوير لرحلتك في تعلم اللغة الإنجليزية. &copy; 2025</p>
     </footer>
 
     <script>
-        // Alphabet data
-        const alphabetData = {
-            'A': [
-                { en: 'Apple', ar: 'تفاحة' }, { en: 'Ant', ar: 'نملة' }, { en: 'All', ar: 'كل' },
-                { en: 'Ask', ar: 'يسأل' }, { en: 'Art', ar: 'فن' }, { en: 'Arm', ar: 'ذراع' }
-            ],
-            'B': [
-                { en: 'Ball', ar: 'كرة' }, { en: 'Book', ar: 'كتاب' }, { en: 'Big', ar: 'كبير' },
-                { en: 'Blue', ar: 'أزرق' }, { en: 'Boy', ar: 'ولد' }, { en: 'Bird', ar: 'طائر' }
-            ],
-            'C': [
-                { en: 'Cat', ar: 'قطة' }, { en: 'Car', ar: 'سيارة' }, { en: 'Cup', ar: 'كوب' },
-                { en: 'Cold', ar: 'بارد' }, { en: 'City', ar: 'مدينة' }, { en: 'Cake', ar: 'كعكة' }
-            ],
-            'D': [
-                { en: 'Dog', ar: 'كلب' }, { en: 'Door', ar: 'باب' }, { en: 'Day', ar: 'يوم' },
-                { en: 'Dark', ar: 'مظلم' }, { en: 'Dream', ar: 'حلم' }, { en: 'Dance', ar: 'يرقص' }
-            ],
-            'E': [
-                { en: 'Elephant', ar: 'فيل' }, { en: 'Egg', ar: 'بيضة' }, { en: 'Eye', ar: 'عين' },
-                { en: 'Eat', ar: 'يأكل' }, { en: 'Earth', ar: 'أرض' }, { en: 'Ear', ar: 'أذن' }
-            ],
-            'F': [
-                { en: 'Fish', ar: 'سمكة' }, { en: 'Flower', ar: 'زهرة' }, { en: 'Friend', ar: 'صديق' },
-                { en: 'Fast', ar: 'سريع' }, { en: 'Family', ar: 'عائلة' }, { en: 'Fly', ar: 'يطير' }
-            ],
-            'G': [
-                { en: 'Goat', ar: 'ماعز' }, { en: 'Green', ar: 'أخضر' }, { en: 'Good', ar: 'جيد' },
-                { en: 'Girl', ar: 'فتاة' }, { en: 'Game', ar: 'لعبة' }, { en: 'Glass', ar: 'زجاج' }
-            ],
-            'H': [
-                { en: 'House', ar: 'منزل' }, { en: 'Hand', ar: 'يد' }, { en: 'Happy', ar: 'سعيد' },
-                { en: 'Hat', ar: 'قبعة' }, { en: 'Home', ar: 'منزل' }, { en: 'Hear', ar: 'يسمع' }
-            ],
-            'I': [
-                { en: 'Ice', ar: 'ثلج' }, { en: 'Ink', ar: 'حبر' }, { en: 'Inside', ar: 'بالداخل' },
-                { en: 'Idea', ar: 'فكرة' }, { en: 'Island', ar: 'جزيرة' }, { en: 'Iron', ar: 'حديد/يكوي' }
-            ],
-            'J': [
-                { en: 'Jacket', ar: 'سترة' }, { en: 'Jump', ar: 'يقفز' }, { en: 'Juice', ar: 'عصير' },
-                { en: 'Joy', ar: 'فرح' }, { en: 'Join', ar: 'ينضم' }, { en: 'Jet', ar: 'طائرة نفاثة' }
-            ],
-            'K': [
-                { en: 'King', ar: 'ملك' }, { en: 'Key', ar: 'مفتاح' }, { en: 'Kite', ar: 'طائرة ورقية' },
-                { en: 'Kiss', ar: 'يقبل' }, { en: 'Keep', ar: 'يحفظ' }, { en: 'Kind', ar: 'طيب' }
-            ],
-            'L': [
-                { en: 'Lion', ar: 'أسد' }, { en: 'Lamp', ar: 'مصباح' }, { en: 'Love', ar: 'حب' },
-                { en: 'Light', ar: 'ضوء' }, { en: 'Leg', ar: 'ساق' }, { en: 'Look', ar: 'ينظر' }
-            ],
-            'M': [
-                { en: 'Monkey', ar: 'قرد' }, { en: 'Moon', ar: 'قمر' }, { en: 'Man', ar: 'رجل' },
-                { en: 'Milk', ar: 'حليب' }, { en: 'Map', ar: 'خريطة' }, { en: 'Music', ar: 'موسيقى' }
-            ],
-            'N': [
-                { en: 'Nest', ar: 'عش' }, { en: 'Nose', ar: 'أنف' }, { en: 'Night', ar: 'ليل' },
-                { en: 'New', ar: 'جديد' }, { en: 'Name', ar: 'اسم' }, { en: 'North', ar: 'شمال' }
-            ],
-            'O': [
-                { en: 'Orange', ar: 'برتقالي/برتقالة' }, { en: 'Owl', ar: 'بومة' }, { en: 'Open', ar: 'يفتح' },
-                { en: 'Old', ar: 'قديم' }, { en: 'One', ar: 'واحد' }, { en: 'Often', ar: 'غالباً' }
-            ],
-            'P': [
-                { en: 'Pig', ar: 'خنزير' }, { en: 'Pen', ar: 'قلم' }, { en: 'Play', ar: 'يلعب' },
-                { en: 'Park', ar: 'حديقة' }, { en: 'Please', ar: 'من فضلك' }, { en: 'Purple', ar: 'أرجواني' }
-            ],
-            'Q': [
-                { en: 'Queen', ar: 'ملكة' }, { en: 'Quick', ar: 'سريع' }, { en: 'Quiet', ar: 'هادئ' },
-                { en: 'Question', ar: 'سؤال' }, { en: 'Quack', ar: 'صوت البطة' }, { en: 'Quilt', ar: 'لحاف' }
-            ],
-            'R': [
-                { en: 'Rabbit', ar: 'أرنب' }, { en: 'Red', ar: 'أحمر' }, { en: 'Run', ar: 'يركض' },
-                { en: 'Rain', ar: 'مطر' }, { en: 'Read', ar: 'يقرأ' }, { en: 'Right', ar: 'صحيح/يمين' }
-            ],
-            'S': [
-                { en: 'Sun', ar: 'شمس' }, { en: 'Star', ar: 'نجمة' }, { en: 'Sing', ar: 'يغني' },
-                { en: 'Sleep', ar: 'ينام' }, { en: 'Stop', ar: 'يتوقف' }, { en: 'Sister', ar: 'أخت' }
-            ],
-            'T': [
-                { en: 'Tiger', ar: 'نمر' }, { en: 'Tree', ar: 'شجرة' }, { en: 'Table', ar: 'طاولة' },
-                { en: 'Train', ar: 'قطار' }, { en: 'Talk', ar: 'يتحدث' }, { en: 'Time', ar: 'وقت' }
-            ],
-            'U': [
-                { en: 'Umbrella', ar: 'مظلة' }, { en: 'Up', ar: 'فوق' }, { en: 'Under', ar: 'تحت' },
-                { en: 'Uniform', ar: 'زي رسمي' }, { en: 'Unit', ar: 'وحدة' }, { en: 'Us', ar: 'نا/نحن' }
-            ],
-            'V': [
-                { en: 'Van', ar: 'شاحنة صغيرة' }, { en: 'Violin', ar: 'كمان' }, { en: 'Voice', ar: 'صوت' },
-                { en: 'Visit', ar: 'يزور' }, { en: 'Very', ar: 'جداً' }, { en: 'View', ar: 'منظر' }
-            ],
-            'W': [
-                { en: 'Watch', ar: 'ساعة يد/يشاهد' }, { en: 'Water', ar: 'ماء' }, { en: 'Window', ar: 'نافذة' },
-                { en: 'Walk', ar: 'يمشي' }, { en: 'Warm', ar: 'دافئ' }, { en: 'Write', ar: 'يكتب' }
-            ],
-            'X': [
-                { en: 'Xylophone', ar: 'إكسيلفون' }, { en: 'X-ray', ar: 'أشعة سينية' }, { en: 'Box', ar: 'صندوق' },
-                { en: 'Fox', ar: 'ثعلب' }, { en: 'Six', ar: 'ستة' }, { en: 'Exact', ar: 'دقيق' }
-            ],
-            'Y': [
-                { en: 'Yellow', ar: 'أصفر' }, { en: 'Yacht', ar: 'يخت' }, { en: 'Yes', ar: 'نعم' },
-                { en: 'You', ar: 'أنت' }, { en: 'Year', ar: 'سنة' }, { en: 'Yet', ar: 'بعد' }
-            ],
-            'Z': [
-                { en: 'Zebra', ar: 'حمار وحشي' }, { en: 'Zoo', ar: 'حديقة حيوان' }, { en: 'Zero', ar: 'صفر' },
-                { en: 'Zip', ar: 'سحاب' }, { en: 'Zone', ar: 'منطقة' }, { en: 'Zoom', ar: 'تكبير' }
-            ]
+    document.addEventListener('DOMContentLoaded', function() {
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const sections = document.querySelectorAll('main section');
+        const scrollTopBtn = document.querySelector('.scroll-top-btn');
+        const alphabetGrid = document.getElementById('alphabet-grid');
+        const wordsDisplayArea = document.getElementById('words-display-area');
+
+        // --- Navigation Logic ---
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const sectionId = button.getAttribute('data-section');
+                const section = document.getElementById(sectionId);
+                
+                if (section) {
+                    window.scrollTo({
+                        top: section.offsetTop - (window.innerHeight * 0.15),
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // --- Active Nav on Scroll ---
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - (window.innerHeight * 0.2)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.getAttribute('data-section') === current) {
+                    button.classList.add('active');
+                }
+            });
+
+            // --- Scroll to Top Button Visibility ---
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+        
+        // --- Scroll to Top Click ---
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+
+        // --- Alphabet & Words Logic ---
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        const wordData = {
+            A: [{en: 'Apple', ar: 'تفاحة'}, {en: 'Ant', ar: 'نملة'}, {en: 'Arm', ar: 'ذراع'}, {en: 'Art', ar: 'فن'}, {en: 'Ask', ar: 'يسأل'}, {en: 'Air', ar: 'هواء'}, {en: 'And', ar: 'و'}, {en: 'Animal', ar: 'حيوان'}, {en: 'All', ar: 'كل'}, {en: 'Angry', ar: 'غاضب'}],
+            B: [{en: 'Ball', ar: 'كرة'}, {en: 'Book', ar: 'كتاب'}, {en: 'Boy', ar: 'ولد'}, {en: 'Blue', ar: 'أزرق'}, {en: 'Bed', ar: 'سرير'}, {en: 'Big', ar: 'كبير'}, {en: 'Banana', ar: 'موز'}, {en: 'Bird', ar: 'طائر'}, {en: 'Box', ar: 'صندوق'}, {en: 'Bread', ar: 'خبز'}],
+            C: [{en: 'Cat', ar: 'قطة'}, {en: 'Car', ar: 'سيارة'}, {en: 'Cup', ar: 'كوب'}, {en: 'Cold', ar: 'بارد'}, {en: 'City', ar: 'مدينة'}, {en: 'Cake', ar: 'كعكة'}, {en: 'Cloud', ar: 'سحابة'}, {en: 'Chair', ar: 'كرسي'}, {en: 'Clean', ar: 'نظيف'}, {en: 'Cook', ar: 'يطبخ'}],
+            D: [{en: 'Dog', ar: 'كلب'}, {en: 'Door', ar: 'باب'}, {en: 'Day', ar: 'يوم'}, {en: 'Duck', ar: 'بطة'}, {en: 'Desk', ar: 'مكتب'}, {en: 'Dark', ar: 'مظلم'}, {en: 'Down', ar: 'أسفل'}, {en: 'Drink', ar: 'يشرب'}, {en: 'Date', ar: 'تمر'}, {en: 'Dream', ar: 'حلم'}],
+            E: [{en: 'Egg', ar: 'بيضة'}, {en: 'Elephant', ar: 'فيل'}, {en: 'Eye', ar: 'عين'}, {en: 'Earth', ar: 'أرض'}, {en: 'Easy', ar: 'سهل'}, {en: 'Eat', ar: 'يأكل'}, {en: 'End', ar: 'نهاية'}, {en: 'Eight', ar: 'ثمانية'}, {en: 'Empty', ar: 'فارغ'}, {en: 'Early', ar: 'مبكر'}],
+            F: [{en: 'Fish', ar: 'سمكة'}, {en: 'Fan', ar: 'مروحة'}, {en: 'Face', ar: 'وجه'}, {en: 'Five', ar: 'خمسة'}, {en: 'Flower', ar: 'زهرة'}, {en: 'Friend', ar: 'صديق'}, {en: 'Fast', ar: 'سريع'}, {en: 'Fat', ar: 'سمين'}, {en: 'Fire', ar: 'نار'}, {en: 'Food', ar: 'طعام'}],
+            G: [{en: 'Goat', ar: 'ماعز'}, {en: 'Green', ar: 'أخضر'}, {en: 'Game', ar: 'لعبة'}, {en: 'Glass', ar: 'كأس'}, {en: 'Go', ar: 'يذهب'}, {en: 'Good', ar: 'جيد'}, {en: 'Girl', ar: 'فتاة'}, {en: 'Gift', ar: 'هدية'}, {en: 'Garden', ar: 'حديقة'}, {en: 'Gold', ar: 'ذهب'}],
+            H: [{en: 'Hand', ar: 'يد'}, {en: 'Hat', ar: 'قبعة'}, {en: 'House', ar: 'منزل'}, {en: 'Hot', ar: 'حار'}, {en: 'Happy', ar: 'سعيد'}, {en: 'Horse', ar: 'حصان'}, {en: 'Heart', ar: 'قلب'}, {en: 'Help', ar: 'يساعد'}, {en: 'Honey', ar: 'عسل'}, {en: 'Heavy', ar: 'ثقيل'}],
+            I: [{en: 'Ice', ar: 'ثلج'}, {en: 'Iron', ar: 'حديد'}, {en: 'Island', ar: 'جزيرة'}, {en: 'Idea', ar: 'فكرة'}, {en: 'Ink', ar: 'حبر'}, {en: 'In', ar: 'في'}, {en: 'Important', ar: 'مهم'}, {en: 'Inside', ar: 'داخل'}, {en: 'Insect', ar: 'حشرة'}, {en: 'Image', ar: 'صورة'}],
+            J: [{en: 'Jam', ar: 'مربى'}, {en: 'Juice', ar: 'عصير'}, {en: 'Jacket', ar: 'سترة'}, {en: 'Job', ar: 'وظيفة'}, {en: 'Jump', ar: 'يقفز'}, {en: 'Jar', ar: 'جرة'}, {en: 'Joy', ar: 'فرح'}, {en: 'Jungle', ar: 'غابة'}, {en: 'Jewel', ar: 'جوهرة'}, {en: 'Join', ar: 'ينضم'}],
+            K: [{en: 'Key', ar: 'مفتاح'}, {en: 'King', ar: 'ملك'}, {en: 'Kitchen', ar: 'مطبخ'}, {en: 'Kite', ar: 'طائرة ورقية'}, {en: 'Knee', ar: 'ركبة'}, {en: 'Knife', ar: 'سكين'}, {en: 'Know', ar: 'يعرف'}, {en: 'Kind', ar: 'لطيف'}, {en: 'Kick', ar: 'يركل'}, {en: 'Kid', ar: 'طفل'}],
+            L: [{en: 'Lion', ar: 'أسد'}, {en: 'Lamp', ar: 'مصباح'}, {en: 'Lemon', ar: 'ليمون'}, {en: 'Light', ar: 'ضوء'}, {en: 'Long', ar: 'طويل'}, {en: 'Love', ar: 'حب'}, {en: 'Lake', ar: 'بحيرة'}, {en: 'Learn', ar: 'يتعلم'}, {en: 'Left', ar: 'يسار'}, {en: 'Listen', ar: 'يستمع'}],
+            M: [{en: 'Man', ar: 'رجل'}, {en: 'Moon', ar: 'قمر'}, {en: 'Milk', ar: 'حليب'}, {en: 'Money', ar: 'مال'}, {en: 'Mother', ar: 'أم'}, {en: 'Map', ar: 'خريطة'}, {en: 'Mouse', ar: 'فأر'}, {en: 'Mountain', ar: 'جبل'}, {en: 'Music', ar: 'موسيقى'}, {en: 'Morning', ar: 'صباح'}],
+            N: [{en: 'Nose', ar: 'أنف'}, {en: 'Night', ar: 'ليل'}, {en: 'Nine', ar: 'تسعة'}, {en: 'Name', ar: 'اسم'}, {en: 'New', ar: 'جديد'}, {en: 'No', ar: 'لا'}, {en: 'Neck', ar: 'رقبة'}, {en: 'Nest', ar: 'عش'}, {en: 'Number', ar: 'رقم'}, {en: 'North', ar: 'شمال'}],
+            O: [{en: 'Orange', ar: 'برتقال'}, {en: 'Old', ar: 'قديم'}, {en: 'One', ar: 'واحد'}, {en: 'Open', ar: 'يفتح'}, {en: 'Oil', ar: 'زيت'}, {en: 'Ocean', ar: 'محيط'}, {en: 'Office', ar: 'مكتب'}, {en: 'Onion', ar: 'بصل'}, {en: 'Out', ar: 'خارج'}, {en: 'Oven', ar: 'فرن'}],
+            P: [{en: 'Pen', ar: 'قلم'}, {en: 'Pig', ar: 'خنزير'}, {en: 'Pink', ar: 'وردي'}, {en: 'Pizza', ar: 'بيتزا'}, {en: 'Park', ar: 'حديقة'}, {en: 'Photo', ar: 'صورة'}, {en: 'Paper', ar: 'ورق'}, {en: 'Play', ar: 'يلعب'}, {en: 'Put', ar: 'يضع'}, {en: 'Paint', ar: 'يرسم'}],
+            Q: [{en: 'Queen', ar: 'ملكة'}, {en: 'Quiet', ar: 'هادئ'}, {en: 'Question', ar: 'سؤال'}, {en: 'Quick', ar: 'سريع'}, {en: 'Quilt', ar: 'لحاف'}, {en: 'Quarter', ar: 'ربع'}, {en: 'Queue', ar: 'طابور'}, {en: 'Quiz', ar: 'اختبار'}, {en: 'Quote', ar: 'اقتباس'}, {en: 'Quit', ar: 'يترك'}],
+            R: [{en: 'Red', ar: 'أحمر'}, {en: 'Run', ar: 'يجري'}, {en: 'Rabbit', ar: 'أرنب'}, {en: 'Rain', ar: 'مطر'}, {en: 'Road', ar: 'طريق'}, {en: 'Room', ar: 'غرفة'}, {en: 'Read', ar: 'يقرأ'}, {en: 'Rich', ar: 'غني'}, {en: 'Right', ar: 'يمين/صحيح'}, {en: 'River', ar: 'نهر'}],
+            S: [{en: 'Sun', ar: 'شمس'}, {en: 'Star', ar: 'نجمة'}, {en: 'Sad', ar: 'حزين'}, {en: 'Sit', ar: 'يجلس'}, {en: 'School', ar: 'مدرسة'}, {en: 'Sea', ar: 'بحر'}, {en: 'Small', ar: 'صغير'}, {en: 'Sleep', ar: 'ينام'}, {en: 'Snake', ar: 'ثعبان'}, {en: 'Sugar', ar: 'سكر'}],
+            T: [{en: 'Table', ar: 'طاولة'}, {en: 'Tree', ar: 'شجرة'}, {en: 'Ten', ar: 'عشرة'}, {en: 'Tea', ar: 'شاي'}, {en: 'Tall', ar: 'طويل'}, {en: 'Time', ar: 'وقت'}, {en: 'Teacher', ar: 'معلم'}, {en: 'Train', ar: 'قطار'}, {en: 'Talk', ar: 'يتحدث'}, {en: 'Thank you', ar: 'شكراً'}],
+            U: [{en: 'Umbrella', ar: 'مظلة'}, {en: 'Under', ar: 'تحت'}, {en: 'Up', ar: 'فوق'}, {en: 'Uncle', ar: 'عم/خال'}, {en: 'Use', ar: 'يستخدم'}, {en: 'Ugly', ar: 'قبيح'}, {en: 'Unit', ar: 'وحدة'}, {en: 'Understand', ar: 'يفهم'}, {en: 'Uniform', ar: 'زي موحد'}, {en: 'University', ar: 'جامعة'}],
+            V: [{en: 'Van', ar: 'شاحنة صغيرة'}, {en: 'Vase', ar: 'مزهرية'}, {en: 'Vegetable', ar: 'خضروات'}, {en: 'Village', ar: 'قرية'}, {en: 'Visit', ar: 'يزور'}, {en: 'Voice', ar: 'صوت'}, {en: 'Volcano', ar: 'بركان'}, {en: 'Very', ar: 'جداً'}, {en: 'View', ar: 'منظر'}, {en: 'Video', ar: 'فيديو'}],
+            W: [{en: 'Water', ar: 'ماء'}, {en: 'Window', ar: 'نافذة'}, {en: 'White', ar: 'أبيض'}, {en: 'Watch', ar: 'ساعة يد'}, {en: 'Walk', ar: 'يمشي'}, {en: 'Wall', ar: 'جدار'}, {en: 'Warm', ar: 'دافئ'}, {en: 'Wind', ar: 'رياح'}, {en: 'Woman', ar: 'امرأة'}, {en: 'Write', ar: 'يكتب'}],
+            X: [{en: 'X-ray', ar: 'أشعة سينية'}, {en: 'Xylophone', ar: 'إكسيليفون'}, {en: 'Box', ar: 'صندوق'}, {en: 'Fox', ar: 'ثعلب'}, {en: 'Six', ar: 'ستة'}, {en: 'Mix', ar: 'يخلط'}, {en: 'Fix', ar: 'يصلح'}, {en: 'Wax', ar: 'شمع'}, {en: 'Next', ar: 'التالي'}, {en: 'Exit', ar: 'خروج'}],
+            Y: [{en: 'Yellow', ar: 'أصفر'}, {en: 'Yes', ar: 'نعم'}, {en: 'You', ar: 'أنت'}, {en: 'Year', ar: 'سنة'}, {en: 'Yogurt', ar: 'زبادي'}, {en: 'Yard', ar: 'فناء'}, {en: 'Young', ar: 'شاب'}, {en: 'Yell', ar: 'يصرخ'}, {en: 'Yesterday', ar: 'أمس'}, {en: 'Yummy', ar: 'لذيذ'}],
+            Z: [{en: 'Zebra', ar: 'حمار وحشي'}, {en: 'Zoo', ar: 'حديقة حيوان'}, {en: 'Zero', ar: 'صفر'}, {en: 'Zip', ar: 'سحاب'}, {en: 'Zone', ar: 'منطقة'}, {en: 'Zigzag', ar: 'متعرج'}, {en: 'Lazy', ar: 'كسول'}, {en: 'Size', ar: 'حجم'}, {en: 'Quiz', ar: 'اختبار'}, {en: 'Pizza', ar: 'بيتزا'}]
         };
 
-        // Function to speak text
-        function speakText(text, lang = 'en-US') {
-            if ('speechSynthesis' in window) {
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = lang;
-                utterance.rate = 0.9;
-                speechSynthesis.speak(utterance);
-            }
-        }
+        // Populate alphabet grid
+        alphabet.forEach(letter => {
+            const letterButton = document.createElement('div');
+            letterButton.className = 'alphabet-letter-button';
+            letterButton.textContent = letter;
+            letterButton.dataset.letter = letter;
+            alphabetGrid.appendChild(letterButton);
 
-        // Generate alphabet cards
-        function generateAlphabetCards() {
-            const container = document.getElementById('alphabet-container');
-            container.innerHTML = '';
-            
-            for (const letter in alphabetData) {
-                const words = alphabetData[letter];
-                
-                const card = document.createElement('div');
-                card.className = 'alphabet-card';
-                
-                const header = document.createElement('h3');
-                header.textContent = letter;
-                card.appendChild(header);
-                
-                const table = document.createElement('table');
-                table.className = 'alphabet-table';
-                
-                // Create table header
-                const thead = document.createElement('thead');
-                const headerRow = document.createElement('tr');
-                const header1 = document.createElement('th');
-                header1.textContent = 'الإنجليزية';
-                const header2 = document.createElement('th');
-                header2.textContent = 'العربية';
-                headerRow.appendChild(header1);
-                headerRow.appendChild(header2);
-                thead.appendChild(headerRow);
-                table.appendChild(thead);
-                
-                // Create table body
-                const tbody = document.createElement('tbody');
-                
+            letterButton.addEventListener('click', () => {
+                displayWordsForLetter(letter);
+                // Highlight active letter
+                document.querySelectorAll('.alphabet-letter-button').forEach(btn => btn.classList.remove('active-letter'));
+                letterButton.classList.add('active-letter');
+            });
+        });
+
+        function displayWordsForLetter(letter) {
+            const words = wordData[letter];
+            wordsDisplayArea.innerHTML = ''; // Clear previous content
+            wordsDisplayArea.style.display = 'flex'; // Show the area
+
+            if (words && words.length > 0) {
                 words.forEach(word => {
-                    const row = document.createElement('tr');
-                    const cell1 = document.createElement('td');
-                    const cell2 = document.createElement('td');
+                    const wordItem = document.createElement('div');
+                    wordItem.className = 'word-item';
                     
-                    const enWord = document.createElement('span');
-                    enWord.className = 'english-word';
-                    enWord.textContent = word.en;
-                    enWord.addEventListener('click', () => speakText(word.en, 'en-US'));
+                    const englishWordSpan = document.createElement('span');
+                    englishWordSpan.className = 'english-word';
+                    englishWordSpan.textContent = word.en;
                     
-                    cell1.appendChild(enWord);
-                    cell2.textContent = word.ar;
+                    const arabicTranslationSpan = document.createElement('span');
+                    arabicTranslationSpan.className = 'arabic-translation';
+                    arabicTranslationSpan.textContent = word.ar;
                     
-                    row.appendChild(cell1);
-                    row.appendChild(cell2);
-                    tbody.appendChild(row);
+                    wordItem.appendChild(englishWordSpan);
+                    wordItem.appendChild(arabicTranslationSpan);
+                    wordsDisplayArea.appendChild(wordItem);
                 });
-                
-                table.appendChild(tbody);
-                card.appendChild(table);
-                container.appendChild(card);
+            } else {
+                wordsDisplayArea.innerHTML = `<p style="text-align: center; color: #777;">لا توجد كلمات متاحة لهذا الحرف حاليًا.</p>`;
             }
         }
         
-        // Navigation functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Generate alphabet cards
-            generateAlphabetCards();
-            
-            // Add click event listeners to all english words
-            document.querySelectorAll('.english-word').forEach(word => {
-                word.addEventListener('click', function() {
-                    speakText(this.textContent, 'en-US');
-                });
-            });
-            
-            // Navigation buttons
-            const navButtons = document.querySelectorAll('.nav-btn');
-            const sections = document.querySelectorAll('section');
-            const scrollTopBtn = document.querySelector('.scroll-top-btn');
-            
-            // Set active section on page load
-            function setActiveSection() {
-                const scrollPosition = window.scrollY + 150;
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.offsetHeight;
-                    
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                        const sectionId = section.id;
-                        navButtons.forEach(btn => {
-                            if (btn.dataset.section === sectionId) {
-                                btn.classList.add('active');
-                            } else {
-                                btn.classList.remove('active');
-                            }
-                        });
-                    }
-                });
+        // --- Text-to-Speech Logic ---
+        function speak(text) {
+            // Cancel any previous speech
+            window.speechSynthesis.cancel();
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US'; // Set language to English
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('عذرًا، متصفحك لا يدعم خاصية النطق.');
             }
-            
-            // Scroll to section on button click
-            navButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const sectionId = this.dataset.section;
-                    const section = document.getElementById(sectionId);
-                    
-                    if (section) {
-                        // Update active button
-                        navButtons.forEach(b => b.classList.remove('active'));
-                        this.classList.add('active');
-                        
-                        // Scroll to section
-                        window.scrollTo({
-                            top: section.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Show/hide scroll to top button
-            function toggleScrollTopButton() {
-                if (window.scrollY > 300) {
-                    scrollTopBtn.classList.add('show');
-                } else {
-                    scrollTopBtn.classList.remove('show');
-                }
+        }
+        
+        // Add event listener to the whole document for any .english-word click
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('english-word')) {
+                speak(event.target.textContent);
             }
-            
-            // Scroll to top functionality
-            scrollTopBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-            
-            // Event listeners
-            window.addEventListener('scroll', function() {
-                setActiveSection();
-                toggleScrollTopButton();
-            });
-            
-            // Initialize
-            setActiveSection();
-            toggleScrollTopButton();
         });
+
+    });
     </script>
 </body>
-
-
+</html>
