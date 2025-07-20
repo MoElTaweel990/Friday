@@ -2487,7 +2487,7 @@
                 font-size: 1.5rem; 
             }
         </style>
-</head>
+
 <body>
 
     <section class="interactive-games" id="interactive-games">
@@ -2879,9 +2879,9 @@
             devGames.openGame('matching');
         });
     </script>
-        </section>
+        //</section>
 
-        </section>
+       // </section>
 
     <footer>
         <p>تم التصميم والتطوير لرحلتك في تعلم اللغة الإنجليزية. &copy; 2025</p>
