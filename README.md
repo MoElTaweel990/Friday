@@ -2879,9 +2879,6 @@
             devGames.openGame('matching');
         });
     </script>
-        //</section>
-
-       // </section>
 
     <footer>
         <p>تم التصميم والتطوير لرحلتك في تعلم اللغة الإنجليزية. &copy; 2025</p>
